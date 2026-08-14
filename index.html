@@ -90,6 +90,30 @@ padding:7px 0;border-top:1px solid var(--line-2);font-size:12px}
 .ds{font-size:10px;text-align:center;padding:2px 6px;border-radius:4px;white-space:nowrap}
 .st-new{color:var(--cardinal);background:color-mix(in srgb,var(--cardinal) 11%,transparent)}
 .st-old{color:var(--pewter);background:var(--fossil)}
+/* 低置信度區塊：整塊降權，讓「資料不硬」用視覺重量表達，而不是靠讀者讀小字 */
+.lowconf{position:relative;margin-top:40px;padding:16px 18px 14px 22px;border:1px dashed rgba(17,17,17,.16);
+border-radius:10px;background:#FAF9F7;color:var(--dust)}
+.lowconf::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;border-radius:10px 0 0 10px;
+background:repeating-linear-gradient(45deg,transparent 0 4px,rgba(17,17,17,.07) 4px 8px)}
+.lc-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.lc-head h3{font-size:17px;font-weight:400;color:var(--dust);letter-spacing:-.01em}
+.lc-lead{font-size:13px;line-height:1.7;margin-bottom:12px}
+.lc-lead b{color:#3A3A3E}
+.cov{background:var(--fossil);border-radius:8px;padding:10px 12px;margin-bottom:14px}
+.cov-row{display:flex;flex-wrap:wrap;align-items:center;gap:5px;padding:3px 0}
+.cov-k{font-size:10px;letter-spacing:.06em;color:var(--pewter);width:64px;flex:none}
+.netchip{display:inline-block;padding:2px 7px;border-radius:4px;background:#EFEDEA;color:#5F5F63;font-size:11px}
+.blindchip{display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;color:#8E8E93;
+border-left:2px solid #8E8E93;background:repeating-linear-gradient(45deg,transparent 0 4px,rgba(17,17,17,.06) 4px 8px)}
+table.lc-tbl{min-width:0;width:100%;font-size:12px;border-collapse:collapse}
+table.lc-tbl th{font-size:10px;padding:6px 8px;color:var(--pewter);border-bottom:1px solid var(--line-2)}
+table.lc-tbl td{padding:7px 8px;border-bottom:1px solid var(--line-2);vertical-align:top}
+.lc-p{color:#3A3A3E;font-size:12px}
+.lc-w{font-size:10px;color:var(--pewter)}
+.lc-note{font-size:11px;line-height:1.7;margin-top:10px;color:var(--pewter)}
+.lc-note b{color:var(--dust)}
+.nsm{font-size:10px}
+b.hotpos{color:var(--cardinal)}
 /* 新上市榜：狀態標籤用方角＋左色標，與主榜圓角 pill 形狀分流 */
 .state{display:inline-flex;align-items:center;padding:3px 9px 3px 6px;border-radius:4px;
 border-left:3px solid currentColor;font-size:11px;font-weight:500;white-space:nowrap;margin-right:5px}
@@ -1039,7 +1063,9 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 門檻隨市場浮動，<b>跨月不可直接比百分比</b>，要先對照這個絕對值。
 本月下載榜前 200 名中有 50 款達標，其中 21 款符合新上市定義。</div></div>
 
-<div class="lead"><b>期間＝最新月（以你更新的時間點為基準），不是年度窗。</b>年度視角那一頁只看市場結構，不含新品。
+<div class="lead"><b>資料月＝2026-07（最近一個完整月），錨點日＝2026-08-13。</b>
+兩者刻意分開：ST 的月資料要月結才穩定，抓未結算的當月會讓門檻同比例縮水、一堆本來過不了的產品假性入榜，
+而且與前期報表不可比。所以<b>資料鎖完整月，只有「上市 90 天內」這個窗以錨點日回推</b>。年度視角那一頁只看市場結構，不含新品。
 這一頁答的是<b>誰剛進場</b>，不是誰在賺錢——主榜看營收，這裡看下載。
 排序是<b>當月下載量降冪</b>，不是重要性排名或潛力評分。
 上市 90 天內且達門檻者入榜；<b>首月的 ARPD 與營收名次一律鎖住不判讀</b>。</div>
@@ -1055,7 +1081,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">NEXON Company · <span class="gp">MMORPG</span> · Mid-core</div>
 <div class="gmon">Currency Bundles · Free to Play · Gacha</div></td>
 <td><span class="state s-new">初登場</span><span class="feat" title="本月拿過 Apple 遊戲分頁曝光">✦ 曝光</span></td>
-<td class="dt">2026-07-20<span class="dtd">12 天</span></td>
+<td class="dt">2026-07-20<span class="dtd">25 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 450%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="172.0" height="8" rx="4" class="th-over"/>
@@ -1072,7 +1098,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">QualiArts, Inc. · <span class="gp">Music / Rhythm</span> · Hybridcasual</div>
 <div class="gmon">Currency Bundles · Free to Play · Season Pass</div></td>
 <td><span class="state s-new">初登場</span><span class="feat" title="本月拿過 Apple 遊戲分頁曝光">✦ 曝光</span></td>
-<td class="dt">2026-07-22<span class="dtd">10 天</span></td>
+<td class="dt">2026-07-22<span class="dtd">23 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 236%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="127.9" height="8" rx="4" class="th-over"/>
@@ -1089,7 +1115,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">THE HORTOR TECHNOLOGY PTE.LTD. · <span class="gp">Match Merge 2</span> · Hypercasual</div>
 <div class="gmon">Ads · Currency Bundles · Free to Play</div></td>
 <td><span class="state s-new">初登場</span><span class="feat" title="本月拿過 Apple 遊戲分頁曝光">✦ 曝光</span></td>
-<td class="dt">2026-07-08<span class="dtd">24 天</span></td>
+<td class="dt">2026-07-08<span class="dtd">37 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 187%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="113.5" height="8" rx="4" class="th-over"/>
@@ -1106,7 +1132,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">U-LIKE ENTERTAINMENT LIMITED · <span class="gp">4X Strategy</span> · Mid-core</div>
 <div class="gmon">Currency Bundles · Free to Play · Gacha</div></td>
 <td><span class="state s-new">初登場</span><span class="feat" title="本月拿過 Apple 遊戲分頁曝光">✦ 曝光</span></td>
-<td class="dt">2026-07-22<span class="dtd">10 天</span></td>
+<td class="dt">2026-07-22<span class="dtd">23 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 169%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="108.2" height="8" rx="4" class="th-over"/>
@@ -1123,7 +1149,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">Envoy Interactive Entertainment Co.Ltd. · <span class="gp">Interactive Story</span> · Casual</div>
 <div class="gmon">Currency Bundles · Free to Play · Gacha</div></td>
 <td><span class="state s-new">初登場</span><span class="feat" title="本月拿過 Apple 遊戲分頁曝光">✦ 曝光</span></td>
-<td class="dt">2026-07-06<span class="dtd">26 天</span></td>
+<td class="dt">2026-07-06<span class="dtd">39 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 123%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="94.7" height="8" rx="4" class="th-edge"/>
@@ -1140,7 +1166,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">SUNNY HK · <span class="gp">Word</span> · Hypercasual</div>
 <div class="gmon">Ads · Free to Play</div></td>
 <td><span class="state s-new">初登場</span></td>
-<td class="dt">2026-06-29<span class="dtd">33 天</span></td>
+<td class="dt">2026-06-29<span class="dtd">46 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 676%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="172.0" height="8" rx="4" class="th-over"/>
@@ -1157,7 +1183,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">Beijing Mihuan Games Technology Co., Ltd · <span class="gp">Tower Defense</span> · Hypercasual</div>
 <div class="gmon">Free to Play</div></td>
 <td><span class="state s-slow">緩起量</span></td>
-<td class="dt">2026-06-24<span class="dtd">38 天</span></td>
+<td class="dt">2026-06-24<span class="dtd">51 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 589%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="172.0" height="8" rx="4" class="th-over"/>
@@ -1174,7 +1200,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">THANH AN SON DONG COMPANY LIMITED · <span class="gp">Tycoon / Crafting</span> · Mid-core</div>
 <div class="gmon">Ads · Currency Bundles · Free to Play</div></td>
 <td><span class="state s-slow">緩起量</span></td>
-<td class="dt">2026-06-25<span class="dtd">37 天</span></td>
+<td class="dt">2026-06-25<span class="dtd">50 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 351%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="161.6" height="8" rx="4" class="th-over"/>
@@ -1191,7 +1217,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">Flow Games Bilisim Yazilim ve Pazarlama Anonim Sirketi · <span class="gp">Physics</span> · Hypercasual</div>
 <div class="gmon">Ad Removal · Ads · Currency Bundles</div></td>
 <td><span class="state s-new">初登場</span></td>
-<td class="dt">2026-06-11<span class="dtd">51 天</span></td>
+<td class="dt">2026-06-11<span class="dtd">64 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 292%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="144.3" height="8" rx="4" class="th-over"/>
@@ -1208,7 +1234,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">Fun Journey Network Technology Co., Limited · <span class="gp">Beat 'em Up</span> · Mid-core</div>
 <div class="gmon">Currency Bundles · Free to Play · Gacha</div></td>
 <td><span class="state s-slow">緩起量</span><span class="feat" title="本月拿過 Apple 遊戲分頁曝光">✦ 曝光</span></td>
-<td class="dt">2026-06-16<span class="dtd">46 天</span></td>
+<td class="dt">2026-06-16<span class="dtd">59 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 200%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="117.3" height="8" rx="4" class="th-over"/>
@@ -1225,7 +1251,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">The Pokemon Company · <span class="gp">Turn-based RPG</span> · Mid-core</div>
 <div class="gmon">Free to Play · Gacha · Live Ops</div></td>
 <td><span class="state s-slow">緩起量</span><span class="feat" title="本月拿過 Apple 遊戲分頁曝光">✦ 曝光</span></td>
-<td class="dt">2026-06-17<span class="dtd">45 天</span></td>
+<td class="dt">2026-06-17<span class="dtd">58 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 173%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="109.4" height="8" rx="4" class="th-over"/>
@@ -1242,7 +1268,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">Sky Entertainment Network Limited · <span class="gp">MMORPG</span> · Mid-core</div>
 <div class="gmon">Ads · Currency Bundles · Free to Play</div></td>
 <td><span class="state s-slow">緩起量</span></td>
-<td class="dt">2026-06-22<span class="dtd">40 天</span></td>
+<td class="dt">2026-06-22<span class="dtd">53 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 160%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="105.6" height="8" rx="4" class="th-over"/>
@@ -1259,7 +1285,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">Tadpole Entertainment Company Limited · <span class="gp">Brawl</span> · Mid-core</div>
 <div class="gmon">Currency Bundles · Free to Play · Gacha</div></td>
 <td><span class="state s-slow">緩起量</span><span class="feat" title="本月拿過 Apple 遊戲分頁曝光">✦ 曝光</span></td>
-<td class="dt">2026-06-24<span class="dtd">38 天</span></td>
+<td class="dt">2026-06-24<span class="dtd">51 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 124%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="95.0" height="8" rx="4" class="th-edge"/>
@@ -1276,7 +1302,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">JOYGLOBE PTE. LTD. · <span class="gp">Tycoon / Crafting</span> · Hybridcasual</div>
 <div class="gmon">Ad Removal · Ads · Currency Bundles</div></td>
 <td><span class="state s-new">初登場</span><span class="feat" title="本月拿過 Apple 遊戲分頁曝光">✦ 曝光</span></td>
-<td class="dt">2026-06-15<span class="dtd">47 天</span></td>
+<td class="dt">2026-06-15<span class="dtd">60 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 120%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="93.9" height="8" rx="4" class="th-edge"/>
@@ -1293,7 +1319,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">Oakever Games · <span class="gp">Numbers</span> · Hypercasual</div>
 <div class="gmon">Ads · Free to Play</div></td>
 <td><span class="state s-new">初登場</span></td>
-<td class="dt">2026-05-19<span class="dtd">74 天</span></td>
+<td class="dt">2026-05-19<span class="dtd">87 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 449%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="172.0" height="8" rx="4" class="th-over"/>
@@ -1310,7 +1336,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">HIGGS TECHNOLOGY CO., LIMITED · <span class="gp">Shoot 'em Up</span> · Hybridcasual</div>
 <div class="gmon">Ads · Currency Bundles · Free to Play</div></td>
 <td><span class="state s-slow">緩起量</span><span class="feat" title="本月拿過 Apple 遊戲分頁曝光">✦ 曝光</span></td>
-<td class="dt">2026-05-26<span class="dtd">67 天</span></td>
+<td class="dt">2026-05-26<span class="dtd">80 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 132%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="97.4" height="8" rx="4" class="th-edge"/>
@@ -1327,7 +1353,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">JOYSTAR GAME INFORMATION TECHNOLOGY CO.,LIMITED · <span class="gp">MMORPG</span> · Mid-core</div>
 <div class="gmon">Currency Bundles · Free to Play · Gacha</div></td>
 <td><span class="state s-slow">緩起量</span><span class="feat" title="本月拿過 Apple 遊戲分頁曝光">✦ 曝光</span></td>
-<td class="dt">2026-05-27<span class="dtd">66 天</span></td>
+<td class="dt">2026-05-27<span class="dtd">79 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 118%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="93.3" height="8" rx="4" class="th-edge"/>
@@ -1344,7 +1370,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">KIKO FUN INTERACTIVE ENTERTAINMENT CO., LIMITED · <span class="gp">Avatar Life</span> · Casual</div>
 <div class="gmon">Ads · Currency Bundles · Free to Play</div></td>
 <td><span class="state s-back">久違回榜</span></td>
-<td class="dt">2025-07-23<span class="dtd">374 天</span></td>
+<td class="dt">2025-07-23<span class="dtd">387 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 239%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="128.8" height="8" rx="4" class="th-over"/>
@@ -1361,7 +1387,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">Chengdu Warrior Tech Limited · <span class="gp">Screw</span> · Hypercasual</div>
 <div class="gmon">Ad Removal · Ads · Currency Bundles</div></td>
 <td><span class="state s-back">久違回榜</span></td>
-<td class="dt">2024-10-29<span class="dtd">641 天</span></td>
+<td class="dt">2024-10-29<span class="dtd">654 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 177%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="110.6" height="8" rx="4" class="th-over"/>
@@ -1378,7 +1404,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">Grand Games A.Ş. · <span class="gp">Block</span> · Hybridcasual</div>
 <div class="gmon">Currency Bundles · Free to Play · Loot Box</div></td>
 <td><span class="state s-back">久違回榜</span></td>
-<td class="dt">2025-09-30<span class="dtd">305 天</span></td>
+<td class="dt">2025-09-30<span class="dtd">318 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 124%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="95.0" height="8" rx="4" class="th-edge"/>
@@ -1395,7 +1421,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsub">Focent Technology Limited · <span class="gp">Squad RPG</span> · Mid-core</div>
 <div class="gmon">Currency Bundles · Free to Play · Gacha</div></td>
 <td><span class="state s-back">久違回榜</span></td>
-<td class="dt">2025-04-23<span class="dtd">465 天</span></td>
+<td class="dt">2025-04-23<span class="dtd">478 天</span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 114%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
 <rect x="0" y="3" width="92.1" height="8" rx="4" class="th-edge"/>
@@ -1415,6 +1441,44 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 ③ 「久違回榜」是上市已久但本月首次進下載榜，跟「初登場」完全不同，不要混談。
 ④ 營收欄的母體是下載榜，與主榜的營收 Top 50 是兩個池子；沒進主榜不代表沒營收，只代表沒進前 50。
 
+</div>
+<div class="lowconf">
+<div class="lc-head"><h3>SDK 聯播網露出（局部可見）</h3><span class="state s-lock">低置信度</span></div>
+<div class="lc-lead">只能證明「這款有在某個 SDK 聯播網出現過素材」。
+<b>空白不代表沒投</b>——Sensor Tower 的偵測建立在可爬取的素材上，封閉花園幾乎照不到。</div>
+
+<div class="cov">
+<div class="cov-row"><span class="cov-k">偵測範圍內</span>
+<span class="netchip">Youtube</span><span class="netchip">Admob</span><span class="netchip">Applovin</span><span class="netchip">InMobi</span><span class="netchip">Digital Turbine</span><span class="netchip">Mintegral</span><span class="netchip">Supersonic</span><span class="netchip">Pangle</span><span class="netchip">Vungle</span><span class="netchip">Unity</span><span class="netchip">Moloco</span><span class="netchip">Verve</span>
+<span class="netchip dim">＋4</span></div>
+<div class="cov-row"><span class="cov-k">偵測不到</span>
+<span class="blindchip">TikTok</span><span class="blindchip">Apple Search Ads</span><span class="blindchip">Instagram</span><span class="blindchip">Meta Audience Network</span>
+<span class="blindchip">Facebook（僅 2 支）</span></div>
+</div>
+
+<table class="lc-tbl"><colgroup><col style="width:220px"><col></colgroup>
+<thead><tr><th>產品 · 入選原因</th><th>偵測到的聯播網（無排序、無權重）</th></tr></thead>
+<tbody><tr>
+<td><div class="lc-p">瑪奇 Mobile</div><div class="lc-w">新上市</div></td>
+<td><span class="netchip">Moloco</span><span class="netchip">Vungle</span><span class="netchip">InMobi</span><span class="netchip">Mintegral</span><span class="netchip">Verve</span><span class="netchip">Applovin</span><span class="netchip">Supersonic</span><span class="netchip">Digital Turbine</span><span class="netchip">Pangle</span><span class="netchip">Pinterest</span><span class="netchip">Admob</span><span class="netchip">Unity</span><span class="netchip">BidMachine</span><span class="netchip">Youtube</span></td></tr><tr>
+<td><div class="lc-p">Pokémon GO</div><div class="lc-w">流量暴增</div></td>
+<td><span class="netchip">InMobi</span><span class="netchip">Verve</span><span class="netchip">Digital Turbine</span><span class="netchip">Vungle</span><span class="netchip">Mintegral</span><span class="netchip">Unity</span><span class="netchip">Admob</span><span class="netchip">Applovin</span><span class="netchip">BidMachine</span><span class="netchip">Supersonic</span><span class="netchip">Youtube</span><span class="netchip">Moloco</span><span class="netchip">Smaato</span><span class="netchip">Pangle</span></td></tr><tr>
+<td><div class="lc-p">Meowdoku!</div><div class="lc-w">新上市</div></td>
+<td><span class="netchip">Mintegral</span><span class="netchip">Moloco</span><span class="netchip">Vungle</span><span class="netchip">InMobi</span><span class="netchip">Applovin</span><span class="netchip">BidMachine</span><span class="netchip">Supersonic</span><span class="netchip">Digital Turbine</span><span class="netchip">Youtube</span><span class="netchip">Unity</span><span class="netchip">Admob</span><span class="netchip">Pangle</span><span class="netchip">Verve</span></td></tr><tr>
+<td><div class="lc-p">Block Out! - Color Sort Puzzle</div><div class="lc-w">新上市</div></td>
+<td><span class="netchip">Supersonic</span><span class="netchip">Unity</span><span class="netchip">Digital Turbine</span><span class="netchip">Mintegral</span><span class="netchip">Vungle</span><span class="netchip">Verve</span><span class="netchip">Applovin</span><span class="netchip">InMobi</span><span class="netchip">Pangle</span></td></tr><tr>
+<td><div class="lc-p">貓咪大戰爭</div><div class="lc-w">流量暴增</div></td>
+<td><span class="netchip">Admob</span><span class="netchip">BidMachine</span><span class="netchip">Moloco</span><span class="netchip">Supersonic</span><span class="netchip">Digital Turbine</span><span class="netchip">InMobi</span><span class="netchip">Youtube</span><span class="netchip">Applovin</span><span class="netchip">Vungle</span></td></tr><tr>
+<td><div class="lc-p">青丘世界：緣起</div><div class="lc-w">新上市</div></td>
+<td><span class="netchip">Pangle</span><span class="netchip">InMobi</span><span class="netchip">Youtube</span><span class="netchip">Digital Turbine</span><span class="netchip">Vungle</span><span class="netchip">Admob</span><span class="netchip">Unity</span></td></tr><tr>
+<td><div class="lc-p">Screw All Out - Jam Master</div><div class="lc-w">新上市</div></td>
+<td><span class="netchip">Mintegral</span><span class="netchip">Applovin</span><span class="netchip">Supersonic</span><span class="netchip">Digital Turbine</span><span class="netchip">InMobi</span></td></tr><tr>
+<td><div class="lc-p">天天拼詞王</div><div class="lc-w">新上市</div></td>
+<td><span class="netchip">Pangle</span><span class="netchip">Youtube</span><span class="netchip">Admob</span><span class="netchip">Mintegral</span></td></tr></tbody></table>
+<div class="lc-note">母體 28 支（本期新上市 ＋ 流量暴增），偵測到投放 23 支、未偵測到 5 支，此處列前 8 支。
+視窗 2026-07-01 ～ 2026-08-13、僅台灣。
+<b>不得用來推估渠道配置、投放力度或預算分配</b>；也不得把「未偵測到」讀成沒做 UA——
+重壓 Meta／ASA／TikTok 的對手在這張表上永遠是空白的。</div>
 </div></section><section class="pane">
 <div class="rail"><span class="rail-n">02</span><h2>品類解剖</h2><span class="badge">母體＝本期 TW Top 50</span></div>
 <div class="lead">這一區回答一件事：<b>本期 TW Top 50 的營收，是由哪些品類撐起來的。</b>
@@ -1529,6 +1593,98 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <span class="badge">TW · 2026-07 · 31/31 天</span></div>
 <div class="lead">這一區看的是 <b>App Store 台灣「遊戲」分頁</b>每天由上到下的版位，誰被 Apple 擺在哪一格。
 <b>順序有差</b>：position 是<b>當日</b>分頁由上往下的區塊序號（實測同一天序號不重複），1–3 是最頂端的大圖卡，越往下曝光價值越低。各型別的 position 範圍會跨日重疊，因為每天版面配置不同。</div>
+<div class="rail" style="margin-bottom:16px"><span class="rail-n">03a</span><h2>Today 分頁 · 遊戲板塊</h2>
+<span class="badge">編輯最重的推薦形式</span></div>
+<div class="lead sm"><b>Today 分頁是 Apple 編輯最重的推薦形式</b>——一則故事一張大圖加編輯文案，
+份量遠高於遊戲分頁的清單版位。position 是該日 Today 由上往下的順序，1–2 是首屏。</div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>遊戲 · 編輯標題</th><th>最佳 position</th><th>故事則數</th><th>近期日期</th></tr></thead>
+<tbody><tr>
+<td><div class="gname">食光旅行</div>
+<div class="gsub">夏日不打烊 — App Store 玩樂指南，熱力和樂趣不間斷</div></td>
+<td class="n"><b class="hotpos">1</b></td>
+<td class="n">9</td>
+<td class="dim nsm">07-21 07-22 07-27 07-29</td></tr><tr>
+<td><div class="gname">Pikmin Bloom</div>
+<div class="gsub">話題遊戲</div></td>
+<td class="n"><b class="hotpos">1</b></td>
+<td class="n">8</td>
+<td class="dim nsm">07-21 07-22 07-27 07-29</td></tr><tr>
+<td><div class="gname">薑餅人放置大戰爭 - 餅乾養成RPG</div>
+<div class="gsub">可愛餅乾踏上全新冒險 — 快到《薑餅人放置大戰爭》挑戰副本</div></td>
+<td class="n"><b class="hotpos">1</b></td>
+<td class="n">7</td>
+<td class="dim nsm">07-21 07-22 07-27 07-30</td></tr><tr>
+<td><div class="gname">瑪奇 Mobile</div>
+<div class="gsub">踏上迷人的愛爾琳世界 — 隨時隨地，回味《瑪奇》最初帶來的感動</div></td>
+<td class="n"><b class="hotpos">1</b></td>
+<td class="n">7</td>
+<td class="dim nsm">07-24 07-25 07-26 07-29</td></tr><tr>
+<td><div class="gname">心動小鎮</div>
+<div class="gsub">夏日不打烊 — App Store 玩樂指南，熱力和樂趣不間斷</div></td>
+<td class="n"><b class="hotpos">1</b></td>
+<td class="n">7</td>
+<td class="dim nsm">07-21 07-22 07-27 07-29</td></tr><tr>
+<td><div class="gname">點點英雄：骰子傳說</div>
+<div class="gsub">夏日不打烊 — App Store 玩樂指南，熱力和樂趣不間斷</div></td>
+<td class="n"><b class="hotpos">1</b></td>
+<td class="n">7</td>
+<td class="dim nsm">07-04 07-17 07-22 07-29</td></tr><tr>
+<td><div class="gname">燕雲十六聲</div>
+<div class="gsub">夏日不打烊 — App Store 玩樂指南，熱力和樂趣不間斷</div></td>
+<td class="n"><b class="hotpos">1</b></td>
+<td class="n">7</td>
+<td class="dim nsm">07-17 07-22 07-26 07-29</td></tr><tr>
+<td><div class="gname">桃源深處有人家 - 酷洛米聯動中！</div>
+<div class="gsub">夏日不打烊 — App Store 玩樂指南，熱力和樂趣不間斷</div></td>
+<td class="n"><b class="hotpos">1</b></td>
+<td class="n">7</td>
+<td class="dim nsm">07-21 07-22 07-27 07-29</td></tr><tr>
+<td><div class="gname">PUBG MOBILE：絕地求生M</div>
+<div class="gsub">時下熱門遊戲</div></td>
+<td class="n"><b class="hotpos">1</b></td>
+<td class="n">6</td>
+<td class="dim nsm">07-22 07-23 07-29 07-30</td></tr><tr>
+<td><div class="gname">Garena 傳說對決：冥定王牌版本</div>
+<div class="gsub">時下熱門遊戲</div></td>
+<td class="n"><b class="hotpos">1</b></td>
+<td class="n">6</td>
+<td class="dim nsm">07-23 07-26 07-29 07-30</td></tr><tr>
+<td><div class="gname">hololive Dreams</div>
+<div class="gsub">《hololive Dreams》夢幻樂園正式開張 — 在行動裝置上與 hololive 人物同樂</div></td>
+<td class="n"><b class="hotpos">1</b></td>
+<td class="n">6</td>
+<td class="dim nsm">07-22 07-25 07-26 07-29</td></tr><tr>
+<td><div class="gname">異環</div>
+<div class="gsub">夏日不打烊 — App Store 玩樂指南，熱力和樂趣不間斷</div></td>
+<td class="n"><b class="hotpos">1</b></td>
+<td class="n">6</td>
+<td class="dim nsm">07-17 07-22 07-26 07-29</td></tr><tr>
+<td><div class="gname">Matching Story - Merge &amp; Match</div>
+<div class="gsub">夏日不打烊 — App Store 玩樂指南，熱力和樂趣不間斷</div></td>
+<td class="n"><b class="hotpos">1</b></td>
+<td class="n">6</td>
+<td class="dim nsm">07-20 07-21 07-27 07-29</td></tr><tr>
+<td><div class="gname">RO仙境傳説：世界之旅</div>
+<div class="gsub">話題遊戲</div></td>
+<td class="n"><b class="hotpos">1</b></td>
+<td class="n">5</td>
+<td class="dim nsm">07-02 07-22 07-26 07-29</td></tr><tr>
+<td><div class="gname">神魔之塔</div>
+<div class="gsub">夏日不打烊 — App Store 玩樂指南，熱力和樂趣不間斷</div></td>
+<td class="n"><b class="hotpos">1</b></td>
+<td class="n">4</td>
+<td class="dim nsm">07-17 07-22 07-26 07-29</td></tr><tr>
+<td><div class="gname">王國之歌（Top Heroes）</div>
+<div class="gsub">夏日不打烊 — App Store 玩樂指南，熱力和樂趣不間斷</div></td>
+<td class="n"><b class="hotpos">1</b></td>
+<td class="n">4</td>
+<td class="dim nsm">07-17 07-22 07-26 07-29</td></tr></tbody></table></div>
+<div class="note-sm">本月 Today 分頁共 107 則故事含遊戲，涵蓋 31 天、116 款產品，此處列前 16 款。
+拿到 Today 故事代表 Apple 編輯主動選它，通常綁上市或重大改版；<b>但那是編輯決策不是市場決策</b>，
+要看它有沒有換到量，得對照下載榜。</div>
+<div class="rail" style="margin:44px 0 16px"><span class="rail-n">03b</span><h2>遊戲分頁版位</h2>
+<span class="badge">每日由上而下的區塊排序</span></div>
 <div class="slotkey"><div class="sk"><svg width="14" height="14" viewBox="0 0 14 14"><rect x="1" y="4" width="12" height="7" rx="2" class="tl-l1"/></svg>
 <div><b>大圖推薦卡</b> <span class="dim">position 1–12</span><div class="skd">分頁最上方，單款一張大卡，曝光價值最高</div></div></div><div class="sk"><svg width="14" height="14" viewBox="0 0 14 14"><rect x="1" y="4" width="12" height="7" rx="2" class="tl-l1"/></svg>
 <div><b>排行榜區塊</b> <span class="dim">position 12–16</span><div class="skd">分頁中段的榜單模組</div></div></div><div class="sk"><svg width="14" height="14" viewBox="0 0 14 14"><rect x="1" y="4" width="12" height="7" rx="2" class="tl-l2"/></svg>
