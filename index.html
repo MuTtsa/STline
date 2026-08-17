@@ -22,9 +22,12 @@ background:var(--card);border-bottom:1px solid var(--line);box-shadow:0 1px 0 rg
 .tb-t{font-size:15px;font-weight:500}.tb-s{margin-left:auto;font-size:12px;color:var(--dust)}
 /* 版寬：觀測環境固定 1920×1080。1920 − 捲軸 17 = 1903，扣左右 padding 80 → 表格可用寬 1358。
    舊值 1180 只給到 1098，比 table.nt 的 min-width 還窄，所以新上市榜一定要左右拖移。
+   2026-08-17 由 1440 再放寬到 1600（可用寬 1518）：新上市榜加了「雙系統暢銷榜」欄，
+   固定欄合計 1304px，1440 版寬只剩 134px 給產品名，中文遊戲名會斷成四行。
+   1600 在 1903 的可用寬內仍有 300px 餘裕，不會反過來製造捲軸。
    刻意不用 clamp()/vw：vw 在多數瀏覽器含捲軸寬，100vw−96px 在 1920 會多算 17px，
    那本身就是水平捲軸最常見的來源。max-width 搭 border-box 在窄視窗已會自動縮。 */
-main{max-width:1440px;margin:0 auto;padding:48px 40px 96px}
+main{max-width:1600px;margin:0 auto;padding:48px 40px 96px}
 /* 版面變寬後正文行長會失控，中文一行超過 60 字就難讀——說明文字另外壓寬 */
 /* ⚠ 這裡曾經有一條 .lead,.note-sm,...{max-width:900px}（2026-08-14 加、08-17 移除）。
    加它的理由是「中文一行超過 55–60 字難讀」，但一個固定 px 上限套在 5 種字級上，
@@ -153,6 +156,34 @@ border-left:3px solid currentColor;font-size:11px;font-weight:500;white-space:no
 .s-back{color:var(--sage);background:color-mix(in srgb,var(--sage) 12%,transparent)}
 .s-lock{color:var(--pewter);background:repeating-linear-gradient(45deg,transparent 0 4px,var(--line-2) 4px 8px);border-left-color:var(--pewter)}
 .feat{font-size:10px;color:var(--harvest);white-space:nowrap}
+/* 暢銷榜名次軌跡。兩條線刻意用 cardinal／sage 而非同色深淺——iOS 與 Android 是
+   兩個獨立母體，同色深淺會被讀成「同一件事的程度差」。 */
+.gsp{width:176px;height:30px;display:block;margin-bottom:3px}
+.gsp polyline{fill:none;stroke-width:1.5;stroke-linejoin:round}
+.gs-ios{stroke:var(--cardinal)}.gs-and{stroke:var(--sage)}
+.gs-ios-d{fill:var(--cardinal)}.gs-and-d{fill:var(--sage)}
+.gl{font-size:10px;color:var(--dust);white-space:nowrap;font-variant-numeric:tabular-nums;line-height:1.5}
+.gl b{font-weight:600;color:var(--ink)}
+.gl-off{color:var(--pewter)}
+/* 「無此平台記錄」再降一階：它連「沒進榜」都不是，不該與有資料的列同一個灰 */
+.gl-na{color:var(--dust);opacity:.55}
+.gdup{font-style:normal;font-size:9px;margin-left:4px;padding:0 4px;border-radius:3px;
+color:var(--dust);background:var(--fossil);cursor:help}
+.gt{font-style:normal;margin-left:5px}
+.g-up{color:var(--sage)}.g-dn{color:var(--terracotta)}.g-out{color:var(--pewter)}.g-fl{color:var(--pewter)}
+.gev-w{margin-top:4px;display:flex;align-items:center;gap:6px}
+.gev{display:inline-block;padding:1px 7px;border-radius:var(--r-pill);font-size:10px;white-space:nowrap}
+.gev-ok{color:var(--sage);background:color-mix(in srgb,var(--sage) 13%,transparent)}
+.gev-short{color:var(--dust);background:var(--fossil);border:1px solid var(--line-2)}
+.gev-mid{color:var(--warnfg);background:var(--warnbg)}
+.gev-low{color:var(--terracotta);background:color-mix(in srgb,var(--terracotta) 11%,transparent)}
+.gev-none{color:var(--cardinal);background:color-mix(in srgb,var(--cardinal) 10%,transparent)}
+/* 「窗內樣本不足」是資料狀態不是產品評價，用灰階、不給它任何紅綠語意 */
+.gev-thin{color:var(--pewter);background:var(--fossil)}
+.gden{font-style:normal;font-size:10px;color:var(--pewter)}
+/* 註腳裡的線色圖例：直接畫一小段線，比寫「紅色代表 iOS」可靠（讀者不必在腦內配對） */
+.gs-k{display:inline-block;width:14px;height:0;border-top:2px solid;vertical-align:middle;margin:0 3px 2px 2px}
+.gs-ki{color:var(--cardinal)}.gs-ka{color:var(--sage)}
 .gmon{font-size:10px;color:var(--pewter);margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dt{font-size:12px;font-variant-numeric:tabular-nums}
 .dtd{display:block;font-size:10px;color:var(--pewter)}
@@ -171,8 +202,8 @@ border-left:3px solid currentColor;font-size:11px;font-weight:500;white-space:no
 .th-more{fill:var(--ink);opacity:.72}
 .thval{font-size:11px;color:var(--dust);font-variant-numeric:tabular-nums;white-space:nowrap}
 .thval i{font-style:normal;color:var(--harvest)}
-/* 不出水平捲軸的充要條件：max(所有 min-width) ≤ main − 80 − 2 = 1358 */
-table.nt{min-width:1358px}
+/* 不出水平捲軸的充要條件：max(所有 min-width) ≤ main − 80 − 2 = 1518 */
+table.nt{min-width:1518px}
 table.nt td{padding:9px 12px}
 /* 同款雙包：群組橫槓為主行，兩原列縮排降灰為子列——要讓略讀者一眼讀到「這是一款」，
    而不是兩個對等列外加一行小字（那等於沒改） */
@@ -374,7 +405,10 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <main>
 <h1>台港澳手遊市場情報</h1>
 <div class="subline">年度視角涵蓋 7 個完整月；月視角分頁為最新完整月 2026-07；<b>新上市榜為滾動 28 天日粒度（2026-07-19～2026-08-15，資料截至 2026-08-15），與其他分頁不可並排比較</b>　·　TW 為主榜（Apple＋Google 合併估算）　·　資料來源 Sensor Tower</div>
-
+<div class="mixwarn"><b>⚠ 本份報告的模組來自 2 個不同的取數批次</b>，
+跨分頁的產品名單可能對不上，<b>不要把不同分頁的清單當成同一批產品讀</b>。
+<div class="mixrow">主榜、品類、SDK 聯播網盤、鄰近市場、Apple 推薦 — 2026-08-17 05:21｜錨點 2026-08-17</div><div class="mixrow">新上市榜 — 2026-08-17 08:16｜錨點 2026-08-17</div>
+對外交付前請整包重跑：<code>node scripts/mgi-fetch.js</code>。</div>
 <div class="banner"><div class="bh">期間總覽</div><ul class="plain"><li><b>新王 2 款</b>：hololive Dreams、瑪奇 Mobile</li><li><b>最大躍升</b>：Pokémon GO 由 47 名升至 7 名，營收 MoM +324.2%</li><li><b>老作回榜 5 款</b>：Zenless Zone Zero - Anniv.、蛋仔派對、決勝時刻: Mobile - Garena</li></ul></div>
 <div class="legend"><span class="pill tg-new"><i><b>▲</b></i>新王</span><span class="pill tg-seen"><i><b>◆</b></i>首見</span><span class="pill tg-climb"><i><b>↗</b></i>躍升</span><span class="pill tg-hold"><i><b>═</b></i>霸榜</span><span class="pill tg-launch"><i><b>✦</b></i>上市期</span><span class="pill tg-unproven"><i><b>?</b></i>名次升·未證實</span></div>
 <div class="tabwrap"><input type="radio" name="tab" id="tab0" checked><input type="radio" name="tab" id="tab1"><input type="radio" name="tab" id="tab2"><input type="radio" name="tab" id="tab3"><input type="radio" name="tab" id="tab4"><input type="radio" name="tab" id="tab5"><input type="radio" name="tab" id="tab6"><nav class="tabbar"><label for="tab0"><b>01</b>年度視角</label><label for="tab1"><b>02</b>主榜與象限</label><label for="tab2"><b>03</b>新上市榜</label><label for="tab3"><b>04</b>品類</label><label for="tab4"><b>05</b>Apple 推薦</label><label for="tab5"><b>06</b>鄰近市場</label><label for="tab6"><b>07</b>方法與口徑</label></nav><div class="panels"><section class="pane">
@@ -1170,14 +1204,18 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <p>這一頁答的是<b>誰剛進場</b>，不是誰在賺錢——主榜看營收，這裡看下載。排序是<b>日均下載降冪</b>，不是重要性排名或潛力評分；
 <b>唯一例外是同款雙包</b>——群組以合計日均定位、組內成員相鄰，所以組內第二筆的日均可能低於它下一列。
 上市 60 天內且日均達門檻者入榜（久違回榜另計，見表末分段）。
-<b>本頁不出 ARPD 與營收數字</b>：新品營收落後下載數週，日粒度的 ARPD 分母幾乎全是還沒付費的用戶，算出來系統性趨近 0，只會生出假結論——要看變現請回主榜。</p></div>
+<b>本頁不出 ARPD 與營收數字</b>：新品營收落後下載數週，日粒度的 ARPD 分母幾乎全是還沒付費的用戶，算出來系統性趨近 0，只會生出假結論——要看變現請回主榜。</p>
+<p><b>最後一欄「雙系統暢銷榜」是唯一的變現側佐證，它給的是名次不是金額。</b>
+下載進得來不代表商業上站得住：本期就有 6 筆在下載榜有量、
+卻在四條暢銷榜前 200 <b>一次都沒進過</b>（其中 5 筆可觀測天數已足、確定不是還沒看夠）。那種產品用本頁其他欄位看起來「有量」，實際上商業判斷依據是零。
+名次來自平台商店實榜（沒有估算誤差），<b>與主榜的 ST 營收估算 USD 是兩把不同的尺，不得混用、不得相互換算</b>。</p></div>
 
 <div class="legend"><span class="state s-new">上市即起量</span><span class="state s-slow">慢熱起量</span><span class="state s-fade">曇花</span><span class="state s-relist">重新上架</span><span class="state s-back">久違回榜</span></div>
 
 <div class="tbl-wrap"><table class="nt">
-<colgroup><col style="width:52px"><col><col style="width:152px"><col style="width:124px"><col style="width:240px"><col style="width:96px"><col style="width:124px"><col style="width:132px"><col style="width:184px"></colgroup>
-<thead><tr><th>序</th><th>產品 · 發行商 · 品類</th><th>狀態 · Apple 推薦</th><th>TW 上市日</th><th>達門檻程度</th><th>日均下載</th><th>在榜天數</th><th>窗內走勢</th><th>iOS ▮／Android ▨ <span class="thu">下載占比</span></th></tr></thead>
-<tbody><tr class="sepr"><td colspan="9">近 7 天上市 · 7 筆 · 最新進場的一批。在榜天數少是正常的，看日均與趨勢，不要看累計</td></tr><tr>
+<colgroup><col style="width:52px"><col><col style="width:152px"><col style="width:124px"><col style="width:240px"><col style="width:96px"><col style="width:124px"><col style="width:132px"><col style="width:184px"><col style="width:200px"></colgroup>
+<thead><tr><th>序</th><th>產品 · 發行商 · 品類</th><th>狀態 · Apple 推薦</th><th>TW 上市日</th><th>達門檻程度</th><th>日均下載</th><th>在榜天數</th><th>窗內走勢</th><th>iOS ▮／Android ▨ <span class="thu">下載占比</span></th><th>雙系統暢銷榜 <span class="thu">名次軌跡 · Top 200</span></th></tr></thead>
+<tbody><tr class="sepr"><td colspan="10">近 7 天上市 · 7 筆 · 最新進場的一批。在榜天數少是正常的，看日均與趨勢，不要看累計</td></tr><tr>
 <td class="n">1</td>
 <td><div class="gname">三國群英傳：策定九州</div>
 <div class="gsub">Userjoy Technology Co., Ltd. · <span class="gp">4X Strategy</span> · Mid-core</div>
@@ -1197,7 +1235,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 20.7 L36.3 10.5 L71.7 3.0 L107.0 10.4" class="spk-ln"/>
 <circle cx="107.0" cy="10.4" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 31,116</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:61.1%"></span><span class="pand" style="width:38.9%"></span></div>
-  <span class="pval">iOS 61%</span></div></td></tr><tr>
+  <span class="pval">iOS 61%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="163.0,18.3 169.5,17.8 176.0,17.4"/><polyline class="gs-and" points="169.5,24.9 176.0,24.0"/></svg>
+<div class="gl"><b>iOS</b> 3天 #24 ｜總榜 #31<i class="gt g-fl" title="樣本太少">樣本少</i></div>
+<div class="gl"><b>And</b> 2天 #104 ｜總榜 #136<i class="gt g-fl" title="樣本太少">樣本少</i></div>
+<div class="gev-w"><span class="gev gev-thin" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 3 天／窗內上市後可觀測 4 天／進榜 2 個平台（有商店記錄 2 個）">窗內樣本不足</span><i class="gden">密度 75%</i></div></td></tr><tr>
 <td class="n">2</td>
 <td><div class="gname">賽爾號：巔峰之戰</div>
 <div class="gsub">TAOMEE · <span class="gp">Squad RPG</span> · Mid-core</div>
@@ -1217,7 +1259,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 11.0 L27.5 10.1 L54.0 3.0 L80.5 5.2 L107.0 9.4" class="spk-ln"/>
 <circle cx="107.0" cy="9.4" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 10,519</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:81.8%"></span><span class="pand" style="width:18.2%"></span></div>
-  <span class="pval pv-x">iOS 82%</span></div></td></tr><tr>
+  <span class="pval pv-x">iOS 82%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="156.4,3.0 163.0,3.0 169.5,9.3 176.0,11.1"/><polyline class="gs-and" points="163.0,15.3 169.5,13.4 176.0,14.6"/></svg>
+<div class="gl"><b>iOS</b> 4天 #1 ｜總榜 #2<i class="gt g-fl" title="持平">持平</i></div>
+<div class="gl"><b>And</b> 3天 #10 ｜總榜 #13<i class="gt g-fl" title="樣本太少">樣本少</i></div>
+<div class="gev-w"><span class="gev gev-thin" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 4 天／窗內上市後可觀測 5 天／進榜 2 個平台（有商店記錄 2 個）">窗內樣本不足</span><i class="gden">密度 80%</i></div></td></tr><tr>
 <td class="n">3</td>
 <td><div class="gname">搞鬼M</div>
 <div class="gsub">掘夢網股份有限公司</div>
@@ -1237,7 +1283,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 14.6 L36.3 3.0 L71.7 5.7 L107.0 8.7" class="spk-ln"/>
 <circle cx="107.0" cy="8.7" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 8,147</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:75.6%"></span><span class="pand" style="width:24.4%"></span></div>
-  <span class="pval">iOS 76%</span></div></td></tr><tr>
+  <span class="pval">iOS 76%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="163.0,14.3 169.5,13.9 176.0,13.4"/><polyline class="gs-and" points="163.0,23.3 169.5,20.0 176.0,20.0"/></svg>
+<div class="gl"><b>iOS</b> 3天 #10 ｜總榜 #13<i class="gt g-fl" title="樣本太少">樣本少</i></div>
+<div class="gl"><b>And</b> 3天 #43 ｜總榜 #51<i class="gt g-fl" title="樣本太少">樣本少</i></div>
+<div class="gev-w"><span class="gev gev-thin" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 3 天／窗內上市後可觀測 4 天／進榜 2 個平台（有商店記錄 2 個）">窗內樣本不足</span><i class="gden">密度 75%</i></div></td></tr><tr>
 <td class="n">4</td>
 <td><div class="gname">隨機骰子2</div>
 <div class="gsub">111% · <span class="gp">Tower Defense</span> · Mid-core</div>
@@ -1257,7 +1307,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 16.2 L36.3 3.4 L71.7 3.1 L107.0 3.0" class="spk-ln"/>
 <circle cx="107.0" cy="3.0" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 6,246</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:73.2%"></span><span class="pand" style="width:26.8%"></span></div>
-  <span class="pval">iOS 73%</span></div></td></tr><tr>
+  <span class="pval">iOS 73%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="163.0,21.7 169.5,20.3 176.0,18.8"/><circle class="gs-and-d" cx="176.0" cy="25.9" r="1.7"/></svg>
+<div class="gl"><b>iOS</b> 3天 #33 ｜總榜 #45<i class="gt g-fl" title="樣本太少">樣本少</i></div>
+<div class="gl"><b>And</b> 1天 #156 ｜總榜 —<i class="gt g-fl" title="樣本太少">樣本少</i></div>
+<div class="gev-w"><span class="gev gev-thin" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 3 天／窗內上市後可觀測 4 天／進榜 2 個平台（有商店記錄 2 個）">窗內樣本不足</span><i class="gden">密度 75%</i></div></td></tr><tr>
 <td class="n">5</td>
 <td><div class="gname">三國觀滄海</div>
 <div class="gsub">TBG LIMITED · <span class="gp">Turn-Based Tactics</span> · Mid-core</div>
@@ -1277,7 +1331,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 12.5 L36.3 3.0 L71.7 6.7 L107.0 10.7" class="spk-ln"/>
 <circle cx="107.0" cy="10.7" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 4,453</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:75.2%"></span><span class="pand" style="width:24.8%"></span></div>
-  <span class="pval">iOS 75%</span></div></td></tr><tr>
+  <span class="pval">iOS 75%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="163.0,21.8 169.5,21.8 176.0,21.7"/><circle class="gs-and-d" cx="176.0" cy="25.6" r="1.7"/></svg>
+<div class="gl"><b>iOS</b> 3天 #62 ｜總榜 #88<i class="gt g-fl" title="樣本太少">樣本少</i></div>
+<div class="gl"><b>And</b> 1天 #146 ｜總榜 #193<i class="gt g-fl" title="樣本太少">樣本少</i></div>
+<div class="gev-w"><span class="gev gev-thin" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 3 天／窗內上市後可觀測 4 天／進榜 2 個平台（有商店記錄 2 個）">窗內樣本不足</span><i class="gden">密度 75%</i></div></td></tr><tr>
 <td class="n">6</td>
 <td><div class="gname">亡靈別太狂：部落大作戰</div>
 <div class="gsub">Emin Lomturide</div>
@@ -1297,7 +1355,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 6.5 L22.2 3.3 L43.4 6.6 L64.6 3.0 L85.8 7.4 L107.0 9.3" class="spk-ln"/>
 <circle cx="107.0" cy="9.3" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 3,089</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:80.7%"></span><span class="pand" style="width:19.3%"></span></div>
-  <span class="pval pv-x">iOS 81%</span></div></td></tr><tr>
+  <span class="pval pv-x">iOS 81%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="149.9,21.5 156.4,20.3 163.0,23.2 169.5,24.5 176.0,23.8"/></svg>
+<div class="gl"><b>iOS</b> 5天 #46 ｜總榜 #71<i class="gt g-dn" title="滑落">滑落</i></div>
+<div class="gl gl-off"><b>And</b> 未進榜</div>
+<div class="gev-w"><span class="gev gev-thin" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 5 天／窗內上市後可觀測 6 天／進榜 1 個平台（有商店記錄 2 個）">窗內樣本不足</span><i class="gden">密度 83%</i></div></td></tr><tr>
 <td class="n">7</td>
 <td><div class="gname">MAJO - 末日魔女策略 RPG</div>
 <div class="gsub">DarkWind Ltd. · <span class="gp">Action RPG</span> · Mid-core</div>
@@ -1317,7 +1379,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 16.0 L27.5 11.0 L54.0 3.0 L80.5 6.1 L107.0 8.8" class="spk-ln"/>
 <circle cx="107.0" cy="8.8" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 2,265</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:73.3%"></span><span class="pand" style="width:26.7%"></span></div>
-  <span class="pval">iOS 73%</span></div></td></tr><tr class="sepr"><td colspan="9">8–14 天 · 6 筆 · 5 款 · 第一個能看「撐不撐得住」的區間：上市尖峰已過，日均還在門檻之上才算真起量</td></tr><tr class="grp"><td></td><td colspan="8">
+  <span class="pval">iOS 73%</span></div></td>
+<td><span class="dim">—</span>
+<div class="gl gl-off"><b>iOS</b> 未進榜</div>
+<div class="gl gl-off"><b>And</b> 未進榜</div>
+<div class="gev-w"><span class="gev gev-thin" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 0 天／窗內上市後可觀測 5 天／進榜 0 個平台（有商店記錄 2 個）">窗內樣本不足</span><i class="gden">密度 0%</i></div></td></tr><tr class="sepr"><td colspan="10">8–14 天 · 6 筆 · 5 款 · 第一個能看「撐不撐得住」的區間：上市尖峰已過，日均還在門檻之上才算真起量</td></tr><tr class="grp"><td></td><td colspan="9">
 <div class="grp-h"><b>同款雙包合計 · 猛鬼三國</b>
 <span class="grp-v">日均 <b>6,424</b> 次/日</span>
 <span class="grp-v">窗內 57,817 次</span>
@@ -1346,7 +1412,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 3.0 L14.3 3.3 L27.5 5.3 L40.8 13.1 L54.0 15.6 L67.3 16.3 L80.5 11.8 L93.8 11.9 L107.0 10.8" class="spk-ln"/>
 <circle cx="107.0" cy="10.8" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 4,303</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:89.0%"></span><span class="pand" style="width:11.0%"></span></div>
-  <span class="pval pv-x">iOS 89%</span></div></td></tr><tr class="grp-c-row">
+  <span class="pval pv-x">iOS 89%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="130.4,17.8 136.9,17.6 143.4,17.8 149.9,17.8 156.4,17.8 163.0,19.1 169.5,19.9 176.0,19.1"/><polyline class="gs-and" points="136.9,23.7 143.4,22.6 149.9,21.1 156.4,20.8 163.0,19.6 169.5,19.1 176.0,19.5"/></svg>
+<div class="gl"><b>iOS</b> 8天 #25 ｜總榜 #33<i class="gt g-fl" title="持平">持平</i></div>
+<div class="gl"><b>And</b> 7天 #35 ｜總榜 #41<i class="gt g-up" title="爬升">爬升</i><i class="gdup" title="本列與另一列共用同一個商店 app，這一側的暢銷榜資料兩列完全相同、不是各自進榜。跨列合計時不可相加">同源</i></div>
+<div class="gev-w"><span class="gev gev-short" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 8 天／窗內上市後可觀測 9 天／進榜 2 個平台（有商店記錄 2 個）">窗短·穩定</span><i class="gden">密度 89%</i></div></td></tr><tr class="grp-c-row">
 <td class="n">9</td>
 <td><div class="gname">猛鬼三國<span class="dup" title="與另一列判定為同一款。兩列共用同一個商店 app（com.kfive.gptw）——Sensor Tower 在窗內把兩個 unified app 合併了，舊 id 的歷史序列沒被搬走。本表保留兩列原始數字不合併，判錯時可還原">Android 包</span></div>
 <div class="gsub">Sumlahung · <span class="gp">Squad RPG</span> · Mid-core</div>
@@ -1366,7 +1436,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 3.7 L27.5 7.3 L54.0 4.7 L80.5 6.5 L107.0 3.0" class="spk-ln"/>
 <circle cx="107.0" cy="3.0" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 2,943</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:0.0%"></span><span class="pand" style="width:100.0%"></span></div>
-  <span class="pval pv-x">iOS 0%</span></div></td></tr><tr>
+  <span class="pval pv-x">iOS 0%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-and" points="136.9,23.7 143.4,22.6 149.9,21.1 156.4,20.8 163.0,19.6 169.5,19.1 176.0,19.5"/></svg>
+<div class="gl gl-na"><b>iOS</b> 無此平台記錄</div>
+<div class="gl"><b>And</b> 7天 #35 ｜總榜 #41<i class="gt g-up" title="爬升">爬升</i><i class="gdup" title="本列與另一列共用同一個商店 app，這一側的暢銷榜資料兩列完全相同、不是各自進榜。跨列合計時不可相加">同源</i></div>
+<div class="gev-w"><span class="gev gev-short" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 7 天／窗內上市後可觀測 8 天／進榜 1 個平台（有商店記錄 1 個）">窗短·穩定</span><i class="gden">密度 88%</i></div></td></tr><tr>
 <td class="n">10</td>
 <td><div class="gname">我的英雄學院：UNITED SURVIVAL</div>
 <div class="gsub">KLab Inc. · <span class="gp">Hack and Slash</span> · Mid-core</div>
@@ -1386,7 +1460,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 14.7 L11.6 5.2 L22.2 3.0 L32.8 3.7 L43.4 7.9 L54.0 12.0 L64.6 14.7 L75.2 14.9 L85.8 16.3 L96.4 17.3 L107.0 17.0" class="spk-ln"/>
 <circle cx="107.0" cy="17.0" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 2,143</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:75.5%"></span><span class="pand" style="width:24.5%"></span></div>
-  <span class="pval">iOS 76%</span></div></td></tr><tr>
+  <span class="pval">iOS 76%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="117.3,23.4 123.9,20.9 130.4,19.9 136.9,20.2 143.4,21.2 149.9,21.9 156.4,23.5 163.0,21.6 169.5,23.4 176.0,24.0"/><polyline class="gs-and" points="149.9,26.5 156.4,26.6 163.0,26.5 169.5,26.7"/></svg>
+<div class="gl"><b>iOS</b> 10天 #42 ｜總榜 #61<i class="gt g-dn" title="滑落">滑落</i></div>
+<div class="gl"><b>And</b> 4天 #179 ｜總榜 —<i class="gt g-fl" title="持平">持平</i></div>
+<div class="gev-w"><span class="gev gev-short" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 10 天／窗內上市後可觀測 11 天／進榜 2 個平台（有商店記錄 2 個）">窗短·穩定</span><i class="gden">密度 91%</i></div></td></tr><tr>
 <td class="n">11</td>
 <td><div class="gname">機甲突襲：Titan Rush</div>
 <div class="gsub">Ourpalm Co. · <span class="gp">4X Strategy</span> · Mid-core</div>
@@ -1406,7 +1484,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 10.6 L14.3 3.0 L27.5 3.3 L40.8 6.3 L54.0 8.7 L67.3 8.8 L80.5 11.5 L93.8 12.9 L107.0 10.8" class="spk-ln"/>
 <circle cx="107.0" cy="10.8" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 2,853</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:65.8%"></span><span class="pand" style="width:34.2%"></span></div>
-  <span class="pval">iOS 66%</span></div></td></tr><tr>
+  <span class="pval">iOS 66%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="130.4,25.0 136.9,22.8 143.4,23.2 149.9,23.4 156.4,24.3 163.0,25.1 169.5,24.7 176.0,24.4"/><polyline class="gs-and" points="149.9,26.3 156.4,26.3 163.0,24.8 169.5,24.6 176.0,24.4"/></svg>
+<div class="gl"><b>iOS</b> 8天 #79 ｜總榜 #110<i class="gt g-dn" title="滑落">滑落</i></div>
+<div class="gl"><b>And</b> 5天 #113 ｜總榜 #149<i class="gt g-up" title="爬升">爬升</i></div>
+<div class="gev-w"><span class="gev gev-short" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 8 天／窗內上市後可觀測 9 天／進榜 2 個平台（有商店記錄 2 個）">窗短·穩定</span><i class="gden">密度 89%</i></div></td></tr><tr>
 <td class="n">12</td>
 <td><div class="gname">時尚百貨城</div>
 <div class="gsub">Luminora Interactive Group Limited · <span class="gp">Tycoon / Crafting</span> · Hybridcasual</div>
@@ -1426,7 +1508,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 18.7 L9.8 18.9 L18.7 14.2 L27.5 17.0 L36.3 17.7 L45.2 16.6 L54.0 17.8 L62.8 17.7 L71.7 13.6 L80.5 10.0 L89.3 9.5 L98.2 7.9 L107.0 3.0" class="spk-ln"/>
 <circle cx="107.0" cy="3.0" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 4,984</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:47.1%"></span><span class="pand" style="width:52.9%"></span></div>
-  <span class="pval">iOS 47%</span></div></td></tr><tr>
+  <span class="pval">iOS 47%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="156.4,26.3 163.0,24.7 169.5,24.1 176.0,21.8"/><polyline class="gs-and" points="136.9,25.5 143.4,25.0 149.9,24.8 156.4,24.7 163.0,24.2 169.5,23.9 176.0,23.9"/></svg>
+<div class="gl"><b>iOS</b> 4天 #64 ｜總榜 #93<i class="gt g-up" title="爬升">爬升</i></div>
+<div class="gl"><b>And</b> 7天 #100 ｜總榜 #130<i class="gt g-up" title="爬升">爬升</i></div>
+<div class="gev-w"><span class="gev gev-mid" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 7 天／窗內上市後可觀測 13 天／進榜 2 個平台（有商店記錄 2 個）">斷續在榜</span><i class="gden">密度 54%</i></div></td></tr><tr>
 <td class="n">13</td>
 <td><div class="gname">魂墜深境</div>
 <div class="gsub">ChillyRoom · <span class="gp">Card Battler</span> · Mid-core</div>
@@ -1446,7 +1532,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 3.0 L36.3 9.1 L71.7 14.1 L107.0 18.3" class="spk-ln"/>
 <circle cx="107.0" cy="18.3" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 1,904</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:87.0%"></span><span class="pand" style="width:13.0%"></span></div>
-  <span class="pval pv-x">iOS 87%</span></div></td></tr><tr class="sepr"><td colspan="9">15–60 天 · 13 筆 · 進入常態期。此區的曇花＝已跌破門檻，代表買量停了或口碑沒接住</td></tr><tr>
+  <span class="pval pv-x">iOS 87%</span></div></td>
+<td><span class="dim">—</span>
+<div class="gl gl-off"><b>iOS</b> 未進榜</div>
+<div class="gl gl-off"><b>And</b> 未進榜</div>
+<div class="gev-w"><span class="gev gev-none" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 0 天／窗內上市後可觀測 10 天／進榜 0 個平台（有商店記錄 2 個）">無營收訊號</span><i class="gden">密度 0%</i></div></td></tr><tr class="sepr"><td colspan="10">15–60 天 · 13 筆 · 進入常態期。此區的曇花＝已跌破門檻，代表買量停了或口碑沒接住</td></tr><tr>
 <td class="n">14</td>
 <td><div class="gname">瑪奇 Mobile</div>
 <div class="gsub">NEXON Company · <span class="gp">MMORPG</span> · Mid-core</div>
@@ -1466,7 +1556,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 11.0 L5.1 3.0 L9.2 5.8 L13.2 7.9 L17.3 13.1 L21.4 15.1 L25.5 15.5 L29.5 17.3 L33.6 16.2 L37.7 17.1 L41.8 17.0 L45.8 17.2 L49.9 17.0 L54.0 17.2 L58.1 18.6 L62.2 18.9 L66.2 19.1 L70.3 17.9 L74.4 17.9 L78.5 16.9 L82.5 17.4 L86.6 18.5 L90.7 19.6 L94.8 20.1 L98.8 20.3 L102.9 20.5 L107.0 20.1" class="spk-ln"/>
 <circle cx="107.0" cy="20.1" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 3,338</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:59.5%"></span><span class="pand" style="width:40.5%"></span></div>
-  <span class="pval">iOS 60%</span></div></td></tr><tr>
+  <span class="pval">iOS 60%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="13.0,18.7 19.6,6.1 26.1,9.3 32.6,9.3 39.1,13.0 45.6,11.8 52.1,11.1 58.7,12.4 65.2,13.0 71.7,14.6 78.2,14.6 84.7,12.4 91.3,12.4 97.8,13.0 104.3,13.4 110.8,11.8 117.3,13.0 123.9,13.0 130.4,13.9 136.9,13.0 143.4,11.8 149.9,13.4 156.4,12.4 163.0,13.9 169.5,15.0 176.0,15.3"/><polyline class="gs-and" points="19.6,20.0 26.1,13.9 32.6,13.9 39.1,11.8 45.6,11.1 52.1,10.3 58.7,11.1 65.2,11.1 71.7,11.8 78.2,11.8 84.7,12.4 91.3,13.0 97.8,13.0 104.3,13.4 110.8,13.4 117.3,12.4 123.9,12.4 130.4,12.4 136.9,12.4 143.4,12.4 149.9,11.8 156.4,11.8 163.0,11.8 169.5,11.1 176.0,11.1"/></svg>
+<div class="gl"><b>iOS</b> 26天 #2 ｜總榜 #6<i class="gt g-fl" title="持平">持平</i></div>
+<div class="gl"><b>And</b> 25天 #5 ｜總榜 #8<i class="gt g-fl" title="持平">持平</i></div>
+<div class="gev-w"><span class="gev gev-ok" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 26 天／窗內上市後可觀測 27 天／進榜 2 個平台（有商店記錄 2 個）">足夠</span><i class="gden">密度 96%</i></div></td></tr><tr>
 <td class="n">15</td>
 <td><div class="gname">天天拼詞王</div>
 <div class="gsub">SUNNY HK · <span class="gp">Word</span> · Hypercasual</div>
@@ -1486,7 +1580,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 8.3 L4.9 12.5 L8.9 9.0 L12.8 9.5 L16.7 8.5 L20.6 5.0 L24.6 3.0 L28.5 4.7 L32.4 9.0 L36.3 6.2 L40.3 7.9 L44.2 9.5 L48.1 9.9 L52.0 8.1 L56.0 6.9 L59.9 10.8 L63.8 12.3 L67.7 11.3 L71.7 9.1 L75.6 9.6 L79.5 7.8 L83.4 9.0 L87.4 11.7 L91.3 11.7 L95.2 11.8 L99.1 12.8 L103.1 12.1 L107.0 9.5" class="spk-ln"/>
 <circle cx="107.0" cy="9.5" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 5,913</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:76.6%"></span><span class="pand" style="width:23.4%"></span></div>
-  <span class="pval">iOS 77%</span></div></td></tr><tr>
+  <span class="pval">iOS 77%</span></div></td>
+<td><span class="dim">—</span>
+<div class="gl gl-off"><b>iOS</b> 未進榜</div>
+<div class="gl gl-off"><b>And</b> 未進榜</div>
+<div class="gev-w"><span class="gev gev-none" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 0 天／窗內上市後可觀測 28 天／進榜 0 個平台（有商店記錄 2 個）">無營收訊號</span><i class="gden">密度 0%</i></div></td></tr><tr>
 <td class="n">16</td>
 <td><div class="gname">趙雲與阿斗</div>
 <div class="gsub">Beijing Mihuan Games Technology Co., Ltd · <span class="gp">Tower Defense</span> · Hypercasual</div>
@@ -1506,7 +1604,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 3.0 L4.9 9.0 L8.9 5.2 L12.8 9.7 L16.7 7.9 L20.6 7.2 L24.6 3.6 L28.5 5.2 L32.4 8.6 L36.3 6.9 L40.3 6.6 L44.2 5.9 L48.1 6.1 L52.0 3.3 L56.0 3.6 L59.9 5.8 L63.8 8.1 L67.7 8.7 L71.7 5.6 L75.6 6.3 L79.5 5.6 L83.4 6.4 L87.4 9.9 L91.3 10.8 L95.2 10.7 L99.1 11.2 L103.1 10.8 L107.0 8.2" class="spk-ln"/>
 <circle cx="107.0" cy="8.2" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 5,254</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:66.4%"></span><span class="pand" style="width:33.6%"></span></div>
-  <span class="pval">iOS 66%</span></div></td></tr><tr>
+  <span class="pval">iOS 66%</span></div></td>
+<td><span class="dim">—</span>
+<div class="gl gl-off"><b>iOS</b> 未進榜</div>
+<div class="gl gl-off"><b>And</b> 未進榜</div>
+<div class="gev-w"><span class="gev gev-none" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 0 天／窗內上市後可觀測 28 天／進榜 0 個平台（有商店記錄 2 個）">無營收訊號</span><i class="gden">密度 0%</i></div></td></tr><tr>
 <td class="n">17</td>
 <td><div class="gname">醫起救世界：鼠裡逃生</div>
 <div class="gsub">U-LIKE ENTERTAINMENT LIMITED · <span class="gp">4X Strategy</span> · Mid-core</div>
@@ -1526,7 +1628,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 3.0 L5.4 4.5 L9.8 7.7 L14.3 7.4 L18.7 7.8 L23.1 11.1 L27.5 9.7 L31.9 11.5 L36.3 10.3 L40.8 9.7 L45.2 9.5 L49.6 12.8 L54.0 11.9 L58.4 12.5 L62.8 11.7 L67.3 9.9 L71.7 12.6 L76.1 11.2 L80.5 12.8 L84.9 13.4 L89.3 14.5 L93.8 13.2 L98.2 15.5 L102.6 16.7 L107.0 16.4" class="spk-ln"/>
 <circle cx="107.0" cy="16.4" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 2,519</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:45.4%"></span><span class="pand" style="width:54.6%"></span></div>
-  <span class="pval">iOS 45%</span></div></td></tr><tr>
+  <span class="pval">iOS 45%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="26.1,18.1 32.6,18.7 39.1,19.2 45.6,19.2 52.1,19.1 58.7,19.0 65.2,20.3 71.7,20.8 78.2,22.5 84.7,22.9 91.3,21.4 97.8,22.4 104.3,21.8 110.8,23.4 117.3,22.8 123.9,23.6 130.4,22.7 136.9,23.1 143.4,22.2 149.9,22.6 156.4,22.4 163.0,22.6 169.5,23.5 176.0,23.0"/><polyline class="gs-and" points="26.1,27.0 32.6,24.8 39.1,22.8 45.6,22.0 52.1,21.0 58.7,20.0 65.2,20.0 71.7,20.3 78.2,20.9 84.7,21.6 91.3,21.7 97.8,21.8 104.3,22.0 110.8,22.2 117.3,22.0 123.9,22.0 130.4,21.9 136.9,22.0 143.4,21.8 149.9,21.2 156.4,21.2 163.0,20.4 169.5,20.5 176.0,20.3"/></svg>
+<div class="gl"><b>iOS</b> 24天 #28 ｜總榜 #39<i class="gt g-dn" title="滑落">滑落</i></div>
+<div class="gl"><b>And</b> 24天 #43 ｜總榜 #51<i class="gt g-fl" title="持平">持平</i></div>
+<div class="gev-w"><span class="gev gev-ok" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 24 天／窗內上市後可觀測 25 天／進榜 2 個平台（有商店記錄 2 個）">足夠</span><i class="gden">密度 96%</i></div></td></tr><tr>
 <td class="n">18</td>
 <td><div class="gname">hololive Dreams</div>
 <div class="gsub">QualiArts, Inc. · <span class="gp">Music / Rhythm</span> · Hybridcasual</div>
@@ -1546,7 +1652,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 10.3 L5.4 3.0 L9.8 7.5 L14.3 9.2 L18.7 12.2 L23.1 13.8 L27.5 12.7 L31.9 14.6 L36.3 15.4 L40.8 16.5 L45.2 16.5 L49.6 17.5 L54.0 18.5 L58.4 18.9 L62.8 19.2 L67.3 19.4 L71.7 19.1 L76.1 18.7 L80.5 19.5 L84.9 20.7 L89.3 21.0 L93.8 20.9 L98.2 21.5 L102.6 21.7 L107.0 21.5" class="spk-ln"/>
 <circle cx="107.0" cy="21.5" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 957</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:70.7%"></span><span class="pand" style="width:29.3%"></span></div>
-  <span class="pval">iOS 71%</span></div></td></tr><tr>
+  <span class="pval">iOS 71%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="26.1,10.3 32.6,8.0 39.1,11.8 45.6,13.0 52.1,14.3 58.7,3.0 65.2,9.3 71.7,13.9 78.2,17.6 84.7,18.4 91.3,17.6 97.8,17.4 104.3,17.6 110.8,17.0 117.3,17.4 123.9,8.0 130.4,11.1 136.9,14.6 143.4,16.8 149.9,17.0 156.4,18.6 163.0,20.1 169.5,19.2 176.0,20.3"/><polyline class="gs-and" points="26.1,16.6 32.6,10.3 39.1,9.3 45.6,8.0 52.1,8.0 58.7,3.0 65.2,3.0 71.7,6.1 78.2,8.0 84.7,8.0 91.3,9.3 97.8,9.3 104.3,11.8 110.8,11.8 117.3,11.8 123.9,9.3 130.4,9.3 136.9,9.3 143.4,9.3 149.9,9.3 156.4,9.3 163.0,11.1 169.5,15.6 176.0,16.6"/></svg>
+<div class="gl"><b>iOS</b> 24天 #1 ｜總榜 #2<i class="gt g-fl" title="持平">持平</i></div>
+<div class="gl"><b>And</b> 24天 #1 ｜總榜 #2<i class="gt g-fl" title="持平">持平</i></div>
+<div class="gev-w"><span class="gev gev-ok" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 24 天／窗內上市後可觀測 25 天／進榜 2 個平台（有商店記錄 2 個）">足夠</span><i class="gden">密度 96%</i></div></td></tr><tr>
 <td class="n">19</td>
 <td><div class="gname">薑餅人放置大戰爭 - 餅乾養成RPG</div>
 <div class="gsub">Devsisters · <span class="gp">Idle RPG</span> · Hybridcasual</div>
@@ -1566,7 +1676,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 10.3 L7.2 3.0 L13.5 6.1 L19.7 5.7 L25.9 9.0 L32.2 10.8 L38.4 12.1 L44.6 11.9 L50.9 12.0 L57.1 13.0 L63.4 11.4 L69.6 12.6 L75.8 14.8 L82.1 16.3 L88.3 16.4 L94.5 17.5 L100.8 18.0 L107.0 16.9" class="spk-ln"/>
 <circle cx="107.0" cy="16.9" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 2,086</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:71.9%"></span><span class="pand" style="width:28.1%"></span></div>
-  <span class="pval">iOS 72%</span></div></td></tr><tr>
+  <span class="pval">iOS 72%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="71.7,15.8 78.2,15.0 84.7,16.3 91.3,15.3 97.8,17.0 104.3,16.3 110.8,16.6 117.3,16.8 123.9,17.2 130.4,16.8 136.9,17.2 143.4,17.4 149.9,17.4 156.4,18.3 163.0,18.4 169.5,19.5 176.0,19.6"/><polyline class="gs-and" points="71.7,25.7 78.2,22.2 84.7,21.2 91.3,19.9 97.8,19.0 104.3,18.6 110.8,18.8 117.3,19.0 123.9,17.9 130.4,18.3 136.9,18.7 143.4,19.0 149.9,19.0 156.4,19.0 163.0,19.9 169.5,19.8 176.0,20.2"/></svg>
+<div class="gl"><b>iOS</b> 17天 #14 ｜總榜 #19<i class="gt g-fl" title="持平">持平</i></div>
+<div class="gl"><b>And</b> 17天 #27 ｜總榜 #31<i class="gt g-fl" title="持平">持平</i></div>
+<div class="gev-w"><span class="gev gev-ok" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 17 天／窗內上市後可觀測 18 天／進榜 2 個平台（有商店記錄 2 個）">足夠</span><i class="gden">密度 94%</i></div></td></tr><tr>
 <td class="n">20</td>
 <td><div class="gname">開局一座島-送真海鮮！</div>
 <div class="gsub">SuperNova Overseas Limited · <span class="gp">Tower Defense</span> · Mid-core</div>
@@ -1586,7 +1700,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 10.5 L7.2 3.0 L13.5 3.1 L19.7 4.2 L25.9 5.9 L32.2 8.7 L38.4 9.8 L44.6 10.6 L50.9 12.2 L57.1 11.4 L63.4 10.4 L69.6 11.1 L75.8 14.9 L82.1 16.9 L88.3 17.1 L94.5 18.9 L100.8 19.7 L107.0 19.1" class="spk-ln"/>
 <circle cx="107.0" cy="19.1" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 1,209</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:61.3%"></span><span class="pand" style="width:38.7%"></span></div>
-  <span class="pval">iOS 61%</span></div></td></tr><tr>
+  <span class="pval">iOS 61%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="71.7,20.0 78.2,19.5 84.7,19.6 91.3,19.1 97.8,18.1 104.3,17.8 110.8,18.3 117.3,18.4 123.9,18.3 130.4,18.3 136.9,18.3 143.4,18.4 149.9,18.6 156.4,19.7 163.0,20.9 169.5,21.2 176.0,21.0"/><polyline class="gs-and" points="78.2,25.8 84.7,23.4 91.3,21.5 97.8,20.2 104.3,19.1 110.8,18.7 117.3,18.7 123.9,17.2 130.4,16.1 136.9,16.3 143.4,16.8 149.9,16.8 156.4,17.0 163.0,18.4 169.5,18.4 176.0,18.7"/></svg>
+<div class="gl"><b>iOS</b> 17天 #26 ｜總榜 #37<i class="gt g-fl" title="持平">持平</i></div>
+<div class="gl"><b>And</b> 16天 #18 ｜總榜 #22<i class="gt g-up" title="爬升">爬升</i></div>
+<div class="gev-w"><span class="gev gev-ok" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 17 天／窗內上市後可觀測 18 天／進榜 2 個平台（有商店記錄 2 個）">足夠</span><i class="gden">密度 94%</i></div></td></tr><tr>
 <td class="n">21</td>
 <td><div class="gname">天命：六道輪迴</div>
 <div class="gsub">sp_games · <span class="gp">MMORPG</span> · Mid-core</div>
@@ -1606,7 +1724,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 10.2 L12.8 4.1 L24.6 3.0 L36.3 7.5 L48.1 13.6 L59.9 15.2 L71.7 17.2 L83.4 19.3 L95.2 18.6 L107.0 20.4" class="spk-ln"/>
 <circle cx="107.0" cy="20.4" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 1,025</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:80.6%"></span><span class="pand" style="width:19.4%"></span></div>
-  <span class="pval pv-x">iOS 81%</span></div></td></tr><tr>
+  <span class="pval pv-x">iOS 81%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="13.0,18.4 19.6,19.0 26.1,20.4 32.6,21.1 39.1,21.2 45.6,21.5 52.1,20.6 58.7,20.9 65.2,21.1 71.7,22.3 78.2,23.6 84.7,23.3 91.3,23.1 97.8,23.5 104.3,23.1 110.8,23.4 117.3,23.5 123.9,24.2 130.4,24.5 136.9,24.0 143.4,24.2 149.9,24.2 156.4,24.1 163.0,24.6 169.5,24.9 176.0,24.9"/><polyline class="gs-and" points="26.1,26.3 32.6,25.1 39.1,24.1 45.6,23.7 52.1,23.3 58.7,24.1 65.2,24.2 71.7,24.8 78.2,25.0 84.7,25.5 91.3,25.8 97.8,26.2 104.3,26.6 110.8,26.8"/><circle class="gs-and-d" cx="130.4" cy="26.8" r="1.7"/></svg>
+<div class="gl"><b>iOS</b> 26天 #30 ｜總榜 #46<i class="gt g-dn" title="滑落">滑落</i></div>
+<div class="gl"><b>And</b> 15天 #89 ｜總榜 #117<i class="gt g-out" title="掉出 Top 200">掉出</i></div>
+<div class="gev-w"><span class="gev gev-ok" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 26 天／窗內上市後可觀測 27 天／進榜 2 個平台（有商店記錄 2 個）">足夠</span><i class="gden">密度 96%</i></div></td></tr><tr>
 <td class="n">22</td>
 <td><div class="gname">肥鵝美食街</div>
 <div class="gsub">THE HORTOR TECHNOLOGY PTE.LTD. · <span class="gp">Match Merge 2</span> · Hypercasual</div>
@@ -1626,7 +1748,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 7.5 L4.9 9.3 L8.9 10.5 L12.8 9.4 L16.7 9.1 L20.6 7.3 L24.6 3.0 L28.5 3.9 L32.4 5.1 L36.3 7.4 L40.3 6.9 L44.2 5.5 L48.1 5.9 L52.0 3.7 L56.0 6.2 L59.9 8.1 L63.8 7.0 L67.7 6.1 L71.7 7.8 L75.6 8.8 L79.5 6.5 L83.4 7.1 L87.4 10.5 L91.3 11.5 L95.2 10.4 L99.1 12.6 L103.1 13.2 L107.0 10.7" class="spk-ln"/>
 <circle cx="107.0" cy="10.7" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 1,468</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:58.6%"></span><span class="pand" style="width:41.4%"></span></div>
-  <span class="pval">iOS 59%</span></div></td></tr><tr>
+  <span class="pval">iOS 59%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="0.0,24.5 6.5,23.0 13.0,23.1 19.6,23.8 26.1,24.9 32.6,23.7 39.1,23.1 45.6,22.6 52.1,22.8 58.7,22.2 65.2,21.8 71.7,22.5 78.2,23.4 84.7,23.8 91.3,23.8 97.8,21.2 104.3,20.9 110.8,22.7 117.3,23.4 123.9,22.1 130.4,22.1 136.9,21.1 143.4,22.6 149.9,20.5 156.4,21.3 163.0,22.0 169.5,22.3 176.0,22.5"/><polyline class="gs-and" points="0.0,26.6 6.5,26.6 13.0,26.4 19.6,26.4 26.1,26.3 32.6,26.2 39.1,25.4 45.6,25.2 52.1,25.5 58.7,24.9 65.2,24.3 71.7,24.4 78.2,24.4 84.7,24.5 91.3,24.7 97.8,24.3 104.3,24.1 110.8,24.1 117.3,24.2 123.9,24.3 130.4,24.0 136.9,23.9 143.4,24.1 149.9,24.0 156.4,24.0 163.0,23.7 169.5,23.6 176.0,23.7"/></svg>
+<div class="gl"><b>iOS</b> 28天 #48 ｜總榜 #76<i class="gt g-up" title="爬升">爬升</i></div>
+<div class="gl"><b>And</b> 28天 #95 ｜總榜 #123<i class="gt g-up" title="爬升">爬升</i></div>
+<div class="gev-w"><span class="gev gev-ok" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 28 天／窗內上市後可觀測 28 天／進榜 2 個平台（有商店記錄 2 個）">足夠</span><i class="gden">密度 100%</i></div></td></tr><tr>
 <td class="n">23</td>
 <td><div class="gname">完蛋！我被美少女攻略了</div>
 <div class="gsub">HONG KONG STAR POWER CO., LIMITED · <span class="gp">Idle RPG</span> · Mid-core</div>
@@ -1646,7 +1772,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 11.0 L5.6 7.8 L10.2 7.6 L14.8 5.9 L19.4 8.7 L24.0 8.1 L28.7 6.9 L33.3 5.7 L37.9 6.3 L42.5 3.0 L47.1 7.4 L51.7 8.1 L56.3 8.2 L60.9 7.8 L65.5 10.0 L70.1 12.1 L74.7 9.4 L79.3 10.5 L84.0 14.1 L88.6 14.8 L93.2 14.5 L97.8 16.2 L102.4 17.0 L107.0 16.5" class="spk-ln"/>
 <circle cx="107.0" cy="16.5" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 930</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:56.1%"></span><span class="pand" style="width:43.9%"></span></div>
-  <span class="pval">iOS 56%</span></div></td></tr><tr>
+  <span class="pval">iOS 56%</span></div></td>
+<td><span class="dim">—</span>
+<div class="gl gl-off"><b>iOS</b> 未進榜</div>
+<div class="gl gl-off"><b>And</b> 未進榜</div>
+<div class="gev-w"><span class="gev gev-none" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 0 天／窗內上市後可觀測 26 天／進榜 0 個平台（有商店記錄 2 個）">無營收訊號</span><i class="gden">密度 0%</i></div></td></tr><tr>
 <td class="n">24</td>
 <td><div class="gname">從前有條街</div>
 <div class="gsub">THANH AN SON DONG COMPANY LIMITED · <span class="gp">Tycoon / Crafting</span> · Mid-core</div>
@@ -1666,7 +1796,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 3.0 L22.2 8.4 L43.4 7.9 L64.6 10.1 L85.8 11.9 L107.0 15.0" class="spk-ln"/>
 <circle cx="107.0" cy="15.0" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 1,455</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:56.7%"></span><span class="pand" style="width:43.3%"></span></div>
-  <span class="pval">iOS 57%</span></div></td></tr><tr>
+  <span class="pval">iOS 57%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="0.0,24.5 6.5,24.6 13.0,24.8 19.6,25.2 26.1,25.5 32.6,25.2 39.1,25.5 45.6,25.3 52.1,26.5 58.7,26.7"/><circle class="gs-ios-d" cx="71.7" cy="26.9" r="1.7"/><polyline class="gs-and" points="0.0,23.3 6.5,23.4 13.0,23.5 19.6,23.4 26.1,23.7 32.6,23.5 39.1,23.8 45.6,23.6 52.1,23.8 58.7,24.2 65.2,24.1 71.7,24.6 78.2,24.7 84.7,25.2 91.3,25.4 97.8,25.5 104.3,25.7 110.8,25.6 117.3,25.8 123.9,26.1 130.4,25.9 136.9,26.0 143.4,26.2 149.9,26.2 156.4,26.0 163.0,25.8 169.5,26.2 176.0,26.2"/></svg>
+<div class="gl"><b>iOS</b> 11天 #116 ｜總榜 #172<i class="gt g-out" title="掉出 Top 200">掉出</i></div>
+<div class="gl"><b>And</b> 28天 #88 ｜總榜 #113<i class="gt g-dn" title="滑落">滑落</i></div>
+<div class="gev-w"><span class="gev gev-ok" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 28 天／窗內上市後可觀測 28 天／進榜 2 個平台（有商店記錄 2 個）">足夠</span><i class="gden">密度 100%</i></div></td></tr><tr>
 <td class="n">25</td>
 <td><div class="gname">真三國無雙霸</div>
 <div class="gsub">NEOCRAFT LIMITED · <span class="gp">Hack and Slash</span> · Mid-core</div>
@@ -1686,7 +1820,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 5.7 L8.1 3.0 L15.1 8.0 L22.2 13.2 L29.3 16.1 L36.3 17.6 L43.4 17.7 L50.5 17.5 L57.5 18.7 L64.6 18.5 L71.7 18.7 L78.7 19.9 L85.8 20.0 L92.9 20.0 L107.0 20.0" class="spk-ln"/>
 <circle cx="107.0" cy="20.0" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 755</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:72.1%"></span><span class="pand" style="width:27.9%"></span></div>
-  <span class="pval">iOS 72%</span></div></td></tr><tr>
+  <span class="pval">iOS 72%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="71.7,26.3 78.2,25.0 84.7,25.4 91.3,25.6 97.8,26.0 104.3,26.1 110.8,26.4 117.3,26.4 123.9,25.7 130.4,25.9 136.9,26.6"/></svg>
+<div class="gl"><b>iOS</b> 11天 #130 ｜總榜 #175<i class="gt g-out" title="掉出 Top 200">掉出</i></div>
+<div class="gl gl-off"><b>And</b> 未進榜</div>
+<div class="gev-w"><span class="gev gev-ok" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 11 天／窗內上市後可觀測 17 天／進榜 1 個平台（有商店記錄 2 個）">足夠</span><i class="gden">密度 65%</i></div></td></tr><tr>
 <td class="n">26</td>
 <td><div class="gname">蘇丹的遊戲</div>
 <div class="gsub">GameTree Entertainment · <span class="gp">Adventure</span> · Mid-core</div>
@@ -1706,7 +1844,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 3.0 L14.3 4.9 L27.5 10.7 L40.8 15.6 L54.0 16.2 L67.3 16.6 L80.5 17.5 L93.8 18.5 L107.0 18.6" class="spk-ln"/>
 <circle cx="107.0" cy="18.6" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 933</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:80.3%"></span><span class="pand" style="width:19.7%"></span></div>
-  <span class="pval pv-x">iOS 80%</span></div></td></tr><tr class="sepr"><td colspan="9">久違回榜 · 4 筆 · 上市超過 60 天、且隔了 60+ 天才進榜的老作——通常是回歸活動或聯動帶起來的</td></tr><tr>
+  <span class="pval pv-x">iOS 80%</span></div></td>
+<td><span class="dim">—</span>
+<div class="gl gl-off"><b>iOS</b> 未進榜</div>
+<div class="gl gl-off"><b>And</b> 未進榜</div>
+<div class="gev-w"><span class="gev gev-none" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 0 天／窗內上市後可觀測 23 天／進榜 0 個平台（有商店記錄 2 個）">無營收訊號</span><i class="gden">密度 0%</i></div></td></tr><tr class="sepr"><td colspan="10">久違回榜 · 4 筆 · 上市超過 60 天、且隔了 60+ 天才進榜的老作——通常是回歸活動或聯動帶起來的</td></tr><tr>
 <td class="n">27</td>
 <td><div class="gname">森之歌：世界</div>
 <div class="gsub">GALAXY GAMES</div>
@@ -1726,7 +1868,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 12.7 L54.0 3.0 L107.0 5.7" class="spk-ln"/>
 <circle cx="107.0" cy="5.7" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 4,557</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:71.7%"></span><span class="pand" style="width:28.3%"></span></div>
-  <span class="pval">iOS 72%</span></div></td></tr><tr>
+  <span class="pval">iOS 72%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="169.5,22.8 176.0,22.7"/></svg>
+<div class="gl"><b>iOS</b> 2天 #78 ｜總榜 #109<i class="gt g-fl" title="樣本太少">樣本少</i></div>
+<div class="gl gl-off"><b>And</b> 未進榜</div>
+<div class="gev-w"><span class="gev gev-low" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 2 天／窗內上市後可觀測 28 天／進榜 1 個平台（有商店記錄 2 個）">訊號稀薄</span><i class="gden">密度 7%</i></div></td></tr><tr>
 <td class="n">28</td>
 <td><div class="gname">家族物語 - 治癒系世代模擬</div>
 <div class="gsub">KIKO FUN INTERACTIVE ENTERTAINMENT CO., LIMITED · <span class="gp">Avatar Life</span> · Casual</div>
@@ -1746,7 +1892,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 4.3 L4.9 7.3 L8.9 4.9 L12.8 4.6 L16.7 3.0 L20.6 3.3 L24.6 3.0 L28.5 4.2 L32.4 6.1 L36.3 6.0 L40.3 7.1 L44.2 5.8 L48.1 6.8 L52.0 6.1 L56.0 6.6 L59.9 8.5 L63.8 8.6 L67.7 8.5 L71.7 8.6 L75.6 9.4 L79.5 8.5 L83.4 8.3 L87.4 10.8 L91.3 11.9 L95.2 11.5 L99.1 11.5 L103.1 10.1 L107.0 7.9" class="spk-ln"/>
 <circle cx="107.0" cy="7.9" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 2,898</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:71.5%"></span><span class="pand" style="width:28.5%"></span></div>
-  <span class="pval">iOS 71%</span></div></td></tr><tr>
+  <span class="pval">iOS 71%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="45.6,26.7 52.1,26.1 58.7,25.3 65.2,25.7 71.7,26.2 78.2,26.9"/><polyline class="gs-ios" points="91.3,26.6 97.8,26.3 104.3,26.2 110.8,26.3 117.3,26.5 123.9,26.6 130.4,26.3 136.9,25.6 143.4,26.4 149.9,26.2 156.4,26.1 163.0,26.5 169.5,26.8 176.0,26.3"/><polyline class="gs-and" points="13.0,27.0 19.6,26.8 26.1,26.9 32.6,26.9"/><polyline class="gs-and" points="65.2,26.9 71.7,26.9 78.2,26.9"/></svg>
+<div class="gl"><b>iOS</b> 20天 #137 ｜總榜 —<i class="gt g-fl" title="持平">持平</i></div>
+<div class="gl"><b>And</b> 7天 #192 ｜總榜 —<i class="gt g-out" title="掉出 Top 200">掉出</i></div>
+<div class="gev-w"><span class="gev gev-ok" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 20 天／窗內上市後可觀測 28 天／進榜 2 個平台（有商店記錄 2 個）">足夠</span><i class="gden">密度 71%</i></div></td></tr><tr>
 <td class="n">29</td>
 <td><div class="gname">潛龍：武俠像素RPG</div>
 <div class="gsub">Standegg · <span class="gp">Idle RPG</span> · Mid-core</div>
@@ -1766,7 +1916,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 3.0 L54.0 13.2 L107.0 17.2" class="spk-ln"/>
 <circle cx="107.0" cy="17.2" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 2,437</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:95.8%"></span><span class="pand" style="width:4.2%"></span></div>
-  <span class="pval pv-x">iOS 96%</span></div></td></tr><tr>
+  <span class="pval pv-x">iOS 96%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><circle class="gs-ios-d" cx="13.0" cy="26.6" r="1.7"/><polyline class="gs-and" points="143.4,26.6 149.9,26.7 156.4,26.8 163.0,26.7 169.5,26.9 176.0,26.9"/></svg>
+<div class="gl"><b>iOS</b> 1天 #185 ｜總榜 —<i class="gt g-fl" title="樣本太少">樣本少</i></div>
+<div class="gl"><b>And</b> 6天 #183 ｜總榜 —<i class="gt g-fl" title="持平">持平</i></div>
+<div class="gev-w"><span class="gev gev-low" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 6 天／窗內上市後可觀測 28 天／進榜 2 個平台（有商店記錄 2 個）">訊號稀薄</span><i class="gden">密度 21%</i></div></td></tr><tr>
 <td class="n">30</td>
 <td><div class="gname">Rogue Legend</div>
 <div class="gsub">PocketHaven Games · <span class="gp">Idle RPG</span> · Mid-core</div>
@@ -1786,7 +1940,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <path d="M1.0 10.5 L7.6 6.6 L14.3 3.0 L20.9 9.2 L27.5 7.8 L34.1 6.4 L40.8 5.8 L47.4 6.3 L54.0 5.9 L60.6 5.2 L67.3 7.4 L73.9 11.5 L80.5 12.5 L87.1 11.8 L93.8 12.5 L100.4 13.2 L107.0 12.5" class="spk-ln"/>
 <circle cx="107.0" cy="12.5" r="2" class="spk-dot"/></svg><div class="spk-v">近 3 日 1,410</div></td>
 <td><div class="pcell"><div class="ptrack"><span class="pios" style="width:58.8%"></span><span class="pand" style="width:41.2%"></span></div>
-  <span class="pval">iOS 59%</span></div></td></tr></tbody></table></div>
+  <span class="pval">iOS 59%</span></div></td>
+<td><svg viewBox="0 0 176 30" class="gsp" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="78.2,25.8 84.7,25.4 91.3,24.2 97.8,24.2 104.3,23.3 110.8,23.8 117.3,23.9 123.9,22.0 130.4,22.0 136.9,20.0 143.4,22.8 149.9,22.4 156.4,22.5 163.0,22.4 169.5,23.0 176.0,22.3"/><polyline class="gs-and" points="97.8,26.7 104.3,25.6 110.8,24.7 117.3,24.0 123.9,23.4 130.4,22.4 136.9,21.8 143.4,21.5 149.9,20.4 156.4,20.3 163.0,20.3 169.5,20.9 176.0,21.0"/></svg>
+<div class="gl"><b>iOS</b> 16天 #43 ｜總榜 #63<i class="gt g-up" title="爬升">爬升</i></div>
+<div class="gl"><b>And</b> 13天 #46 ｜總榜 #56<i class="gt g-up" title="爬升">爬升</i></div>
+<div class="gev-w"><span class="gev gev-mid" title="這一欄量的是判斷依據夠不夠，不是產品強弱。最深在榜 16 天／窗內上市後可觀測 28 天／進榜 2 個平台（有商店記錄 2 個）">斷續在榜</span><i class="gden">密度 57%</i></div></td></tr></tbody></table></div>
 
 <div class="note-sm">
 <p><b>幾個容易誤讀的地方。</b></p>
@@ -1798,7 +1956,28 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <p>④ 「久違回榜」是上市超過 60 天、隔了 60+ 天才進榜的老作，跟新品的「慢熱起量」完全不同，不要混談。</p>
 <p>⑤ <b>本頁是日粒度，其他分頁是月粒度</b>——日均與月量不可相減、相除、並排比較。
 </p>
-<p>⑥ <b>同款雙包</b>：新上市的產品常由同一發行方用<b>不同發行主體</b>分別上架雙平台，ST 初期判不出是同一款、拆成兩筆記錄；
+<p>⑥ <b>「雙系統暢銷榜」欄的讀法。</b>
+折線是窗內逐日名次，<span class="gs-k gs-ki"></span> iOS 遊戲榜、<span class="gs-k gs-ka"></span> Android 遊戲榜，
+<b>y 軸為 log 名次、第 1 名在最上面</b>（用 log 是因為 1→50 與 150→200 在決策上不等值，線性畫會把前段全擠成一條）。
+<b>斷線＝當日不在 Top 200</b>，一律不補值。全類別榜不畫線只出數字——它幾乎是遊戲榜的單調函數，疊上去只是加倍墨水。
+「遊戲榜有、總榜無」是正常的：遊戲榜第 150 名進不了跨類別的前 200。
+格內「<b>N天 #M</b>」的 #M 是<b>窗內</b>最佳名次，不是上市以來最佳；「總榜 #M」同理。
+標<b>無此平台記錄</b>＝該平台沒有商店 app（與「未進榜」不同，後者是有上架但擠不進前 200）；
+標<span class="gdup">同源</span>＝該側資料與另一列共用同一個商店 app、兩列完全相同，<b>跨列合計時不可相加</b>。</p>
+<p>⑦ <b>走勢標籤的定義。</b>在榜日切前後兩半、各取名次中位數相減，差 ≥15 名判<b>爬升</b>、≤−15 判<b>滑落</b>，其餘<b>持平</b>；
+最後一次在榜之後又有 3 個觀測日沒進榜＝<b>掉出 Top 200</b>；在榜 ≤3 天不判方向，標<b>樣本太少</b>。
+<b>⚠ Android 遊戲榜原始深度約 599 名，本表與其餘三條一律切到 Top 200 才計數</b>（不切則四條之間不可比），
+所以 Android 的「掉出」語意較嚴——它可能只是跌出前 200、仍在商店榜上。</p>
+<p>⑧ <b>「證據強度」量的是判斷依據夠不夠，不是產品強弱。</b>
+密度 ＝ 最深在榜天數 ÷ <b>窗內上市後可在榜的天數</b>——不是窗長 28 天。
+用固定窗長當分母會系統性懲罰窗末上市的產品：只有 4 天可觀測卻拿 28 當分母，穩坐前 30 也會被算成密度 11%。
+六級：<b>足夠</b>＝密度 ≥60% 且可觀測 ≥14 天；<b>窗短·穩定</b>＝密度 ≥60% 但可觀測 &lt;14 天（訊號穩，差在還沒看夠）；
+<b>斷續在榜</b>＝密度 40–59%；<b>訊號稀薄</b>＝密度 &lt;40%；<b>無營收訊號</b>＝可觀測 ≥7 天卻四條榜一次未進；<b>窗內樣本不足</b>＝可觀測 &lt;7 天。
+<b>⚠「窗短·穩定」「窗內樣本不足」是觀測期的狀態、不是產品評價</b>，所以走灰階不走警示色——
+本期 4 款「窗短·穩定」、7 款「窗內樣本不足」，
+都要等窗滾過去下期才判得了，<b>現在不要當成「這批產品不行」</b>。
+四條榜本期各取得 28／28／28／28 天（共 28 天）；<b>若某條不足窗長，該欄的「在榜 N 天」會低估</b>。</p>
+<p>⑨ <b>同款雙包</b>：新上市的產品常由同一發行方用<b>不同發行主體</b>分別上架雙平台，ST 初期判不出是同一款、拆成兩筆記錄；
 過一陣子 ST 會自己合併，<b>但舊記錄的歷史序列不會被搬過去</b>——所以只要觀測窗跨過合併日，同一款就會留下兩筆各帶半截序列。這是每款新品都會經歷一次的結構性現象，不是偶發。
 本期的分組有<b>鐵證</b>：兩筆記錄共用同一個商店 app（同一個 iOS app_id 或 Android package），是 ST 自己的資料在說它們是同一支。
 即使如此，本表<b>不合併原始兩筆、不改任何原始數字</b>，只加一條群組橫槓——判錯的代價因此只是「多畫一條錯的橫槓」，可還原。<b>名次一律不合併</b>。
