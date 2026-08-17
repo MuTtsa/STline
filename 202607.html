@@ -189,6 +189,15 @@ td.c-slim{width:120px}
 .gl-slim{margin-top:2px}
 .k-ios{color:var(--cardinal)}.k-and{color:var(--sage)}
 /* 新上市暢銷榜分頁 */
+/* 分組標頭。文字克制：組名＋筆數＋上限，理由一律掛 title 不上版面 */
+.gsec{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:20px 0 8px}
+.gsec b{font-size:15px;font-weight:500}
+.gsec span{font-size:11px;color:var(--dust);font-variant-numeric:tabular-nums}
+.gsec-w{border:1px solid var(--line-2);background:var(--fossil);border-radius:var(--r-pill);
+padding:1px 8px;font-size:10px;color:var(--pewter);cursor:help}
+.gzero{border:1px dashed var(--line);border-radius:var(--r-tile);padding:14px;
+font-size:12px;color:var(--pewter);text-align:center}
+.agez{font-style:normal;color:var(--dust);background:var(--fossil);border-radius:var(--r-pill);padding:0 6px;font-size:10px}
 table.gt-tbl{border-collapse:collapse;width:100%;font-size:13px;min-width:1516px;table-layout:fixed}
 table.gt-tbl td{padding:9px 12px;vertical-align:top;border-bottom:1px solid var(--line-2)}
 table.gt-tbl th{padding:9px 12px;text-align:left;font-size:11px;font-weight:500;color:var(--dust);
@@ -197,6 +206,8 @@ white-space:nowrap;border-bottom:1px solid var(--line);background:var(--card)}
 .sc-bar{width:100px;height:8px;display:block;margin:3px 0}
 .sc-tr{fill:var(--fossil)}.sc-fl{fill:var(--ink);opacity:.72}
 .sc-n{font-size:10px;color:var(--pewter);font-variant-numeric:tabular-nums;white-space:nowrap}
+/* 第二組的日均對照數：比拆項再降一階，明確是輔助不是主指標 */
+.sc-r{font-size:10px;color:var(--dust);font-variant-numeric:tabular-nums;white-space:nowrap;margin-top:2px}
 .gcalc{font-style:normal;font-size:9px;color:var(--pewter);margin-left:3px}
 .meta-s{font-size:10px;color:var(--pewter);margin-top:4px;line-height:1.45}
 /* 註腳裡的線色圖例：直接畫一小段線，比寫「紅色代表 iOS」可靠（讀者不必在腦內配對） */
@@ -425,24 +436,20 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="subline">年度視角涵蓋 7 個完整月；月視角分頁為最新完整月 2026-07；<b>新上市榜為滾動 28 天日粒度（2026-07-19～2026-08-15，資料截至 2026-08-15），與其他分頁不可並排比較</b>　·　TW 為主榜（Apple＋Google 合併估算）　·　資料來源 Sensor Tower</div>
 <div class="mixwarn"><b>⚠ 本份報告的模組來自 2 個不同的取數批次</b>，
 跨分頁的產品名單可能對不上，<b>不要把不同分頁的清單當成同一批產品讀</b>。
-<div class="mixrow">主榜、品類、SDK 聯播網盤、鄰近市場、Apple 推薦 — 2026-08-17 05:21｜錨點 2026-08-17</div><div class="mixrow">新上市榜 — 2026-08-17 09:26｜錨點 2026-08-17</div>
+<div class="mixrow">主榜、品類、SDK 聯播網盤、鄰近市場、Apple 推薦 — 2026-08-17 05:21｜錨點 2026-08-17</div><div class="mixrow">新上市榜 — 2026-08-17 09:47｜錨點 2026-08-17</div>
 對外交付前請整包重跑：<code>node scripts/mgi-fetch.js</code>。</div>
 <div class="banner"><div class="bh">期間總覽</div><ul class="plain"><li><b>新王 2 款</b>：hololive Dreams、瑪奇 Mobile</li><li><b>最大躍升</b>：Pokémon GO 由 47 名升至 7 名，營收 MoM +324.2%</li><li><b>老作回榜 5 款</b>：Zenless Zone Zero - Anniv.、蛋仔派對、決勝時刻: Mobile - Garena</li></ul></div>
 <div class="legend"><span class="pill tg-new"><i><b>▲</b></i>新王</span><span class="pill tg-seen"><i><b>◆</b></i>首見</span><span class="pill tg-climb"><i><b>↗</b></i>躍升</span><span class="pill tg-hold"><i><b>═</b></i>霸榜</span><span class="pill tg-launch"><i><b>✦</b></i>上市期</span><span class="pill tg-unproven"><i><b>?</b></i>名次升·未證實</span></div>
 <div class="tabwrap"><input type="radio" name="tab" id="tab0" checked><input type="radio" name="tab" id="tab1"><input type="radio" name="tab" id="tab2"><input type="radio" name="tab" id="tab3"><input type="radio" name="tab" id="tab4"><input type="radio" name="tab" id="tab5"><input type="radio" name="tab" id="tab6"><input type="radio" name="tab" id="tab7"><nav class="tabbar"><label for="tab0"><b>01</b>年度視角</label><label for="tab1"><b>02</b>主榜與象限</label><label for="tab2"><b>03</b>新上市榜</label><label for="tab3"><b>04</b>新上市暢銷榜</label><label for="tab4"><b>05</b>品類</label><label for="tab5"><b>06</b>Apple 推薦</label><label for="tab6"><b>07</b>鄰近市場</label><label for="tab7"><b>08</b>方法與口徑</label></nav><div class="panels"><section class="pane">
-<div class="rail"><span class="rail-n">00</span><h2>2026 年 1–7 月</h2>
+<div class="rail"><span class="rail-n">01</span><h2>2026 年 1–7 月</h2>
 <span class="badge">2026-01 ～ 2026-07　·　7 個完整月</span></div>
 
 <div class="banner"><div class="bh">年度總覽</div><ul class="plain"><li><b>盤子</b>：12 個月 TW Top 50 累計營收 $519.45M，最新月 Top 5 佔 27.3%</li><li><b>流動性</b>：一年內曾進 Top 20 共 36 款，全年常駐 12 款——平均每月只換 4.5 個位置</li><li><b>結構位移</b>：Geolocation 份額 +5.9pp（結構性）；4X Strategy -9.9pp</li><li><b>近況</b>：最新完整月 2026-07。當期新上市請看「新上市榜」分頁——那一頁是以資料截止日回推的滾動日窗，與本頁的年度月窗是兩回事</li></ul></div>
 
-<div class="banner soft"><b>本頁已具備去年同期對照（2025-01 ～ 2025-07），可做 YoY。</b>
-台灣市場 1–2 月有春節高峰、3–5 月為淡季，<b>逐月的絕對值變化含季節性</b>；
-要判斷市場真的變好或變壞，請看對去年同期的百分比，那才把季節因素扣掉了。</div>
-<div class="lead"><b>這一頁只放市場結構——跨月才看得出來的東西。</b>
-<b>新上市產品完全不在這一頁</b>，全部歸「新上市榜」分頁（那一頁是滾動日窗，不鎖月份）。
-榜單本身、Apple 推薦、鄰近市場也請看各自的月視角分頁。
-⚠ 12 個月只有一輪，<b>季節與趨勢在數學上不可分離</b>——沒有去年同期對照就無法證明季節性，
-這裡的所有數字都是描述現況、建立基線，不外推。</div>
+<div class="banner soft"><b>已具備去年同期對照（2025-01 ～ 2025-07），可做 YoY。</b>
+台灣 1–2 月有春節高峰、3–5 月淡季，<b>逐月絕對值變化含季節性</b>；要判斷市場真的變好變壞，看對去年同期的百分比。</div>
+<div class="lead"><b>只放跨月才看得出來的市場結構。</b>新上市產品全在「新上市榜」分頁（滾動日窗、不鎖月份），榜單、Apple 推薦、鄰近市場各有分頁。
+⚠ 12 個月只有一輪，<b>季節與趨勢在數學上不可分離</b>——本頁數字是描述現況、建立基線，<b>不外推</b>。</div>
 
 <div class="rail"><span class="rail-n">A</span><h2>品類營收結構變化</h2>
 <span class="badge">本榜內佔比（非市場佔比）· 36 個品類，圖示前 8</span></div>
@@ -530,9 +537,8 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <text x="163.0" y="70.3" class="sm-v" text-anchor="end">4.5%</text>
 <text x="6" y="100" class="sm-x">26/01</text><text x="168" y="100" class="sm-x" text-anchor="end">26/07</text>
 </g></svg></div>
-<div class="note-sm">八張小圖<b>共用 Y 軸 0–25%</b>，高度可直接互比；X 軸為 2026-01 → 2026-07，右上角是頭尾變化。
-未列入的其餘 28 個品類合計由 25.4% 變為 35.0%——
-<b>長尾的厚薄變化，往往比任何單一品類的位移更值得注意</b>。</div>
+<div class="note-sm" title="右上角為頭尾變化">八張小圖<b>共用 Y 軸 0–25%</b>，高度可直接互比。
+其餘 28 個品類合計由 25.4% 變為 35.0%——<b>長尾厚薄的變化常比單一品類位移更值得注意</b>。</div>
 <div class="tbl-wrap" style="margin-top:16px"><table>
 <thead><tr><th>品類</th><th>全期均佔比</th><th>頭尾變化</th><th>是趨勢還是單品撐的</th></tr></thead>
 <tbody><tr><td>4X Strategy</td><td class="n">17%</td>
@@ -560,8 +566,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td><span class="dim">結構性</span></td></tr><tr><td>Coin Looters</td><td class="n">1.8%</td>
 <td class="n down">-0.1pp</td>
 <td><span class="drv">單品驅動</span> <span class="dim">Coin Master 佔 100%</span></td></tr></tbody></table></div>
-<div class="note-sm">最大單品佔該品類 ≥60% 即判「單品驅動」——這種情況不能寫成「品類崛起」，
-要點名是哪一支在撐。這是市場情報最容易犯的錯。</div>
+<div class="note-sm">最大單品佔該品類 ≥60% 即判「單品驅動」——<b>不能寫成「品類崛起」，要點名是哪一支在撐</b>。</div>
 
 <div class="rail" style="margin-top:44px"><span class="rail-n">B</span><h2>榜單流動性</h2>
 <span class="badge">每月 Top 20 的新進席次數</span></div>
@@ -585,8 +590,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <line x1="700.0" y1="260" x2="700.0" y2="263" class="yr-tick"/>
 <text x="700.0" y="276" class="ax ax-c">26/07</text>
 </svg></div>
-<div class="note-sm">新進數低＝位置被存量卡死，要擠進去的成本上升，年度預算假設要跟著調；
-某月突然跳升＝有窗口，回頭看那月進來的是什麼品類、什麼發行節奏，那就是可複製的切入點。
+<div class="note-sm" title="某月跳升＝有窗口，回頭看那月進來的是什麼品類、什麼發行節奏，那就是可複製的切入點">新進數低＝位置被存量卡死、擠進去的成本上升，<b>年度預算假設要跟著調</b>；某月跳升＝有窗口。
 全年常駐 Top 20 共 12 款：星城-賓果行星大賽開跑、Whiteout Survival、天堂M、Garena 傳說對決：膽大黨聯動開啟！、Last War:Survival、RO仙境傳説：世界之旅、Kingshot、MapleStory : Idle RPG。</div>
 
 <div class="rail" style="margin-top:44px"><span class="rail-n">C</span><h2>主力產品名次軌跡與量體</h2>
@@ -728,9 +732,8 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <rect x="0" y="112" width="233.3" height="8" rx="4" class="rk-vol-bg"/>
 <rect x="0" y="112" width="72.9" height="8" rx="4" class="rk-vol"/>
 </g></svg></div>
-<div class="note-sm">Y 軸為 TW Top 50 名次、<b>越上面代表名次越前</b>，兩條參考線是第 10 名與第 20 名；
-十二張小圖共用同一組 Y 軸，可直接互比。線斷開＝該月未進 Top 50（下方灰色短帶標出是哪幾個月），不內插。
-最底下的條是全期營收，讓「名次好不好」與「量體多大」能一起讀——名次相近但條長差三倍的兩支，不是同一個量級的對手。</div>
+<div class="note-sm" title="十二張小圖共用同一組 Y 軸可互比；下方灰色短帶標出是哪幾個月未進榜，不內插">Y 軸為 TW Top 50 名次、<b>越上面越前</b>，參考線為第 10／20 名，<b>線斷＝該月未進榜</b>。
+最底下的條是全期營收——<b>名次相近但條長差三倍，不是同一個量級的對手</b>。</div>
 
 <div class="rail" style="margin-top:44px"><span class="rail-n">D</span><h2>Top 20 營收合計與基準水位</h2>
 <span class="badge">不等於市場規模——榜單成分每月換人</span></div>
@@ -769,13 +772,10 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="ys"><div class="ysl">YTD 合計</div><div class="ysv down">-3.4%</div></div>
 <div class="ys"><div class="ysl">最近三個月</div><div class="ysv down">-9.5%</div></div>
 </div>
-<div class="note-sm"><b>1 月與 2 月的單月 YoY 不可解讀。</b>2025 年除夕在 1/29、2026 年在 2/17，
-農曆年主峰整個從一月移到二月——單月看是「1 月大跌、2 月大漲」，合併起來其實幾乎持平。
-凡跨年比較遇到農曆年，一律合併 1+2 月判讀。</div>
-<div class="note-sm">刻意不叫「市場規模」：這是<b>每月 Top 20 的加總</b>，成分逐月換人，
-同時混了「市場變化」與「換人」兩個訊號。要把換人效應剝掉請看下一段的拆帳。
-虛線＝去年同期同月，逐點對齊可直接比高低。
-⚠ Sensor Tower 會回溯修正估算，最近一至兩個結算月是初估值。</div>
+<div class="note-sm" title="2025 年除夕在 1/29、2026 年在 2/17，農曆年主峰整個從一月移到二月，單月看是「1 月大跌、2 月大漲」、合併起來幾乎持平"><b>⚠ 1 月與 2 月的單月 YoY 不可解讀</b>：農曆年主峰跨月位移，跨年比較遇農曆年一律合併 1+2 月判讀。</div>
+<div class="note-sm" title="它同時混了「市場變化」與「換人」兩個訊號，要把換人效應剝掉看下一段的拆帳">刻意不叫「市場規模」：這是<b>每月 Top 20 的加總</b>、成分逐月換人。
+虛線＝去年同期同月。
+<b>⚠ ST 會回溯修正估算，最近一至兩個結算月是初估值。</b></div>
 
 <div class="rail" style="margin-top:44px"><span class="rail-n">E</span><h2>常駐與換手拆帳</h2>
 <span class="badge">Top 20 營收的組成</span></div>
@@ -812,9 +812,8 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <line x1="654.0" y1="260" x2="654.0" y2="263" class="yr-tick"/>
 <text x="654.0" y="276" class="ax ax-c">26/07</text></svg></div>
 <div class="note-sm">柱上百分比＝換手品佔該月 Top 20 營收的比重，由 25% 變為 31%。
-這張圖回答的是：這段期間的變化，究竟是<b>老品自己漲跌</b>，還是<b>新品把老品擠掉</b>——
-兩者對投放的意義完全不同。前者是市場自然波動，後者代表有新的競爭者在搶版位與預算。</div></section><section class="pane">
-<div class="rail"><span class="rail-n">01</span><h2>TW 主榜 · 2026-07</h2><span class="badge">Apple＋Google 合併營收估算</span></div>
+答的是變化來自<b>老品自己漲跌</b>還是<b>新品把老品擠掉</b>——後者代表有新競爭者在搶版位與預算。</div></section><section class="pane">
+<div class="rail"><span class="rail-n">02</span><h2>TW 主榜 · 2026-07</h2><span class="badge">Apple＋Google 合併營收估算</span></div>
 <div class="tbl-wrap"><table>
 <colgroup><col style="width:52px"><col><col style="width:196px"><col style="width:252px"><col style="width:152px"><col style="width:124px"><col style="width:92px"></colgroup>
 <thead><tr><th>#</th><th>遊戲 · 發行商 · 品類</th><th>標籤</th><th>月營收（ST 估算）</th><th>iOS ▮／Android ▨ <span class="thu">營收占比</span></th><th>TW 上市日</th><th>動能</th></tr></thead>
@@ -1151,22 +1150,18 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td class="n mom"><b class="up">新</b>
 <span class="momv"></span></td></tr>
 </tbody></table></div>
-<div class="note-sm"><b>TW 上市日</b>與「新上市榜」分頁採<b>同一條定義</b>：<code>min(ST 標示上市日, 實際進榜日)</code>——
-ST 的標示日會出現未來日（預購／預定上市日），兩頁若各用各的算法，同一款產品會顯示兩個上市日。
-<b>但天數的基準日不同</b>：本頁是 2026-07 月視角，天數算到<b>資料月月底 2026-07-31</b>（「上市期」標籤也是以此判定）；
-新上市榜是滾動日窗，天數算到它的資料截止日。<b>兩頁的「上市 N 天」不可直接相比，上市日本身才可以。</b></div>
+<div class="note-sm" title="ST 的標示日會出現未來日（預購／預定上市日），兩頁若各用各的算法，同一款產品會顯示兩個上市日"><b>TW 上市日</b>與「新上市榜」同一條定義 <code>min(ST 標示上市日, 實際進榜日)</code>，<b>但天數基準日不同</b>：本頁算到資料月月底 2026-07-31（「上市期」標籤同此），新上市榜算到它的資料截止日。
+<b>兩頁的「上市 N 天」不可直接相比，上市日本身才可以。</b></div>
 <div class="fig"><svg viewBox="0 0 720 470" role="img" aria-label="營收與下載雙對數散佈圖">
 <line x1="62.0" y1="24" x2="62.0" y2="400" class="grid"/><text x="62.0" y="420" class="ax ax-c">1K</text><line x1="125.6" y1="24" x2="125.6" y2="400" class="grid2"/><line x1="209.7" y1="24" x2="209.7" y2="400" class="grid2"/><line x1="273.3" y1="24" x2="273.3" y2="400" class="grid"/><text x="273.3" y="420" class="ax ax-c">10K</text><line x1="337.0" y1="24" x2="337.0" y2="400" class="grid2"/><line x1="421.0" y1="24" x2="421.0" y2="400" class="grid2"/><line x1="484.7" y1="24" x2="484.7" y2="400" class="grid"/><text x="484.7" y="420" class="ax ax-c">100K</text><line x1="548.3" y1="24" x2="548.3" y2="400" class="grid2"/><line x1="632.4" y1="24" x2="632.4" y2="400" class="grid2"/><line x1="696.0" y1="24" x2="696.0" y2="400" class="grid"/><text x="696.0" y="420" class="ax ax-c">1M</text><line x1="62" y1="400.0" x2="696" y2="400.0" class="grid"/><text x="52" y="403.5" class="ax ax-e">$100K</text><line x1="62" y1="343.4" x2="696" y2="343.4" class="grid2"/><line x1="62" y1="268.6" x2="696" y2="268.6" class="grid2"/><line x1="62" y1="212.0" x2="696" y2="212.0" class="grid"/><text x="52" y="215.5" class="ax ax-e">$1M</text><line x1="62" y1="155.4" x2="696" y2="155.4" class="grid2"/><line x1="62" y1="80.6" x2="696" y2="80.6" class="grid2"/><line x1="62" y1="24.0" x2="696" y2="24.0" class="grid"/><text x="52" y="27.5" class="ax ax-e">$10M</text><line x1="434.6" y1="24" x2="434.6" y2="400" class="qdiv"/><line x1="62" y1="210.6" x2="696" y2="210.6" class="qdiv"/><text x="690" y="38" class="qlab" text-anchor="end">真王者 · 量與錢雙開</text><text x="68" y="38" class="qlab" text-anchor="start">吃存量 · 深度變現</text><text x="690" y="392" class="qlab" text-anchor="end">剛起量 · 觀察名單</text><text x="68" y="392" class="qlab" text-anchor="start">平庸</text><circle cx="254.5" cy="76.4" r="3.5" class="pt pt-dim"/><text x="254.5" y="67.4" class="ptlab" text-anchor="middle">星城-賓果行星大賽開跑</text><circle cx="315.0" cy="107.1" r="3.5" class="pt pt-dim"/><text x="315.0" y="98.1" class="ptlab" text-anchor="middle">天堂M</text><circle cx="424.3" cy="107.6" r="3.5" class="pt pt-dim"/><text x="424.3" y="122.6" class="ptlab" text-anchor="middle">Whiteout Survi</text><circle cx="424.4" cy="121.0" r="5" class="pt tg-climb"/><text x="424.4" y="112.0" class="ptlab" text-anchor="middle">Garena 傳說對決：膽大</text><circle cx="539.4" cy="123.2" r="3.5" class="pt pt-dim"/><text x="539.4" y="138.2" class="ptlab" text-anchor="middle">Pikmin Bloom: </text><circle cx="457.3" cy="123.6" r="3.5" class="pt pt-dim"/><text x="457.3" y="138.6" class="ptlab" text-anchor="middle">Kingshot</text><circle cx="434.6" cy="138.6" r="5" class="pt tg-climb"/><text x="434.6" y="129.6" class="ptlab" text-anchor="middle">Pokémon GO</text><circle cx="381.9" cy="150.4" r="5" class="pt tg-climb"/><text x="381.9" y="141.4" class="ptlab" text-anchor="middle">PUBG MOBILE：絕地</text><circle cx="476.3" cy="153.3" r="3.5" class="pt pt-dim"/><text x="476.3" y="168.3" class="ptlab" text-anchor="middle">Gossip Harbor®</text><circle cx="364.2" cy="153.5" r="3.5" class="pt pt-dim"/><text x="364.2" y="168.5" class="ptlab" text-anchor="middle">Candy Crush Sa</text><circle cx="372.1" cy="159.1" r="3.5" class="pt pt-dim"/><circle cx="190.6" cy="164.9" r="3.5" class="pt pt-dim"/><circle cx="389.7" cy="179.2" r="3.5" class="pt pt-dim"/><circle cx="248.9" cy="179.3" r="3.5" class="pt pt-dim"/><circle cx="299.2" cy="180.5" r="3.5" class="pt pt-dim"/><circle cx="401.8" cy="182.8" r="5" class="pt tg-climb"/><text x="401.8" y="173.8" class="ptlab" text-anchor="middle">貓咪大戰爭</text><circle cx="297.7" cy="191.9" r="3.5" class="pt pt-dim"/><circle cx="247.5" cy="193.3" r="5" class="pt tg-climb"/><text x="247.5" y="184.3" class="ptlab" text-anchor="middle">勝利女神：妮姬</text><circle cx="307.6" cy="194.0" r="3.5" class="pt pt-dim"/><circle cx="321.6" cy="199.4" r="3.5" class="pt pt-dim"/><circle cx="460.3" cy="199.8" r="9" class="pt-ring"/><circle cx="460.3" cy="199.8" r="5" class="pt tg-new"/><text x="460.3" y="190.8" class="ptlab" text-anchor="middle">hololive Dream</text><circle cx="350.7" cy="200.0" r="3.5" class="pt pt-dim"/><circle cx="313.2" cy="200.7" r="3.5" class="pt pt-dim"/><circle cx="247.2" cy="205.6" r="3.5" class="pt pt-dim"/><circle cx="256.7" cy="210.4" r="5" class="pt tg-climb"/><text x="256.7" y="201.4" class="ptlab" text-anchor="middle">Honkai: Star R</text><circle cx="428.2" cy="210.9" r="3.5" class="pt pt-dim"/><circle cx="355.5" cy="214.0" r="3.5" class="pt pt-dim"/><circle cx="292.0" cy="214.9" r="5" class="pt tg-climb"/><text x="292.0" y="229.9" class="ptlab" text-anchor="middle">Genshin Impact</text><circle cx="520.5" cy="217.1" r="9" class="pt-ring"/><circle cx="520.5" cy="217.1" r="5" class="pt tg-new"/><text x="520.5" y="232.1" class="ptlab" text-anchor="middle">瑪奇 Mobile</text><circle cx="158.7" cy="230.5" r="3.5" class="pt pt-dim"/><circle cx="284.3" cy="231.3" r="3.5" class="pt pt-dim"/><circle cx="301.6" cy="233.8" r="3.5" class="pt pt-dim"/><circle cx="434.7" cy="234.2" r="3.5" class="pt pt-dim"/><circle cx="190.6" cy="238.7" r="3.5" class="pt pt-dim"/><circle cx="396.3" cy="241.4" r="3.5" class="pt pt-dim"/><circle cx="206.6" cy="243.7" r="3.5" class="pt pt-dim"/><circle cx="419.1" cy="244.3" r="3.5" class="pt pt-dim"/><circle cx="179.3" cy="246.6" r="3.5" class="pt pt-dim"/><circle cx="128.5" cy="247.2" r="3.5" class="pt pt-dim"/><circle cx="361.9" cy="248.4" r="3.5" class="pt pt-dim"/><circle cx="238.7" cy="249.0" r="5" class="pt tg-seen"/><text x="238.7" y="240.0" class="ptlab" text-anchor="middle">Zenless Zone Z</text><circle cx="399.5" cy="251.2" r="5" class="pt tg-seen"/><text x="399.5" y="266.2" class="ptlab" text-anchor="middle">蛋仔派對</text><circle cx="304.1" cy="252.8" r="3.5" class="pt pt-dim"/><circle cx="303.8" cy="253.6" r="3.5" class="pt pt-dim"/><circle cx="445.1" cy="255.6" r="5" class="pt tg-launch"/><text x="445.1" y="270.6" class="ptlab" text-anchor="middle">生存33天</text><circle cx="346.1" cy="256.6" r="5" class="pt tg-seen"/><text x="346.1" y="271.6" class="ptlab" text-anchor="middle">決勝時刻: Mobile -</text><circle cx="165.8" cy="257.4" r="5" class="pt tg-seen"/><text x="165.8" y="272.4" class="ptlab" text-anchor="middle">賽馬娘Pretty Derb</text><circle cx="380.9" cy="259.9" r="5" class="pt tg-seen"/><text x="380.9" y="250.9" class="ptlab" text-anchor="middle">EA SPORTS FC S</text><circle cx="311.1" cy="261.2" r="3.5" class="pt pt-dim"/><circle cx="177.5" cy="263.5" r="3.5" class="pt pt-dim"/>
 <text x="360" y="442" class="ax ax-c">月下載估算（每格 ×10）</text>
 <text x="14" y="212" class="ax" transform="rotate(-90 14 212)" text-anchor="middle">月營收估算 USD（每格 ×10）</text>
 </svg>
-<div class="note-sm">分界為<b>固定基期</b>（2026-07）的 Top 50 池中位數：下載 57,926、營收 $1,016,780。
-切點寫死才能跨月比較——用當期中位數的話，池子換人切點就跟著換，象限名看起來絕對其實相對。
-本期實際中位數為下載 57,926、營收 $1,016,780；與基期的差距即市場整體漂移。</div></div>
-<div class="rail" style="margin-top:44px"><span class="rail-n">01b</span><h2>港澳差異項</h2><span class="badge">當地前 20、TW Top 50 沒有</span></div>
-<div class="lead sm">「連 N 月」＝在當地榜連續出現的月數，數字小的排前面——<b>新冒出來的才是情報</b>；
-標「常態」者整個 3 個月窗都在，是當地長期存在的產品，看過一次就沒有新資訊。
-「對 TW 同名次 X%」是拿它的營收比 TW 榜上同名次產品，用來看兩地量級差距。</div>
+<div class="note-sm" title="切點寫死才能跨月比較——用當期中位數的話，池子換人切點就跟著換，象限名看起來絕對其實相對">分界為<b>固定基期</b>（2026-07）的 Top 50 池中位數：下載 57,926、營收 $1,016,780。
+本期實際中位數為下載 57,926、營收 $1,016,780，<b>與基期的差距即市場整體漂移</b>。</div></div>
+<div class="rail" style="margin-top:44px"><span class="rail-n">02b</span><h2>港澳差異項</h2><span class="badge">當地前 20、TW Top 50 沒有</span></div>
+<div class="lead sm">「連 N 月」＝在當地榜連續出現的月數，小的排前面（<b>新冒出來的才是情報</b>）；標「常態」者整窗都在，沒有新資訊。
+「對 TW 同名次 X%」＝它的營收比 TW 榜同名次產品，看兩地量級差距。</div>
 <div class="two"><div class="end"><div class="end-head"><span class="end-name">HK 香港</span>
 <span class="note-sm">2 款進當地前 20 但不在 TW Top 50</span></div>
 <ul class="plain diffl"><li>
@@ -1207,26 +1202,14 @@ ST 的標示日會出現未來日（預購／預定上市日），兩頁若各�
 
 <div class="banner"><div class="bh">達標門檻（日均制）</div>
 <div class="thbig">1,434 <span>次下載／日</span></div>
-<div class="note-sm" style="margin-top:6px">算式＝窗內各日 TW 下載榜 Top 10 中位數的中位數 5,738 × 25%。
-<b>比的是日均，不是累計</b>——一款上市 3 天的產品用它自己的 3 天日均比，不會被 28 天的分母稀釋。
-門檻隨市場浮動，跨期不可直接比百分比，要先對照這個絕對值。
-窗內共 63 筆 ST 記錄達標，其中 40 筆符合新上市定義。
-<br><b>計數單位是「遊戲」不是「ST 記錄」</b>：表列 30 筆 ST 記錄經同款判定後為 <b>29 款遊戲</b>（1 組同款雙包）。
-達標的 63 筆未做同款判定（判定要逐支查商店詳情，只對表列這幾支做），所以那個數字是 ST 記錄數、會略高於實際款數。</div></div>
+<div class="note-sm" style="margin-top:6px" title="算式＝窗內各日 TW 下載榜 Top 10 中位數的中位數 × 比例；達標的 63 筆未做同款判定（要逐支查商店詳情，只對表列這幾支做），故那是 ST 記錄數、略高於實際款數">窗內各日下載榜 Top 10 中位數的中位數 5,738 × 25%。<b>比日均不比累計</b>，上市 3 天的產品用自己的 3 天日均比。
+<b>門檻隨市場浮動，跨期不可比百分比</b>，要先對照這個絕對值。
+窗內 63 筆 ST 記錄達標、40 筆符合新上市定義；表列 30 筆 ＝ <b>29 款遊戲</b>（1 組同款雙包）。</div></div>
 
 <div class="lead">
-<p><b>觀測窗＝2026-07-19 ～ 2026-08-15（滾動 28 天），資料截至 2026-08-15。</b>
-Sensor Tower 的日資料延遲約 T-2，所以窗尾停在資料實際有值的最後一天，不是今天。</p>
-<p><b>這一頁不鎖月份。</b>以前綁「最近一個完整月」，月中或月底上市的產品會因為當月只有幾天資料而被門檻刷掉——
-CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是它弱。改成日榜聯集＋日均門檻後這個病根消失。</p>
-<p>這一頁答的是<b>誰剛進場</b>，不是誰在賺錢——主榜看營收，這裡看下載。排序是<b>日均下載降冪</b>，不是重要性排名或潛力評分；
-<b>唯一例外是同款雙包</b>——群組以合計日均定位、組內成員相鄰，所以組內第二筆的日均可能低於它下一列。
-上市 60 天內且日均達門檻者入榜（久違回榜另計，見表末分段）。
-<b>本頁不出 ARPD 與營收數字</b>：新品營收落後下載數週，日粒度的 ARPD 分母幾乎全是還沒付費的用戶，算出來系統性趨近 0，只會生出假結論——要看變現請回主榜。</p>
-<p><b>最後一欄「雙系統暢銷榜」是唯一的變現側佐證，它給的是名次不是金額。</b>
-下載進得來不代表商業上站得住：本期就有 6 筆在下載榜有量、
-卻在四條暢銷榜前 200 <b>一次都沒進過</b>（其中 5 筆可觀測天數已足、確定不是還沒看夠）。那種產品用本頁其他欄位看起來「有量」，實際上商業判斷依據是零。
-名次來自平台商店實榜（沒有估算誤差），<b>與主榜的 ST 營收估算 USD 是兩把不同的尺，不得混用、不得相互換算</b>。</p></div>
+<p><b>答的是誰剛進場，不是誰在賺錢</b>——本頁看下載，排序為<b>日均下載降冪</b>，不是潛力評分。
+上市 60 天內且日均達門檻者入榜。<b>本頁是日粒度，與其他分頁的月粒度不可相減、相除、並排比較。</b></p>
+<p>末欄暢銷榜是唯一的變現側佐證，<b>給名次不給金額，與主榜的 ST 營收估算 USD 不得混用、不得換算</b>；本頁不出營收與 ARPD（理由見分頁 08）。</p></div>
 
 <div class="legend"><span class="state s-new">上市即起量</span><span class="state s-slow">慢熱起量</span><span class="state s-fade">曇花</span><span class="state s-relist">重新上架</span><span class="state s-back">久違回榜</span></div>
 
@@ -1953,38 +1936,17 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <div class="gev-w"><span class="gev gev-mid" title="這一欄量的是判斷依據夠不夠，不是產品強弱。在榜天數／總榜名次／走勢／綜合分見「新上市暢銷榜」分頁">斷續在榜</span></div></td></tr></tbody></table></div>
 
 <div class="note-sm">
-<p><b>幾個容易誤讀的地方。</b></p>
-<p>① <b>日均不是累計。</b>「在榜 2/28 天」的產品日均 7,000，意思是它這兩天每天七千，不是它總共只有七千——別拿它跟在榜 28 天的產品比總量。</p>
-<p>② 上市首日量高不等於產品強，含上市檔期與事前預約的一次性釋出；要看它撐不撐得住，看「窗內走勢」有沒有跌破門檻虛線。</p>
-<p>③ 有 Apple 推薦（◆／✦）代表量不全是買來的，評估對手買量能力時要打折；<b>◆ Today 的份量遠大於 ✦ 遊戲分頁</b>。
-<b>⚠ 徽章只涵蓋 2026-07 月</b>——版位是即時快照、過期抓不回來，本頁觀測窗延伸到 2026-08-15，
-<b>2026-07 月底之後才拿到版位的產品不會亮徽章</b>，沒有徽章不等於沒被推薦。</p>
-<p>④ 「久違回榜」是上市超過 60 天、隔了 60+ 天才進榜的老作，跟新品的「慢熱起量」完全不同，不要混談。</p>
-<p>⑤ <b>本頁是日粒度，其他分頁是月粒度</b>——日均與月量不可相減、相除、並排比較。
-</p>
-<p>⑥ <b>「暢銷榜」欄是簡易版，只給三件事：形狀、量級、能不能判。</b>
-折線是窗內逐日名次，<span class="gs-k gs-ki"></span> iOS 遊戲榜、<span class="gs-k gs-ka"></span> Android 遊戲榜，
-<b>y 軸為 log 名次、第 1 名在最上面</b>，<b>斷線＝當日不在 Top 200</b>（不補值——補了會把「掉出去」畫成平滑下滑）。
-「最佳 #N」是<b>窗內</b>最佳名次，不是上市以來最佳。
-<b>在榜天數、全類別總榜名次、走勢、綜合分、同源與無此平台標註，全部在「新上市暢銷榜」分頁</b>——
-那一頁的排序是暢銷榜綜合分，本頁的門檻是日均下載，<b>兩頁序號各自獨立、不可互相引用為名次</b>。</p>
-<p>⑦ <b>「證據強度」量的是判斷依據夠不夠，不是產品強弱。</b>
-密度 ＝ 最深在榜天數 ÷ <b>窗內上市後可在榜的天數</b>（不是窗長 28 天——用固定窗長當分母會系統性懲罰窗末上市的產品：
-只有 4 天可觀測卻拿 28 當分母，穩坐前 30 也會被算成密度 11%）。六級：
-<b>足夠</b>＝密度 ≥60% 且可觀測 ≥14 天｜<b>窗短·穩定</b>＝密度 ≥60% 但可觀測 &lt;14 天（訊號穩，差在還沒看夠）｜
-<b>斷續在榜</b>＝40–59%｜<b>訊號稀薄</b>＝&lt;40%｜<b>無營收訊號</b>＝可觀測 ≥7 天卻四條榜一次未進｜<b>窗內樣本不足</b>＝可觀測 &lt;7 天。
-<b>⚠「窗短·穩定」「窗內樣本不足」是觀測期的狀態、不是產品評價</b>，所以走灰階不走警示色——本期
+<p>① <b>日均不是累計</b>：在榜 2/28 天、日均 7,000 是「這兩天每天七千」，別拿去跟在榜 28 天的比總量。首日量高含上市檔期與事前預約，撐不撐得住看「窗內走勢」有沒有跌破門檻虛線。</p>
+<p>② <b>有 Apple 推薦（◆／✦）代表量不全是買來的</b>，評估對手買量能力要打折，<b>◆ Today 份量遠大於 ✦ 遊戲分頁</b>。
+<b>⚠ 徽章只涵蓋 2026-07 月</b>（版位是即時快照、過期抓不回來），該月底之後才拿到版位的不會亮，<b>沒徽章不等於沒被推薦</b>。</p>
+<p>③ 暢銷榜欄：<span class="gs-k gs-ki"></span> iOS、<span class="gs-k gs-ka"></span> Android 遊戲榜逐日名次，<b>log 尺度、#1 在最上、斷線＝當日不在 Top 200</b>（不補值），「#N」為<b>窗內</b>最佳。
+其餘欄位在分頁 04，<b>兩頁序號各自獨立、不可互相引用為名次</b>。
+本期 6 筆在下載榜有量、四條暢銷榜前 200 一次未進（其中 5 筆可觀測天數已足），名單見分頁 04 註腳③。</p>
+<p>④ <b>「證據強度」量的是判斷依據夠不夠，不是產品強弱</b>（六級定義與密度算法見分頁 08）。本期
 4 款「窗短·穩定」、7 款「窗內樣本不足」，
-都要等窗滾過去下期才判得了，<b>現在不要當成「這批產品不行」</b>。
-四條榜本期各取得 28／28／28／28 天（共 28 天）；若某條不足窗長，該欄的在榜天數會低估。</p>
-<p>⑧ <b>名次 ≠ 金額。</b>暢銷榜名次來自平台商店實榜（無估算誤差），但只說「排第幾」不說「賺多少」，
-與主榜的 ST 營收估算 USD 是兩把尺，<b>不得混用、不得相互換算</b>。
-本期有 6 筆在下載榜有量、四條暢銷榜前 200 一次都沒進過——名單見分頁 04 註腳⑤。</p>
-<p>⑨ <b>同款雙包</b>：新上市的產品常由同一發行方用<b>不同發行主體</b>分別上架雙平台，ST 初期判不出是同一款、拆成兩筆記錄；
-過一陣子 ST 會自己合併，<b>但舊記錄的歷史序列不會被搬過去</b>——所以只要觀測窗跨過合併日，同一款就會留下兩筆各帶半截序列。這是每款新品都會經歷一次的結構性現象，不是偶發。
-本期的分組有<b>鐵證</b>：兩筆記錄共用同一個商店 app（同一個 iOS app_id 或 Android package），是 ST 自己的資料在說它們是同一支。
-即使如此，本表<b>不合併原始兩筆、不改任何原始數字</b>，只加一條群組橫槓——判錯的代價因此只是「多畫一條錯的橫槓」，可還原。<b>名次一律不合併</b>。
-反過來說，若兩個包其實是各買各的量（換皮／不同代理），UA 上本來就該分開看，那時橫槓要無視。</p>
+<b>⚠ 這兩級是觀測期狀態、不是產品評價</b>，等窗滾過去下期才判得了，<b>現在不要當成「這批產品不行」</b>。
+<span class="dim" title="四條榜本期各取得 28／28／28／28 天（共 28 天）；若某條不足窗長，該欄的在榜天數會低估">四榜取得天數 ▸</span></p>
+<p>⑤ <b>同款雙包</b>：同一款被 ST 拆成兩筆記錄（成因與判定依據見分頁 08）。本表<b>不合併原始數字、名次一律不合併</b>，只加一條群組橫槓；群組以合計日均定位、組內成員相鄰，所以組內第二筆的日均可能低於它下一列。若兩個包其實各買各的量，橫槓請無視。</p>
 <p>⚠ 符合條件者 40 筆，超過顯示上限，僅列前 30 筆（依日均降冪）。</p>
 </div>
 <div class="lowconf">
@@ -2026,539 +1988,552 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <b>不得用來推估渠道配置、投放力度或預算分配</b>；也不得把「未偵測到」讀成沒做 UA——
 重壓 Meta／ASA／TikTok 的對手在這張表上永遠是空白的。</div>
 </div></section><section class="pane">
-<div class="rail"><span class="rail-n">03b</span><h2>新上市暢銷榜 · 綜合分排序</h2>
+<div class="rail"><span class="rail-n">04</span><h2>新上市暢銷榜 · 依上市天齡分兩組</h2>
 <span class="badge">2026-07-19 ～ 2026-08-15　·　母體＝新上市榜 ∩ 進過暢銷榜（24 筆）</span></div>
 
 <div class="lead">
-<p><b>這一頁與「新上市榜」是同一批產品、不同的尺。</b>
-新上市榜的門檻是<b>日均下載</b>，答的是「誰剛進場」；本頁的排序是<b>暢銷榜綜合分</b>，答的是「進場的人裡誰在變現側站得住」。
-兩頁的序號各自獨立，<b>不可互相引用為名次</b>。</p>
-<p><b>綜合分怎麼算。</b>名次分 ＝ 1 − log10(名次) ÷ log10(200)，所以 #1 得 1.0、#200 得 0
-（用 log 而非線性，因為 #1→#10 與 #150→#160 在決策上不等值）。
-單榜分 ＝ <b>該榜在榜各日名次分之總和</b>，等於「在榜天數 × 平均名次分」——表上每格都把這個乘式印出來供驗算。
-綜合分 ＝ <b>四條榜的榜分相加</b>；相加本身就在獎勵「雙平台都進得去」與「連跨類別總榜都進得去」，只進 iOS 遊戲榜的產品天然只拿得到四分之一的可得分。</p>
-<p><b>⚠ 分數沒有絕對意義</b>，理論上限 112（28 天 × 1.0 × 4 榜），本期最高 57.2。
-比例條的分母是<b>當期最高分</b>不是理論上限，所以<b>跨期不可比長度</b>，要比先看絕對值。
-刻意<b>不用「在榜天數 × 最佳名次的名次分」</b>——那會讓「首日衝進前十、之後掉到 150 名待 20 天」拿到 20×0.94 的高分，把一次尖峰乘上與它無關的天數。</p>
-<p><b>本頁只有名次，沒有金額。</b>ranking 是平台商店實榜、沒有估算誤差，但它只說「排第幾」不說「賺多少」——
-與主榜的 ST 營收估算 USD 是兩把尺，<b>不得混用、不得相互換算</b>。</p></div>
+<p><b>兩組各自排序、序號互不相通</b>：近 7 天上市看<b>日均榜分</b>（與窗長無關），上市 8 天以上看<b>28 天綜合分</b>（累計，只在同表內比）。
+<b>本頁序號與分頁 03 也各自獨立，不可互相引用為名次。</b></p>
+<p>兩種分數<b>都無絕對意義、只能比大小</b>；表上每格都印算式。名次來自平台商店實榜，<b>與主榜的 ST 營收估算 USD 不得混用、不得換算</b>——本頁無金額。</p></div>
 
-<div class="tbl-wrap"><table class="gt-tbl">
-<colgroup><col style="width:44px"><col><col style="width:140px"><col style="width:172px"><col style="width:180px"><col style="width:180px"><col style="width:180px"><col style="width:180px"><col style="width:120px"></colgroup>
-<thead><tr><th>綜合序</th><th>產品 · 發行商 · 品類</th><th>狀態 · 上市日</th><th>綜合分 <span class="thu">四榜相加</span></th>
+<div class="gsec"><b>近 7 天上市</b><span>6 筆 · 日均榜分排序 · 上限 4.00</span>
+<span class="gsec-w" title="這一組的可觀測天數必然少於 7 天，六級證據強度會整組落到同一個「窗內樣本不足」，等於零資訊——故本組改用與窗長無關的日均榜分，末欄只放逐列會變的數字、不給評價標籤">不套用證據強度</span></div>
+<div class="tbl-wrap"><table class="gt-tbl"><colgroup><col style="width:44px"><col><col style="width:140px"><col style="width:172px"><col style="width:180px"><col style="width:180px"><col style="width:180px"><col style="width:180px"><col style="width:120px"></colgroup>
+<thead><tr><th>日均序</th><th>產品 · 發行商 · 品類</th><th>上市天齡</th><th>日均榜分 <span class="thu">綜合分 ÷ 可在榜天數</span></th>
+<th>iOS 遊戲暢銷</th><th>iOS 全類別暢銷</th><th>Android 遊戲暢銷</th><th>Android 全類別暢銷</th><th>窗末狀態 · 廣度</th></tr></thead>
+<tbody><tr>
+<td class="n">1</td>
+<td><div class="gname">賽爾號：巔峰之戰</div>
+<div class="gsub">TAOMEE · <span class="gp">Squad RPG</span> · Mid-core</div></td>
+<td><div class="dtd">上市 <b>5</b> 天<i class="asof">2026-08-11 · 可在榜 5 天</i></div></td>
+<td><div class="sc"><div class="sc-v">1.88</div>
+<svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="100.0" height="8" rx="4" class="sc-fl"/></svg>
+<div class="sc-n" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，上限 4.00（四榜每天都 #1）。分母是每列自己的可觀測天數，所以與上市早晚、與窗長都無關。分數無絕對意義、只能比大小">＝9.39 ÷ 5 天</div></div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="117.3,3.0 122.2,3.0 127.1,9.3 132.0,11.1"/></svg>
+<div class="gl"><b>4</b>/5 天 · 佳<b>#1</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.850</div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="117.3,6.1 122.2,6.1 127.1,11.8 132.0,13.0"/></svg>
+<div class="gl"><b>4</b>/5 天 · 佳<b>#2</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.739</div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,15.3 127.1,13.4 132.0,14.6"/></svg>
+<div class="gl"><b>3</b>/5 天 · 佳<b>#10</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.523</div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,16.3 127.1,15.0 132.0,14.6"/></svg>
+<div class="gl"><b>3</b>/5 天 · 佳<b>#13</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.487</div></td>
+<td><span class="gev gev-ok" title="窗內進過的暢銷榜數 ÷ 有商店記錄的暢銷榜數。答的是「四條榜是不是都站得住」，與排序用的日均榜分不是同一個問題">4/4 榜到位</span>
+<div class="meta-s" title="窗末＝資料最後一天（2026-08-15）四條榜中的最佳名次；首進＝首次進榜距自己上市第幾天">窗末 <b>#6</b>　·　首進 D+1</div></td>
+</tr><tr>
+<td class="n">2</td>
+<td><div class="gname">搞鬼M</div>
+<div class="gsub">掘夢網股份有限公司</div></td>
+<td><div class="dtd">上市 <b>4</b> 天<i class="asof">2026-08-12 · 可在榜 4 天</i></div></td>
+<td><div class="sc"><div class="sc-v">1.12</div>
+<svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="59.8" height="8" rx="4" class="sc-fl"/></svg>
+<div class="sc-n" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，上限 4.00（四榜每天都 #1）。分母是每列自己的可觀測天數，所以與上市早晚、與窗長都無關。分數無絕對意義、只能比大小">＝4.49 ÷ 4 天</div></div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,14.3 127.1,13.9 132.0,13.4"/></svg>
+<div class="gl"><b>3</b>/4 天 · 佳<b>#10</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.548</div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,15.3 127.1,15.0 132.0,14.6"/></svg>
+<div class="gl"><b>3</b>/4 天 · 佳<b>#13</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.502</div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,23.3 127.1,20.0 132.0,20.0"/></svg>
+<div class="gl"><b>3</b>/4 天 · 佳<b>#43</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.244</div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,24.5 127.1,20.9 132.0,20.8"/></svg>
+<div class="gl"><b>3</b>/4 天 · 佳<b>#51</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.205</div></td>
+<td><span class="gev gev-ok" title="窗內進過的暢銷榜數 ÷ 有商店記錄的暢銷榜數。答的是「四條榜是不是都站得住」，與排序用的日均榜分不是同一個問題">4/4 榜到位</span>
+<div class="meta-s" title="窗末＝資料最後一天（2026-08-15）四條榜中的最佳名次；首進＝首次進榜距自己上市第幾天">窗末 <b>#10</b>　·　首進 D+1</div></td>
+</tr><tr>
+<td class="n">3</td>
+<td><div class="gname">三國群英傳：策定九州</div>
+<div class="gsub">Userjoy Technology Co., Ltd. · <span class="gp">4X Strategy</span> · Mid-core</div></td>
+<td><div class="dtd">上市 <b>4</b> 天<i class="asof">2026-08-12 · 可在榜 4 天</i></div></td>
+<td><div class="sc"><div class="sc-v">0.61</div>
+<svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="32.7" height="8" rx="4" class="sc-fl"/></svg>
+<div class="sc-n" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，上限 4.00（四榜每天都 #1）。分母是每列自己的可觀測天數，所以與上市早晚、與窗長都無關。分數無絕對意義、只能比大小">＝2.46 ÷ 4 天</div></div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,18.3 127.1,17.8 132.0,17.4"/></svg>
+<div class="gl"><b>3</b>/4 天 · 佳<b>#24</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.383</div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,19.6 127.1,19.0 132.0,18.6"/></svg>
+<div class="gl"><b>3</b>/4 天 · 佳<b>#31</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.332</div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="127.1,24.9 132.0,24.0"/></svg>
+<div class="gl"><b>2</b>/4 天 · 佳<b>#104</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.106</div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="127.1,26.2 132.0,25.3"/></svg>
+<div class="gl"><b>2</b>/4 天 · 佳<b>#136</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.054</div></td>
+<td><span class="gev gev-ok" title="窗內進過的暢銷榜數 ÷ 有商店記錄的暢銷榜數。答的是「四條榜是不是都站得住」，與排序用的日均榜分不是同一個問題">4/4 榜到位</span>
+<div class="meta-s" title="窗末＝資料最後一天（2026-08-15）四條榜中的最佳名次；首進＝首次進榜距自己上市第幾天">窗末 <b>#24</b>　·　首進 D+1</div></td>
+</tr><tr>
+<td class="n">4</td>
+<td><div class="gname">隨機骰子2</div>
+<div class="gsub">111% · <span class="gp">Tower Defense</span> · Mid-core</div></td>
+<td><div class="dtd">上市 <b>4</b> 天<i class="asof">2026-08-12 · 可在榜 4 天</i></div></td>
+<td><div class="sc"><div class="sc-v">0.39</div>
+<svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="20.6" height="8" rx="4" class="sc-fl"/></svg>
+<div class="sc-n" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，上限 4.00（四榜每天都 #1）。分母是每列自己的可觀測天數，所以與上市早晚、與窗長都無關。分數無絕對意義、只能比大小">＝1.55 ÷ 4 天</div></div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,21.7 127.1,20.3 132.0,18.8"/></svg>
+<div class="gl"><b>3</b>/4 天 · 佳<b>#33</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.280</div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,23.3 127.1,21.7 132.0,20.2"/></svg>
+<div class="gl"><b>3</b>/4 天 · 佳<b>#45</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.218</div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><circle class="gs-ios-d" cx="132.0" cy="25.9" r="1.7"/></svg>
+<div class="gl"><b>1</b>/4 天 · 佳<b>#156</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.047</div></td>
+<td class="c gl-off" title="有商店 app，但窗內沒有一天進到 Top 200">未進榜</td>
+<td><span class="gev gev-short" title="窗內進過的暢銷榜數 ÷ 有商店記錄的暢銷榜數。答的是「四條榜是不是都站得住」，與排序用的日均榜分不是同一個問題">3/4 榜到位</span>
+<div class="meta-s" title="窗末＝資料最後一天（2026-08-15）四條榜中的最佳名次；首進＝首次進榜距自己上市第幾天">窗末 <b>#33</b>　·　首進 D+1</div></td>
+</tr><tr>
+<td class="n">5</td>
+<td><div class="gname">三國觀滄海</div>
+<div class="gsub">TBG LIMITED · <span class="gp">Turn-Based Tactics</span> · Mid-core</div></td>
+<td><div class="dtd">上市 <b>4</b> 天<i class="asof">2026-08-12 · 可在榜 4 天</i></div></td>
+<td><div class="sc"><div class="sc-v">0.29</div>
+<svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="15.6" height="8" rx="4" class="sc-fl"/></svg>
+<div class="sc-n" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，上限 4.00（四榜每天都 #1）。分母是每列自己的可觀測天數，所以與上市早晚、與窗長都無關。分數無絕對意義、只能比大小">＝1.17 ÷ 4 天</div></div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,21.8 127.1,21.8 132.0,21.7"/></svg>
+<div class="gl"><b>3</b>/4 天 · 佳<b>#62</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.218</div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,23.4 127.1,23.4 132.0,23.3"/></svg>
+<div class="gl"><b>3</b>/4 天 · 佳<b>#88</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.151</div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><circle class="gs-ios-d" cx="132.0" cy="25.6" r="1.7"/></svg>
+<div class="gl"><b>1</b>/4 天 · 佳<b>#146</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.059</div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><circle class="gs-ios-d" cx="132.0" cy="26.8" r="1.7"/></svg>
+<div class="gl"><b>1</b>/4 天 · 佳<b>#193</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.007</div></td>
+<td><span class="gev gev-ok" title="窗內進過的暢銷榜數 ÷ 有商店記錄的暢銷榜數。答的是「四條榜是不是都站得住」，與排序用的日均榜分不是同一個問題">4/4 榜到位</span>
+<div class="meta-s" title="窗末＝資料最後一天（2026-08-15）四條榜中的最佳名次；首進＝首次進榜距自己上市第幾天">窗末 <b>#62</b>　·　首進 D+1</div></td>
+</tr><tr>
+<td class="n">6</td>
+<td><div class="gname">亡靈別太狂：部落大作戰</div>
+<div class="gsub">Emin Lomturide</div></td>
+<td><div class="dtd">上市 <b>6</b> 天<i class="asof">2026-08-10 · 可在榜 6 天</i></div></td>
+<td><div class="sc"><div class="sc-v">0.24</div>
+<svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="13.0" height="8" rx="4" class="sc-fl"/></svg>
+<div class="sc-n" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，上限 4.00（四榜每天都 #1）。分母是每列自己的可觀測天數，所以與上市早晚、與窗長都無關。分數無絕對意義、只能比大小">＝1.46 ÷ 6 天</div></div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="112.4,21.5 117.3,20.3 122.2,23.2 127.1,24.5 132.0,23.8"/></svg>
+<div class="gl"><b>5</b>/6 天 · 佳<b>#46</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.180</div></td>
+<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="112.4,23.4 117.3,22.3 122.2,24.8 127.1,25.8 132.0,25.4"/></svg>
+<div class="gl"><b>5</b>/6 天 · 佳<b>#71</b></div>
+<div class="gl" title="在榜各日名次分的平均（1 − log10(名次) ÷ log10(200)），#1＝1.000。與在榜天數無關">均分 0.111</div></td>
+<td class="c gl-off" title="有商店 app，但窗內沒有一天進到 Top 200">未進榜</td>
+<td class="c gl-off" title="有商店 app，但窗內沒有一天進到 Top 200">未進榜</td>
+<td><span class="gev gev-short" title="窗內進過的暢銷榜數 ÷ 有商店記錄的暢銷榜數。答的是「四條榜是不是都站得住」，與排序用的日均榜分不是同一個問題">2/4 榜到位</span>
+<div class="meta-s" title="窗末＝資料最後一天（2026-08-15）四條榜中的最佳名次；首進＝首次進榜距自己上市第幾天">窗末 <b>#99</b>　·　首進 D+1</div></td>
+</tr></tbody></table></div>
+
+<div class="gsec"><b>上市 8 天以上</b><span>18 筆 · 28 天綜合分排序 · 上限 112</span>
+<span class="gsec-w" title="天齡帶語彙對齊分頁 03 的分段（8–14 天／15–60 天／久違回榜）。累計分會隨天齡累積，跨天齡帶比大小前先看天齡欄">天齡帶見第三欄</span></div>
+<div class="tbl-wrap"><table class="gt-tbl"><colgroup><col style="width:44px"><col><col style="width:140px"><col style="width:172px"><col style="width:180px"><col style="width:180px"><col style="width:180px"><col style="width:180px"><col style="width:120px"></colgroup>
+<thead><tr><th>綜合序</th><th>產品 · 發行商 · 品類</th><th>狀態 · 天齡帶</th><th>綜合分 <span class="thu">四榜逐日相加</span></th>
 <th>iOS 遊戲暢銷</th><th>iOS 全類別暢銷</th><th>Android 遊戲暢銷</th><th>Android 全類別暢銷</th><th>證據強度</th></tr></thead>
 <tbody><tr>
 <td class="n">1</td>
 <td><div class="gname">瑪奇 Mobile</div>
 <div class="gsub">NEXON Company · <span class="gp">MMORPG</span> · Mid-core</div></td>
-<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 2026-07-20<i class="asof">窗內可在榜 27 天</i></div></td>
+<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 <b>27</b> 天 · <i class="agez">15–60 天</i><i class="asof">2026-07-20 · 可在榜 27 天</i></div></td>
 <td><div class="sc"><div class="sc-v">57.2</div>
 <svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="100.0" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">15.4 ＋ 13.4 ＋ 15.1 ＋ 13.2</div></div></td>
+<div class="sc-n" title="四榜榜分相加。分數無絕對意義、只能比大小；比例條分母為當期最高分，跨期不可比長度">15.4 ＋ 13.4 ＋ 15.1 ＋ 13.2</div>
+<div class="sc-r" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，與窗長無關。本組排序用累計分，這個數字只作對照——可在榜天數從 9 到 27 天不等，只看累計會低估上市第二週的產品">日均 2.12<i class="gcalc">÷27 天</i></div></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="9.8,18.7 14.7,6.1 19.6,9.3 24.4,9.3 29.3,13.0 34.2,11.8 39.1,11.1 44.0,12.4 48.9,13.0 53.8,14.6 58.7,14.6 63.6,12.4 68.4,12.4 73.3,13.0 78.2,13.4 83.1,11.8 88.0,13.0 92.9,13.0 97.8,13.9 102.7,13.0 107.6,11.8 112.4,13.4 117.3,12.4 122.2,13.9 127.1,15.0 132.0,15.3"/></svg>
 <div class="gl"><b>26</b>天 · 32→15 · 佳<b>#2</b></div>
-<div class="gl">榜分 15.4<i class="gcalc">＝26 × 0.594</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<div class="gl">榜分 15.4<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝26 × 0.594</i><i class="gt g-fl" title="持平">持平</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="9.8,20.5 14.7,11.1 19.6,11.8 24.4,11.8 29.3,14.6 34.2,13.9 39.1,13.4 44.0,14.6 48.9,14.6 53.8,15.8 58.7,15.8 63.6,14.3 68.4,14.3 73.3,14.6 78.2,14.6 83.1,13.9 88.0,14.6 92.9,14.6 97.8,15.3 102.7,15.0 107.6,13.9 112.4,15.0 117.3,14.3 122.2,15.0 127.1,15.8 132.0,16.6"/></svg>
 <div class="gl"><b>26</b>天 · 48→20 · 佳<b>#6</b></div>
-<div class="gl">榜分 13.4<i class="gcalc">＝26 × 0.517</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<div class="gl">榜分 13.4<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝26 × 0.517</i><i class="gt g-fl" title="持平">持平</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="14.7,20.0 19.6,13.9 24.4,13.9 29.3,11.8 34.2,11.1 39.1,10.3 44.0,11.1 48.9,11.1 53.8,11.8 58.7,11.8 63.6,12.4 68.4,13.0 73.3,13.0 78.2,13.4 83.1,13.4 88.0,12.4 92.9,12.4 97.8,12.4 102.7,12.4 107.6,12.4 112.4,11.8 117.3,11.8 122.2,11.8 127.1,11.1 132.0,11.1"/></svg>
 <div class="gl"><b>25</b>天 · 43→6 · 佳<b>#5</b></div>
-<div class="gl">榜分 15.1<i class="gcalc">＝25 × 0.605</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<div class="gl">榜分 15.1<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝25 × 0.605</i><i class="gt g-fl" title="持平">持平</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="14.7,20.5 19.6,15.3 24.4,15.3 29.3,13.9 34.2,13.0 39.1,12.4 44.0,13.0 48.9,13.4 53.8,13.9 58.7,13.9 63.6,14.3 68.4,14.6 73.3,14.6 78.2,15.0 83.1,15.0 88.0,14.3 92.9,14.3 97.8,14.3 102.7,14.3 107.6,14.3 112.4,13.9 117.3,13.9 122.2,13.9 127.1,13.4 132.0,13.4"/></svg>
 <div class="gl"><b>25</b>天 · 48→10 · 佳<b>#8</b></div>
-<div class="gl">榜分 13.2<i class="gcalc">＝25 × 0.529</i><i class="gt g-fl" title="持平">持平</i></div></td>
-<td><span class="gev gev-ok">足夠</span>
+<div class="gl">榜分 13.2<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝25 × 0.529</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<td><span class="gev gev-ok" title="量的是判斷依據夠不夠，不是產品強弱。六級定義與密度算法見分頁 08">足夠</span>
 <div class="meta-s">密度 96%　·　進榜 2/2 平台</div></td>
 </tr><tr>
 <td class="n">2</td>
 <td><div class="gname">hololive Dreams</div>
 <div class="gsub">QualiArts, Inc. · <span class="gp">Music / Rhythm</span> · Hybridcasual</div></td>
-<td><span class="state s-fade">曇花</span><div class="dtd" style="margin-top:4px">上市 2026-07-22<i class="asof">窗內可在榜 25 天</i></div></td>
+<td><span class="state s-fade">曇花</span><div class="dtd" style="margin-top:4px">上市 <b>25</b> 天 · <i class="agez">15–60 天</i><i class="asof">2026-07-22 · 可在榜 25 天</i></div></td>
 <td><div class="sc"><div class="sc-v">55.3</div>
 <svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="96.7" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">12.3 ＋ 10.6 ＋ 17.3 ＋ 15.1</div></div></td>
+<div class="sc-n" title="四榜榜分相加。分數無絕對意義、只能比大小；比例條分母為當期最高分，跨期不可比長度">12.3 ＋ 10.6 ＋ 17.3 ＋ 15.1</div>
+<div class="sc-r" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，與窗長無關。本組排序用累計分，這個數字只作對照——可在榜天數從 9 到 27 天不等，只看累計會低估上市第二週的產品">日均 2.21<i class="gcalc">÷25 天</i></div></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="19.6,10.3 24.4,8.0 29.3,11.8 34.2,13.0 39.1,14.3 44.0,3.0 48.9,9.3 53.8,13.9 58.7,17.6 63.6,18.4 68.4,17.6 73.3,17.4 78.2,17.6 83.1,17.0 88.0,17.4 92.9,8.0 97.8,11.1 102.7,14.6 107.6,16.8 112.4,17.0 117.3,18.6 122.2,20.1 127.1,19.2 132.0,20.3"/></svg>
 <div class="gl"><b>24</b>天 · 5→46 · 佳<b>#1</b></div>
-<div class="gl">榜分 12.3<i class="gcalc">＝24 × 0.514</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<div class="gl">榜分 12.3<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝24 × 0.514</i><i class="gt g-fl" title="持平">持平</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="19.6,13.0 24.4,11.1 29.3,13.9 34.2,14.6 39.1,15.8 44.0,6.1 48.9,11.8 53.8,15.3 58.7,18.7 63.6,19.5 68.4,19.0 73.3,19.0 78.2,18.6 83.1,18.7 88.0,19.1 92.9,9.3 97.8,13.0 102.7,16.1 107.6,18.1 112.4,18.6 117.3,20.2 122.2,21.6 127.1,20.8 132.0,21.8"/></svg>
 <div class="gl"><b>24</b>天 · 9→64 · 佳<b>#2</b></div>
-<div class="gl">榜分 10.6<i class="gcalc">＝24 × 0.442</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
+<div class="gl">榜分 10.6<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝24 × 0.442</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="19.6,16.6 24.4,10.3 29.3,9.3 34.2,8.0 39.1,8.0 44.0,3.0 48.9,3.0 53.8,6.1 58.7,8.0 63.6,8.0 68.4,9.3 73.3,9.3 78.2,11.8 83.1,11.8 88.0,11.8 92.9,9.3 97.8,9.3 102.7,9.3 107.6,9.3 112.4,9.3 117.3,9.3 122.2,11.1 127.1,15.6 132.0,16.6"/></svg>
 <div class="gl"><b>24</b>天 · 20→20 · 佳<b>#1</b></div>
-<div class="gl">榜分 17.3<i class="gcalc">＝24 × 0.720</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<div class="gl">榜分 17.3<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝24 × 0.720</i><i class="gt g-fl" title="持平">持平</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="19.6,17.4 24.4,13.0 29.3,11.8 34.2,11.1 39.1,10.3 44.0,6.1 48.9,6.1 53.8,8.0 58.7,10.3 63.6,10.3 68.4,11.1 73.3,11.1 78.2,13.9 83.1,13.9 88.0,13.9 92.9,11.8 97.8,11.1 102.7,11.1 107.6,11.8 112.4,11.8 117.3,11.8 122.2,13.4 127.1,16.6 132.0,17.4"/></svg>
 <div class="gl"><b>24</b>天 · 24→24 · 佳<b>#2</b></div>
-<div class="gl">榜分 15.1<i class="gcalc">＝24 × 0.630</i><i class="gt g-fl" title="持平">持平</i></div></td>
-<td><span class="gev gev-ok">足夠</span>
+<div class="gl">榜分 15.1<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝24 × 0.630</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<td><span class="gev gev-ok" title="量的是判斷依據夠不夠，不是產品強弱。六級定義與密度算法見分頁 08">足夠</span>
 <div class="meta-s">密度 96%　·　進榜 2/2 平台</div></td>
 </tr><tr>
 <td class="n">3</td>
 <td><div class="gname">薑餅人放置大戰爭 - 餅乾養成RPG</div>
 <div class="gsub">Devsisters · <span class="gp">Idle RPG</span> · Hybridcasual</div></td>
-<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 2026-07-29<i class="asof">窗內可在榜 18 天</i></div></td>
+<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 <b>18</b> 天 · <i class="agez">15–60 天</i><i class="asof">2026-07-29 · 可在榜 18 天</i></div></td>
 <td><div class="sc"><div class="sc-v">22.7</div>
 <svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="39.6" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">7.0 ＋ 6.0 ＋ 5.1 ＋ 4.6</div></div></td>
+<div class="sc-n" title="四榜榜分相加。分數無絕對意義、只能比大小；比例條分母為當期最高分，跨期不可比長度">7.0 ＋ 6.0 ＋ 5.1 ＋ 4.6</div>
+<div class="sc-r" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，與窗長無關。本組排序用累計分，這個數字只作對照——可在榜天數從 9 到 27 天不等，只看累計會低估上市第二週的產品">日均 1.26<i class="gcalc">÷18 天</i></div></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="53.8,15.8 58.7,15.0 63.6,16.3 68.4,15.3 73.3,17.0 78.2,16.3 83.1,16.6 88.0,16.8 92.9,17.2 97.8,16.8 102.7,17.2 107.6,17.4 112.4,17.4 117.3,18.3 122.2,18.4 127.1,19.5 132.0,19.6"/></svg>
 <div class="gl"><b>17</b>天 · 17→39 · 佳<b>#14</b></div>
-<div class="gl">榜分 7.0<i class="gcalc">＝17 × 0.412</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<div class="gl">榜分 7.0<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝17 × 0.412</i><i class="gt g-fl" title="持平">持平</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="53.8,17.0 58.7,16.3 63.6,17.8 68.4,16.8 73.3,18.4 78.2,18.1 83.1,17.9 88.0,18.6 92.9,18.8 97.8,18.4 102.7,18.4 107.6,18.7 112.4,19.0 117.3,20.0 122.2,19.7 127.1,21.0 132.0,21.2"/></svg>
 <div class="gl"><b>17</b>天 · 22→55 · 佳<b>#19</b></div>
-<div class="gl">榜分 6.0<i class="gcalc">＝17 × 0.350</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<div class="gl">榜分 6.0<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝17 × 0.350</i><i class="gt g-fl" title="持平">持平</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="53.8,25.7 58.7,22.2 63.6,21.2 68.4,19.9 73.3,19.0 78.2,18.6 83.1,18.8 88.0,19.0 92.9,17.9 97.8,18.3 102.7,18.7 107.6,19.0 112.4,19.0 117.3,19.0 122.2,19.9 127.1,19.8 132.0,20.2"/></svg>
 <div class="gl"><b>17</b>天 · 149→45 · 佳<b>#27</b></div>
-<div class="gl">榜分 5.1<i class="gcalc">＝17 × 0.301</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<div class="gl">榜分 5.1<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝17 × 0.301</i><i class="gt g-fl" title="持平">持平</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="53.8,26.9 58.7,23.4 63.6,21.8 68.4,20.6 73.3,19.6 78.2,19.1 83.1,19.4 88.0,19.5 92.9,18.6 97.8,18.8 102.7,19.4 107.6,19.7 112.4,19.9 117.3,19.9 122.2,20.8 127.1,20.7 132.0,21.0"/></svg>
 <div class="gl"><b>17</b>天 · 194→53 · 佳<b>#31</b></div>
-<div class="gl">榜分 4.6<i class="gcalc">＝17 × 0.269</i><i class="gt g-fl" title="持平">持平</i></div></td>
-<td><span class="gev gev-ok">足夠</span>
+<div class="gl">榜分 4.6<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝17 × 0.269</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<td><span class="gev gev-ok" title="量的是判斷依據夠不夠，不是產品強弱。六級定義與密度算法見分頁 08">足夠</span>
 <div class="meta-s">密度 94%　·　進榜 2/2 平台</div></td>
 </tr><tr>
 <td class="n">4</td>
 <td><div class="gname">開局一座島-送真海鮮！</div>
 <div class="gsub">SuperNova Overseas Limited · <span class="gp">Tower Defense</span> · Mid-core</div></td>
-<td><span class="state s-fade">曇花</span><div class="dtd" style="margin-top:4px">上市 2026-07-29<i class="asof">窗內可在榜 18 天</i></div></td>
+<td><span class="state s-fade">曇花</span><div class="dtd" style="margin-top:4px">上市 <b>18</b> 天 · <i class="agez">15–60 天</i><i class="asof">2026-07-29 · 可在榜 18 天</i></div></td>
 <td><div class="sc"><div class="sc-v">20.2</div>
 <svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="35.3" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">5.6 ＋ 4.4 ＋ 5.4 ＋ 4.8</div></div></td>
+<div class="sc-n" title="四榜榜分相加。分數無絕對意義、只能比大小；比例條分母為當期最高分，跨期不可比長度">5.6 ＋ 4.4 ＋ 5.4 ＋ 4.8</div>
+<div class="sc-r" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，與窗長無關。本組排序用累計分，這個數字只作對照——可在榜天數從 9 到 27 天不等，只看累計會低估上市第二週的產品">日均 1.12<i class="gcalc">÷18 天</i></div></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="53.8,20.0 58.7,19.5 63.6,19.6 68.4,19.1 73.3,18.1 78.2,17.8 83.1,18.3 88.0,18.4 92.9,18.3 97.8,18.3 102.7,18.3 107.6,18.4 112.4,18.6 117.3,19.7 122.2,20.9 127.1,21.2 132.0,21.0"/></svg>
 <div class="gl"><b>17</b>天 · 43→53 · 佳<b>#26</b></div>
-<div class="gl">榜分 5.6<i class="gcalc">＝17 × 0.328</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<div class="gl">榜分 5.6<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝17 × 0.328</i><i class="gt g-fl" title="持平">持平</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="53.8,21.8 58.7,20.7 63.6,20.9 68.4,20.6 73.3,19.7 78.2,19.4 83.1,20.0 88.0,20.1 92.9,20.0 97.8,19.7 102.7,19.7 107.6,19.9 112.4,20.4 117.3,21.5 122.2,22.4 127.1,22.7 132.0,22.8"/></svg>
 <div class="gl"><b>17</b>天 · 64→79 · 佳<b>#37</b></div>
-<div class="gl">榜分 4.4<i class="gcalc">＝17 × 0.261</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<div class="gl">榜分 4.4<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝17 × 0.261</i><i class="gt g-fl" title="持平">持平</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="58.7,25.8 63.6,23.4 68.4,21.5 73.3,20.2 78.2,19.1 83.1,18.7 88.0,18.7 92.9,17.2 97.8,16.1 102.7,16.3 107.6,16.8 112.4,16.8 117.3,17.0 122.2,18.4 127.1,18.4 132.0,18.7"/></svg>
 <div class="gl"><b>16</b>天 · 154→32 · 佳<b>#18</b></div>
-<div class="gl">榜分 5.4<i class="gcalc">＝16 × 0.335</i><i class="gt g-up" title="爬升">爬升</i></div></td>
+<div class="gl">榜分 5.4<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝16 × 0.335</i><i class="gt g-up" title="爬升">爬升</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="58.7,27.0 63.6,24.6 68.4,22.4 73.3,21.0 78.2,19.6 83.1,19.2 88.0,19.2 92.9,18.3 97.8,17.0 102.7,17.2 107.6,17.6 112.4,17.6 117.3,17.8 122.2,19.1 127.1,19.1 132.0,19.5"/></svg>
 <div class="gl"><b>16</b>天 · 200→38 · 佳<b>#22</b></div>
-<div class="gl">榜分 4.8<i class="gcalc">＝16 × 0.302</i><i class="gt g-up" title="爬升">爬升</i></div></td>
-<td><span class="gev gev-ok">足夠</span>
+<div class="gl">榜分 4.8<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝16 × 0.302</i><i class="gt g-up" title="爬升">爬升</i></div></td>
+<td><span class="gev gev-ok" title="量的是判斷依據夠不夠，不是產品強弱。六級定義與密度算法見分頁 08">足夠</span>
 <div class="meta-s">密度 94%　·　進榜 2/2 平台</div></td>
 </tr><tr>
 <td class="n">5</td>
 <td><div class="gname">醫起救世界：鼠裡逃生</div>
 <div class="gsub">U-LIKE ENTERTAINMENT LIMITED · <span class="gp">4X Strategy</span> · Mid-core</div></td>
-<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 2026-07-22<i class="asof">窗內可在榜 25 天</i></div></td>
+<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 <b>25</b> 天 · <i class="agez">15–60 天</i><i class="asof">2026-07-22 · 可在榜 25 天</i></div></td>
 <td><div class="sc"><div class="sc-v">18.8</div>
 <svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="32.9" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">5.5 ＋ 3.8 ＋ 5.3 ＋ 4.3</div></div></td>
+<div class="sc-n" title="四榜榜分相加。分數無絕對意義、只能比大小；比例條分母為當期最高分，跨期不可比長度">5.5 ＋ 3.8 ＋ 5.3 ＋ 4.3</div>
+<div class="sc-r" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，與窗長無關。本組排序用累計分，這個數字只作對照——可在榜天數從 9 到 27 天不等，只看累計會低估上市第二週的產品">日均 0.75<i class="gcalc">÷25 天</i></div></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="19.6,18.1 24.4,18.7 29.3,19.2 34.2,19.2 39.1,19.1 44.0,19.0 48.9,20.3 53.8,20.8 58.7,22.5 63.6,22.9 68.4,21.4 73.3,22.4 78.2,21.8 83.1,23.4 88.0,22.8 92.9,23.6 97.8,22.7 102.7,23.1 107.6,22.2 112.4,22.6 117.3,22.4 122.2,22.6 127.1,23.5 132.0,23.0"/></svg>
 <div class="gl"><b>24</b>天 · 28→82 · 佳<b>#28</b></div>
-<div class="gl">榜分 5.5<i class="gcalc">＝24 × 0.227</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
+<div class="gl">榜分 5.5<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝24 × 0.227</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="19.6,19.6 24.4,20.2 29.3,20.9 34.2,21.2 39.1,21.1 44.0,21.1 48.9,22.2 53.8,22.6 58.7,24.1 63.6,24.3 68.4,23.1 73.3,24.1 78.2,23.7 83.1,25.0 88.0,24.4 92.9,24.7 97.8,24.2 102.7,24.6 107.6,23.9 112.4,24.2 117.3,24.0 122.2,24.1 127.1,25.0 132.0,24.5"/></svg>
 <div class="gl"><b>24</b>天 · 39→114 · 佳<b>#39</b></div>
-<div class="gl">榜分 3.8<i class="gcalc">＝24 × 0.158</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
+<div class="gl">榜分 3.8<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝24 × 0.158</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="19.6,27.0 24.4,24.8 29.3,22.8 34.2,22.0 39.1,21.0 44.0,20.0 48.9,20.0 53.8,20.3 58.7,20.9 63.6,21.6 68.4,21.7 73.3,21.8 78.2,22.0 83.1,22.2 88.0,22.0 92.9,22.0 97.8,21.9 102.7,22.0 107.6,21.8 112.4,21.2 117.3,21.2 122.2,20.4 127.1,20.5 132.0,20.3"/></svg>
 <div class="gl"><b>24</b>天 · 200→46 · 佳<b>#43</b></div>
-<div class="gl">榜分 5.3<i class="gcalc">＝24 × 0.219</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<div class="gl">榜分 5.3<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝24 × 0.219</i><i class="gt g-fl" title="持平">持平</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="24.4,26.0 29.3,23.9 34.2,23.0 39.1,22.1 44.0,21.0 48.9,20.8 53.8,21.4 58.7,21.8 63.6,22.5 68.4,22.6 73.3,22.7 78.2,23.0 83.1,23.2 88.0,23.0 92.9,23.4 97.8,23.0 102.7,23.1 107.6,22.8 112.4,22.2 117.3,22.2 122.2,21.3 127.1,21.4 132.0,21.2"/></svg>
 <div class="gl"><b>23</b>天 · 159→55 · 佳<b>#51</b></div>
-<div class="gl">榜分 4.3<i class="gcalc">＝23 × 0.188</i><i class="gt g-fl" title="持平">持平</i></div></td>
-<td><span class="gev gev-ok">足夠</span>
+<div class="gl">榜分 4.3<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝23 × 0.188</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<td><span class="gev gev-ok" title="量的是判斷依據夠不夠，不是產品強弱。六級定義與密度算法見分頁 08">足夠</span>
 <div class="meta-s">密度 96%　·　進榜 2/2 平台</div></td>
 </tr><tr>
 <td class="n">6</td>
 <td><div class="gname">肥鵝美食街</div>
 <div class="gsub">THE HORTOR TECHNOLOGY PTE.LTD. · <span class="gp">Match Merge 2</span> · Hypercasual</div></td>
-<td><span class="state s-slow">慢熱起量</span><div class="dtd" style="margin-top:4px">上市 2026-07-07<i class="asof">窗內可在榜 28 天</i></div></td>
+<td><span class="state s-slow">慢熱起量</span><div class="dtd" style="margin-top:4px">上市 <b>40</b> 天 · <i class="agez">15–60 天</i><i class="asof">2026-07-07 · 可在榜 28 天</i></div></td>
 <td><div class="sc"><div class="sc-v">12.2</div>
 <svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="21.2" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">5.1 ＋ 3.1 ＋ 2.6 ＋ 1.3</div></div></td>
+<div class="sc-n" title="四榜榜分相加。分數無絕對意義、只能比大小；比例條分母為當期最高分，跨期不可比長度">5.1 ＋ 3.1 ＋ 2.6 ＋ 1.3</div>
+<div class="sc-r" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，與窗長無關。本組排序用累計分，這個數字只作對照——可在榜天數從 9 到 27 天不等，只看累計會低估上市第二週的產品">日均 0.43<i class="gcalc">÷28 天</i></div></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="0.0,24.5 4.9,23.0 9.8,23.1 14.7,23.8 19.6,24.9 24.4,23.7 29.3,23.1 34.2,22.6 39.1,22.8 44.0,22.2 48.9,21.8 53.8,22.5 58.7,23.4 63.6,23.8 68.4,23.8 73.3,21.2 78.2,20.9 83.1,22.7 88.0,23.4 92.9,22.1 97.8,22.1 102.7,21.1 107.6,22.6 112.4,20.5 117.3,21.3 122.2,22.0 127.1,22.3 132.0,22.5"/></svg>
 <div class="gl"><b>28</b>天 · 115→74 · 佳<b>#48</b></div>
-<div class="gl">榜分 5.1<i class="gcalc">＝28 × 0.182</i><i class="gt g-up" title="爬升">爬升</i></div></td>
+<div class="gl">榜分 5.1<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝28 × 0.182</i><i class="gt g-up" title="爬升">爬升</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="0.0,26.3 4.9,24.8 9.8,24.8 14.7,25.4 19.6,26.6 24.4,25.3 29.3,24.6 34.2,24.3 39.1,24.5 44.0,23.9 48.9,23.4 53.8,24.0 58.7,24.8 63.6,25.2 68.4,25.3 73.3,23.1 78.2,22.7 83.1,24.4 88.0,24.9 92.9,23.9 97.8,23.7 102.7,22.8 107.6,24.1 112.4,22.6 117.3,23.1 122.2,23.7 127.1,23.9 132.0,24.1"/></svg>
 <div class="gl"><b>28</b>天 · 171→105 · 佳<b>#76</b></div>
-<div class="gl">榜分 3.1<i class="gcalc">＝28 × 0.112</i><i class="gt g-up" title="爬升">爬升</i></div></td>
+<div class="gl">榜分 3.1<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝28 × 0.112</i><i class="gt g-up" title="爬升">爬升</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="0.0,26.6 4.9,26.6 9.8,26.4 14.7,26.4 19.6,26.3 24.4,26.2 29.3,25.4 34.2,25.2 39.1,25.5 44.0,24.9 48.9,24.3 53.8,24.4 58.7,24.4 63.6,24.5 68.4,24.7 73.3,24.3 78.2,24.1 83.1,24.1 88.0,24.2 92.9,24.3 97.8,24.0 102.7,23.9 107.6,24.1 112.4,24.0 117.3,24.0 122.2,23.7 127.1,23.6 132.0,23.7"/></svg>
 <div class="gl"><b>28</b>天 · 185→96 · 佳<b>#95</b></div>
-<div class="gl">榜分 2.6<i class="gcalc">＝28 × 0.092</i><i class="gt g-up" title="爬升">爬升</i></div></td>
+<div class="gl">榜分 2.6<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝28 × 0.092</i><i class="gt g-up" title="爬升">爬升</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="29.3,26.7 34.2,26.4 39.1,26.8 44.0,26.2 48.9,25.5 53.8,25.6 58.7,25.6 63.6,25.7 68.4,25.8 73.3,25.5 78.2,25.3 83.1,25.3 88.0,25.4 92.9,25.2 97.8,25.3 102.7,25.0 107.6,25.3 112.4,25.3 117.3,25.3 122.2,24.9 127.1,24.8 132.0,24.8"/></svg>
 <div class="gl"><b>22</b>天 · 189→123 · 佳<b>#123</b></div>
-<div class="gl">榜分 1.3<i class="gcalc">＝22 × 0.061</i><i class="gt g-fl" title="持平">持平</i></div></td>
-<td><span class="gev gev-ok">足夠</span>
+<div class="gl">榜分 1.3<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝22 × 0.061</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<td><span class="gev gev-ok" title="量的是判斷依據夠不夠，不是產品強弱。六級定義與密度算法見分頁 08">足夠</span>
 <div class="meta-s">密度 100%　·　進榜 2/2 平台</div></td>
 </tr><tr>
 <td class="n">7</td>
-<td><div class="gname">賽爾號：巔峰之戰</div>
-<div class="gsub">TAOMEE · <span class="gp">Squad RPG</span> · Mid-core</div></td>
-<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 2026-08-11<i class="asof">窗內可在榜 5 天</i></div></td>
-<td><div class="sc"><div class="sc-v">9.4</div>
-<svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="16.4" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">3.4 ＋ 3.0 ＋ 1.6 ＋ 1.5</div></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="117.3,3.0 122.2,3.0 127.1,9.3 132.0,11.1"/></svg>
-<div class="gl"><b>4</b>天 · 1→6 · 佳<b>#1</b></div>
-<div class="gl">榜分 3.4<i class="gcalc">＝4 × 0.850</i><i class="gt g-fl" title="持平">持平</i></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="117.3,6.1 122.2,6.1 127.1,11.8 132.0,13.0"/></svg>
-<div class="gl"><b>4</b>天 · 2→9 · 佳<b>#2</b></div>
-<div class="gl">榜分 3.0<i class="gcalc">＝4 × 0.739</i><i class="gt g-fl" title="持平">持平</i></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,15.3 127.1,13.4 132.0,14.6"/></svg>
-<div class="gl"><b>3</b>天 · 15→13 · 佳<b>#10</b></div>
-<div class="gl">榜分 1.6<i class="gcalc">＝3 × 0.523</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,16.3 127.1,15.0 132.0,14.6"/></svg>
-<div class="gl"><b>3</b>天 · 19→13 · 佳<b>#13</b></div>
-<div class="gl">榜分 1.5<i class="gcalc">＝3 × 0.487</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td><span class="gev gev-thin">窗內樣本不足</span>
-<div class="meta-s">密度 80%　·　進榜 2/2 平台</div></td>
-</tr><tr>
-<td class="n">8</td>
 <td><div class="gname">天命：六道輪迴</div>
 <div class="gsub">sp_games · <span class="gp">MMORPG</span> · Mid-core</div></td>
-<td><span class="state s-fade">曇花</span><div class="dtd" style="margin-top:4px">上市 2026-07-20<i class="asof">窗內可在榜 27 天</i></div></td>
+<td><span class="state s-fade">曇花</span><div class="dtd" style="margin-top:4px">上市 <b>27</b> 天 · <i class="agez">15–60 天</i><i class="asof">2026-07-20 · 可在榜 27 天</i></div></td>
 <td><div class="sc"><div class="sc-v">9.2</div>
 <svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="16.1" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">4.7 ＋ 2.9 ＋ 1.1 ＋ 0.5</div></div></td>
+<div class="sc-n" title="四榜榜分相加。分數無絕對意義、只能比大小；比例條分母為當期最高分，跨期不可比長度">4.7 ＋ 2.9 ＋ 1.1 ＋ 0.5</div>
+<div class="sc-r" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，與窗長無關。本組排序用累計分，這個數字只作對照——可在榜天數從 9 到 27 天不等，只看累計會低估上市第二週的產品">日均 0.34<i class="gcalc">÷27 天</i></div></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="9.8,18.4 14.7,19.0 19.6,20.4 24.4,21.1 29.3,21.2 34.2,21.5 39.1,20.6 44.0,20.9 48.9,21.1 53.8,22.3 58.7,23.6 63.6,23.3 68.4,23.1 73.3,23.5 78.2,23.1 83.1,23.4 88.0,23.5 92.9,24.2 97.8,24.5 102.7,24.0 107.6,24.2 112.4,24.2 117.3,24.1 122.2,24.6 127.1,24.9 132.0,24.9"/></svg>
 <div class="gl"><b>26</b>天 · 30→125 · 佳<b>#30</b></div>
-<div class="gl">榜分 4.7<i class="gcalc">＝26 × 0.180</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
+<div class="gl">榜分 4.7<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝26 × 0.180</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="9.8,20.3 14.7,20.9 19.6,22.0 24.4,22.6 29.3,22.8 34.2,23.2 39.1,22.6 44.0,22.7 48.9,22.8 53.8,23.8 58.7,25.0 63.6,24.8 68.4,24.6 73.3,25.1 78.2,24.5 83.1,25.0 88.0,25.1 92.9,25.9 97.8,26.0 102.7,25.7 107.6,25.7 112.4,26.0 117.3,25.9 122.2,26.2 127.1,26.4 132.0,26.4"/></svg>
 <div class="gl"><b>26</b>天 · 46→175 · 佳<b>#46</b></div>
-<div class="gl">榜分 2.9<i class="gcalc">＝26 × 0.112</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
+<div class="gl">榜分 2.9<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝26 × 0.112</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="19.6,26.3 24.4,25.1 29.3,24.1 34.2,23.7 39.1,23.3 44.0,24.1 48.9,24.2 53.8,24.8 58.7,25.0 63.6,25.5 68.4,25.8 73.3,26.2 78.2,26.6 83.1,26.8"/><circle class="gs-ios-d" cx="97.8" cy="26.8" r="1.7"/></svg>
 <div class="gl"><b>15</b>天 · 172→192 · 佳<b>#89</b></div>
-<div class="gl">榜分 1.1<i class="gcalc">＝15 × 0.074</i><i class="gt g-out" title="掉出 Top 200">掉出</i></div></td>
+<div class="gl">榜分 1.1<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝15 × 0.074</i><i class="gt g-out" title="掉出 Top 200">掉出</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="24.4,26.3 29.3,25.4 34.2,24.8 39.1,24.6 44.0,25.3 48.9,25.4 53.8,26.0 58.7,26.2 63.6,26.7"/></svg>
 <div class="gl"><b>9</b>天 · 171→186 · 佳<b>#117</b></div>
-<div class="gl">榜分 0.5<i class="gcalc">＝9 × 0.057</i><i class="gt g-out" title="掉出 Top 200">掉出</i></div></td>
-<td><span class="gev gev-ok">足夠</span>
+<div class="gl">榜分 0.5<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝9 × 0.057</i><i class="gt g-out" title="掉出 Top 200">掉出</i></div></td>
+<td><span class="gev gev-ok" title="量的是判斷依據夠不夠，不是產品強弱。六級定義與密度算法見分頁 08">足夠</span>
 <div class="meta-s">密度 96%　·　進榜 2/2 平台</div></td>
 </tr><tr>
-<td class="n">9</td>
+<td class="n">8</td>
 <td><div class="gname">猛鬼三國</div>
 <div class="gsub">TP 79 DESIGN AND CONSTRUCTION CONSULTING COMPANY LIMITED · <span class="gp">Squad RPG</span> · Mid-core</div></td>
-<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 2026-08-07<i class="asof">窗內可在榜 9 天</i></div></td>
+<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 <b>9</b> 天 · <i class="agez">8–14 天</i><i class="asof">2026-08-07 · 可在榜 9 天</i></div></td>
 <td><div class="sc"><div class="sc-v">8.5</div>
 <svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="14.9" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">2.9 ＋ 2.4 ＋ 1.8 ＋ 1.5</div></div></td>
+<div class="sc-n" title="四榜榜分相加。分數無絕對意義、只能比大小；比例條分母為當期最高分，跨期不可比長度">2.9 ＋ 2.4 ＋ 1.8 ＋ 1.5</div>
+<div class="sc-r" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，與窗長無關。本組排序用累計分，這個數字只作對照——可在榜天數從 9 到 27 天不等，只看累計會低估上市第二週的產品">日均 0.95<i class="gcalc">÷9 天</i></div></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="97.8,17.8 102.7,17.6 107.6,17.8 112.4,17.8 117.3,17.8 122.2,19.1 127.1,19.9 132.0,19.1"/></svg>
 <div class="gl"><b>8</b>天 · 26→35 · 佳<b>#25</b></div>
-<div class="gl">榜分 2.9<i class="gcalc">＝8 × 0.361</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<div class="gl">榜分 2.9<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝8 × 0.361</i><i class="gt g-fl" title="持平">持平</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="97.8,19.4 102.7,18.8 107.6,19.2 112.4,19.7 117.3,19.7 122.2,20.6 127.1,21.3 132.0,20.5"/></svg>
 <div class="gl"><b>8</b>天 · 37→48 · 佳<b>#33</b></div>
-<div class="gl">榜分 2.4<i class="gcalc">＝8 × 0.295</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<div class="gl">榜分 2.4<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝8 × 0.295</i><i class="gt g-fl" title="持平">持平</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="102.7,23.7 107.6,22.6 112.4,21.1 117.3,20.8 122.2,19.6 127.1,19.1 132.0,19.5"/></svg>
 <div class="gl"><b>7</b>天 · 96→38 · 佳<b>#35</b><i class="gdup" title="本列與另一列共用同一個商店 app，這一側資料兩列完全相同、不是各自進榜。跨列合計時不可相加">同源</i></div>
-<div class="gl">榜分 1.8<i class="gcalc">＝7 × 0.254</i><i class="gt g-up" title="爬升">爬升</i></div></td>
+<div class="gl">榜分 1.8<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝7 × 0.254</i><i class="gt g-up" title="爬升">爬升</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="102.7,24.8 107.6,23.8 112.4,22.0 117.3,21.8 122.2,20.4 127.1,19.8 132.0,20.1"/></svg>
 <div class="gl"><b>7</b>天 · 124→44 · 佳<b>#41</b><i class="gdup" title="本列與另一列共用同一個商店 app，這一側資料兩列完全相同、不是各自進榜。跨列合計時不可相加">同源</i></div>
-<div class="gl">榜分 1.5<i class="gcalc">＝7 × 0.215</i><i class="gt g-up" title="爬升">爬升</i></div></td>
-<td><span class="gev gev-short">窗短·穩定</span>
+<div class="gl">榜分 1.5<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝7 × 0.215</i><i class="gt g-up" title="爬升">爬升</i></div></td>
+<td><span class="gev gev-short" title="量的是判斷依據夠不夠，不是產品強弱。六級定義與密度算法見分頁 08">窗短·穩定</span>
 <div class="meta-s">密度 89%　·　進榜 2/2 平台</div></td>
 </tr><tr>
-<td class="n">10</td>
+<td class="n">9</td>
 <td><div class="gname">Rogue Legend</div>
 <div class="gsub">PocketHaven Games · <span class="gp">Idle RPG</span> · Mid-core</div></td>
-<td><span class="state s-back">久違回榜</span><div class="dtd" style="margin-top:4px">上市 2026-02-28<i class="asof">窗內可在榜 28 天</i></div></td>
+<td><span class="state s-back">久違回榜</span><div class="dtd" style="margin-top:4px">上市 <b>169</b> 天 · <i class="agez">久違回榜</i><i class="asof">2026-02-28 · 可在榜 28 天</i></div></td>
 <td><div class="sc"><div class="sc-v">8.4</div>
 <svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="14.6" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">2.6 ＋ 1.5 ＋ 2.4 ＋ 1.9</div></div></td>
+<div class="sc-n" title="四榜榜分相加。分數無絕對意義、只能比大小；比例條分母為當期最高分，跨期不可比長度">2.6 ＋ 1.5 ＋ 2.4 ＋ 1.9</div>
+<div class="sc-r" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，與窗長無關。本組排序用累計分，這個數字只作對照——可在榜天數從 9 到 27 天不等，只看累計會低估上市第二週的產品">日均 0.30<i class="gcalc">÷28 天</i></div></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="58.7,25.8 63.6,25.4 68.4,24.2 73.3,24.2 78.2,23.3 83.1,23.8 88.0,23.9 92.9,22.0 97.8,22.0 102.7,20.0 107.6,22.8 112.4,22.4 117.3,22.5 122.2,22.4 127.1,23.0 132.0,22.3"/></svg>
 <div class="gl"><b>16</b>天 · 152→71 · 佳<b>#43</b></div>
-<div class="gl">榜分 2.6<i class="gcalc">＝16 × 0.161</i><i class="gt g-up" title="爬升">爬升</i></div></td>
+<div class="gl">榜分 2.6<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝16 × 0.161</i><i class="gt g-up" title="爬升">爬升</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="63.6,26.8 68.4,25.8 73.3,26.0 78.2,24.9 83.1,25.4 88.0,25.6 92.9,24.1 97.8,23.6 102.7,21.8 107.6,24.3 112.4,23.9 117.3,24.1 122.2,24.0 127.1,24.5 132.0,23.9"/></svg>
 <div class="gl"><b>15</b>天 · 191→101 · 佳<b>#63</b></div>
-<div class="gl">榜分 1.5<i class="gcalc">＝15 × 0.101</i><i class="gt g-up" title="爬升">爬升</i></div></td>
+<div class="gl">榜分 1.5<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝15 × 0.101</i><i class="gt g-up" title="爬升">爬升</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="73.3,26.7 78.2,25.6 83.1,24.7 88.0,24.0 92.9,23.4 97.8,22.4 102.7,21.8 107.6,21.5 112.4,20.4 117.3,20.3 122.2,20.3 127.1,20.9 132.0,21.0"/></svg>
 <div class="gl"><b>13</b>天 · 187→53 · 佳<b>#46</b></div>
-<div class="gl">榜分 2.4<i class="gcalc">＝13 × 0.185</i><i class="gt g-up" title="爬升">爬升</i></div></td>
+<div class="gl">榜分 2.4<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝13 × 0.185</i><i class="gt g-up" title="爬升">爬升</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="78.2,26.8 83.1,25.8 88.0,25.2 92.9,24.7 97.8,23.7 102.7,22.8 107.6,22.4 112.4,21.4 117.3,21.3 122.2,21.2 127.1,21.8 132.0,21.7"/></svg>
 <div class="gl"><b>12</b>天 · 191→62 · 佳<b>#56</b></div>
-<div class="gl">榜分 1.9<i class="gcalc">＝12 × 0.157</i><i class="gt g-up" title="爬升">爬升</i></div></td>
-<td><span class="gev gev-mid">斷續在榜</span>
+<div class="gl">榜分 1.9<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝12 × 0.157</i><i class="gt g-up" title="爬升">爬升</i></div></td>
+<td><span class="gev gev-mid" title="量的是判斷依據夠不夠，不是產品強弱。六級定義與密度算法見分頁 08">斷續在榜</span>
 <div class="meta-s">密度 57%　·　進榜 2/2 平台</div></td>
 </tr><tr>
-<td class="n">11</td>
-<td><div class="gname">搞鬼M</div>
-<div class="gsub">掘夢網股份有限公司</div></td>
-<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 2026-08-12<i class="asof">窗內可在榜 4 天</i></div></td>
-<td><div class="sc"><div class="sc-v">4.5</div>
-<svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="7.8" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">1.6 ＋ 1.5 ＋ 0.7 ＋ 0.6</div></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,14.3 127.1,13.9 132.0,13.4"/></svg>
-<div class="gl"><b>3</b>天 · 12→10 · 佳<b>#10</b></div>
-<div class="gl">榜分 1.6<i class="gcalc">＝3 × 0.548</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,15.3 127.1,15.0 132.0,14.6"/></svg>
-<div class="gl"><b>3</b>天 · 15→13 · 佳<b>#13</b></div>
-<div class="gl">榜分 1.5<i class="gcalc">＝3 × 0.502</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,23.3 127.1,20.0 132.0,20.0"/></svg>
-<div class="gl"><b>3</b>天 · 89→43 · 佳<b>#43</b></div>
-<div class="gl">榜分 0.7<i class="gcalc">＝3 × 0.244</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,24.5 127.1,20.9 132.0,20.8"/></svg>
-<div class="gl"><b>3</b>天 · 116→51 · 佳<b>#51</b></div>
-<div class="gl">榜分 0.6<i class="gcalc">＝3 × 0.205</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td><span class="gev gev-thin">窗內樣本不足</span>
-<div class="meta-s">密度 75%　·　進榜 2/2 平台</div></td>
-</tr><tr>
-<td class="n">12</td>
+<td class="n">10</td>
 <td><div class="gname">從前有條街</div>
 <div class="gsub">THANH AN SON DONG COMPANY LIMITED · <span class="gp">Tycoon / Crafting</span> · Mid-core</div></td>
-<td><span class="state s-slow">慢熱起量</span><div class="dtd" style="margin-top:4px">上市 2026-06-25<i class="asof">窗內可在榜 28 天</i></div></td>
+<td><span class="state s-slow">慢熱起量</span><div class="dtd" style="margin-top:4px">上市 <b>52</b> 天 · <i class="agez">15–60 天</i><i class="asof">2026-06-25 · 可在榜 28 天</i></div></td>
 <td><div class="sc"><div class="sc-v">4.4</div>
 <svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="7.6" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">0.7 ＋ 0.1 ＋ 2.4 ＋ 1.2</div></div></td>
+<div class="sc-n" title="四榜榜分相加。分數無絕對意義、只能比大小；比例條分母為當期最高分，跨期不可比長度">0.7 ＋ 0.1 ＋ 2.4 ＋ 1.2</div>
+<div class="sc-r" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，與窗長無關。本組排序用累計分，這個數字只作對照——可在榜天數從 9 到 27 天不等，只看累計會低估上市第二週的產品">日均 0.16<i class="gcalc">÷28 天</i></div></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="0.0,24.5 4.9,24.6 9.8,24.8 14.7,25.2 19.6,25.5 24.4,25.2 29.3,25.5 34.2,25.3 39.1,26.5 44.0,26.7"/><circle class="gs-ios-d" cx="53.8" cy="26.9" r="1.7"/></svg>
 <div class="gl"><b>11</b>天 · 116→194 · 佳<b>#116</b></div>
-<div class="gl">榜分 0.7<i class="gcalc">＝11 × 0.062</i><i class="gt g-out" title="掉出 Top 200">掉出</i></div></td>
+<div class="gl">榜分 0.7<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝11 × 0.062</i><i class="gt g-out" title="掉出 Top 200">掉出</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="0.0,26.3 4.9,26.4 9.8,26.6"/><circle class="gs-ios-d" cx="24.4" cy="26.9" r="1.7"/></svg>
 <div class="gl"><b>4</b>天 · 172→197 · 佳<b>#172</b></div>
-<div class="gl">榜分 0.1<i class="gcalc">＝4 × 0.018</i><i class="gt g-out" title="掉出 Top 200">掉出</i></div></td>
+<div class="gl">榜分 0.1<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝4 × 0.018</i><i class="gt g-out" title="掉出 Top 200">掉出</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="0.0,23.3 4.9,23.4 9.8,23.5 14.7,23.4 19.6,23.7 24.4,23.5 29.3,23.8 34.2,23.6 39.1,23.8 44.0,24.2 48.9,24.1 53.8,24.6 58.7,24.7 63.6,25.2 68.4,25.4 73.3,25.5 78.2,25.7 83.1,25.6 88.0,25.8 92.9,26.1 97.8,25.9 102.7,26.0 107.6,26.2 112.4,26.2 117.3,26.0 122.2,25.8 127.1,26.2 132.0,26.2"/></svg>
 <div class="gl"><b>28</b>天 · 88→168 · 佳<b>#88</b></div>
-<div class="gl">榜分 2.4<i class="gcalc">＝28 × 0.087</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
+<div class="gl">榜分 2.4<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝28 × 0.087</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="0.0,24.4 4.9,24.5 9.8,24.7 14.7,24.5 19.6,24.8 24.4,24.7 29.3,24.9 34.2,24.8 39.1,25.0 44.0,25.4 48.9,25.4 53.8,25.8 58.7,25.9 63.6,26.4 68.4,26.5 73.3,26.7 78.2,26.8 83.1,26.8"/><circle class="gs-ios-d" cx="92.9" cy="26.9" r="1.7"/></svg>
 <div class="gl"><b>19</b>天 · 113→194 · 佳<b>#113</b></div>
-<div class="gl">榜分 1.2<i class="gcalc">＝19 × 0.062</i><i class="gt g-out" title="掉出 Top 200">掉出</i></div></td>
-<td><span class="gev gev-ok">足夠</span>
+<div class="gl">榜分 1.2<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝19 × 0.062</i><i class="gt g-out" title="掉出 Top 200">掉出</i></div></td>
+<td><span class="gev gev-ok" title="量的是判斷依據夠不夠，不是產品強弱。六級定義與密度算法見分頁 08">足夠</span>
 <div class="meta-s">密度 100%　·　進榜 2/2 平台</div></td>
 </tr><tr>
-<td class="n">13</td>
+<td class="n">11</td>
 <td><div class="gname">我的英雄學院：UNITED SURVIVAL</div>
 <div class="gsub">KLab Inc. · <span class="gp">Hack and Slash</span> · Mid-core</div></td>
-<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 2026-08-05<i class="asof">窗內可在榜 11 天</i></div></td>
+<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 <b>11</b> 天 · <i class="agez">8–14 天</i><i class="asof">2026-08-05 · 可在榜 11 天</i></div></td>
 <td><div class="sc"><div class="sc-v">3.5</div>
 <svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="6.1" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">2.1 ＋ 1.4 ＋ 0.1 ＋ 0</div></div></td>
+<div class="sc-n" title="四榜榜分相加。分數無絕對意義、只能比大小；比例條分母為當期最高分，跨期不可比長度">2.1 ＋ 1.4 ＋ 0.1 ＋ 0</div>
+<div class="sc-r" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，與窗長無關。本組排序用累計分，這個數字只作對照——可在榜天數從 9 到 27 天不等，只看累計會低估上市第二週的產品">日均 0.32<i class="gcalc">÷11 天</i></div></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="88.0,23.4 92.9,20.9 97.8,19.9 102.7,20.2 107.6,21.2 112.4,21.9 117.3,23.5 122.2,21.6 127.1,23.4 132.0,24.0"/></svg>
 <div class="gl"><b>10</b>天 · 91→104 · 佳<b>#42</b></div>
-<div class="gl">榜分 2.1<i class="gcalc">＝10 × 0.207</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
+<div class="gl">榜分 2.1<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝10 × 0.207</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="88.0,25.0 92.9,23.0 97.8,21.6 102.7,22.1 107.6,23.1 112.4,23.6 117.3,25.1 122.2,23.2 127.1,24.9 132.0,25.6"/></svg>
 <div class="gl"><b>10</b>天 · 128→146 · 佳<b>#61</b></div>
-<div class="gl">榜分 1.4<i class="gcalc">＝10 × 0.137</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
+<div class="gl">榜分 1.4<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝10 × 0.137</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="112.4,26.5 117.3,26.6 122.2,26.5 127.1,26.7"/></svg>
 <div class="gl"><b>4</b>天 · 179→189 · 佳<b>#179</b></div>
-<div class="gl">榜分 0.1<i class="gcalc">＝4 × 0.017</i><i class="gt g-fl" title="持平">持平</i></div></td>
-<td class="c gl-off">未進榜</td>
-<td><span class="gev gev-short">窗短·穩定</span>
+<div class="gl">榜分 0.1<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝4 × 0.017</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<td class="c gl-off" title="有商店 app，但窗內沒有一天進到 Top 200">未進榜</td>
+<td><span class="gev gev-short" title="量的是判斷依據夠不夠，不是產品強弱。六級定義與密度算法見分頁 08">窗短·穩定</span>
 <div class="meta-s">密度 91%　·　進榜 2/2 平台</div></td>
 </tr><tr>
-<td class="n">14</td>
+<td class="n">12</td>
 <td><div class="gname">猛鬼三國</div>
 <div class="gsub">Sumlahung · <span class="gp">Squad RPG</span> · Mid-core</div></td>
-<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 2026-08-08<i class="asof">窗內可在榜 8 天</i></div></td>
+<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 <b>8</b> 天 · <i class="agez">8–14 天</i><i class="asof">2026-08-08 · 可在榜 8 天</i></div></td>
 <td><div class="sc"><div class="sc-v">3.3</div>
 <svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="5.7" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">0 ＋ 0 ＋ 1.8 ＋ 1.5</div></div></td>
-<td class="c gl-na">無此平台記錄</td>
-<td class="c gl-na">無此平台記錄</td>
+<div class="sc-n" title="四榜榜分相加。分數無絕對意義、只能比大小；比例條分母為當期最高分，跨期不可比長度">0 ＋ 0 ＋ 1.8 ＋ 1.5</div>
+<div class="sc-r" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，與窗長無關。本組排序用累計分，這個數字只作對照——可在榜天數從 9 到 27 天不等，只看累計會低估上市第二週的產品">日均 0.41<i class="gcalc">÷8 天</i></div></div></td>
+<td class="c gl-na" title="該平台沒有商店 app，與「有上架但擠不進前 200」不同">無此平台記錄</td>
+<td class="c gl-na" title="該平台沒有商店 app，與「有上架但擠不進前 200」不同">無此平台記錄</td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="102.7,23.7 107.6,22.6 112.4,21.1 117.3,20.8 122.2,19.6 127.1,19.1 132.0,19.5"/></svg>
 <div class="gl"><b>7</b>天 · 96→38 · 佳<b>#35</b><i class="gdup" title="本列與另一列共用同一個商店 app，這一側資料兩列完全相同、不是各自進榜。跨列合計時不可相加">同源</i></div>
-<div class="gl">榜分 1.8<i class="gcalc">＝7 × 0.254</i><i class="gt g-up" title="爬升">爬升</i></div></td>
+<div class="gl">榜分 1.8<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝7 × 0.254</i><i class="gt g-up" title="爬升">爬升</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="102.7,24.8 107.6,23.8 112.4,22.0 117.3,21.8 122.2,20.4 127.1,19.8 132.0,20.1"/></svg>
 <div class="gl"><b>7</b>天 · 124→44 · 佳<b>#41</b><i class="gdup" title="本列與另一列共用同一個商店 app，這一側資料兩列完全相同、不是各自進榜。跨列合計時不可相加">同源</i></div>
-<div class="gl">榜分 1.5<i class="gcalc">＝7 × 0.215</i><i class="gt g-up" title="爬升">爬升</i></div></td>
-<td><span class="gev gev-short">窗短·穩定</span>
+<div class="gl">榜分 1.5<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝7 × 0.215</i><i class="gt g-up" title="爬升">爬升</i></div></td>
+<td><span class="gev gev-short" title="量的是判斷依據夠不夠，不是產品強弱。六級定義與密度算法見分頁 08">窗短·穩定</span>
 <div class="meta-s">密度 88%　·　進榜 1/1 平台</div></td>
 </tr><tr>
-<td class="n">15</td>
-<td><div class="gname">三國群英傳：策定九州</div>
-<div class="gsub">Userjoy Technology Co., Ltd. · <span class="gp">4X Strategy</span> · Mid-core</div></td>
-<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 2026-08-12<i class="asof">窗內可在榜 4 天</i></div></td>
-<td><div class="sc"><div class="sc-v">2.5</div>
-<svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="4.3" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">1.1 ＋ 1.0 ＋ 0.2 ＋ 0.1</div></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,18.3 127.1,17.8 132.0,17.4"/></svg>
-<div class="gl"><b>3</b>天 · 29→24 · 佳<b>#24</b></div>
-<div class="gl">榜分 1.1<i class="gcalc">＝3 × 0.383</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,19.6 127.1,19.0 132.0,18.6"/></svg>
-<div class="gl"><b>3</b>天 · 39→31 · 佳<b>#31</b></div>
-<div class="gl">榜分 1.0<i class="gcalc">＝3 × 0.332</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="127.1,24.9 132.0,24.0"/></svg>
-<div class="gl"><b>2</b>天 · 125→104 · 佳<b>#104</b></div>
-<div class="gl">榜分 0.2<i class="gcalc">＝2 × 0.106</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="127.1,26.2 132.0,25.3"/></svg>
-<div class="gl"><b>2</b>天 · 166→136 · 佳<b>#136</b></div>
-<div class="gl">榜分 0.1<i class="gcalc">＝2 × 0.054</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td><span class="gev gev-thin">窗內樣本不足</span>
-<div class="meta-s">密度 75%　·　進榜 2/2 平台</div></td>
-</tr><tr>
-<td class="n">16</td>
+<td class="n">13</td>
 <td><div class="gname">機甲突襲：Titan Rush</div>
 <div class="gsub">Ourpalm Co. · <span class="gp">4X Strategy</span> · Mid-core</div></td>
-<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 2026-08-07<i class="asof">窗內可在榜 9 天</i></div></td>
+<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 <b>9</b> 天 · <i class="agez">8–14 天</i><i class="asof">2026-08-07 · 可在榜 9 天</i></div></td>
 <td><div class="sc"><div class="sc-v">1.9</div>
 <svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="3.3" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">1.0 ＋ 0.4 ＋ 0.4 ＋ 0.1</div></div></td>
+<div class="sc-n" title="四榜榜分相加。分數無絕對意義、只能比大小；比例條分母為當期最高分，跨期不可比長度">1.0 ＋ 0.4 ＋ 0.4 ＋ 0.1</div>
+<div class="sc-r" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，與窗長無關。本組排序用累計分，這個數字只作對照——可在榜天數從 9 到 27 天不等，只看累計會低估上市第二週的產品">日均 0.21<i class="gcalc">÷9 天</i></div></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="97.8,25.0 102.7,22.8 107.6,23.2 112.4,23.4 117.3,24.3 122.2,25.1 127.1,24.7 132.0,24.4"/></svg>
 <div class="gl"><b>8</b>天 · 129→113 · 佳<b>#79</b></div>
-<div class="gl">榜分 1.0<i class="gcalc">＝8 × 0.120</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
+<div class="gl">榜分 1.0<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝8 × 0.120</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="97.8,26.6 102.7,24.3 107.6,24.7 112.4,25.0 117.3,26.2 122.2,26.7 127.1,26.2 132.0,25.9"/></svg>
 <div class="gl"><b>8</b>天 · 184→156 · 佳<b>#110</b></div>
-<div class="gl">榜分 0.4<i class="gcalc">＝8 × 0.055</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
+<div class="gl">榜分 0.4<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝8 × 0.055</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="112.4,26.3 117.3,26.3 122.2,24.8 127.1,24.6 132.0,24.4"/></svg>
 <div class="gl"><b>5</b>天 · 172→113 · 佳<b>#113</b></div>
-<div class="gl">榜分 0.4<i class="gcalc">＝5 × 0.072</i><i class="gt g-up" title="爬升">爬升</i></div></td>
+<div class="gl">榜分 0.4<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝5 × 0.072</i><i class="gt g-up" title="爬升">爬升</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,26.0 127.1,25.9 132.0,25.7"/></svg>
 <div class="gl"><b>3</b>天 · 160→149 · 佳<b>#149</b></div>
-<div class="gl">榜分 0.1<i class="gcalc">＝3 × 0.048</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td><span class="gev gev-short">窗短·穩定</span>
+<div class="gl">榜分 0.1<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝3 × 0.048</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
+<td><span class="gev gev-short" title="量的是判斷依據夠不夠，不是產品強弱。六級定義與密度算法見分頁 08">窗短·穩定</span>
 <div class="meta-s">密度 89%　·　進榜 2/2 平台</div></td>
 </tr><tr>
-<td class="n">17</td>
+<td class="n">14</td>
 <td><div class="gname">時尚百貨城</div>
 <div class="gsub">Luminora Interactive Group Limited · <span class="gp">Tycoon / Crafting</span> · Hybridcasual</div></td>
-<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 2026-08-03<i class="asof">窗內可在榜 13 天</i></div></td>
+<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 <b>13</b> 天 · <i class="agez">8–14 天</i><i class="asof">2026-08-03 · 可在榜 13 天</i></div></td>
 <td><div class="sc"><div class="sc-v">1.8</div>
 <svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="3.1" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">0.5 ＋ 0.2 ＋ 0.7 ＋ 0.4</div></div></td>
+<div class="sc-n" title="四榜榜分相加。分數無絕對意義、只能比大小；比例條分母為當期最高分，跨期不可比長度">0.5 ＋ 0.2 ＋ 0.7 ＋ 0.4</div>
+<div class="sc-r" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，與窗長無關。本組排序用累計分，這個數字只作對照——可在榜天數從 9 到 27 天不等，只看累計會低估上市第二週的產品">日均 0.14<i class="gcalc">÷13 天</i></div></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="117.3,26.3 122.2,24.7 127.1,24.1 132.0,21.8"/></svg>
 <div class="gl"><b>4</b>天 · 171→64 · 佳<b>#64</b></div>
-<div class="gl">榜分 0.5<i class="gcalc">＝4 × 0.116</i><i class="gt g-up" title="爬升">爬升</i></div></td>
+<div class="gl">榜分 0.5<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝4 × 0.116</i><i class="gt g-up" title="爬升">爬升</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,26.3 127.1,25.5 132.0,23.5"/></svg>
 <div class="gl"><b>3</b>天 · 170→93 · 佳<b>#93</b></div>
-<div class="gl">榜分 0.2<i class="gcalc">＝3 × 0.079</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
+<div class="gl">榜分 0.2<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝3 × 0.079</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="102.7,25.5 107.6,25.0 112.4,24.8 117.3,24.7 122.2,24.2 127.1,23.9 132.0,23.9"/></svg>
 <div class="gl"><b>7</b>天 · 143→102 · 佳<b>#100</b></div>
-<div class="gl">榜分 0.7<i class="gcalc">＝7 × 0.101</i><i class="gt g-up" title="爬升">爬升</i></div></td>
+<div class="gl">榜分 0.7<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝7 × 0.101</i><i class="gt g-up" title="爬升">爬升</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="102.7,26.7 107.6,26.2 112.4,26.0 117.3,25.9 122.2,25.4 127.1,25.0 132.0,25.1"/></svg>
 <div class="gl"><b>7</b>天 · 189→131 · 佳<b>#130</b></div>
-<div class="gl">榜分 0.4<i class="gcalc">＝7 × 0.052</i><i class="gt g-up" title="爬升">爬升</i></div></td>
-<td><span class="gev gev-mid">斷續在榜</span>
+<div class="gl">榜分 0.4<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝7 × 0.052</i><i class="gt g-up" title="爬升">爬升</i></div></td>
+<td><span class="gev gev-mid" title="量的是判斷依據夠不夠，不是產品強弱。六級定義與密度算法見分頁 08">斷續在榜</span>
 <div class="meta-s">密度 54%　·　進榜 2/2 平台</div></td>
 </tr><tr>
-<td class="n">18</td>
-<td><div class="gname">隨機骰子2</div>
-<div class="gsub">111% · <span class="gp">Tower Defense</span> · Mid-core</div></td>
-<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 2026-08-12<i class="asof">窗內可在榜 4 天</i></div></td>
-<td><div class="sc"><div class="sc-v">1.6</div>
-<svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="2.7" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">0.8 ＋ 0.7 ＋ 0.1 ＋ 0</div></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,21.7 127.1,20.3 132.0,18.8"/></svg>
-<div class="gl"><b>3</b>天 · 62→33 · 佳<b>#33</b></div>
-<div class="gl">榜分 0.8<i class="gcalc">＝3 × 0.280</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,23.3 127.1,21.7 132.0,20.2"/></svg>
-<div class="gl"><b>3</b>天 · 89→45 · 佳<b>#45</b></div>
-<div class="gl">榜分 0.7<i class="gcalc">＝3 × 0.218</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><circle class="gs-ios-d" cx="132.0" cy="25.9" r="1.7"/></svg>
-<div class="gl"><b>1</b>天 · 156→156 · 佳<b>#156</b></div>
-<div class="gl">榜分 0.1<i class="gcalc">＝1 × 0.047</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td class="c gl-off">未進榜</td>
-<td><span class="gev gev-thin">窗內樣本不足</span>
-<div class="meta-s">密度 75%　·　進榜 2/2 平台</div></td>
-</tr><tr>
-<td class="n">19</td>
-<td><div class="gname">亡靈別太狂：部落大作戰</div>
-<div class="gsub">Emin Lomturide</div></td>
-<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 2026-08-10<i class="asof">窗內可在榜 6 天</i></div></td>
-<td><div class="sc"><div class="sc-v">1.5</div>
-<svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="2.6" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">0.9 ＋ 0.6 ＋ 0 ＋ 0</div></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="112.4,21.5 117.3,20.3 122.2,23.2 127.1,24.5 132.0,23.8"/></svg>
-<div class="gl"><b>5</b>天 · 60→99 · 佳<b>#46</b></div>
-<div class="gl">榜分 0.9<i class="gcalc">＝5 × 0.180</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="112.4,23.4 117.3,22.3 122.2,24.8 127.1,25.8 132.0,25.4"/></svg>
-<div class="gl"><b>5</b>天 · 90→139 · 佳<b>#71</b></div>
-<div class="gl">榜分 0.6<i class="gcalc">＝5 × 0.111</i><i class="gt g-dn" title="滑落">滑落</i></div></td>
-<td class="c gl-off">未進榜</td>
-<td class="c gl-off">未進榜</td>
-<td><span class="gev gev-thin">窗內樣本不足</span>
-<div class="meta-s">密度 83%　·　進榜 1/2 平台</div></td>
-</tr><tr>
-<td class="n">20</td>
-<td><div class="gname">三國觀滄海</div>
-<div class="gsub">TBG LIMITED · <span class="gp">Turn-Based Tactics</span> · Mid-core</div></td>
-<td><span class="state s-new">上市即起量</span><div class="dtd" style="margin-top:4px">上市 2026-08-12<i class="asof">窗內可在榜 4 天</i></div></td>
-<td><div class="sc"><div class="sc-v">1.2</div>
-<svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="2.0" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">0.7 ＋ 0.5 ＋ 0.1 ＋ 0.0</div></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,21.8 127.1,21.8 132.0,21.7"/></svg>
-<div class="gl"><b>3</b>天 · 63→62 · 佳<b>#62</b></div>
-<div class="gl">榜分 0.7<i class="gcalc">＝3 × 0.218</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="122.2,23.4 127.1,23.4 132.0,23.3"/></svg>
-<div class="gl"><b>3</b>天 · 91→88 · 佳<b>#88</b></div>
-<div class="gl">榜分 0.5<i class="gcalc">＝3 × 0.151</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><circle class="gs-ios-d" cx="132.0" cy="25.6" r="1.7"/></svg>
-<div class="gl"><b>1</b>天 · 146→146 · 佳<b>#146</b></div>
-<div class="gl">榜分 0.1<i class="gcalc">＝1 × 0.059</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><circle class="gs-ios-d" cx="132.0" cy="26.8" r="1.7"/></svg>
-<div class="gl"><b>1</b>天 · 193→193 · 佳<b>#193</b></div>
-<div class="gl">榜分 0.0<i class="gcalc">＝1 × 0.007</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td><span class="gev gev-thin">窗內樣本不足</span>
-<div class="meta-s">密度 75%　·　進榜 2/2 平台</div></td>
-</tr><tr>
-<td class="n">21</td>
+<td class="n">15</td>
 <td><div class="gname">家族物語 - 治癒系世代模擬</div>
 <div class="gsub">KIKO FUN INTERACTIVE ENTERTAINMENT CO., LIMITED · <span class="gp">Avatar Life</span> · Casual</div></td>
-<td><span class="state s-back">久違回榜</span><div class="dtd" style="margin-top:4px">上市 2025-07-23<i class="asof">窗內可在榜 28 天</i></div></td>
+<td><span class="state s-back">久違回榜</span><div class="dtd" style="margin-top:4px">上市 <b>389</b> 天 · <i class="agez">久違回榜</i><i class="asof">2025-07-23 · 可在榜 28 天</i></div></td>
 <td><div class="sc"><div class="sc-v">0.6</div>
 <svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="2.0" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">0.6 ＋ 0 ＋ 0.0 ＋ 0</div></div></td>
+<div class="sc-n" title="四榜榜分相加。分數無絕對意義、只能比大小；比例條分母為當期最高分，跨期不可比長度">0.6 ＋ 0 ＋ 0.0 ＋ 0</div>
+<div class="sc-r" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，與窗長無關。本組排序用累計分，這個數字只作對照——可在榜天數從 9 到 27 天不等，只看累計會低估上市第二週的產品">日均 0.02<i class="gcalc">÷28 天</i></div></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="34.2,26.7 39.1,26.1 44.0,25.3 48.9,25.7 53.8,26.2 58.7,26.9"/><polyline class="gs-ios" points="68.4,26.6 73.3,26.3 78.2,26.2 83.1,26.3 88.0,26.5 92.9,26.6 97.8,26.3 102.7,25.6 107.6,26.4 112.4,26.2 117.3,26.1 122.2,26.5 127.1,26.8 132.0,26.3"/></svg>
 <div class="gl"><b>20</b>天 · 189→172 · 佳<b>#137</b></div>
-<div class="gl">榜分 0.6<i class="gcalc">＝20 × 0.030</i><i class="gt g-fl" title="持平">持平</i></div></td>
-<td class="c gl-off">未進榜</td>
+<div class="gl">榜分 0.6<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝20 × 0.030</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<td class="c gl-off" title="有商店 app，但窗內沒有一天進到 Top 200">未進榜</td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="9.8,27.0 14.7,26.8 19.6,26.9 24.4,26.9"/><polyline class="gs-ios" points="48.9,26.9 53.8,26.9 58.7,26.9"/></svg>
 <div class="gl"><b>7</b>天 · 200→196 · 佳<b>#192</b></div>
-<div class="gl">榜分 0.0<i class="gcalc">＝7 × 0.004</i><i class="gt g-out" title="掉出 Top 200">掉出</i></div></td>
-<td class="c gl-off">未進榜</td>
-<td><span class="gev gev-ok">足夠</span>
+<div class="gl">榜分 0.0<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝7 × 0.004</i><i class="gt g-out" title="掉出 Top 200">掉出</i></div></td>
+<td class="c gl-off" title="有商店 app，但窗內沒有一天進到 Top 200">未進榜</td>
+<td><span class="gev gev-ok" title="量的是判斷依據夠不夠，不是產品強弱。六級定義與密度算法見分頁 08">足夠</span>
 <div class="meta-s">密度 71%　·　進榜 2/2 平台</div></td>
 </tr><tr>
-<td class="n">22</td>
+<td class="n">16</td>
 <td><div class="gname">森之歌：世界</div>
 <div class="gsub">GALAXY GAMES</div></td>
-<td><span class="state s-back">久違回榜</span><div class="dtd" style="margin-top:4px">上市 2026-05-12<i class="asof">窗內可在榜 28 天</i></div></td>
+<td><span class="state s-back">久違回榜</span><div class="dtd" style="margin-top:4px">上市 <b>96</b> 天 · <i class="agez">久違回榜</i><i class="asof">2026-05-12 · 可在榜 28 天</i></div></td>
 <td><div class="sc"><div class="sc-v">0.6</div>
 <svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="2.0" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">0.3 ＋ 0.2 ＋ 0 ＋ 0</div></div></td>
+<div class="sc-n" title="四榜榜分相加。分數無絕對意義、只能比大小；比例條分母為當期最高分，跨期不可比長度">0.3 ＋ 0.2 ＋ 0 ＋ 0</div>
+<div class="sc-r" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，與窗長無關。本組排序用累計分，這個數字只作對照——可在榜天數從 9 到 27 天不等，只看累計會低估上市第二週的產品">日均 0.02<i class="gcalc">÷28 天</i></div></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="127.1,22.8 132.0,22.7"/></svg>
 <div class="gl"><b>2</b>天 · 79→78 · 佳<b>#78</b></div>
-<div class="gl">榜分 0.3<i class="gcalc">＝2 × 0.177</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
+<div class="gl">榜分 0.3<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝2 × 0.177</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="127.1,24.3 132.0,24.3"/></svg>
 <div class="gl"><b>2</b>天 · 111→109 · 佳<b>#109</b></div>
-<div class="gl">榜分 0.2<i class="gcalc">＝2 × 0.113</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td class="c gl-off">未進榜</td>
-<td class="c gl-off">未進榜</td>
-<td><span class="gev gev-low">訊號稀薄</span>
+<div class="gl">榜分 0.2<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝2 × 0.113</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
+<td class="c gl-off" title="有商店 app，但窗內沒有一天進到 Top 200">未進榜</td>
+<td class="c gl-off" title="有商店 app，但窗內沒有一天進到 Top 200">未進榜</td>
+<td><span class="gev gev-low" title="量的是判斷依據夠不夠，不是產品強弱。六級定義與密度算法見分頁 08">訊號稀薄</span>
 <div class="meta-s">密度 7%　·　進榜 1/2 平台</div></td>
 </tr><tr>
-<td class="n">23</td>
+<td class="n">17</td>
 <td><div class="gname">真三國無雙霸</div>
 <div class="gsub">NEOCRAFT LIMITED · <span class="gp">Hack and Slash</span> · Mid-core</div></td>
-<td><span class="state s-fade">曇花</span><div class="dtd" style="margin-top:4px">上市 2026-07-30<i class="asof">窗內可在榜 17 天</i></div></td>
+<td><span class="state s-fade">曇花</span><div class="dtd" style="margin-top:4px">上市 <b>17</b> 天 · <i class="agez">15–60 天</i><i class="asof">2026-07-30 · 可在榜 17 天</i></div></td>
 <td><div class="sc"><div class="sc-v">0.5</div>
 <svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="2.0" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">0.5 ＋ 0.0 ＋ 0 ＋ 0</div></div></td>
+<div class="sc-n" title="四榜榜分相加。分數無絕對意義、只能比大小；比例條分母為當期最高分，跨期不可比長度">0.5 ＋ 0.0 ＋ 0 ＋ 0</div>
+<div class="sc-r" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，與窗長無關。本組排序用累計分，這個數字只作對照——可在榜天數從 9 到 27 天不等，只看累計會低估上市第二週的產品">日均 0.03<i class="gcalc">÷17 天</i></div></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="53.8,26.3 58.7,25.0 63.6,25.4 68.4,25.6 73.3,26.0 78.2,26.1 83.1,26.4 88.0,26.4 92.9,25.7 97.8,25.9 102.7,26.6"/></svg>
 <div class="gl"><b>11</b>天 · 173→182 · 佳<b>#130</b></div>
-<div class="gl">榜分 0.5<i class="gcalc">＝11 × 0.043</i><i class="gt g-out" title="掉出 Top 200">掉出</i></div></td>
+<div class="gl">榜分 0.5<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝11 × 0.043</i><i class="gt g-out" title="掉出 Top 200">掉出</i></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="58.7,26.4 63.6,26.8"/></svg>
 <div class="gl"><b>2</b>天 · 175→193 · 佳<b>#175</b></div>
-<div class="gl">榜分 0.0<i class="gcalc">＝2 × 0.016</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td class="c gl-off">未進榜</td>
-<td class="c gl-off">未進榜</td>
-<td><span class="gev gev-ok">足夠</span>
+<div class="gl">榜分 0.0<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝2 × 0.016</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
+<td class="c gl-off" title="有商店 app，但窗內沒有一天進到 Top 200">未進榜</td>
+<td class="c gl-off" title="有商店 app，但窗內沒有一天進到 Top 200">未進榜</td>
+<td><span class="gev gev-ok" title="量的是判斷依據夠不夠，不是產品強弱。六級定義與密度算法見分頁 08">足夠</span>
 <div class="meta-s">密度 65%　·　進榜 1/2 平台</div></td>
 </tr><tr>
-<td class="n">24</td>
+<td class="n">18</td>
 <td><div class="gname">潛龍：武俠像素RPG</div>
 <div class="gsub">Standegg · <span class="gp">Idle RPG</span> · Mid-core</div></td>
-<td><span class="state s-back">久違回榜</span><div class="dtd" style="margin-top:4px">上市 2025-08-04<i class="asof">窗內可在榜 28 天</i></div></td>
+<td><span class="state s-back">久違回榜</span><div class="dtd" style="margin-top:4px">上市 <b>377</b> 天 · <i class="agez">久違回榜</i><i class="asof">2025-08-04 · 可在榜 28 天</i></div></td>
 <td><div class="sc"><div class="sc-v">0.1</div>
 <svg viewBox="0 0 100 8" class="sc-bar" preserveAspectRatio="none"><rect x="0" y="0" width="100" height="8" rx="4" class="sc-tr"/><rect x="0" y="0" width="2.0" height="8" rx="4" class="sc-fl"/></svg>
-<div class="sc-n">0.0 ＋ 0 ＋ 0.1 ＋ 0</div></div></td>
+<div class="sc-n" title="四榜榜分相加。分數無絕對意義、只能比大小；比例條分母為當期最高分，跨期不可比長度">0.0 ＋ 0 ＋ 0.1 ＋ 0</div>
+<div class="sc-r" title="日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數，與窗長無關。本組排序用累計分，這個數字只作對照——可在榜天數從 9 到 27 天不等，只看累計會低估上市第二週的產品">日均 0.00<i class="gcalc">÷28 天</i></div></div></td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><circle class="gs-ios-d" cx="9.8" cy="26.6" r="1.7"/></svg>
 <div class="gl"><b>1</b>天 · 185→185 · 佳<b>#185</b></div>
-<div class="gl">榜分 0.0<i class="gcalc">＝1 × 0.015</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
-<td class="c gl-off">未進榜</td>
+<div class="gl">榜分 0.0<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝1 × 0.015</i><i class="gt g-fl" title="樣本太少">樣本少</i></div></td>
+<td class="c gl-off" title="有商店 app，但窗內沒有一天進到 Top 200">未進榜</td>
 <td class="c"><svg viewBox="0 0 132 30" class="gsp" style="width:132px" role="img" aria-label="窗內暢銷榜名次軌跡"><polyline class="gs-ios" points="107.6,26.6 112.4,26.7 117.3,26.8 122.2,26.7 127.1,26.9 132.0,26.9"/></svg>
 <div class="gl"><b>6</b>天 · 183→197 · 佳<b>#183</b></div>
-<div class="gl">榜分 0.1<i class="gcalc">＝6 × 0.009</i><i class="gt g-fl" title="持平">持平</i></div></td>
-<td class="c gl-off">未進榜</td>
-<td><span class="gev gev-low">訊號稀薄</span>
+<div class="gl">榜分 0.1<i class="gcalc" title="榜分 ＝ 在榜天數 × 平均名次分">＝6 × 0.009</i><i class="gt g-fl" title="持平">持平</i></div></td>
+<td class="c gl-off" title="有商店 app，但窗內沒有一天進到 Top 200">未進榜</td>
+<td><span class="gev gev-low" title="量的是判斷依據夠不夠，不是產品強弱。六級定義與密度算法見分頁 08">訊號稀薄</span>
 <div class="meta-s">密度 21%　·　進榜 2/2 平台</div></td>
 </tr></tbody></table></div>
 
 <div class="note-sm">
-<p>① 折線為該榜窗內逐日名次，<b>log 尺度、第 1 名在最上面</b>，斷線＝當日不在 Top 200。「佳#N」是<b>窗內</b>最佳名次，不是上市以來最佳。</p>
-<p>② 走勢：在榜日切前後兩半、各取名次中位數相減，差 ≥15 名判<b>爬升</b>、≤−15 判<b>滑落</b>，其餘<b>持平</b>；最後在榜日之後又有 3 個觀測日未進榜＝<b>掉出 Top 200</b>；在榜 ≤3 天不判方向。
-<b>⚠ Android 遊戲榜原始深度約 599 名，四條榜一律切到 Top 200 才計數</b>（不切則彼此不可比），所以 Android 的「掉出」語意較嚴——可能只是跌出前 200、仍在商店榜上。</p>
-<p>③ 「遊戲榜有、全類別榜無」是正常的：遊戲榜第 150 名進不了跨類別的前 200。標<b>無此平台記錄</b>＝該平台沒有商店 app（與「未進榜」不同，後者是有上架但擠不進前 200）。</p>
-<p>④ <b>證據強度量的是判斷依據夠不夠，不是產品強弱</b>——完整六級定義見「新上市榜」分頁註腳⑧。「窗短·穩定」「窗內樣本不足」走灰階，是觀測期的狀態不是評價。</p>
-<p>⑤ <b>新上市榜表列 30 筆中，有 6 筆不在本頁</b>——它們在四條暢銷榜前 200 <b>一次都沒進過</b>：<b>天天拼詞王</b>（可在榜 28 天）、<b>趙雲與阿斗</b>（可在榜 28 天）、<b>魂墜深境</b>（可在榜 10 天）、<b>完蛋！我被美少女攻略了</b>（可在榜 26 天）、<b>MAJO - 末日魔女策略 RPG</b>（可在榜 5 天、可觀測不足）、<b>蘇丹的遊戲</b>（可在榜 23 天）。
-<b>下載榜有量、變現側零訊號</b>——那正是本頁存在的理由：只看新上市榜會覺得它們「有量」。</p>
+<p>① 折線＝該榜窗內逐日名次，<b>log 尺度、#1 在最上，斷線＝當日不在 Top 200</b>；「佳 #N」為窗內最佳。<span class="dim" title="走勢：在榜日切前後兩半取名次中位數相減，差 ≥15 名判爬升／≤−15 判滑落，其餘持平；最後在榜日後再 3 個觀測日未進榜＝掉出。在榜 ≤3 天不判方向。Android 遊戲榜原始深度約 599 名，四條榜一律切到 Top 200 才計數，故 Android 的「掉出」語意較嚴。完整口徑見「方法與口徑」">走勢與名次分口徑 ▸</span></p>
+<p>② 日均榜分 ＝ 綜合分 ÷ 可在榜天數（上限 4.00）｜綜合分 ＝ 四榜逐日名次分加總（上限 112）｜名次分 ＝ 1 − log10(名次) ÷ log10(200)。比例條分母為<b>該組當期最高分</b>，跨期不可比長度。</p>
+<p>③ 四條暢銷榜前 200 <b>一次未進</b>（6/30 筆，不列於本頁）：<b>天天拼詞王</b>、<b>趙雲與阿斗</b>、<b>魂墜深境</b>、<b>完蛋！我被美少女攻略了</b>、<b>MAJO - 末日魔女策略 RPG</b>、<b>蘇丹的遊戲</b>。</p>
 </div></section><section class="pane">
-<div class="rail"><span class="rail-n">02</span><h2>品類解剖</h2><span class="badge">母體＝本期 TW Top 50</span></div>
+<div class="rail"><span class="rail-n">05</span><h2>品類解剖</h2><span class="badge">母體＝本期 TW Top 50</span></div>
 <div class="lead">這一區回答一件事：<b>本期 TW Top 50 的營收，是由哪些品類撐起來的。</b>
 佔比以營收加權（不是產品數），所以一支王者不會被十支小品洗掉；括號內另附家數供對照。</div>
 <div class="two">
@@ -2667,12 +2642,11 @@ CookieRun: Crumble（7/29 上市）在 7 月榜落榜就是這樣來的，不是
 <div class="rg down">-57pp</div></div></div>
 <div class="note-sm">⚠ 新進樣本僅 3 款，一款產品就佔 33 個百分點。這裡只能當方向，不能當結論。</div>
 </div></section><section class="pane">
-<div class="rail"><span class="rail-n">05</span><h2>Apple 推薦</h2>
+<div class="rail"><span class="rail-n">06</span><h2>Apple 推薦</h2>
 <span class="badge">TW · 2026-07 · 31/31 天</span></div>
-<div class="lead">這一區只回答一件事：<b>這款這段期間的量，有多少是 Apple 免費給的？我在解讀它的名次與 CPI 時要不要打折？</b>
-Apple 編輯推薦是外生的免費量，會同時污染兩件你天天在看的事——競品名次突然跳升（若源自推薦就不是它買量變強，不必跟進加碼），
-以及自家被推時自然量暴增（會稀釋 eCPI、讓當期 UA 效率虛高，週報必須標註）。
-<b>Today 與遊戲分頁是量級差不是程度差</b>：Today 是開 App 第一眼就撞到的滿版故事，遊戲分頁要使用者主動點進去，所以本表以版位份量排序，Today 一律在前。</div>
+<div class="lead"><b>這款的量有多少是 Apple 免費給的？解讀它的名次與 CPI 時要不要打折？</b>
+競品名次跳升若源自推薦，就不是它買量變強、不必跟進加碼；自家被推則自然量暴增、稀釋 eCPI，週報必須標註。
+<b>Today 與遊戲分頁是量級差不是程度差</b>，本表以版位份量排序，Today 一律在前。</div>
 <div class="tbl-wrap"><table>
 <colgroup><col><col style="width:132px"><col style="width:152px"><col style="width:216px"><col style="width:112px"></colgroup>
 <thead><tr><th>產品 · 編輯標題</th><th>版位份量</th><th>曝光期間</th><th>曝光有沒有換到量</th><th>TW 主榜</th></tr></thead>
@@ -2822,14 +2796,11 @@ Apple 編輯推薦是外生的免費量，會同時污染兩件你天天在看�
 <td><span class="conv c-na">未進下載榜</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr></tbody></table></div>
 <div class="legend"><span class="tier t1" title="App Store 開啟即見的滿版故事，最上緣。整份報告裡最重的免費曝光">Today 首屏</span><span class="tier t2" title="App Store 開啟即見的滿版故事">Today</span><span class="tier t3" title="遊戲分頁最上方的單款大卡，需使用者點進遊戲分頁">分頁大圖卡</span><span class="tier t4" title="遊戲分頁中下段的清單列，曝光價值最低">分頁清單</span></div>
-<div class="note-sm">共 355 款在 2026-07 月內拿過 Apple 推薦，此處列前 24 款，
-依<b>版位份量</b>排序（Today 優先），同級再依有沒有換到量。
-日期為 <b>MM/DD</b>，相對天數一律以資料錨點日 2026-08-15 計，不是你閱讀的今天——這份是離線 HTML，兩者不同。
-「曝光期間」是首見與最近一次之間的區間，中間不一定每天都有版位，所以另標實際有版位的天數。</div>
-<div class="rail" style="margin:44px 0 16px"><span class="rail-n">05b</span><h2>遊戲分頁版位結構</h2>
+<div class="note-sm" title="日期為 MM/DD，相對天數一律以資料錨點日 2026-08-15 計，不是你閱讀的今天——這份是離線 HTML，兩者不同">共 355 款在 2026-07 月內拿過 Apple 推薦，此處列前 24 款，依<b>版位份量</b>排序（Today 優先），同級再依有沒有換到量。
+「曝光期間」是首見到最近一次的區間，中間不一定每天有版位，故另標實際有版位的天數。</div>
+<div class="rail" style="margin:44px 0 16px"><span class="rail-n">06b</span><h2>遊戲分頁版位結構</h2>
 <span class="badge">每日由上而下的區塊排序</span></div>
-<div class="lead sm">position 是<b>當日</b>遊戲分頁由上往下的區塊序號（實測同一天序號不重複），1–3 是最頂端的大圖卡，越往下曝光價值越低。
-各型別的 position 範圍會跨日重疊，因為每天版面配置不同。</div>
+<div class="lead sm" title="各型別的 position 範圍會跨日重疊，因為每天版面配置不同">position 是<b>當日</b>遊戲分頁由上往下的區塊序號，1–3 是最頂端的大圖卡，越往下曝光價值越低。</div>
 <div class="slotkey"><div class="sk"><svg width="14" height="14" viewBox="0 0 14 14"><rect x="1" y="4" width="12" height="7" rx="2" class="tl-l1"/></svg>
 <div><b>大圖推薦卡</b> <span class="dim">position 1–12</span><div class="skd">分頁最上方，單款一張大卡，曝光價值最高</div></div></div><div class="sk"><svg width="14" height="14" viewBox="0 0 14 14"><rect x="1" y="4" width="12" height="7" rx="2" class="tl-l1"/></svg>
 <div><b>排行榜區塊</b> <span class="dim">position 12–16</span><div class="skd">分頁中段的榜單模組</div></div></div><div class="sk"><svg width="14" height="14" viewBox="0 0 14 14"><rect x="1" y="4" width="12" height="7" rx="2" class="tl-l2"/></svg>
@@ -2979,18 +2950,14 @@ Apple 編輯推薦是外生的免費量，會同時污染兩件你天天在看�
 <text x="730" y="674" class="tl-days">31 天</text>
 <rect x="705.8" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="690.7" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="675.5" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="660.4" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="645.2" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="630.0" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="614.9" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="599.7" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="584.5" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="569.4" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="554.2" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="539.1" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="523.9" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="508.7" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="493.6" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="478.4" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="463.3" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="448.1" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="432.9" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="417.8" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="402.6" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="387.5" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="372.3" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="357.1" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="342.0" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="326.8" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="311.6" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="296.5" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="281.3" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="266.2" y="662" width="13.2" height="13" rx="3" class="tl-l3"/><rect x="251.0" y="662" width="13.2" height="13" rx="3" class="tl-l3"/></g></svg></div>
 <div class="note-sm">列出 20 款（有進主榜或曾到 position 1–3 者），另 287 款僅後段版位曝光未列。
-方塊＝當天出現在遊戲分頁，顏色為該日拿到的最佳版位型別；灰底直帶＝當天無抓取資料，不是斷推。</div>
+方塊＝當天在遊戲分頁、顏色為該日最佳版位型別；<b>灰底直帶＝當天無抓取資料，不是斷推</b>。</div>
 <div class="note-sm">
-<p><b>曝光有沒有換到量：</b>本月 307 款拿到曝光，
-其中 <b>41 款曝光轉量</b>（下載 MoM ≥ +20% 或本月新進下載榜）、
+<p><b>曝光有沒有換到量</b>：本月 307 款拿到曝光，<b>41 款轉量</b>（下載 MoM ≥ +20% 或本月新進下載榜）、
 32 款拿了版位但下載沒起來、
-其餘 234 款根本不在 <b>2026-07 月</b>下載榜前 200
-（多半是老遊戲本來就不靠下載，不算「沒轉到量」）。
-⚠ 這個母體是<b>月</b>下載榜 Top 200，與新上市榜那頁的<b>每日</b>下載榜 Top 100 是兩個池子，數字不可互推。</p>
-<p>只有 34 款同時在 TW 營收 Top 50。
-有價值的讀法是把曝光日當事件標記，看它之後名次有沒有拉升；沒拉升代表天花板在轉化或留存，不值得抄它的買量。
-<b>取數必須帶 <code>category=6014</code></b>，不帶會拿到 App Store 首頁的一般版位（天氣、AR、兒童），與手遊判斷無關。</p></div></section><section class="pane">
-<div class="rail"><span class="rail-n">04</span><h2>鄰近市場落差</h2><span class="badge">JP／KR／HK 前 100 · 台灣未上架</span></div>
+234 款不在 2026-07 月下載榜前 200<span class="dim" title="多半是老遊戲本來就不靠下載，不算「沒轉到量」">（不算沒轉到量）</span>。
+⚠ 這是<b>月</b>下載榜 Top 200，與新上市榜的<b>每日</b>下載榜 Top 100 是兩個池子，<b>數字不可互推</b>。</p>
+<p>只有 34 款同時在 TW 營收 Top 50。讀法：把曝光日當事件標記，看它之後名次有沒有拉升；<b>沒拉升代表天花板在轉化或留存，不值得抄它的買量</b>。</p></div></section><section class="pane">
+<div class="rail"><span class="rail-n">07</span><h2>鄰近市場落差</h2><span class="badge">JP／KR／HK 前 100 · 台灣未上架</span></div>
 <div class="lead">日韓港賺錢、台灣還沒上架的產品，用途是<b>選品與代理線索</b>。
 不是預約上市清單——預購中的遊戲沒有營收、不會上榜，ST 也沒有列舉端點。</div>
 <div class="three"><div class="end">
@@ -3044,10 +3011,11 @@ Apple 編輯推薦是外生的免費量，會同時污染兩件你天天在看�
 <span class="gp">Virtual Casino</span></li><li>
 <span class="rr">#53</span><span class="rnm">Honor of Kings</span>
 <span class="gp">MOBA</span></li></ol></div></div>
-<div class="note-sm">名次為該市場當月營收榜名次。共 155 款候選 → 台灣未上架 73 款 → 逐支查詢 40 款（達單次上限 40）。</div></section><section class="pane"><div class="rail"><span class="rail-n">05</span><h2>方法與口徑</h2></div>
+<div class="note-sm">名次為該市場當月營收榜名次。共 155 款候選 → 台灣未上架 73 款 → 逐支查詢 40 款（達單次上限 40）。</div></section><section class="pane"><div class="rail"><span class="rail-n">08</span><h2>方法與口徑</h2></div>
 <ul class="method">
 <li><b>營收為 Sensor Tower 的 net 估算值</b>（已扣平台抽成），不是流水、不是開發商實收。與 GDS <code>rev_vnd</code>、Metabase <code>charged_value</code> 三者互不相通，不得混用或同表比較。</li>
 <li><b>下載為 Sensor Tower 估算值</b>（下載沒有平台抽成，不適用 net 的說法），與平台後台數字有系統性落差。</li>
+<li><b>ST 會回溯修正估算</b>，最近一至兩個結算月是初估值，下期重跑時同一個月的數字可能被改。</li>
 <li>主榜走 <code>/v1/unified/sales_report_estimates_comparison_attributes</code>（Apple＋Google 合併），iOS／Android 欄為 <code>entities[]</code> 拆解值。<b>Android 為建模估算、iOS 為實數</b>，故 Android 段以斜紋標示。</li>
 <li>時間窗 2026-05、2026-06、2026-07；新王判定回看至 2026-02。</li>
 <li><b>新王</b>＝前 6 個月未進 Top 50 且上市未滿 180 天；<b>首見</b>＝同樣未進過榜但屬老作回榜（回歸活動、聯動、改版）。兩者語意不同不可混談。</li>
@@ -3057,11 +3025,37 @@ Apple 編輯推薦是外生的免費量，會同時污染兩件你天天在看�
 <li>品類 taxonomy 取自 <code>game_intel_data</code>（ST 自有分類，非 Apple 分類）。只用 sub_genre 與 product_model：art_style／camera_pov 跨月幾乎不變、對「市場走什麼配方」無解釋力；setting 與 theme 高度共線。</li>
 <li><b>品類佔比為營收加權</b>，不是產品數計數——計數會讓十支小品蓋過一支王者。</li>
 <li>本期為 3 個月窗，<b>檔期效應未剔除</b>（暑假、春節、平台促銷）。跨期比較只准比同標籤產品的進出，不要對絕對金額做趨勢陳述。</li>
-<li>Apple 推薦取數<b>必須帶 <code>category=6014</code></b>；不帶會拿到 App Store 首頁的一般版位，與手遊無關。版位資料為即時快照、過期抓不回來。</li>
+<li>Apple 推薦取數<b>必須帶 <code>category=6014</code></b>；不帶會拿到 App Store 首頁的一般版位（天氣、AR、兒童），與手遊無關。
+版位資料為即時快照、過期抓不回來，<b>故只涵蓋到資料月月底</b>——新上市榜（分頁 03）的觀測窗延伸到月底之後，
+<b>該段期間才拿到版位的產品不會亮徽章，這是系統性偽陰性：沒徽章不等於沒被推薦</b>。</li>
 <li><b>新上市榜是全份報告唯一的日粒度分頁</b>，其他分頁一律月粒度。母體＝觀測窗內<b>每日</b> TW 下載榜 Top 100 的聯集，門檻走<b>日均</b>（1,434 次/日）而非累計。
 用累計比會讓月中／月底上市的產品拿幾天量去比整月量，粒度換多細都一樣被刷掉——2026-07 期的 CookieRun: Crumble（7/29 上市）就是這樣落榜的。</li>
 <li>新上市榜的<b>上市日取 <code>min(ST release_date, 窗內首次進日榜日)</code></b>：ST 的 release_date 會出現未來日（預購／預定上市日），直接採信會算出負的上市天數而整列被刷掉。兩者不一致時表上標出 ST 原值。</li>
 <li>ST 日資料延遲約 T-2，觀測窗尾端停在實際有值的最後一天（2026-08-15），不是產出當天。</li>
+<li><b>新上市榜（分頁 03）不出 ARPD 與任何營收金額。</b>新品營收落後下載數週，日粒度的 ARPD 分母幾乎全是還沒付費的用戶，算出來系統性趨近 0，只會生出假結論。變現側一律只給暢銷榜名次，要看金額請回主榜。</li>
+<li><b>證據強度六級（分頁 03、04 共用）。</b>密度 ＝ 最深在榜天數 ÷ <b>窗內上市後可在榜的天數</b>——分母刻意不用窗長 28 天，
+因為固定窗長會系統性懲罰窗末上市的產品（只有 4 天可觀測卻拿 28 當分母，穩坐前 30 也會被算成密度 11%）。
+六級：<b>足夠</b>＝密度 ≥60% 且可觀測 ≥14 天｜<b>窗短·穩定</b>＝密度 ≥60% 但可觀測 &lt;14 天｜<b>斷續在榜</b>＝40–59%｜<b>訊號稀薄</b>＝&lt;40%｜
+<b>無營收訊號</b>＝可觀測 ≥7 天卻四條榜一次未進｜<b>窗內樣本不足</b>＝可觀測 &lt;7 天。
+<b>⚠ 這一欄量的是判斷依據夠不夠，不是產品強弱</b>；「窗短·穩定」與「窗內樣本不足」是觀測期狀態、不是產品評價，故走灰階不走警示色。
+四條榜每期各自的取得天數若不足窗長，該欄在榜天數會低估。</li>
+<li><b>同款雙包（分頁 03）。</b>新上市產品常由同一發行方用<b>不同發行主體</b>分別上架雙平台，ST 初期判不出是同一款、拆成兩筆記錄；
+過一陣子 ST 會自己合併，<b>但舊記錄的歷史序列不會被搬過去</b>，所以只要觀測窗跨過合併日，同一款就留下兩筆各帶半截序列。這是結構性現象、不是偶發。
+本期分組有<b>鐵證</b>：兩筆記錄共用同一個商店 app（同一個 iOS app_id 或 Android package），是 ST 自己的資料在說它們是同一支。
+表上<b>不合併原始兩筆、不改任何原始數字、名次一律不合併</b>，只加一條群組橫槓——判錯的代價只是「多畫一條錯的橫槓」，可還原。</li>
+<li><b>新上市暢銷榜（分頁 04）依上市天齡分兩組，因為兩組能用的窗長不同。</b>
+名次分 ＝ 1 − log10(名次) ÷ log10(200)（#1 得 1.0、#200 得 0；用 log 而非線性，因為 #1→#10 與 #150→#160 在決策上不等值）；
+單榜分 ＝ 該榜在榜各日名次分之總和 ＝ 在榜天數 × 平均名次分；<b>綜合分 ＝ 四榜相加</b>（相加本身就在獎勵雙平台與跨類別總榜都進得去）。
+刻意<b>不用「在榜天數 × 最佳名次的名次分」</b>——那會讓「首日衝進前十、之後掉到 150 名待 20 天」把一次尖峰乘上與它無關的天數。</li>
+<li><b>近 7 天上市那一組不套用六級證據強度，也不用綜合分排序。</b>
+六級的第一道閘是「可觀測 &lt;7 天 → 窗內樣本不足」，而該組的可觀測天數必然 &lt;7，整組會拿到同一個標籤（零資訊，且會被誤讀成「這批產品不行」）；
+累計的綜合分在組內同樣不公平（上市 2 天最多只能累 2 天）。改用<b>日均榜分 ＝ 綜合分 ÷ 窗內可在榜天數</b>（上限 4.00）——分母是每列自己的可觀測天數，
+與上市早晚、與窗長都無關，所以上市 2 天與上市 7 天可直接比大小；小樣本的變異以「可在榜 N 天」印在表上揭露，不用標籤壓平。
+末欄<b>不放評價標籤，只放三個逐列會變的事實</b>：榜到位廣度（進過的榜數 ÷ 有商店記錄的榜數）、窗末最佳名次、首次進榜距自己上市第幾天。
+⚠ 這一欄試過「開榜即進／延遲進榜」兩級標籤，實測整組落在同一級（ST 的 ranking 反映前一日營收，首次進榜系統性落在上市隔天），
+與「整組都是窗內樣本不足」是同一種零資訊，只是換了個名字，故改為純數字。</li>
+<li><b>兩種分數都無絕對意義、只能比大小</b>，比例條分母是該組當期最高分（不是理論上限），<b>跨期不可比長度</b>。
+分頁 03、分頁 04 兩組的序號三者各自獨立，<b>不可互相引用為名次</b>。暢銷榜名次為平台商店實榜（無估算誤差），與主榜 ST 營收估算 USD <b>不得混用、不得相互換算</b>。</li>
 <li>快取檔名自 2026-08-14 起接一段完整 key 的 SHA1；在那之前檔名只截前 180 字元，<b>unified 榜的 <code>limit</code> 剛好被截掉</b>，導致 limit=50 與 limit=200 共用同一個快取檔。
 受害範圍不只一處：①2026-07 期新上市榜宣稱的「前 200 名母體」實際只掃到前 50；
 ②<b>同期 Apple 推薦頁的「曝光轉量」統計同樣被汙染</b>——它比對的也是月下載榜 Top 200，
