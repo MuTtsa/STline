@@ -9,8 +9,7 @@
 --terracotta:#C2410C;--harvest:#D9A441;--cardinal:#B01B12;--sage:#1F6B4E;
 --bg:#F6F4F1;--card:#FFFFFF;--line:rgba(17,17,17,.16);--line-2:rgba(17,17,17,.06);
 --r-card:14px;--r-tile:10px;--r-pill:999px;--warnbg:#FFF8E8;--warnfg:#7A5600;--warnln:#E8C97A}
-/* 強制淺色：Will 指定白底風格。原本的 prefers-color-scheme:dark 會讓深色模式使用者
-   看到整頁黑底，等於前面所有淺色調整都白做——2026-08-10 移除。 */
+
 
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--bg);color:var(--ink);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased;
@@ -20,23 +19,10 @@ font-family:'Inter',ui-sans-serif,system-ui,-apple-system,"Segoe UI","PingFang T
 background:var(--card);border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(17,17,17,.05)}
 .logo{width:36px;height:36px;border-radius:999px;background:var(--ink);color:var(--card);display:grid;place-items:center;font-size:11px}
 .tb-t{font-size:15px;font-weight:500}.tb-s{margin-left:auto;font-size:12px;color:var(--dust)}
-/* 版寬：觀測環境固定 1920×1080。1920 − 捲軸 17 = 1903，扣左右 padding 80 → 表格可用寬 1358。
-   舊值 1180 只給到 1098，比 table.nt 的 min-width 還窄，所以新上市榜一定要左右拖移。
-   2026-08-17 由 1440 再放寬到 1600（可用寬 1518）：新上市榜加了「雙系統暢銷榜」欄，
-   固定欄合計 1304px，1440 版寬只剩 134px 給產品名，中文遊戲名會斷成四行。
-   1600 在 1903 的可用寬內仍有 300px 餘裕，不會反過來製造捲軸。
-   刻意不用 clamp()/vw：vw 在多數瀏覽器含捲軸寬，100vw−96px 在 1920 會多算 17px，
-   那本身就是水平捲軸最常見的來源。max-width 搭 border-box 在窄視窗已會自動縮。 */
+
 main{max-width:1600px;margin:0 auto;padding:48px 40px 96px}
-/* 版面變寬後正文行長會失控，中文一行超過 60 字就難讀——說明文字另外壓寬 */
-/* ⚠ 這裡曾經有一條 .lead,.note-sm,...{max-width:900px}（2026-08-14 加、08-17 移除）。
-   加它的理由是「中文一行超過 55–60 字難讀」，但一個固定 px 上限套在 5 種字級上，
-   實測只有 .subline 落在該區間，.note-sm 在 900px 就已經 82 字/行——付了滿版的代價、
-   沒買到可讀性，還讓面板滿版而文字停在 900px，右側斷成兩截。
-   長行的閱讀代價來自「回行時找不到下一行起點」，那是**行數**的函數不是行長的函數：
-   本檔 33 個說明區塊裡 31 個滿版後 ≤3 行，三行以內眼睛不需要掃視。
-   所以控制變數改成行數：任何說明區塊滿版後 ≤3 行（.lead ≤4 行），超過的用**拆段**壓回，
-   不用縮寬。段距對回行的幫助遠大於縮短行長，而且不破壞滿版。 */
+
+
 h1{font-size:52px;font-weight:400;letter-spacing:-.04em;line-height:1.06;margin-bottom:12px}
 .subline{font-size:15px;color:var(--dust);margin-bottom:28px;text-wrap:balance}
 .banner{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ink);
@@ -45,9 +31,9 @@ border-radius:var(--r-tile);padding:16px 20px;margin-bottom:28px}
 .bh{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--dust);margin-bottom:8px}
 ul.plain{list-style:none}ul.plain li{padding:3px 0;font-size:14px}
 .legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px}
-/* 標籤是全表視覺重心：字符改成實心方 badge 反白，尺寸放大，位置移到第 3 欄 */
+
 .pill{display:inline-flex;align-items:center;gap:6px;padding:3px 11px 3px 4px;border-radius:var(--r-pill);font-size:12px;font-weight:500;white-space:nowrap}
-/* i 的 background 取 currentColor（＝pill 主色），字符包在 b 內反白，避免 currentColor 自我覆蓋 */
+
 .pill i{font-style:normal;font-size:10px;width:17px;height:17px;border-radius:5px;display:inline-grid;place-items:center;background:currentColor}
 .pill i b{color:var(--card);font-weight:600;line-height:1}
 
@@ -106,7 +92,7 @@ padding:7px 0;border-top:1px solid var(--line-2);font-size:12px}
 .ds{font-size:10px;text-align:center;padding:2px 6px;border-radius:4px;white-space:nowrap}
 .st-new{color:var(--cardinal);background:color-mix(in srgb,var(--cardinal) 11%,transparent)}
 .st-old{color:var(--pewter);background:var(--fossil)}
-/* 低置信度區塊：整塊降權，讓「資料不硬」用視覺重量表達，而不是靠讀者讀小字 */
+
 .lowconf{position:relative;margin-top:40px;padding:16px 18px 14px 22px;border:1px dashed rgba(17,17,17,.16);
 border-radius:10px;background:#FAF9F7;color:var(--dust)}
 .lowconf::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;border-radius:10px 0 0 10px;
@@ -136,7 +122,7 @@ padding:12px 14px;margin-bottom:20px;font-size:12px;line-height:1.8;color:var(--
 .mixrow{font-size:11px;margin-top:3px;font-variant-numeric:tabular-nums}
 b.hotpos{color:var(--cardinal)}
 .thu{font-weight:400;color:var(--pewter);font-size:10px}
-/* Apple 推薦：版位份量分四級。Today 用實心底，遊戲分頁用描邊——形狀就分出量級差 */
+
 .tier{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;white-space:nowrap;margin-right:5px}
 .t1{background:var(--cardinal);color:var(--card)}
 .t2{background:color-mix(in srgb,var(--cardinal) 16%,transparent);color:var(--cardinal);
@@ -147,7 +133,7 @@ border:1px solid color-mix(in srgb,var(--cardinal) 40%,transparent)}
 .c-yes{color:var(--ink);background:color-mix(in srgb,var(--sage) 26%,transparent)}
 .c-no{color:var(--dust);background:var(--fossil)}
 .c-na{color:var(--pewter);background:repeating-linear-gradient(45deg,transparent 0 4px,var(--line-2) 4px 8px)}
-/* 新上市榜：狀態標籤用方角＋左色標，與主榜圓角 pill 形狀分流 */
+
 .state{display:inline-flex;align-items:center;padding:3px 9px 3px 6px;border-radius:4px;
 border-left:3px solid currentColor;font-size:11px;font-weight:500;white-space:nowrap;margin-right:5px}
 .s-new{color:var(--cardinal);background:color-mix(in srgb,var(--cardinal) 11%,transparent)}
@@ -156,8 +142,7 @@ border-left:3px solid currentColor;font-size:11px;font-weight:500;white-space:no
 .s-back{color:var(--sage);background:color-mix(in srgb,var(--sage) 12%,transparent)}
 .s-lock{color:var(--pewter);background:repeating-linear-gradient(45deg,transparent 0 4px,var(--line-2) 4px 8px);border-left-color:var(--pewter)}
 .feat{font-size:10px;color:var(--harvest);white-space:nowrap}
-/* 暢銷榜名次軌跡。兩條線刻意用 cardinal／sage 而非同色深淺——iOS 與 Android 是
-   兩個獨立母體，同色深淺會被讀成「同一件事的程度差」。 */
+
 .gsp{width:176px;height:30px;display:block;margin-bottom:3px}
 .gsp polyline{fill:none;stroke-width:1.5;stroke-linejoin:round}
 .gs-ios{stroke:var(--cardinal)}.gs-and{stroke:var(--sage)}
@@ -165,7 +150,7 @@ border-left:3px solid currentColor;font-size:11px;font-weight:500;white-space:no
 .gl{font-size:10px;color:var(--dust);white-space:nowrap;font-variant-numeric:tabular-nums;line-height:1.5}
 .gl b{font-weight:600;color:var(--ink)}
 .gl-off{color:var(--pewter)}
-/* 「無此平台記錄」再降一階：它連「沒進榜」都不是，不該與有資料的列同一個灰 */
+
 .gl-na{color:var(--dust);opacity:.55}
 .gdup{font-style:normal;font-size:9px;margin-left:4px;padding:0 4px;border-radius:3px;
 color:var(--dust);background:var(--fossil);cursor:help}
@@ -178,18 +163,19 @@ color:var(--dust);background:var(--fossil);cursor:help}
 .gev-mid{color:var(--warnfg);background:var(--warnbg)}
 .gev-low{color:var(--terracotta);background:color-mix(in srgb,var(--terracotta) 11%,transparent)}
 .gev-none{color:var(--cardinal);background:color-mix(in srgb,var(--cardinal) 10%,transparent)}
-/* 「窗內樣本不足」是資料狀態不是產品評價，用灰階、不給它任何紅綠語意 */
+
 .gev-thin{color:var(--pewter);background:var(--fossil)}
 .gden{font-style:normal;font-size:10px;color:var(--pewter)}
-/* 新上市榜的簡易版欄：只有形狀＋量級＋能不能判，細節在「新上市暢銷榜」分頁 */
+
+.mtd-base{display:block;font-size:12px;color:var(--dust);letter-spacing:0;margin-top:2px}
+
 td.c-slim{width:120px}
-/* 窄欄的表頭副標題必須自己一行且可換行：th 本體 white-space:nowrap，
-   129px 的副標題塞進 96px 內容寬會整條撐出 .tbl-wrap（實測溢出 54px） */
+
 .thu-b{display:block;white-space:normal;line-height:1.35;margin-top:2px}
 .gl-slim{margin-top:2px}
 .k-ios{color:var(--cardinal)}.k-and{color:var(--sage)}
-/* 新上市暢銷榜分頁 */
-/* 分組標頭。文字克制：組名＋筆數＋上限，理由一律掛 title 不上版面 */
+
+
 .gsec{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:20px 0 8px}
 .gsec b{font-size:15px;font-weight:500}
 .gsec span{font-size:11px;color:var(--dust);font-variant-numeric:tabular-nums}
@@ -199,10 +185,11 @@ padding:1px 8px;font-size:10px;color:var(--pewter);cursor:help}
 font-size:12px;color:var(--pewter);text-align:center}
 .agez{font-style:normal;color:var(--dust);background:var(--fossil);border-radius:var(--r-pill);padding:0 6px;font-size:10px}
 table.gt-tbl{border-collapse:collapse;width:100%;font-size:13px;min-width:1516px;table-layout:fixed}
-/* Apple 推薦表：固定欄僅 612px，吃滿版會讓第一欄膨脹到 906px 並把其餘欄推到右邊 */
+
 table.ft-tbl{min-width:0;max-width:1120px}
-/* 當月動態（MTD）：整區斜紋底＋未定案徽章，一眼看出「這不是結算數字」，零說明文字 */
+
 table.mtd-tbl{min-width:0;max-width:1260px}
+.mtd-bad{background:color-mix(in srgb,var(--cardinal) 14%,transparent);border-color:var(--cardinal);color:var(--cardinal)}
 .mtd-badge{background:repeating-linear-gradient(45deg,transparent 0 5px,color-mix(in srgb,var(--harvest) 22%,transparent) 5px 10px);
 border-color:color-mix(in srgb,var(--harvest) 45%,transparent)}
 .banner.mtd-ban{background:repeating-linear-gradient(45deg,var(--card) 0 6px,color-mix(in srgb,var(--harvest) 9%,var(--card)) 6px 12px)}
@@ -215,17 +202,17 @@ white-space:nowrap;border-bottom:1px solid var(--line);background:var(--card)}
 .sc-bar{width:100px;height:8px;display:block;margin:3px 0}
 .sc-tr{fill:var(--fossil)}.sc-fl{fill:var(--ink);opacity:.72}
 .sc-n{font-size:10px;color:var(--pewter);font-variant-numeric:tabular-nums;white-space:nowrap}
-/* 第二組的日均對照數：比拆項再降一階，明確是輔助不是主指標 */
+
 .sc-r{font-size:10px;color:var(--dust);font-variant-numeric:tabular-nums;white-space:nowrap;margin-top:2px}
 .gcalc{font-style:normal;font-size:9px;color:var(--pewter);margin-left:3px}
 .meta-s{font-size:10px;color:var(--pewter);margin-top:4px;line-height:1.45}
-/* 註腳裡的線色圖例：直接畫一小段線，比寫「紅色代表 iOS」可靠（讀者不必在腦內配對） */
+
 .gs-k{display:inline-block;width:14px;height:0;border-top:2px solid;vertical-align:middle;margin:0 3px 2px 2px}
 .gs-ki{color:var(--cardinal)}.gs-ka{color:var(--sage)}
 .gmon{font-size:10px;color:var(--pewter);margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dt{font-size:12px;font-variant-numeric:tabular-nums}
 .dtd{display:block;font-size:10px;color:var(--pewter)}
-/* 基準日印進格子裡：註腳只保護會讀註腳的人，格內標註保護所有人 */
+
 .asof{display:block;font-style:normal;font-size:9px;color:var(--dust);opacity:.6}
 .pval.pv-x{color:var(--ink);font-weight:500}
 .thbig{font-size:30px;font-weight:400;letter-spacing:-.02em;line-height:1.15}
@@ -240,11 +227,10 @@ white-space:nowrap;border-bottom:1px solid var(--line);background:var(--card)}
 .th-more{fill:var(--ink);opacity:.72}
 .thval{font-size:11px;color:var(--dust);font-variant-numeric:tabular-nums;white-space:nowrap}
 .thval i{font-style:normal;color:var(--harvest)}
-/* 不出水平捲軸的充要條件：max(所有 min-width) ≤ main − 80 − 2 = 1518 */
+
 table.nt{min-width:1518px}
 table.nt td{padding:9px 12px}
-/* 同款雙包：群組橫槓為主行，兩原列縮排降灰為子列——要讓略讀者一眼讀到「這是一款」，
-   而不是兩個對等列外加一行小字（那等於沒改） */
+
 tr.grp td{background:color-mix(in srgb,var(--harvest) 9%,transparent);border-bottom:none;padding:8px 12px 6px}
 .grp-h{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--dust)}
 .grp-h b{color:var(--ink)}
@@ -254,27 +240,26 @@ tr.grp td{background:color-mix(in srgb,var(--harvest) 9%,transparent);border-bot
 .grp-e{font-size:10px;color:var(--pewter);margin-top:4px;line-height:1.6}
 tr.grp-c-row td{background:color-mix(in srgb,var(--harvest) 4%,transparent)}
 tr.grp-c-row td:nth-child(2){padding-left:26px;border-left:2px solid color-mix(in srgb,var(--harvest) 45%,transparent)}
-/* 同名雙包提示 */
+
 .dup{display:inline-block;margin-left:6px;padding:0 5px;border-radius:3px;font-size:9px;
 color:var(--pewter);background:var(--fossil);border:1px solid var(--line-2);vertical-align:middle}
-/* ST 標示上市日與實際進榜日不一致（多半是預購／預定上市日） */
+
 .warnd{display:block;font-style:normal;font-size:9px;color:var(--harvest)}
-/* 曇花：斜紋＋降透明，讀成「熄了」而非「新的」 */
+
 .s-fade{color:var(--pewter);background:repeating-linear-gradient(135deg,transparent 0 3px,color-mix(in srgb,var(--pewter) 18%,transparent) 3px 6px)}
-/* Today 版位份量遠大於遊戲分頁清單版位：實心底 vs 純文字，形狀就分出層級 */
+
 .ft-today{display:inline-block;padding:1px 5px;border-radius:3px;color:var(--card);
 background:var(--cardinal);font-size:10px;white-space:nowrap}
-/* 窗內日走勢火花線 */
+
 .spk{width:108px;height:26px;display:block}
 .spk-ln{fill:none;stroke:var(--ink);opacity:.72;stroke-width:1.4;stroke-linejoin:round}
 .spk-thr{stroke:var(--pewter);stroke-dasharray:3 3;stroke-width:1;opacity:.7}
 .spk-dot{fill:var(--cardinal)}
 .spk-v{font-size:10px;color:var(--pewter);font-variant-numeric:tabular-nums;margin-top:2px}
-/* 年度視角 */
+
 .yr-line{stroke:var(--ink);opacity:.28;stroke-width:1}
 .yr-tick{stroke:var(--pewter);stroke-width:1}
-/* 小倍數：顏色編碼「方向」不編碼「身分」——8 個灰階分不出來，9 個色相會破壞暖紙系統，
-   類別名直接寫在每張小圖標題上才是零對照的機制 */
+
 .sm-t{font-size:11px;fill:var(--ink)}
 .sm-d{font-size:10px;font-variant-numeric:tabular-nums}
 .sm-s{font-size:9px;fill:var(--pewter);font-variant-numeric:tabular-nums}
@@ -296,12 +281,12 @@ path.sm-area.dir-down{fill:var(--pewter);opacity:.16}
 path.sm-area.dir-flat{fill:var(--ink);opacity:.08}
 .smlegend{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:10px;font-size:11px;color:var(--dust)}
 .smk,.rkk{display:inline-flex;align-items:center;gap:5px}
-/* HTML 圖例色塊一定要用 background——SVG 的 fill 對 <i> 無效，之前圖例整排是透明的 */
+
 .smk i{width:11px;height:11px;border-radius:2px;display:inline-block;border:1px solid var(--line)}
 .smk.dir-up i{background:var(--terracotta)}
 .smk.dir-down i{background:var(--pewter)}
 .smk.dir-flat i{background:var(--ink);opacity:.72}
-/* 去年同期 */
+
 .ln-prev{fill:none;stroke:var(--pewter);stroke-width:1.5;stroke-dasharray:5 4;stroke-linejoin:round}
 .yoytab{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:12px;padding:12px 16px;
 background:var(--fossil);border-radius:var(--r-tile)}
@@ -318,7 +303,7 @@ background:var(--fossil);border-radius:var(--r-tile)}
 .ysl{font-size:11px;color:var(--dust)}
 .ysv{font-size:24px;font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1.3}
 .ysv.up{color:var(--sage)}.ysv.down{color:var(--terracotta)}
-/* 基準水位帶與拆帳 */
+
 .bandbox{fill:var(--pewter);opacity:.13}
 .bandline{stroke:var(--pewter);stroke-dasharray:5 4;stroke-width:1}
 .bandlab{font-size:9px;fill:var(--pewter)}
@@ -327,7 +312,7 @@ background:var(--fossil);border-radius:var(--r-tile)}
 .smk .sw-res,.smk .sw-rot{width:11px;height:11px;border-radius:2px;display:inline-block;border:1px solid var(--line)}
 .smk .sw-res{background:var(--ink);opacity:.72}
 .smk .sw-rot{background:var(--terracotta);opacity:.62}
-/* 名次軌跡 */
+
 .rk-line{fill:none;stroke:var(--ink);opacity:.72;stroke-width:1.5;stroke-linejoin:round}
 .rk-ref{stroke:rgba(17,17,17,.08);stroke-width:1}
 .rk-ax{font-size:8px;fill:var(--pewter)}
@@ -346,7 +331,7 @@ background:var(--fossil);border-radius:var(--r-tile)}
 .srv{font-variant-numeric:tabular-nums}
 .drv{color:var(--cardinal);font-size:11px}
 td.up{color:var(--sage)}td.down{color:var(--terracotta)}
-/* 分頁：純 CSS radio 切換，無 JS 依賴，離線與列印皆可用 */
+
 .tabwrap>input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
 .tabbar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;border-bottom:1px solid var(--line);padding-bottom:14px}
 .tabbar label{display:inline-flex;align-items:baseline;gap:7px;padding:8px 16px;border:1px solid var(--line);
@@ -357,14 +342,14 @@ border-radius:var(--r-pill);font-size:13px;cursor:pointer;user-select:none;backg
 .lead{font-size:14px;line-height:1.85;color:var(--dust);background:var(--fossil);border-radius:var(--r-tile);
 padding:14px 18px;margin-bottom:20px}
 .lead.sm{font-size:13px;background:none;padding:0 0 12px}
-/* 超過行數上限的長段用 <p> 拆，段距讓回行有錨點——比縮短行長有效得多 */
+
 .lead p,.note-sm p{margin:0}
 .lead p+p,.note-sm p+p{margin-top:10px}
 .lead b{color:var(--ink)}
 ul.method{margin:0 0 0 18px;font-size:13px;color:var(--dust);line-height:2}
 ul.method b{color:var(--ink)}
 code{background:var(--fossil);padding:1px 5px;border-radius:4px;font-size:12px}
-/* 配方差集 */
+
 .recipe{margin-top:16px}
 .recipe h4{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--dust);margin:14px 0 6px}
 .rhead,.rrow{display:grid;grid-template-columns:150px 1fr 42px 1fr 42px 56px;gap:8px;align-items:center}
@@ -372,13 +357,13 @@ code{background:var(--fossil);padding:1px 5px;border-radius:4px;font-size:12px}
 .rrow{padding:5px 0;font-size:12px;border-top:1px solid var(--line-2)}
 .rn{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .rbar{height:8px;background:var(--fossil);border-radius:999px;overflow:hidden;box-shadow:inset 0 0 0 1px var(--line-2)}
-/* cardinal 只保留給狀態語意（新王／主榜命中），不拿來當序列色 */
+
 .rf{display:block;height:100%;background:var(--ink);opacity:.88;border-radius:999px}
 .rs{display:block;height:100%;background:var(--pewter);opacity:.55;border-radius:999px}
 .rp{text-align:right;font-variant-numeric:tabular-nums;font-size:11px}
 .rg{text-align:right;font-size:12px;font-weight:500;font-variant-numeric:tabular-nums}
 .rg.up{color:var(--ink)}.rg.down{color:var(--pewter)}
-/* 版位對照與輪播 */
+
 .slotkey{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-bottom:22px}
 .sk{display:flex;gap:10px;align-items:flex-start;background:var(--fossil);border-radius:var(--r-tile);padding:11px 13px;font-size:12px}
 .sk svg{flex:none;margin-top:2px}
@@ -393,13 +378,13 @@ code{background:var(--fossil);padding:1px 5px;border-radius:4px;font-size:12px}
 display:inline-grid;place-items:center;flex:none;font-weight:500}
 .roti span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .rk{color:var(--cardinal);font-size:11px;flex:none}
-/* 鄰近市場：三欄精簡清單 */
+
 .three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 ol.radar{list-style:none;counter-reset:none}
 ol.radar li{display:flex;align-items:baseline;gap:8px;font-size:12px;padding:5px 0;border-top:1px solid var(--line-2)}
 .rr{font-size:11px;color:var(--pewter);font-variant-numeric:tabular-nums;width:26px;flex:none}
 .rnm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
-/* 主榜列左緣色條：象限與標籤共用同一格，零欄寬承載 */
+
 td.edge{box-shadow:inset 3px 0 0 transparent}
 td.edge.tg-new,td.edge.tg-launch{box-shadow:inset 3px 0 0 var(--cardinal)}
 td.edge.tg-climb{box-shadow:inset 3px 0 0 var(--terracotta)}
@@ -408,14 +393,14 @@ td.edge.q-king{box-shadow:inset 3px 0 0 var(--sage)}
 td.edge.q-rise{box-shadow:inset 3px 0 0 color-mix(in srgb,var(--terracotta) 45%,transparent)}
 .tagcell{white-space:nowrap;line-height:1.6}
 .tagcell .pill{margin-right:4px}
-/* 營收條：相對榜首線性標準化，最小寬 6px 保底；細刻度＝當期中位數切點 */
+
 .rcell{display:flex;align-items:center;gap:8px}
 .rtrack{position:relative;width:180px;height:8px;background:var(--fossil);border-radius:999px;flex:none;
 overflow:hidden;box-shadow:inset 0 0 0 1px var(--line-2)}
 .rtrack span{display:block;height:100%;background:var(--ink);opacity:.72;border-radius:999px}
 .rtick{position:absolute;top:-2px;width:1px;height:12px;background:var(--dust);opacity:.55}
 .rval{font-size:11px;color:var(--dust);font-variant-numeric:tabular-nums;white-space:nowrap}
-/* 雙平台佔比：Android 用斜紋質地而非換色相，警示但不吵 */
+
 .pcell{display:flex;align-items:center;gap:7px}
 .ptrack{display:flex;width:100px;height:8px;border-radius:999px;overflow:hidden;background:var(--fossil);flex:none;
 box-shadow:inset 0 0 0 1px var(--line-2)}
@@ -424,7 +409,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 .pval{font-size:10px;color:var(--pewter);font-variant-numeric:tabular-nums;white-space:nowrap}
 .mom b{font-size:13px}.mom .up{color:var(--sage)}.mom .down{color:var(--terracotta)}.mom .flat{color:var(--pewter)}
 .momv{display:block;font-size:11px;color:var(--dust)}
-/* 曝光時間帶 */
+
 .tl-gap{fill:var(--line-2)}
 .tl-zebra{fill:var(--fossil);opacity:.6}.tl-blank{fill:none}
 .tl-name{font-size:12px;fill:var(--ink)}
@@ -450,12 +435,12 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="rail"><span class="rail-n">01</span><h2>2026 年 1–7 月</h2>
 <span class="badge">2026-01 ～ 2026-07　·　7 個完整月</span></div>
 
-<div class="banner"><div class="bh">年度總覽</div><ul class="plain"><li><b>盤子</b>：12 個月 TW Top 50 累計營收 $519.45M，最新月 Top 5 佔 27.3%</li><li><b>流動性</b>：一年內曾進 Top 20 共 36 款，全年常駐 12 款——平均每月只換 4.5 個位置</li><li><b>結構位移</b>：Geolocation 份額 +5.9pp（結構性）；4X Strategy -9.9pp</li><li><b>近況</b>：最新完整月 2026-07。當期新上市請看「新上市榜」分頁——那一頁是以資料截止日回推的滾動日窗，與本頁的年度月窗是兩回事</li></ul></div>
+<div class="banner"><div class="bh">年度總覽</div><ul class="plain"><li><b>盤子</b>：7 個月 TW Top 50 累計營收 $519.45M，最新月 Top 5 佔 27.3%</li><li><b>流動性</b>：觀測期內曾進 Top 20 共 36 款，全期常駐 12 款——平均每月只換 4.5 個位置</li><li><b>結構位移</b>：Geolocation 份額 +5.9pp（結構性）；4X Strategy -9.9pp</li><li><b>近況</b>：最新完整月 2026-07。當期新上市請看「新上市榜」分頁——那一頁是以資料截止日回推的滾動日窗，與本頁的年度月窗是兩回事</li></ul></div>
 
 <div class="banner soft"><b>已具備去年同期對照（2025-01 ～ 2025-07），可做 YoY。</b>
 台灣 1–2 月有春節高峰、3–5 月淡季，<b>逐月絕對值變化含季節性</b>；要判斷市場真的變好變壞，看對去年同期的百分比。</div>
 <div class="lead"><b>只放跨月才看得出來的市場結構。</b>新上市產品全在「新上市榜」分頁（滾動日窗、不鎖月份），榜單、Apple 推薦、鄰近市場各有分頁。
-⚠ 12 個月只有一輪，<b>季節與趨勢在數學上不可分離</b>——本頁數字是描述現況、建立基線，<b>不外推</b>。</div>
+⚠ 本站自有觀測期只有一輪，<b>逐月絕對值的變化含季節性</b>——要判市場真的變好變壞，一律看上方的對去年同期百分比，不看逐月增減。</div>
 
 <div class="rail"><span class="rail-n">A</span><h2>品類營收結構變化</h2>
 <span class="badge">本榜內佔比（非市場佔比）· 36 個品類，圖示前 8</span></div>
@@ -597,7 +582,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <text x="700.0" y="276" class="ax ax-c">26/07</text>
 </svg></div>
 <div class="note-sm" title="某月跳升＝有窗口，回頭看那月進來的是什麼品類、什麼發行節奏，那就是可複製的切入點">新進數低＝位置被存量卡死、擠進去的成本上升，<b>年度預算假設要跟著調</b>；某月跳升＝有窗口。
-全年常駐 Top 20 共 12 款：星城-賓果行星大賽開跑、Whiteout Survival、天堂M、Garena 傳說對決：膽大黨聯動開啟！、Last War:Survival、RO仙境傳説：世界之旅、Kingshot、MapleStory : Idle RPG。</div>
+全期常駐 Top 20 共 12 款：星城-賓果行星大賽開跑、Whiteout Survival、天堂M、Garena 傳說對決：膽大黨聯動開啟！、Last War:Survival、RO仙境傳説：世界之旅、Kingshot、MapleStory : Idle RPG。</div>
 
 <div class="rail" style="margin-top:44px"><span class="rail-n">C</span><h2>主力產品名次軌跡與量體</h2>
 <span class="badge">全期營收前 12 名</span></div>
@@ -1167,20 +1152,22 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 本期實際中位數為下載 57,926、營收 $1,016,780，<b>與基期的差距即市場整體漂移</b>。</div></div>
 
 <div class="rail" style="margin-top:44px"><span class="rail-n">02b</span><h2>當月動態 · 2026-08</h2>
-<span class="badge mtd-badge">MTD 08-17 止　·　17/31 天　·　未定案</span></div>
+<span class="badge mtd-badge">MTD 08-17 止　·　17/31 天　·　未定案</span>
 
-<div class="banner mtd-ban"><div class="bh">Top 10 日均營收（唯一可跨月直比的總量）</div>
-<div class="thbig">1,040,242 <span>USD／日</span>　<span class="up">+7.1%</span></div>
+<span class="badge" title="末日 2026-08-17 的 Top10 營收中位數 ÷ 前 7 個有觀測日的中位數。部分結算的日子回的是非空但偏低的資料，分母斷言抓不到（日榜與月端點同步失真），所以另外標示。低於 60% 判疑似——也可能是真實下滑（改版結束、檔期落地），故不自動剔除">末日水位 97.5% ✓</span></div>
+
+<div class="banner mtd-ban"><div class="bh">Top 10 <b>合計</b>日均營收（唯一可跨月直比的總量；各列的變化是各自的，勿與此數混談）</div>
+<div class="thbig">1,040,242 <span>USD／日</span>　<span class="up">+7.1%</span><span class="mtd-base">對比 2026-07 完整月日均 971,730／日</span></div>
 <div class="note-sm" style="margin-top:6px"><b>⚠ 別拿 MTD 總額比完整月。</b>
 本期 MTD $17,684,102（17 天）對上 2026-07 完整月 $30,123,630（31 天）是 <b>59%</b>，看起來像衰退；
 <b>同尺的日均是 <span class="up">+7.1%</span></b>。兩者方向可以相反。</div></div>
 
-<div class="lead sm">依<b>八月日均</b>排序，不是名次——月中名次會洗牌，本區塊不出名次。
-本期 <b>7 支</b>八月進榜、七月 Top 50 沒有，已標<span class="dup">新面孔</span>。</div>
+<div class="lead sm"><b>⚠ 與上方 2026-07 主榜不可橫向對讀</b>：上表是完整月<b>總額</b>、本表是<b>日均</b>。依當月日均排序，不是名次——月中名次會洗牌，本區塊不出名次。
+本期 <b>7 支</b>本月進榜、2026-07 Top 50 沒有，已標<span class="dup">新入榜</span>（含老品回榜，不等於新上市）。</div>
 
 <div class="tbl-wrap"><table class="mtd-tbl">
 <colgroup><col style="width:56px"><col><col style="width:152px"><col style="width:152px"><col style="width:104px"><col style="width:148px"><col style="width:132px"></colgroup>
-<thead><tr><th title="八月日均營收降冪。刻意不叫「#」——這不是名次">日均序</th><th>遊戲 · 發行商 · 品類</th>
+<thead><tr><th title="當月日均營收降冪。刻意不叫「#」——這不是名次，月中名次會洗牌。與分頁 04 的「日均榜分序」是兩回事：那裡是暢銷榜名次分，這裡是營收金額">日均營收序</th><th>遊戲 · 發行商 · 品類</th>
 <th>2026-08 日均營收</th><th>2026-07 日均營收</th><th>日均變化</th><th>2026-07 名次</th>
 <th>2026-08 日均下載</th></tr></thead>
 <tbody><tr>
@@ -1337,17 +1324,17 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td class="n">#17</td>
 <td class="n"><span class="dim">—</span></td></tr><tr class="mtd-new">
 <td class="n">20</td>
-<td><div class="gname">賽爾號：巔峰之戰<span class="dup" title="八月進榜、七月 Top 50 沒有。這是本區塊最主要的情報——用七月排序的表看不到它">新面孔</span></div>
+<td><div class="gname">賽爾號：巔峰之戰<span class="dup" title="本月進榜、上月 Top 50 沒有。可能是新上市，也可能是老品改版回榜——本區塊不區分，要判是不是新品請看新上市榜分頁">新入榜</span></div>
 <div class="gsub">TAOMEE · <span class="gp">Squad RPG</span></div></td>
 <td class="n"><b>38,076</b><span class="momv" title="MTD 總額 ÷ 17 天。總額 $647,297 只是分子，不可與完整月總額並列">$/日</span></td>
 <td class="n"><span class="dim">—</span></td>
 <td class="n"><span class="dim">—</span></td>
 <td class="n"><span class="dim">七月未進 Top 50</span></td>
 <td class="n">3,905</td></tr>
-<tr class="sepr"><td colspan="7">日均序 21 名以後的新面孔（6 支）——七月 Top 50 都沒有，是本區塊的主要情報，不隨顯示上限截斷</td></tr>
+<tr class="sepr"><td colspan="7">序位 21 之後的新入榜（6 支）——2026-07 Top 50 都沒有，是本區塊的主要情報，不隨顯示上限截斷</td></tr>
 <tr class="mtd-new">
 <td class="n">25</td>
-<td><div class="gname">CookieRun: Crumble - Idle RPG<span class="dup" title="八月進榜、七月 Top 50 沒有。這是本區塊最主要的情報——用七月排序的表看不到它">新面孔</span></div>
+<td><div class="gname">CookieRun: Crumble - Idle RPG<span class="dup" title="本月進榜、上月 Top 50 沒有。可能是新上市，也可能是老品改版回榜——本區塊不區分，要判是不是新品請看新上市榜分頁">新入榜</span></div>
 <div class="gsub">Devsisters · <span class="gp">Idle RPG</span></div></td>
 <td class="n"><b>31,457</b><span class="momv" title="MTD 總額 ÷ 17 天。總額 $534,766 只是分子，不可與完整月總額並列">$/日</span></td>
 <td class="n"><span class="dim">—</span></td>
@@ -1355,7 +1342,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td class="n"><span class="dim">七月未進 Top 50</span></td>
 <td class="n">3,460</td></tr><tr class="mtd-new">
 <td class="n">31</td>
-<td><div class="gname">《英雄聯盟：激鬥峽谷》<span class="dup" title="八月進榜、七月 Top 50 沒有。這是本區塊最主要的情報——用七月排序的表看不到它">新面孔</span></div>
+<td><div class="gname">《英雄聯盟：激鬥峽谷》<span class="dup" title="本月進榜、上月 Top 50 沒有。可能是新上市，也可能是老品改版回榜——本區塊不區分，要判是不是新品請看新上市榜分頁">新入榜</span></div>
 <div class="gsub">Taiwan Mobile Co., Ltd. · <span class="gp">MOBA</span></div></td>
 <td class="n"><b>25,863</b><span class="momv" title="MTD 總額 ÷ 17 天。總額 $439,675 只是分子，不可與完整月總額並列">$/日</span></td>
 <td class="n"><span class="dim">—</span></td>
@@ -1363,7 +1350,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td class="n"><span class="dim">七月未進 Top 50</span></td>
 <td class="n"><span class="dim">—</span></td></tr><tr class="mtd-new">
 <td class="n">34</td>
-<td><div class="gname">三國志・戰略版<span class="dup" title="八月進榜、七月 Top 50 沒有。這是本區塊最主要的情報——用七月排序的表看不到它">新面孔</span></div>
+<td><div class="gname">三國志・戰略版<span class="dup" title="本月進榜、上月 Top 50 沒有。可能是新上市，也可能是老品改版回榜——本區塊不區分，要判是不是新品請看新上市榜分頁">新入榜</span></div>
 <div class="gsub">Sialia Games · <span class="gp">4X Strategy</span></div></td>
 <td class="n"><b>24,182</b><span class="momv" title="MTD 總額 ÷ 17 天。總額 $411,088 只是分子，不可與完整月總額並列">$/日</span></td>
 <td class="n"><span class="dim">—</span></td>
@@ -1371,7 +1358,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td class="n"><span class="dim">七月未進 Top 50</span></td>
 <td class="n"><span class="dim">—</span></td></tr><tr class="mtd-new">
 <td class="n">39</td>
-<td><div class="gname">開局一座島-送真海鮮！<span class="dup" title="八月進榜、七月 Top 50 沒有。這是本區塊最主要的情報——用七月排序的表看不到它">新面孔</span></div>
+<td><div class="gname">開局一座島-送真海鮮！<span class="dup" title="本月進榜、上月 Top 50 沒有。可能是新上市，也可能是老品改版回榜——本區塊不區分，要判是不是新品請看新上市榜分頁">新入榜</span></div>
 <div class="gsub">SuperNova Overseas Limited · <span class="gp">Tower Defense</span></div></td>
 <td class="n"><b>21,706</b><span class="momv" title="MTD 總額 ÷ 17 天。總額 $369,002 只是分子，不可與完整月總額並列">$/日</span></td>
 <td class="n"><span class="dim">—</span></td>
@@ -1379,7 +1366,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td class="n"><span class="dim">七月未進 Top 50</span></td>
 <td class="n">3,038</td></tr><tr class="mtd-new">
 <td class="n">42</td>
-<td><div class="gname">MLB 9 Innings 26<span class="dup" title="八月進榜、七月 Top 50 沒有。這是本區塊最主要的情報——用七月排序的表看不到它">新面孔</span></div>
+<td><div class="gname">MLB 9 Innings 26<span class="dup" title="本月進榜、上月 Top 50 沒有。可能是新上市，也可能是老品改版回榜——本區塊不區分，要判是不是新品請看新上市榜分頁">新入榜</span></div>
 <div class="gsub">Com2uS Corp. · <span class="gp">Realistic Sports</span></div></td>
 <td class="n"><b>19,061</b><span class="momv" title="MTD 總額 ÷ 17 天。總額 $324,030 只是分子，不可與完整月總額並列">$/日</span></td>
 <td class="n"><span class="dim">—</span></td>
@@ -1387,7 +1374,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td class="n"><span class="dim">七月未進 Top 50</span></td>
 <td class="n"><span class="dim">—</span></td></tr><tr class="mtd-new">
 <td class="n">45</td>
-<td><div class="gname">巔峰極速<span class="dup" title="八月進榜、七月 Top 50 沒有。這是本區塊最主要的情報——用七月排序的表看不到它">新面孔</span></div>
+<td><div class="gname">巔峰極速<span class="dup" title="本月進榜、上月 Top 50 沒有。可能是新上市，也可能是老品改版回榜——本區塊不區分，要判是不是新品請看新上市榜分頁">新入榜</span></div>
 <div class="gsub">LongE Corporation · <span class="gp">Realistic Racing</span></div></td>
 <td class="n"><b>17,747</b><span class="momv" title="MTD 總額 ÷ 17 天。總額 $301,693 只是分子，不可與完整月總額並列">$/日</span></td>
 <td class="n"><span class="dim">—</span></td>
@@ -1395,7 +1382,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td class="n"><span class="dim">七月未進 Top 50</span></td>
 <td class="n"><span class="dim">—</span></td></tr></tbody></table></div>
 <div class="note-sm">資料至 2026-08-17（實測最後結算日，T-1），日均分母 17 天由此得出。
-列前 20 支，另補列 6 支序位在後的新面孔（母體 Top 50）。<b>本區塊與新上市榜是兩把不同的尺</b>：那邊是滾動 28 天日窗、看誰剛進場；這邊是當月至今、看錢在誰手上。</div>
+列前 20 支，另補列 6 支序位在後的新入榜（母體 Top 50）。<b>本區塊與新上市榜是兩把不同的尺</b>：那邊是滾動 28 天日窗、看誰剛進場；這邊是當月至今、看錢在誰手上。</div>
 <div class="rail" style="margin-top:44px"><span class="rail-n">02c</span><h2>港澳差異項</h2><span class="badge">當地前 20、TW Top 50 沒有</span></div>
 <div class="lead sm">「連 N 月」＝在當地榜連續出現的月數，小的排前面（<b>新冒出來的才是情報</b>）；標「常態」者整窗都在，沒有新資訊。
 「對 TW 同名次 X%」＝它的營收比 TW 榜同名次產品，看兩地量級差距。</div>
@@ -2230,7 +2217,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gsec"><b>近 7 天上市</b><span>6 筆 · 日均榜分排序 · 上限 4.00</span>
 <span class="gsec-w" title="這一組的可觀測天數必然少於 7 天，六級證據強度會整組落到同一個「窗內樣本不足」，等於零資訊——故本組改用與窗長無關的日均榜分，末欄只放逐列會變的數字、不給評價標籤">不套用證據強度</span></div>
 <div class="tbl-wrap"><table class="gt-tbl"><colgroup><col style="width:44px"><col><col style="width:140px"><col style="width:184px"><col style="width:180px"><col style="width:180px"><col style="width:180px"><col style="width:180px"><col style="width:120px"></colgroup>
-<thead><tr><th>日均序</th><th>產品 · 發行商 · 品類</th><th>上市天齡</th><th>日均榜分 <span class="thu">綜合分 ÷ 可在榜天數</span></th>
+<thead><tr><th title="日均榜分降冪。與 02b 的「日均營收序」是兩回事：這裡是暢銷榜名次分，那裡是營收金額">日均榜分序</th><th>產品 · 發行商 · 品類</th><th>上市天齡</th><th>日均榜分 <span class="thu">綜合分 ÷ 可在榜天數</span></th>
 <th>iOS 遊戲暢銷</th><th>iOS 全類別暢銷</th><th>Android 遊戲暢銷</th><th>Android 全類別暢銷</th><th>窗末狀態 · 廣度</th></tr></thead>
 <tbody><tr>
 <td class="n">1</td>
@@ -3226,7 +3213,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <span class="gp">MOBA</span></li></ol></div></div>
 <div class="note-sm">名次為該市場當月營收榜名次。共 155 款候選 → 台灣未上架 73 款 → 逐支查詢 40 款（達單次上限 40）。</div></section><section class="pane"><div class="rail"><span class="rail-n">08</span><h2>方法與口徑</h2></div>
 <ul class="method">
-<li><b>營收為 Sensor Tower 的 net 估算值</b>（已扣平台抽成），不是流水、不是開發商實收。與 GDS <code>rev_vnd</code>、Metabase <code>charged_value</code> 三者互不相通，不得混用或同表比較。</li>
+<li><b>營收為 Sensor Tower 的 net 估算值</b>（已扣平台抽成），不是流水、不是開發商實收。與<b>其他營收來源</b>互不相通，不得混用或同表比較。</li>
 <li><b>下載為 Sensor Tower 估算值</b>（下載沒有平台抽成，不適用 net 的說法），與平台後台數字有系統性落差。</li>
 <li><b>ST 會回溯修正估算</b>，最近一至兩個結算月是初估值，下期重跑時同一個月的數字可能被改。</li>
 <li>主榜走 <code>/v1/unified/sales_report_estimates_comparison_attributes</code>（Apple＋Google 合併），iOS／Android 欄為 <code>entities[]</code> 拆解值。<b>Android 為建模估算、iOS 為實數</b>，故 Android 段以斜紋標示。</li>
@@ -3244,7 +3231,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <li><b>新上市榜是全份報告唯一的日粒度分頁</b>，其他分頁一律月粒度。母體＝觀測窗內<b>每日</b> TW 下載榜 Top 100 的聯集，門檻走<b>日均</b>（1,448 次/日）而非累計。
 用累計比會讓月中／月底上市的產品拿幾天量去比整月量，粒度換多細都一樣被刷掉——2026-07 期的 CookieRun: Crumble（7/29 上市）就是這樣落榜的。</li>
 <li>新上市榜的<b>上市日取 <code>min(ST release_date, 窗內首次進日榜日)</code></b>：ST 的 release_date 會出現未來日（預購／預定上市日），直接採信會算出負的上市天數而整列被刷掉。兩者不一致時表上標出 ST 原值。</li>
-<li>ST 日資料延遲約 T-2，觀測窗尾端停在實際有值的最後一天（2026-08-17），不是產出當天。</li>
+<li>ST 日資料延遲約 T-1，觀測窗尾端停在實際有值的最後一天（2026-08-17），不是產出當天。</li>
 <li><b>新上市榜（分頁 03）不出 ARPD 與任何營收金額。</b>新品營收落後下載數週，日粒度的 ARPD 分母幾乎全是還沒付費的用戶，算出來系統性趨近 0，只會生出假結論。變現側一律只給暢銷榜名次，要看金額請回主榜。</li>
 <li><b>證據強度六級（分頁 03、04 共用）。</b>密度 ＝ 最深在榜天數 ÷ <b>窗內上市後可在榜的天數</b>——分母刻意不用窗長 28 天，
 因為固定窗長會系統性懲罰窗末上市的產品（只有 4 天可觀測卻拿 28 當分母，穩坐前 30 也會被算成密度 11%）。
