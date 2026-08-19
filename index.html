@@ -18,7 +18,10 @@ font-family:'Inter',ui-sans-serif,system-ui,-apple-system,"Segoe UI","PingFang T
 .topbar{position:sticky;top:0;z-index:9;height:72px;display:flex;align-items:center;gap:12px;padding:0 40px;
 background:var(--card);border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(17,17,17,.05)}
 .logo{width:36px;height:36px;border-radius:999px;background:var(--ink);color:var(--card);display:grid;place-items:center;font-size:11px}
-.tb-t{font-size:15px;font-weight:500}.tb-s{margin-left:auto;font-size:12px;color:var(--dust)}
+
+.tb-t{font-size:15px;font-weight:500;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.lic{font-size:11px;color:var(--terracotta);white-space:nowrap;margin-left:auto;padding-left:12px;flex:none}.tb-s{margin-left:auto;font-size:12px;color:var(--dust)}
 
 main{max-width:1600px;margin:0 auto;padding:48px 40px 96px}
 
@@ -424,7 +427,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 .rhead,.rrow{grid-template-columns:110px 1fr 36px 1fr 36px 48px;font-size:11px}}
 #tab0:checked~.tabbar label[for=tab0]{background:var(--ink);color:var(--card);border-color:var(--ink)}#tab0:checked~.tabbar label[for=tab0] b{color:var(--card);opacity:.55}#tab0:focus-visible~.tabbar label[for=tab0]{outline:2px solid var(--terracotta);outline-offset:2px}#tab0:checked~.panels>.pane:nth-child(1){display:block}#tab1:checked~.tabbar label[for=tab1]{background:var(--ink);color:var(--card);border-color:var(--ink)}#tab1:checked~.tabbar label[for=tab1] b{color:var(--card);opacity:.55}#tab1:focus-visible~.tabbar label[for=tab1]{outline:2px solid var(--terracotta);outline-offset:2px}#tab1:checked~.panels>.pane:nth-child(2){display:block}#tab2:checked~.tabbar label[for=tab2]{background:var(--ink);color:var(--card);border-color:var(--ink)}#tab2:checked~.tabbar label[for=tab2] b{color:var(--card);opacity:.55}#tab2:focus-visible~.tabbar label[for=tab2]{outline:2px solid var(--terracotta);outline-offset:2px}#tab2:checked~.panels>.pane:nth-child(3){display:block}#tab3:checked~.tabbar label[for=tab3]{background:var(--ink);color:var(--card);border-color:var(--ink)}#tab3:checked~.tabbar label[for=tab3] b{color:var(--card);opacity:.55}#tab3:focus-visible~.tabbar label[for=tab3]{outline:2px solid var(--terracotta);outline-offset:2px}#tab3:checked~.panels>.pane:nth-child(4){display:block}#tab4:checked~.tabbar label[for=tab4]{background:var(--ink);color:var(--card);border-color:var(--ink)}#tab4:checked~.tabbar label[for=tab4] b{color:var(--card);opacity:.55}#tab4:focus-visible~.tabbar label[for=tab4]{outline:2px solid var(--terracotta);outline-offset:2px}#tab4:checked~.panels>.pane:nth-child(5){display:block}#tab5:checked~.tabbar label[for=tab5]{background:var(--ink);color:var(--card);border-color:var(--ink)}#tab5:checked~.tabbar label[for=tab5] b{color:var(--card);opacity:.55}#tab5:focus-visible~.tabbar label[for=tab5]{outline:2px solid var(--terracotta);outline-offset:2px}#tab5:checked~.panels>.pane:nth-child(6){display:block}#tab6:checked~.tabbar label[for=tab6]{background:var(--ink);color:var(--card);border-color:var(--ink)}#tab6:checked~.tabbar label[for=tab6] b{color:var(--card);opacity:.55}#tab6:focus-visible~.tabbar label[for=tab6]{outline:2px solid var(--terracotta);outline-offset:2px}#tab6:checked~.panels>.pane:nth-child(7){display:block}#tab7:checked~.tabbar label[for=tab7]{background:var(--ink);color:var(--card);border-color:var(--ink)}#tab7:checked~.tabbar label[for=tab7] b{color:var(--card);opacity:.55}#tab7:focus-visible~.tabbar label[for=tab7]{outline:2px solid var(--terracotta);outline-offset:2px}#tab7:checked~.panels>.pane:nth-child(8){display:block}</style></head><body>
 <div class="topbar"><div class="logo">MGI</div><div class="tb-t">台港澳手遊市場情報</div>
-<div class="tb-s">年度窗 2026-01～2026-07　·　最新月 2026-07</div></div>
+<div class="tb-s">年度窗 2026-01～2026-07　·　最新月 2026-07</div><div class="lic">Sensor Tower 授權資料 · 內部使用 · 請勿再散布</div></div>
 <main>
 <h1>台港澳手遊市場情報</h1>
 <div class="subline">年度視角涵蓋 7 個完整月；月視角分頁為最新完整月 2026-07；<b>新上市榜為滾動 28 天日粒度（2026-07-21～2026-08-17，資料截至 2026-08-17），與其他分頁不可並排比較</b>　·　TW 為主榜（Apple＋Google 合併估算）　·　資料來源 Sensor Tower</div>
@@ -1381,7 +1384,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td class="n"><span class="dim">—</span></td>
 <td class="n"><span class="dim">七月未進 Top 50</span></td>
 <td class="n"><span class="dim">—</span></td></tr></tbody></table></div>
-<div class="note-sm">資料至 2026-08-17（實測最後結算日，T-1），日均分母 17 天由此得出。
+<div class="note-sm">資料至 2026-08-17（實測最後結算日，T-2），日均分母 17 天由此得出。
 列前 20 支，另補列 6 支序位在後的新入榜（母體 Top 50）。<b>本區塊與新上市榜是兩把不同的尺</b>：那邊是滾動 28 天日窗、看誰剛進場；這邊是當月至今、看錢在誰手上。</div>
 <div class="rail" style="margin-top:44px"><span class="rail-n">02c</span><h2>港澳差異項</h2><span class="badge">當地前 20、TW Top 50 沒有</span></div>
 <div class="lead sm">「連 N 月」＝在當地榜連續出現的月數，小的排前面（<b>新冒出來的才是情報</b>）；標「常態」者整窗都在，沒有新資訊。
@@ -1445,7 +1448,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td><div class="gname">三國群英傳：策定九州</div>
 <div class="gsub">Userjoy Technology Co., Ltd. · <span class="gp">4X Strategy</span> · Mid-core</div>
 <div class="gmon">Currency Bundles · Free to Play · Gacha</div></td>
-<td><span class="state s-new">上市即起量</span><span class="feat ft-today" title="2026-07 月內拿過 App Store Today 版位。版位資料只到該月底，之後的版位未納">◆ Today</span></td>
+<td><span class="state s-new">上市即起量</span><span class="feat ft-today" title="拿過 App Store Today 版位（資料月 ∪ 當月至今）。版位母體為資料月 ∪ 當月至今，已涵蓋整個滾動窗">◆ Today</span></td>
 <td class="dt">2026-08-12<span class="dtd">上市 6 天<i class="asof">至 08-17</i></span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 1391%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
@@ -1469,7 +1472,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td><div class="gname">賽爾號：巔峰之戰</div>
 <div class="gsub">TAOMEE · <span class="gp">Squad RPG</span> · Mid-core</div>
 <div class="gmon">Currency Bundles · Free to Play · Gacha</div></td>
-<td><span class="state s-new">上市即起量</span></td>
+<td><span class="state s-new">上市即起量</span><span class="feat ft-today" title="拿過 App Store Today 版位（資料月 ∪ 當月至今）。版位母體為資料月 ∪ 當月至今，已涵蓋整個滾動窗">◆ Today</span></td>
 <td class="dt">2026-08-11<span class="dtd">上市 7 天<i class="asof">至 08-17</i></span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 596%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
@@ -1517,7 +1520,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td><div class="gname">隨機骰子2</div>
 <div class="gsub">111% · <span class="gp">Tower Defense</span> · Mid-core</div>
 <div class="gmon">Currency Bundles · Live Ops · Season Pass</div></td>
-<td><span class="state s-new">上市即起量</span></td>
+<td><span class="state s-new">上市即起量</span><span class="feat ft-today" title="拿過 App Store Today 版位（資料月 ∪ 當月至今）。版位母體為資料月 ∪ 當月至今，已涵蓋整個滾動窗">◆ Today</span></td>
 <td class="dt">2026-08-12<span class="dtd">上市 6 天<i class="asof">至 08-17</i><i class="warnd" title="ST 標示上市日 2026-08-13，與它實際進榜的日期不一致（多半是預購／預定上市日），本表一律採兩者較早者">ST 標 2026-08-13</i></span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 351%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
@@ -1718,7 +1721,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td><div class="gname">魂墜深境</div>
 <div class="gsub">ChillyRoom · <span class="gp">Card Battler</span> · Mid-core</div>
 <div class="gmon">Ads · Free to Play</div></td>
-<td><span class="state s-new">上市即起量</span><span class="feat" title="2026-07 月內拿過 Apple 遊戲分頁推薦。版位資料只到該月底，之後的版位未納">✦ 遊戲分頁</span></td>
+<td><span class="state s-new">上市即起量</span><span class="feat ft-today" title="拿過 App Store Today 版位（資料月 ∪ 當月至今）。版位母體為資料月 ∪ 當月至今，已涵蓋整個滾動窗">◆ Today</span></td>
 <td class="dt">2026-08-06<span class="dtd">上市 12 天<i class="asof">至 08-17</i></span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 170%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
@@ -1740,7 +1743,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td><div class="gname">瑪奇 Mobile</div>
 <div class="gsub">NEXON Company · <span class="gp">MMORPG</span> · Mid-core</div>
 <div class="gmon">Currency Bundles · Free to Play · Gacha</div></td>
-<td><span class="state s-new">上市即起量</span><span class="feat ft-today" title="2026-07 月內拿過 App Store Today 版位。版位資料只到該月底，之後的版位未納">◆ Today</span></td>
+<td><span class="state s-new">上市即起量</span><span class="feat ft-today" title="拿過 App Store Today 版位（資料月 ∪ 當月至今）。版位母體為資料月 ∪ 當月至今，已涵蓋整個滾動窗">◆ Today</span></td>
 <td class="dt">2026-07-20<span class="dtd">上市 29 天<i class="asof">至 08-17</i></span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 546%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
@@ -1808,7 +1811,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td><div class="gname">醫起救世界：鼠裡逃生</div>
 <div class="gsub">U-LIKE ENTERTAINMENT LIMITED · <span class="gp">4X Strategy</span> · Mid-core</div>
 <div class="gmon">Currency Bundles · Free to Play · Gacha</div></td>
-<td><span class="state s-new">上市即起量</span><span class="feat ft-today" title="2026-07 月內拿過 App Store Today 版位。版位資料只到該月底，之後的版位未納">◆ Today</span></td>
+<td><span class="state s-new">上市即起量</span><span class="feat ft-today" title="拿過 App Store Today 版位（資料月 ∪ 當月至今）。版位母體為資料月 ∪ 當月至今，已涵蓋整個滾動窗">◆ Today</span></td>
 <td class="dt">2026-07-22<span class="dtd">上市 27 天<i class="asof">至 08-17</i></span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 298%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
@@ -1832,7 +1835,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td><div class="gname">hololive Dreams</div>
 <div class="gsub">QualiArts, Inc. · <span class="gp">Music / Rhythm</span> · Hybridcasual</div>
 <div class="gmon">Currency Bundles · Free to Play · Season Pass</div></td>
-<td><span class="state s-fade">曇花</span><span class="feat ft-today" title="2026-07 月內拿過 App Store Today 版位。版位資料只到該月底，之後的版位未納">◆ Today</span></td>
+<td><span class="state s-fade">曇花</span><span class="feat ft-today" title="拿過 App Store Today 版位（資料月 ∪ 當月至今）。版位母體為資料月 ∪ 當月至今，已涵蓋整個滾動窗">◆ Today</span></td>
 <td class="dt">2026-07-22<span class="dtd">上市 27 天<i class="asof">至 08-17</i></span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 287%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
@@ -1856,7 +1859,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td><div class="gname">薑餅人放置大戰爭 - 餅乾養成RPG</div>
 <div class="gsub">Devsisters · <span class="gp">Idle RPG</span> · Hybridcasual</div>
 <div class="gmon">Ad Removal · Ads · Currency Bundles</div></td>
-<td><span class="state s-new">上市即起量</span><span class="feat ft-today" title="2026-07 月內拿過 App Store Today 版位。版位資料只到該月底，之後的版位未納">◆ Today</span></td>
+<td><span class="state s-new">上市即起量</span><span class="feat ft-today" title="拿過 App Store Today 版位（資料月 ∪ 當月至今）。版位母體為資料月 ∪ 當月至今，已涵蓋整個滾動窗">◆ Today</span></td>
 <td class="dt">2026-07-29<span class="dtd">上市 20 天<i class="asof">至 08-17</i></span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 270%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
@@ -1880,7 +1883,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td><div class="gname">開局一座島-送真海鮮！</div>
 <div class="gsub">SuperNova Overseas Limited · <span class="gp">Tower Defense</span> · Mid-core</div>
 <div class="gmon">Ads · Currency Bundles · Free to Play</div></td>
-<td><span class="state s-fade">曇花</span><span class="feat" title="2026-07 月內拿過 Apple 遊戲分頁推薦。版位資料只到該月底，之後的版位未納">✦ 遊戲分頁</span></td>
+<td><span class="state s-fade">曇花</span><span class="feat" title="拿過 Apple 遊戲分頁推薦（資料月 ∪ 當月至今）。版位母體為資料月 ∪ 當月至今，已涵蓋整個滾動窗">✦ 遊戲分頁</span></td>
 <td class="dt">2026-07-29<span class="dtd">上市 20 天<i class="asof">至 08-17</i></span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 236%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
@@ -1904,7 +1907,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td><div class="gname">時尚百貨城</div>
 <div class="gsub">Luminora Interactive Group Limited · <span class="gp">Tycoon / Crafting</span> · Hybridcasual</div>
 <div class="gmon">Ads · Currency Bundles · Free to Play</div></td>
-<td><span class="state s-new">上市即起量</span></td>
+<td><span class="state s-new">上市即起量</span><span class="feat" title="拿過 Apple 遊戲分頁推薦（資料月 ∪ 當月至今）。版位母體為資料月 ∪ 當月至今，已涵蓋整個滾動窗">✦ 遊戲分頁</span></td>
 <td class="dt">2026-08-03<span class="dtd">上市 15 天<i class="asof">至 08-17</i></span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 215%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
@@ -1974,7 +1977,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td><div class="gname">肥鵝美食街</div>
 <div class="gsub">THE HORTOR TECHNOLOGY PTE.LTD. · <span class="gp">Match Merge 2</span> · Hypercasual</div>
 <div class="gmon">Ads · Currency Bundles · Free to Play</div></td>
-<td><span class="state s-slow">慢熱起量</span><span class="feat ft-today" title="2026-07 月內拿過 App Store Today 版位。版位資料只到該月底，之後的版位未納">◆ Today</span></td>
+<td><span class="state s-slow">慢熱起量</span><span class="feat ft-today" title="拿過 App Store Today 版位（資料月 ∪ 當月至今）。版位母體為資料月 ∪ 當月至今，已涵蓋整個滾動窗">◆ Today</span></td>
 <td class="dt">2026-07-07<span class="dtd">上市 42 天<i class="asof">至 08-17</i></span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 138%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
@@ -2044,7 +2047,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td><div class="gname">蘇丹的遊戲</div>
 <div class="gsub">GameTree Entertainment · <span class="gp">Adventure</span> · Mid-core</div>
 <div class="gmon">Currency Bundles · Free to Play · Loot Box</div></td>
-<td><span class="state s-fade">曇花</span><span class="feat" title="2026-07 月內拿過 Apple 遊戲分頁推薦。版位資料只到該月底，之後的版位未納">✦ 遊戲分頁</span></td>
+<td><span class="state s-fade">曇花</span><span class="feat" title="拿過 Apple 遊戲分頁推薦（資料月 ∪ 當月至今）。版位母體為資料月 ∪ 當月至今，已涵蓋整個滾動窗">✦ 遊戲分頁</span></td>
 <td class="dt">2026-07-24<span class="dtd">上市 25 天<i class="asof">至 08-17</i></span></td>
 <td><div class="thcell"><svg viewBox="0 0 176 14" class="thbar" role="img" aria-label="達門檻 127%">
 <rect x="0" y="3" width="176" height="8" rx="4" class="th-track"/>
@@ -2158,7 +2161,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gev-w"><span class="gev gev-ok" title="這一欄量的是判斷依據夠不夠，不是產品強弱。在榜天數／總榜名次／走勢／綜合分見「新上市暢銷榜」分頁">足夠</span></div></td></tr></tbody></table></div>
 
 <div class="note-sm"><p>① <b>日均不是累計</b>：在榜 2/28 天、日均 7,000 是「這兩天每天七千」，別拿去跟在榜 28 天的比總量。首日量高含上市檔期與事前預約，撐不撐得住看「窗內走勢」有沒有跌破門檻虛線。</p><p>② <b>有 Apple 推薦（◆／✦）代表量不全是買來的</b>，評估對手買量能力要打折，<b>◆ Today 份量遠大於 ✦ 遊戲分頁</b>。
-<b>⚠ 徽章只涵蓋 2026-07 月</b>（版位是即時快照、過期抓不回來），該月底之後才拿到版位的不會亮，<b>沒徽章不等於沒被推薦</b>。</p><p>③ 暢銷榜欄：<span class="gs-k gs-ki"></span> iOS、<span class="gs-k gs-ka"></span> Android 遊戲榜逐日名次，<b>log 尺度、#1 在最上、斷線＝當日不在 Top 200</b>（不補值），「#N」為<b>窗內</b>最佳。
+徽章母體＝<b>2026-07 完整月 ∪ 當月至今</b>，已涵蓋整個滾動窗（2026-08-18 修：舊版只比資料月，窗末上市的產品會被誤判成沒被推薦）。</p><p>③ 暢銷榜欄：<span class="gs-k gs-ki"></span> iOS、<span class="gs-k gs-ka"></span> Android 遊戲榜逐日名次，<b>log 尺度、#1 在最上、斷線＝當日不在 Top 200</b>（不補值），「#N」為<b>窗內</b>最佳。
 其餘欄位在分頁 04，<b>兩頁序號各自獨立、不可互相引用為名次</b>。
 本期 7 筆在下載榜有量、四條暢銷榜前 200 一次未進（其中 7 筆可觀測天數已足），名單見分頁 04 的未進榜註腳。</p><p>④ <b>「證據強度」量的是判斷依據夠不夠，不是產品強弱</b>（六級定義與密度算法見分頁 08）。本期
 6 款「窗短·穩定」、4 款「窗內樣本不足」，
@@ -2201,7 +2204,8 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <td><span class="netchip" style="border-left-color:#3B4FD6">Moloco</span><span class="netchip" style="border-left-color:#1E6FB8">Applovin</span><span class="netchip" style="border-left-color:#A63B2A">InMobi</span><span class="netchip" style="border-left-color:#E2701C">Supersonic</span><span class="netchip" style="border-left-color:#D62828">Youtube</span><span class="netchip" style="border-left-color:#0E9C93">Vungle</span></td></tr></tbody></table>
 <div class="lc-note">母體 36 支（本期新上市 ＋ 流量暴增；<b>新上市那半只吃新上市榜表上列出的前 30 支，該榜達標的另外 8 支不在本盤內；
 其中沒有 iOS 版的產品再扣掉，因為這個偵測端點只有 iOS 端，所以本盤母體會比表列數再少幾支</b>），偵測到投放 28 支、未偵測到 8 支，此處列前 8 支。
-視窗 2026-07-01 ～ 2026-08-18、僅台灣。
+<b>視窗 2026-07-01 ～ 2026-08-19（50 天，橫跨 2026-07 與當月）</b>、僅台灣。
+<span title="這支端點的 end_date 吃錨點日，所以窗本來就會跨進當月——不是資料月的盤。2026-08-18 修：原本只標月份，讀者會以為是該月的投放盤">⚠ 這不是 2026-07 單月的投放盤</span>，
 <b>不得用來推估渠道配置、投放力度或預算分配</b>；也不得把「未偵測到」讀成沒做 UA——
 重壓 Meta／ASA／TikTok 的對手在這張表上永遠是空白的。</div>
 </div></section><section class="pane">
@@ -2998,7 +3002,343 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="legend"><span class="tier t1" title="App Store 開啟即見的滿版故事，最上緣。整份報告裡最重的免費曝光">Today 首屏</span><span class="tier t2" title="App Store 開啟即見的滿版故事">Today</span><span class="tier t3" title="遊戲分頁最上方的單款大卡，需使用者點進遊戲分頁">分頁大圖卡</span><span class="tier t4" title="遊戲分頁中下段的清單列，曝光價值最低">分頁清單</span></div>
 <div class="note-sm" title="日期為 MM/DD，相對天數一律以資料錨點日 2026-08-17 計，不是你閱讀的今天——這份是離線 HTML，兩者不同">共 355 款在 2026-07 月內拿過 Apple 推薦，此處列前 24 款，依<b>版位份量</b>排序（Today 優先），同級再依有沒有換到量。
 「曝光期間」是首見到最近一次的區間，中間不一定每天有版位，故另標實際有版位的天數。</div>
-<div class="rail" style="margin:44px 0 16px"><span class="rail-n">06b</span><h2>遊戲分頁版位結構</h2>
+
+<div class="rail" style="margin:44px 0 16px"><span class="rail-n">06b</span><h2>當月至今的版位 · 2026-08</h2>
+<span class="badge mtd-badge" title="版位資料沒有結算延遲，可以到今天；營收與下載到 T-1／T-2。本區塊自印自己的截止日，不要拿它當全報表的資料日">版位至 08-18　·　18 天　·　版位無結算延遲</span></div>
+<div class="lead sm"><b>只出版位份量，不出「曝光換到量」</b>——後者要比結算完的月下載量，當月比不了，要等下個月初。
+<b>⚠ 本表只有遊戲分頁版位，不含 Today</b>；這裡的 <code>#1</code> 是遊戲分頁最上面那一格，不是全站最上面（與上表 Today 優先的排序不同源）。
+本期 <b>34 款</b>是上個完整月沒被推、當月才進名單的<span class="dup">新進推薦</span>。</div>
+<div class="tbl-wrap"><table class="ft-tbl">
+<colgroup><col><col style="width:96px"><col style="width:120px"><col style="width:132px"><col style="width:176px"></colgroup>
+<thead><tr><th>產品 · 編輯標題</th><th title="窗內拿過的最高版位序號，越小越上面">最佳 position</th><th>有版位天數</th><th>期間</th><th>版位型別</th></tr></thead>
+<tbody><tr class="mtd-new">
+<td><div class="gname">鬥破蒼穹M：少年崛起--動畫正版授權<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">JOYSTAR GAME INFORMATION TECHNOLOGY CO.,LIMITED</div></td>
+<td class="n">#1</td>
+<td class="n">18<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-18</td>
+<td class="meta-s">content、medium</td></tr><tr>
+<td><div class="gname">三國群英傳：策定九州</div>
+<div class="gsub">Userjoy Technology Co., Ltd.</div></td>
+<td class="n">#1</td>
+<td class="n">18<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-18</td>
+<td class="meta-s">content、small、chart、medium</td></tr><tr>
+<td><div class="gname">數碼寶貝 UP</div>
+<div class="gsub">Bandai Namco Entertainment Inc.</div></td>
+<td class="n">#1</td>
+<td class="n">18<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-18</td>
+<td class="meta-s">small、content</td></tr><tr class="mtd-new">
+<td><div class="gname">賽爾號：巔峰之戰<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">TAIWAN TAOMEE CO., LTD</div></td>
+<td class="n">#2</td>
+<td class="n">12<span class="momv">/18 天</span></td>
+<td class="dt">08-07 – 08-18</td>
+<td class="meta-s">content、small</td></tr><tr>
+<td><div class="gname">醫起救世界：鼠裡逃生</div>
+<div class="gsub">U-LIKE ENTERTAINMENT LIMITED</div></td>
+<td class="n">#3</td>
+<td class="n">18<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-18</td>
+<td class="meta-s">content、small</td></tr><tr>
+<td><div class="gname">生存33天</div>
+<div class="gsub">Fun Journey Network Technology Co., Limited</div></td>
+<td class="n">#3</td>
+<td class="n">18<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-18</td>
+<td class="meta-s">small、content</td></tr><tr class="mtd-new">
+<td><div class="gname">塔塔冒險隊<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Farlight Games</div></td>
+<td class="n">#3</td>
+<td class="n">5<span class="momv">/18 天</span></td>
+<td class="dt">08-14 – 08-18</td>
+<td class="meta-s">content</td></tr><tr>
+<td><div class="gname">瑪奇 Mobile</div>
+<div class="gsub">NEXON Korea Corporation</div></td>
+<td class="n">#4</td>
+<td class="n">18<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-18</td>
+<td class="meta-s">content、small</td></tr><tr>
+<td><div class="gname">Garena 傳說對決：膽大黨聯動開啟！</div>
+<div class="gsub">Garena Online Private Ltd.</div></td>
+<td class="n">#4</td>
+<td class="n">18<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-18</td>
+<td class="meta-s">small、content</td></tr><tr>
+<td><div class="gname">薑餅人放置大戰爭 - 餅乾養成RPG</div>
+<div class="gsub">Devsisters Corp.</div></td>
+<td class="n">#4</td>
+<td class="n">18<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-18</td>
+<td class="meta-s">small、chart、content</td></tr><tr class="mtd-new">
+<td><div class="gname">隨機骰子2<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">111%</div></td>
+<td class="n">#4</td>
+<td class="n">6<span class="momv">/18 天</span></td>
+<td class="dt">08-13 – 08-18</td>
+<td class="meta-s">content、small</td></tr><tr>
+<td><div class="gname">hololive Dreams</div>
+<div class="gsub">QualiArts, Inc.</div></td>
+<td class="n">#5</td>
+<td class="n">18<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-18</td>
+<td class="meta-s">content、small</td></tr><tr>
+<td><div class="gname">PUBG MOBILE：絕地求生M</div>
+<div class="gsub">MAINSTREAM UNIVERSAL CO. LTD.</div></td>
+<td class="n">#5</td>
+<td class="n">18<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-18</td>
+<td class="meta-s">small、content</td></tr><tr>
+<td><div class="gname">夢幻水族箱 (Fishdom)</div>
+<div class="gsub">Playrix · 暢玩消除玩法，豐富魚缸收藏</div></td>
+<td class="n">#7</td>
+<td class="n">13<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-13</td>
+<td class="meta-s">content</td></tr><tr>
+<td><div class="gname">Pikmin Bloom</div>
+<div class="gsub">Scopely Explore, Inc.</div></td>
+<td class="n">#7</td>
+<td class="n">6<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-06</td>
+<td class="meta-s">content、small</td></tr><tr>
+<td><div class="gname">UNO!™</div>
+<div class="gsub">Mattel163 Limited · 經典同樂卡牌遊戲 隨時隨地開局</div></td>
+<td class="n">#8</td>
+<td class="n">13<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-13</td>
+<td class="meta-s">content</td></tr><tr>
+<td><div class="gname">RO仙境傳説：世界之旅</div>
+<div class="gsub">Gravity Game Vision Limited</div></td>
+<td class="n">#8</td>
+<td class="n">6<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-06</td>
+<td class="meta-s">content、small</td></tr><tr>
+<td><div class="gname">Disney Solitaire</div>
+<div class="gsub">SuperPlay LTD</div></td>
+<td class="n">#9</td>
+<td class="n">18<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-18</td>
+<td class="meta-s">small</td></tr><tr>
+<td><div class="gname">絕區零 - 週年慶</div>
+<div class="gsub">COGNOSPHERE PTE. LTD.</div></td>
+<td class="n">#9</td>
+<td class="n">18<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-18</td>
+<td class="meta-s">small</td></tr><tr>
+<td><div class="gname">鳴潮 - 前往玄方地界</div>
+<div class="gsub">HK KURO GAMES LIMITED</div></td>
+<td class="n">#9</td>
+<td class="n">18<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-18</td>
+<td class="meta-s">small、chart</td></tr><tr>
+<td><div class="gname">Free Fire: 9周年</div>
+<div class="gsub">GARENA INTERNATIONAL I PRIVATE LIMITED</div></td>
+<td class="n">#9</td>
+<td class="n">18<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-18</td>
+<td class="meta-s">small、chart</td></tr><tr>
+<td><div class="gname">夢想小鎮 (Township)</div>
+<div class="gsub">PLR Worldwide Sales Limited</div></td>
+<td class="n">#9</td>
+<td class="n">18<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-18</td>
+<td class="meta-s">small</td></tr><tr>
+<td><div class="gname">弓箭傳說2</div>
+<div class="gsub">HABBY PTE. LTD.</div></td>
+<td class="n">#9</td>
+<td class="n">18<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-18</td>
+<td class="meta-s">small、chart</td></tr><tr>
+<td><div class="gname">王國之歌（Top Heroes）</div>
+<div class="gsub">River Game HK Limited</div></td>
+<td class="n">#9</td>
+<td class="n">18<span class="momv">/18 天</span></td>
+<td class="dt">08-01 – 08-18</td>
+<td class="meta-s">small</td></tr>
+<tr class="sepr"><td colspan="5">24 名以後的新進推薦（30 款）——不隨顯示上限截斷</td></tr><tr class="mtd-new">
+<td><div class="gname">噠噠特攻<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">HABBY PTE. LTD.</div></td>
+<td class="n">#9</td>
+<td class="n">8<span class="momv">/18 天</span></td>
+<td class="dt">08-04 – 08-18</td>
+<td class="meta-s">small、chart</td></tr><tr class="mtd-new">
+<td><div class="gname">摩奇料理 主題餐廳<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">HAPPIBITS TECHNOLOGIES PTE. LTD.</div></td>
+<td class="n">#9</td>
+<td class="n">5<span class="momv">/18 天</span></td>
+<td class="dt">08-14 – 08-18</td>
+<td class="meta-s">small</td></tr><tr class="mtd-new">
+<td><div class="gname">Meowdoku!<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">OAKEVER GAMES PTE. LTD.</div></td>
+<td class="n">#10</td>
+<td class="n">7<span class="momv">/18 天</span></td>
+<td class="dt">08-07 – 08-13</td>
+<td class="meta-s">small</td></tr><tr class="mtd-new">
+<td><div class="gname">角落小夥伴 農場/Sumikkogurashi Farm<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Imagineer Co.,Ltd.</div></td>
+<td class="n">#10</td>
+<td class="n">7<span class="momv">/18 天</span></td>
+<td class="dt">08-07 – 08-13</td>
+<td class="meta-s">small</td></tr><tr class="mtd-new">
+<td><div class="gname">齒輪獸衛隊<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Perfeggs Technology Co., Limited</div></td>
+<td class="n">#10</td>
+<td class="n">7<span class="momv">/18 天</span></td>
+<td class="dt">08-07 – 08-13</td>
+<td class="meta-s">small</td></tr><tr class="mtd-new">
+<td><div class="gname">BLEACH：刀鳴<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Nuverse Pte. Ltd.</div></td>
+<td class="n">#10</td>
+<td class="n">7<span class="momv">/18 天</span></td>
+<td class="dt">08-07 – 08-13</td>
+<td class="meta-s">small</td></tr><tr class="mtd-new">
+<td><div class="gname">Chillquarium<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Snapbreak Games AB</div></td>
+<td class="n">#12</td>
+<td class="n">13<span class="momv">/18 天</span></td>
+<td class="dt">08-06 – 08-18</td>
+<td class="meta-s">chart、small</td></tr><tr class="mtd-new">
+<td><div class="gname">Marble Sort!<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Voodoo</div></td>
+<td class="n">#12</td>
+<td class="n">12<span class="momv">/18 天</span></td>
+<td class="dt">08-07 – 08-18</td>
+<td class="meta-s">chart</td></tr><tr class="mtd-new">
+<td><div class="gname">MARVEL 未來之戰<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Netmarble Corporation</div></td>
+<td class="n">#12</td>
+<td class="n">12<span class="momv">/18 天</span></td>
+<td class="dt">08-03 – 08-14</td>
+<td class="meta-s">chart</td></tr><tr class="mtd-new">
+<td><div class="gname">数独游戏—Sudoku經典數獨九宮格小遊戲<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Finger Interactive Information Technology Co., Ltd</div></td>
+<td class="n">#12</td>
+<td class="n">11<span class="momv">/18 天</span></td>
+<td class="dt">08-06 – 08-16</td>
+<td class="meta-s">chart</td></tr><tr class="mtd-new">
+<td><div class="gname">Metalstorm 金属风暴：现代空战射擊<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Starform Inc.</div></td>
+<td class="n">#12</td>
+<td class="n">10<span class="momv">/18 天</span></td>
+<td class="dt">08-08 – 08-18</td>
+<td class="meta-s">chart</td></tr><tr class="mtd-new">
+<td><div class="gname">貨櫃分類整理：3D益智消除遊戲<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Guru Smart Holding Limited</div></td>
+<td class="n">#12</td>
+<td class="n">10<span class="momv">/18 天</span></td>
+<td class="dt">08-05 – 08-14</td>
+<td class="meta-s">chart</td></tr><tr class="mtd-new">
+<td><div class="gname">時尚百貨城<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Luminora Interactive Group Limited</div></td>
+<td class="n">#12</td>
+<td class="n">8<span class="momv">/18 天</span></td>
+<td class="dt">08-10 – 08-18</td>
+<td class="meta-s">chart</td></tr><tr class="mtd-new">
+<td><div class="gname">Color Slide - Hexa Puzzle<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">SayGames LTD</div></td>
+<td class="n">#12</td>
+<td class="n">8<span class="momv">/18 天</span></td>
+<td class="dt">08-11 – 08-18</td>
+<td class="meta-s">chart</td></tr><tr class="mtd-new">
+<td><div class="gname">Yu-Gi-Oh! Master Duel<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Konami Digital Entertainment Co., Ltd.</div></td>
+<td class="n">#12</td>
+<td class="n">8<span class="momv">/18 天</span></td>
+<td class="dt">08-08 – 08-15</td>
+<td class="meta-s">chart</td></tr><tr class="mtd-new">
+<td><div class="gname">Jelly Busters: 方塊大作戰<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Moon Active LTD</div></td>
+<td class="n">#12</td>
+<td class="n">6<span class="momv">/18 天</span></td>
+<td class="dt">08-13 – 08-18</td>
+<td class="meta-s">chart</td></tr><tr class="mtd-new">
+<td><div class="gname">Loop Sort<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Voodoo</div></td>
+<td class="n">#12</td>
+<td class="n">4<span class="momv">/18 天</span></td>
+<td class="dt">08-15 – 08-18</td>
+<td class="meta-s">chart</td></tr><tr class="mtd-new">
+<td><div class="gname">All in Hole: Black Hole Games<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">HOMA GAMES</div></td>
+<td class="n">#12</td>
+<td class="n">3<span class="momv">/18 天</span></td>
+<td class="dt">08-16 – 08-18</td>
+<td class="meta-s">chart</td></tr><tr class="mtd-new">
+<td><div class="gname">Snake Clash!<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Supercent Inc.</div></td>
+<td class="n">#12</td>
+<td class="n">2<span class="momv">/18 天</span></td>
+<td class="dt">08-17 – 08-18</td>
+<td class="meta-s">chart</td></tr><tr class="mtd-new">
+<td><div class="gname">XP Hero<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Supercent Inc.</div></td>
+<td class="n">#12</td>
+<td class="n">1<span class="momv">/18 天</span></td>
+<td class="dt">08-18 – 08-18</td>
+<td class="meta-s">chart</td></tr><tr class="mtd-new">
+<td><div class="gname">重返未來：1999 - 週年慶<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Mover Games Limited</div></td>
+<td class="n">#12</td>
+<td class="n">1<span class="momv">/18 天</span></td>
+<td class="dt">08-18 – 08-18</td>
+<td class="meta-s">chart</td></tr><tr class="mtd-new">
+<td><div class="gname">中国象棋 - 天天下中国际象棋大师2026<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Wuhan Dobest Information Technology Co,  Ltd.</div></td>
+<td class="n">#13</td>
+<td class="n">9<span class="momv">/18 天</span></td>
+<td class="dt">08-05 – 08-13</td>
+<td class="meta-s">chart</td></tr><tr class="mtd-new">
+<td><div class="gname">泥鰍山小便利商店<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Lumi Animation CO., LTD.</div></td>
+<td class="n">#13</td>
+<td class="n">8<span class="momv">/18 天</span></td>
+<td class="dt">08-02 – 08-09</td>
+<td class="meta-s">chart</td></tr><tr class="mtd-new">
+<td><div class="gname">方塊拼圖 - 邏輯木塊拼圖，益智力小遊戲<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">LI SAIHUA</div></td>
+<td class="n">#13</td>
+<td class="n">6<span class="momv">/18 天</span></td>
+<td class="dt">08-06 – 08-11</td>
+<td class="meta-s">chart</td></tr><tr class="mtd-new">
+<td><div class="gname">龍城 (Dragon City)<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Socialpoint</div></td>
+<td class="n">#13</td>
+<td class="n">5<span class="momv">/18 天</span></td>
+<td class="dt">08-05 – 08-09</td>
+<td class="meta-s">chart</td></tr><tr class="mtd-new">
+<td><div class="gname">超異域公主連結！Re:Dive<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">So-net Entertainment Taiwan Limited</div></td>
+<td class="n">#13</td>
+<td class="n">1<span class="momv">/18 天</span></td>
+<td class="dt">08-07 – 08-07</td>
+<td class="meta-s">chart</td></tr><tr class="mtd-new">
+<td><div class="gname">癲狂三國：少年無雙<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">JOYSTAR GAME INFORMATION TECHNOLOGY CO.,LIMITED</div></td>
+<td class="n">#16</td>
+<td class="n">15<span class="momv">/18 天</span></td>
+<td class="dt">08-04 – 08-18</td>
+<td class="meta-s">medium</td></tr><tr class="mtd-new">
+<td><div class="gname">瘋狂水世界<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Hong Kong Just Game Technology Limited</div></td>
+<td class="n">#16</td>
+<td class="n">5<span class="momv">/18 天</span></td>
+<td class="dt">08-14 – 08-18</td>
+<td class="meta-s">medium</td></tr><tr class="mtd-new">
+<td><div class="gname">小貓咪大史記<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">POSEIDON NET LIMITED</div></td>
+<td class="n">#16</td>
+<td class="n">5<span class="momv">/18 天</span></td>
+<td class="dt">08-14 – 08-18</td>
+<td class="meta-s">medium</td></tr><tr class="mtd-new">
+<td><div class="gname">遊戲王 決鬥聯盟(Yu-Gi-Oh! Duel Links)<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
+<div class="gsub">Konami Digital Entertainment Co., Ltd.</div></td>
+<td class="n">#16</td>
+<td class="n">1<span class="momv">/18 天</span></td>
+<td class="dt">08-05 – 08-05</td>
+<td class="meta-s">chart</td></tr>
+</tbody></table></div>
+<div class="rail" style="margin:44px 0 16px"><span class="rail-n">06c</span><h2>遊戲分頁版位結構</h2>
 <span class="badge">每日由上而下的區塊排序</span></div>
 <div class="lead sm" title="各型別的 position 範圍會跨日重疊，因為每天版面配置不同">position 是<b>當日</b>遊戲分頁由上往下的區塊序號，1–3 是最頂端的大圖卡，越往下曝光價值越低。</div>
 <div class="slotkey"><div class="sk"><svg width="14" height="14" viewBox="0 0 14 14"><rect x="1" y="4" width="12" height="7" rx="2" class="tl-l1"/></svg>
@@ -3226,12 +3566,12 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <li><b>品類佔比為營收加權</b>，不是產品數計數——計數會讓十支小品蓋過一支王者。</li>
 <li>本期為 3 個月窗，<b>檔期效應未剔除</b>（暑假、春節、平台促銷）。跨期比較只准比同標籤產品的進出，不要對絕對金額做趨勢陳述。</li>
 <li>Apple 推薦取數<b>必須帶 <code>category=6014</code></b>；不帶會拿到 App Store 首頁的一般版位（天氣、AR、兒童），與手遊無關。
-版位資料為即時快照、過期抓不回來，<b>故只涵蓋到資料月月底</b>——新上市榜（分頁 03）的觀測窗延伸到月底之後，
-<b>該段期間才拿到版位的產品不會亮徽章，這是系統性偽陰性：沒徽章不等於沒被推薦</b>。</li>
+版位資料**抓得到歷史**（實測可回溯 18 個月以上，個別日仍可能缺），故徽章母體取<b>資料月 ∪ 當月至今</b>的聯集——新上市榜（分頁 03）的觀測窗延伸到月底之後，
+涵蓋整個滾動窗，<b>原本的系統性偽陰性已消除</b>（2026-08-18 修，實測讓有徽章的列由 9 增為 12）。</li>
 <li><b>新上市榜是全份報告唯一的日粒度分頁</b>，其他分頁一律月粒度。母體＝觀測窗內<b>每日</b> TW 下載榜 Top 100 的聯集，門檻走<b>日均</b>（1,448 次/日）而非累計。
 用累計比會讓月中／月底上市的產品拿幾天量去比整月量，粒度換多細都一樣被刷掉——2026-07 期的 CookieRun: Crumble（7/29 上市）就是這樣落榜的。</li>
 <li>新上市榜的<b>上市日取 <code>min(ST release_date, 窗內首次進日榜日)</code></b>：ST 的 release_date 會出現未來日（預購／預定上市日），直接採信會算出負的上市天數而整列被刷掉。兩者不一致時表上標出 ST 原值。</li>
-<li>ST 日資料延遲約 T-1，觀測窗尾端停在實際有值的最後一天（2026-08-17），不是產出當天。</li>
+<li>ST 日資料延遲約 T-2，觀測窗尾端停在實際有值的最後一天（2026-08-17），不是產出當天。</li>
 <li><b>新上市榜（分頁 03）不出 ARPD 與任何營收金額。</b>新品營收落後下載數週，日粒度的 ARPD 分母幾乎全是還沒付費的用戶，算出來系統性趨近 0，只會生出假結論。變現側一律只給暢銷榜名次，要看金額請回主榜。</li>
 <li><b>證據強度六級（分頁 03、04 共用）。</b>密度 ＝ 最深在榜天數 ÷ <b>窗內上市後可在榜的天數</b>——分母刻意不用窗長 28 天，
 因為固定窗長會系統性懲罰窗末上市的產品（只有 4 天可觀測卻拿 28 當分母，穩坐前 30 也會被算成密度 11%）。
