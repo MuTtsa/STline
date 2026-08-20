@@ -199,7 +199,25 @@ font-size:12px;color:var(--pewter);text-align:center}
 .agez{font-style:normal;color:var(--dust);background:var(--fossil);border-radius:var(--r-pill);padding:0 6px;font-size:10px}
 table.gt-tbl{border-collapse:collapse;width:100%;font-size:13px;min-width:1516px;table-layout:fixed}
 
-table.ft-tbl{min-width:0;max-width:1120px}
+
+table.ft-tbl{min-width:0}
+
+.dstrip{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:2px;align-items:stretch;height:16px}
+.dstrip i{display:block;border-radius:2px;background:var(--fossil)}
+.dstrip i.nil{background:transparent;box-shadow:inset 0 -1px 0 var(--line-2)}
+.dstrip i.s-solo{background:var(--cardinal)}
+.dstrip i.s-brand{background:var(--harvest)}
+.dstrip i.s-list{background:color-mix(in srgb,var(--cardinal) 32%,transparent)}
+.dstrip i.s-page{background:rgba(17,17,17,.20)}
+
+.dstrip i.future{background:transparent;box-shadow:inset 0 0 0 1px var(--line-2)}
+.druler{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:2px;margin-top:6px;height:9px;align-items:end}
+.druler i{display:block;position:relative;height:3px;border-bottom:1px solid var(--line-2)}
+.druler i[data-d]{border-bottom-color:var(--line)}
+.druler i[data-d]::after{content:attr(data-d);position:absolute;left:0;bottom:4px;
+font-size:8px;color:var(--pewter);font-variant-numeric:tabular-nums;line-height:1}
+.dstrip i[data-t="1"]{box-shadow:inset 0 0 0 1px var(--line)}
+.dsm{font-size:10px;color:var(--pewter);margin-top:4px;font-variant-numeric:tabular-nums}
 
 table.mtd-tbl{min-width:0;max-width:1260px}
 .mtd-bad{background:color-mix(in srgb,var(--cardinal) 14%,transparent);border-color:var(--cardinal);color:var(--cardinal)}
@@ -467,10 +485,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <main>
 <h1>台港澳手遊市場情報</h1>
 <div class="subline">年度視角涵蓋 7 個完整月；月視角分頁為最新完整月 2026-07；<b>新上市榜為滾動 28 天日粒度（2026-07-23～2026-08-19，資料截至 2026-08-19），與其他分頁不可並排比較</b>　·　TW 為主榜（Apple＋Google 合併估算）　·　資料來源 Sensor Tower</div>
-<div class="mixwarn"><b>⚠ 本份報告的模組來自 2 個不同的取數批次</b>，
-跨分頁的產品名單可能對不上，<b>不要把不同分頁的清單當成同一批產品讀</b>。
-<div class="mixrow">主榜、當月動態、品類、SDK 聯播網盤、鄰近市場、Apple 推薦 — 取數日 2026-08-20｜錨點 2026-08-20｜取數層版本 A</div><div class="mixrow">新上市榜 — 取數日 2026-08-20｜錨點 2026-08-20｜取數層版本 B</div>
-</div>
+
 <div class="banner"><div class="bh">期間總覽</div><ul class="plain"><li><b>新王 2 款</b>：hololive Dreams、瑪奇 Mobile</li><li><b>最大躍升</b>：Pokémon GO 由 47 名升至 7 名，營收 MoM +324.2%</li><li><b>老作回榜 5 款</b>：Zenless Zone Zero - Anniv.、蛋仔派對、決勝時刻: Mobile - Garena</li></ul></div>
 <div class="legend"><span class="pill tg-new"><i><b>▲</b></i>新王</span><span class="pill tg-seen"><i><b>◆</b></i>首見</span><span class="pill tg-climb"><i><b>↗</b></i>躍升</span><span class="pill tg-hold"><i><b>═</b></i>霸榜</span><span class="pill tg-launch"><i><b>✦</b></i>上市期</span><span class="pill tg-unproven"><i><b>?</b></i>名次升·未證實</span></div>
 <div class="tabwrap"><input type="radio" name="tab" id="tab0" checked><input type="radio" name="tab" id="tab1"><input type="radio" name="tab" id="tab2"><input type="radio" name="tab" id="tab3"><input type="radio" name="tab" id="tab4"><input type="radio" name="tab" id="tab5"><input type="radio" name="tab" id="tab6"><input type="radio" name="tab" id="tab7"><nav class="tabbar"><label for="tab0"><b>01</b>年度視角</label><label for="tab1"><b>02</b>主榜與象限</label><label for="tab2"><b>03</b>新上市榜</label><label for="tab3"><b>04</b>新上市暢銷榜</label><label for="tab4"><b>05</b>品類</label><label for="tab5"><b>06</b>Apple 推薦</label><label for="tab6"><b>07</b>鄰近市場</label><label for="tab7"><b>08</b>方法與口徑</label></nav><div class="panels"><section class="pane">
@@ -2930,279 +2945,180 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 競品名次跳升若源自推薦，就不是它買量變強、不必跟進加碼；自家被推則自然量暴增、稀釋 eCPI，週報必須標註。
 <b>Today 與遊戲分頁是量級差不是程度差</b>，本表以版位份量排序，Today 一律在前。</div>
 <div class="tbl-wrap"><table class="ft-tbl">
-<colgroup><col><col style="width:150px"><col style="width:150px"><col style="width:140px"><col style="width:206px"><col style="width:104px"></colgroup>
-<thead><tr><th>產品 · 該則編輯標題</th><th>版位份量 · 露出次數</th><th>最重版位在哪天</th><th>曝光期間</th><th>曝光有沒有換到量</th><th>TW 主榜</th></tr></thead>
+<colgroup><col style="width:420px"><col style="width:150px"><col><col style="width:206px"><col style="width:104px"></colgroup>
+<thead><tr><th>產品 · 該則編輯標題</th><th>版位份量 · 露出次數</th><th>2026-07 逐日 Today 版位<span class="thu thu-b"><br>■ 獨佔　■ 主打　▨ 合輯</span><div class="druler" style="--n:31"><i data-d="1"></i><i></i><i></i><i></i><i data-d="5"></i><i></i><i></i><i></i><i></i><i data-d="10"></i><i></i><i></i><i></i><i></i><i data-d="15"></i><i></i><i></i><i></i><i></i><i data-d="20"></i><i></i><i></i><i></i><i></i><i data-d="25"></i><i></i><i></i><i></i><i></i><i data-d="30"></i><i></i></div></th><th>曝光有沒有換到量</th><th>TW 主榜</th></tr></thead>
 <tbody><tr>
 <td><div class="gname">瑪奇 Mobile</div>
 <div class="gsub">夏日慶典｜踏上迷人的愛爾琳世界</div></td>
-<td><span class="tier t1">Today 頭條</span><div class="mixv">獨佔 3 · 合輯 4 次</div></td>
-<td class="dt">7/22<span class="dtd">當日第 1 格 · 獨佔</span></td>
-<td class="dt">7/1 → 7/31<span class="dtd">31 天有版位</span></td>
+<td><span class="tier t1">Today 頭條</span><div class="mixv">獨佔 3 · 合輯 4 次</div><div class="mixv">7/22 第 1 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-list" title="07-17"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="s-solo" title="07-22"></i><i class="nil"></i><i class="s-solo" title="07-24"></i><i class="s-solo" title="07-25"></i><i class="s-list" title="07-26"></i><i class="nil"></i><i class="nil"></i><i class="s-list" title="07-29"></i><i class="nil" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 7/31 天</div></td>
 <td><span class="conv c-yes">曝光轉量</span></td>
 <td class="n">#29</td></tr><tr>
 <td><div class="gname">PUBG MOBILE：絕地求生M</div>
 <div class="gsub">高手祕技｜空降木葉忍者村</div></td>
-<td><span class="tier t1">Today 頭條</span><div class="mixv">獨佔 1 · 主打 1 · 合輯 4 次</div></td>
-<td class="dt">7/20<span class="dtd">當日第 1 格 · 獨佔</span></td>
-<td class="dt">7/1 → 7/31<span class="dtd">31 天有版位</span></td>
+<td><span class="tier t1">Today 頭條</span><div class="mixv">獨佔 1 · 主打 1 · 合輯 4 次</div><div class="mixv">7/20 第 1 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-solo" title="07-20" data-t="1"></i><i class="nil"></i><i class="s-brand" title="07-22"></i><i class="s-list" title="07-23"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-list" title="07-29"></i><i class="s-list" title="07-30" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 6/31 天</div></td>
 <td><span class="conv c-yes">曝光轉量</span><span class="momv">下載 +26%</span></td>
 <td class="n">#8</td></tr><tr>
 <td><div class="gname">糖果傳奇</div>
 <div class="gsub">經典再發現｜糖果傳奇</div></td>
-<td><span class="tier t1">Today 頭條</span><div class="mixv">獨佔 2 · 合輯 1 次</div></td>
-<td class="dt">7/31<span class="dtd">當日第 1 格 · 獨佔</span></td>
-<td class="dt">7/1 → 7/31<span class="dtd">31 天有版位</span></td>
+<td><span class="tier t1">Today 頭條</span><div class="mixv">獨佔 2 · 合輯 1 次</div><div class="mixv">7/31 第 1 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-list" title="07-17"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-solo" title="07-24"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="s-solo" title="07-31"></i></div>
+<div class="dsm">Today 3/31 天</div></td>
 <td><span class="conv c-yes">曝光轉量</span><span class="momv">下載 +21%</span></td>
 <td class="n">#10</td></tr><tr>
 <td><div class="gname">hololive Dreams</div>
 <div class="gsub">新遊戲｜《hololive Dreams》夢幻樂園正式開張</div></td>
-<td><span class="tier t1">Today 頭條</span><div class="mixv">獨佔 1 · 合輯 5 次</div></td>
-<td class="dt">7/29<span class="dtd">當日第 1 格 · 獨佔</span></td>
-<td class="dt">7/1 → 7/31<span class="dtd">31 天有版位</span></td>
+<td><span class="tier t1">Today 頭條</span><div class="mixv">獨佔 1 · 合輯 5 次</div><div class="mixv">7/29 第 1 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-list" title="07-17"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="s-list" title="07-22"></i><i class="nil"></i><i class="nil"></i><i class="s-list" title="07-25"></i><i class="s-list" title="07-26"></i><i class="nil"></i><i class="nil"></i><i class="s-solo" title="07-29"></i><i class="nil" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 6/31 天</div></td>
 <td><span class="conv c-yes">曝光轉量</span></td>
 <td class="n">#21</td></tr><tr>
 <td><div class="gname">薑餅人放置大戰爭 - 餅乾養成RPG</div>
 <div class="gsub">試試看｜可愛餅乾踏上全新冒險</div></td>
-<td><span class="tier t1">Today 頭條</span><div class="mixv">獨佔 1 · 合輯 6 次</div></td>
-<td class="dt">7/30<span class="dtd">當日第 1 格 · 獨佔</span></td>
-<td class="dt">7/17 → 7/31<span class="dtd">15 天有版位</span></td>
+<td><span class="tier t1">Today 頭條</span><div class="mixv">獨佔 1 · 合輯 6 次</div><div class="mixv">7/30 第 1 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-list" title="07-17"></i><i class="nil"></i><i class="s-list" title="07-19"></i><i class="s-list" title="07-20" data-t="1"></i><i class="s-list" title="07-21"></i><i class="s-list" title="07-22"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-list" title="07-27"></i><i class="nil"></i><i class="nil"></i><i class="s-solo" title="07-30" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 7/31 天</div></td>
 <td><span class="conv c-yes">曝光轉量</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr><tr>
 <td><div class="gname">Gabbys Dollhouse：貓咪遊戲</div>
 <div class="gsub">給小朋友｜開箱奇「喵」娃娃屋</div></td>
-<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 24 次</div></td>
-<td class="dt">7/16<span class="dtd">當日第 2 格 · 獨佔</span></td>
-<td class="dt">7/3 → 7/31<span class="dtd">24 天有版位</span></td>
+<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 24 次</div><div class="mixv">7/16 第 2 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="s-solo" title="07-03"></i><i class="nil"></i><i class="nil"></i><i class="s-solo" title="07-06"></i><i class="nil"></i><i class="s-solo" title="07-08"></i><i class="s-solo" title="07-09"></i><i class="s-solo" title="07-10" data-t="1"></i><i class="s-solo" title="07-11"></i><i class="s-solo" title="07-12"></i><i class="s-solo" title="07-13"></i><i class="s-solo" title="07-14"></i><i class="nil"></i><i class="s-solo" title="07-16"></i><i class="s-solo" title="07-17"></i><i class="s-solo" title="07-18"></i><i class="nil"></i><i class="s-solo" title="07-20" data-t="1"></i><i class="s-solo" title="07-21"></i><i class="s-solo" title="07-22"></i><i class="s-solo" title="07-23"></i><i class="s-solo" title="07-24"></i><i class="s-solo" title="07-25"></i><i class="s-solo" title="07-26"></i><i class="s-solo" title="07-27"></i><i class="s-solo" title="07-28"></i><i class="s-solo" title="07-29"></i><i class="s-solo" title="07-30" data-t="1"></i><i class="s-solo" title="07-31"></i></div>
+<div class="dsm">Today 24/31 天</div></td>
 <td><span class="dim">—</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr><tr>
 <td><div class="gname">FIFA Rivals - 行動足球</div>
 <div class="gsub">FIFA 世界盃｜西班牙 vs 阿根廷</div></td>
-<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 5 次</div></td>
-<td class="dt">7/19<span class="dtd">當日第 3 格 · 獨佔</span></td>
-<td class="dt">7/1 → 7/19<span class="dtd">5 天有版位</span></td>
+<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 5 次</div><div class="mixv">7/19 第 3 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="s-solo" title="07-01" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="s-solo" title="07-04"></i><i class="nil"></i><i class="nil"></i><i class="s-solo" title="07-07"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-solo" title="07-15"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-solo" title="07-19"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 5/31 天</div></td>
 <td><span class="dim">—</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr><tr>
 <td><div class="gname">Clash Royale</div>
 <div class="gsub">一起玩｜今夏征服卡牌競技場</div></td>
-<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 4 次</div></td>
-<td class="dt">7/28<span class="dtd">當日第 2 格 · 獨佔</span></td>
-<td class="dt">7/1 → 7/31<span class="dtd">31 天有版位</span></td>
+<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 4 次</div><div class="mixv">7/28 第 2 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-solo" title="07-28"></i><i class="s-solo" title="07-29"></i><i class="s-solo" title="07-30" data-t="1"></i><i class="s-solo" title="07-31"></i></div>
+<div class="dsm">Today 4/31 天</div></td>
 <td><span class="conv c-na">未進下載榜</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr><tr>
 <td><div class="gname">女王的遊戲-盛世天下</div>
 <div class="gsub">全新版本｜問鼎王座</div></td>
-<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 4 次</div></td>
-<td class="dt">7/16<span class="dtd">當日第 3 格 · 獨佔</span></td>
-<td class="dt">7/11 → 7/16<span class="dtd">4 天有版位</span></td>
+<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 4 次</div><div class="mixv">7/16 第 3 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="s-solo" title="07-11"></i><i class="s-solo" title="07-12"></i><i class="nil"></i><i class="nil"></i><i class="s-solo" title="07-15"></i><i class="s-solo" title="07-16"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 4/31 天</div></td>
 <td><span class="dim">—</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr><tr>
 <td><div class="gname">點點英雄：骰子傳說</div>
 <div class="gsub">獨家限定｜享受骰子對戰</div></td>
-<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 2 · 合輯 5 次</div></td>
-<td class="dt">7/4<span class="dtd">當日第 4 格 · 獨佔</span></td>
-<td class="dt">7/1 → 7/31<span class="dtd">31 天有版位</span></td>
+<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 2 · 合輯 5 次</div><div class="mixv">7/4 第 4 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="s-list" title="07-01" data-t="1"></i><i class="s-list" title="07-02"></i><i class="s-solo" title="07-03"></i><i class="s-solo" title="07-04"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-list" title="07-17"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="s-list" title="07-22"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-list" title="07-29"></i><i class="nil" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 7/31 天</div></td>
 <td><span class="conv c-no">未轉量</span><span class="momv">下載 -38%</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr><tr>
 <td><div class="gname">EA SPORTS FC™ 足球 Mobile 2026</div>
 <div class="gsub">高手祕技｜Ali Mousa 親授致勝訣竅</div></td>
-<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 1 · 主打 1 次</div></td>
-<td class="dt">7/9<span class="dtd">當日第 3 格 · 獨佔</span></td>
-<td class="dt">7/1 → 7/31<span class="dtd">31 天有版位</span></td>
+<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 1 · 主打 1 次</div><div class="mixv">7/9 第 3 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-solo" title="07-09"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-brand" title="07-19"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 2/31 天</div></td>
 <td><span class="conv c-yes">曝光轉量</span><span class="momv">下載 +61%</span></td>
 <td class="n">#48</td></tr><tr>
 <td><div class="gname">單字庫：最有效的背單字遊戲</div>
 <div class="gsub">必備之選｜十大精選教育 App</div></td>
-<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 2 次</div></td>
-<td class="dt">7/10<span class="dtd">當日第 3 格 · 獨佔</span></td>
-<td class="dt">7/8 → 7/10<span class="dtd">2 天有版位</span></td>
+<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 2 次</div><div class="mixv">7/10 第 3 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-solo" title="07-08"></i><i class="nil"></i><i class="s-solo" title="07-10" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 2/31 天</div></td>
 <td><span class="dim">—</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr><tr>
 <td><div class="gname">三國群英傳：策定九州</div>
 <div class="gsub">一起玩｜準備好投身三國亂世</div></td>
-<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 1 · 合輯 1 次</div></td>
-<td class="dt">7/23<span class="dtd">當日第 2 格 · 獨佔</span></td>
-<td class="dt">7/1 → 7/31<span class="dtd">31 天有版位</span></td>
+<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 1 · 合輯 1 次</div><div class="mixv">7/23 第 2 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="s-list" title="07-22"></i><i class="s-solo" title="07-23"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 2/31 天</div></td>
 <td><span class="conv c-na">未進下載榜</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr><tr>
 <td><div class="gname">Barbie™：乖乖馬救援隊</div>
 <div class="gsub">編輯最愛｜與芭比一起騎馬同樂</div></td>
-<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 1 · 合輯 1 次</div></td>
-<td class="dt">7/2<span class="dtd">當日第 2 格 · 獨佔</span></td>
-<td class="dt">7/1 → 7/31<span class="dtd">31 天有版位</span></td>
+<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 1 · 合輯 1 次</div><div class="mixv">7/2 第 2 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="s-solo" title="07-02"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-list" title="07-25"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 2/31 天</div></td>
 <td><span class="conv c-na">未進下載榜</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr><tr>
 <td><div class="gname">F1® Clash - 官方2026遊戲</div>
 <div class="gsub">時下熱門｜觀賞 F1 英國大獎賽</div></td>
-<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 1 次</div></td>
-<td class="dt">7/5<span class="dtd">當日第 4 格 · 獨佔</span></td>
-<td class="dt">7/5<span class="dtd">1 天有版位</span></td>
+<td><span class="tier t2">Today 獨佔故事</span><div class="mixv">獨佔 1 次</div><div class="mixv">7/5 第 4 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-solo" title="07-05"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 1/31 天</div></td>
 <td><span class="dim">—</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr><tr>
 <td><div class="gname">解憂小食光：餐廳模擬經營</div>
 <div class="gsub">主打遊戲｜解憂小食光</div></td>
-<td><span class="tier t2b">主打遊戲</span><div class="mixv">主打 1 · 合輯 3 次</div></td>
-<td class="dt">7/10<span class="dtd">當日第 5 格 · 獨佔</span></td>
-<td class="dt">7/1 → 7/31<span class="dtd">31 天有版位</span></td>
+<td><span class="tier t2b">主打遊戲</span><div class="mixv">主打 1 · 合輯 3 次</div><div class="mixv">7/10 第 5 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="s-list" title="07-01" data-t="1"></i><i class="s-list" title="07-02"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-brand" title="07-10" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-list" title="07-25"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 4/31 天</div></td>
 <td><span class="conv c-yes">曝光轉量</span><span class="momv">下載 +101%</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr><tr>
 <td><div class="gname">命運之塔：四象劫滅</div>
 <div class="gsub">主打遊戲｜命運之塔：四象劫滅</div></td>
-<td><span class="tier t2b">主打遊戲</span><div class="mixv">主打 1 · 合輯 3 次</div></td>
-<td class="dt">7/5<span class="dtd">當日第 5 格 · 獨佔</span></td>
-<td class="dt">7/1 → 7/31<span class="dtd">31 天有版位</span></td>
+<td><span class="tier t2b">主打遊戲</span><div class="mixv">主打 1 · 合輯 3 次</div><div class="mixv">7/5 第 5 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="s-list" title="07-01" data-t="1"></i><i class="s-list" title="07-02"></i><i class="nil"></i><i class="nil"></i><i class="s-brand" title="07-05"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-list" title="07-25"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 4/31 天</div></td>
 <td><span class="conv c-na">未進下載榜</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr><tr>
 <td><div class="gname">Monument Valley 3</div>
 <div class="gsub">主打遊戲｜Monument Valley 3</div></td>
-<td><span class="tier t2b">主打遊戲</span><div class="mixv">主打 1 次</div></td>
-<td class="dt">7/23<span class="dtd">當日第 6 格 · 獨佔</span></td>
-<td class="dt">7/1 → 7/31<span class="dtd">31 天有版位</span></td>
+<td><span class="tier t2b">主打遊戲</span><div class="mixv">主打 1 次</div><div class="mixv">7/23 第 6 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="s-brand" title="07-23"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 1/31 天</div></td>
 <td><span class="conv c-na">未進下載榜</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr><tr>
 <td><div class="gname">可口的咖啡</div>
 <div class="gsub">主打遊戲｜可口的咖啡</div></td>
-<td><span class="tier t2b">主打遊戲</span><div class="mixv">主打 1 次</div></td>
-<td class="dt">7/20<span class="dtd">當日第 6 格 · 獨佔</span></td>
-<td class="dt">7/1 → 7/31<span class="dtd">31 天有版位</span></td>
+<td><span class="tier t2b">主打遊戲</span><div class="mixv">主打 1 次</div><div class="mixv">7/20 第 6 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-brand" title="07-20" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 1/31 天</div></td>
 <td><span class="conv c-na">未進下載榜</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr><tr>
 <td><div class="gname">月兔漫遊</div>
 <div class="gsub">主打遊戲｜月兔漫遊</div></td>
-<td><span class="tier t2b">主打遊戲</span><div class="mixv">主打 1 次</div></td>
-<td class="dt">7/17<span class="dtd">當日第 5 格 · 獨佔</span></td>
-<td class="dt">7/1 → 7/31<span class="dtd">31 天有版位</span></td>
+<td><span class="tier t2b">主打遊戲</span><div class="mixv">主打 1 次</div><div class="mixv">7/17 第 5 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-brand" title="07-17"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 1/31 天</div></td>
 <td><span class="conv c-na">未進下載榜</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr><tr>
 <td><div class="gname">肥鵝美食街</div>
 <div class="gsub">主打遊戲｜肥鵝美食街</div></td>
-<td><span class="tier t2b">主打遊戲</span><div class="mixv">主打 1 次</div></td>
-<td class="dt">7/26<span class="dtd">當日第 5 格 · 獨佔</span></td>
-<td class="dt">7/1 → 7/29<span class="dtd">29 天有版位</span></td>
+<td><span class="tier t2b">主打遊戲</span><div class="mixv">主打 1 次</div><div class="mixv">7/26 第 5 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-brand" title="07-26"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 1/31 天</div></td>
 <td><span class="conv c-yes">曝光轉量</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr><tr>
 <td><div class="gname">星之救援者</div>
 <div class="gsub">主打遊戲｜StarSavior</div></td>
-<td><span class="tier t2b">主打遊戲</span><div class="mixv">主打 1 次</div></td>
-<td class="dt">7/27<span class="dtd">當日第 6 格 · 獨佔</span></td>
-<td class="dt">7/1 → 7/27<span class="dtd">13 天有版位</span></td>
+<td><span class="tier t2b">主打遊戲</span><div class="mixv">主打 1 次</div><div class="mixv">7/27 第 6 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-brand" title="07-27"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 1/31 天</div></td>
 <td><span class="conv c-na">未進下載榜</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr><tr>
 <td><div class="gname">Florisium</div>
 <div class="gsub">主打遊戲｜Florisium</div></td>
-<td><span class="tier t2b">主打遊戲</span><div class="mixv">主打 1 次</div></td>
-<td class="dt">7/30<span class="dtd">當日第 6 格 · 獨佔</span></td>
-<td class="dt">7/1 → 7/30<span class="dtd">13 天有版位</span></td>
+<td><span class="tier t2b">主打遊戲</span><div class="mixv">主打 1 次</div><div class="mixv">7/30 第 6 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-brand" title="07-30" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 1/31 天</div></td>
 <td><span class="conv c-na">未進下載榜</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr><tr>
 <td><div class="gname">Dadish 4</div>
 <div class="gsub">主打遊戲｜Dadish 4</div></td>
-<td><span class="tier t2b">主打遊戲</span><div class="mixv">主打 1 次</div></td>
-<td class="dt">7/14<span class="dtd">當日第 5 格 · 獨佔</span></td>
-<td class="dt">7/1 → 7/20<span class="dtd">12 天有版位</span></td>
+<td><span class="tier t2b">主打遊戲</span><div class="mixv">主打 1 次</div><div class="mixv">7/14 第 5 格 · 獨佔</div></td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-brand" title="07-14"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i></div>
+<div class="dsm">Today 1/31 天</div></td>
 <td><span class="conv c-na">未進下載榜</span></td>
 <td class="n"><span class="dim">未進主榜</span></td></tr></tbody></table></div>
 <div class="legend"><span class="tier t1" title="當日 Today 最上緣、且是一則只推這一款的獨佔故事。整份報告裡最重的免費曝光">Today 頭條</span><span class="tier t2" title="一則只推這一款的 Today 故事，但不在最上緣">Today 獨佔故事</span><span class="tier t2b" title="Today 版面的固定欄位（每日一款、位置固定在下緣），與編輯選出的獨佔故事性質不同">主打遊戲</span><span class="tier t3" title="出現在一則列多款的 Today 合輯裡——是清單中的一個名字，不是被單推">Today 合輯</span><span class="tier t4" title="遊戲分頁最上方的單款大卡，需使用者主動點進遊戲分頁">分頁大圖卡</span><span class="tier t5" title="遊戲分頁中下段的清單列，曝光價值最低">分頁清單</span></div>
 <div class="note-sm" title="日期為 MM/DD，相對天數一律以資料錨點日 2026-08-19 計，不是你閱讀的今天——這份是離線 HTML，兩者不同">共 355 款在 2026-07 月內拿過 Apple 推薦，此處列前 24 款，依<b>版位份量</b>排序（Today 優先），同級再依有沒有換到量。
-「曝光期間」是首見到最近一次的區間，中間不一定每天有版位，故另標實際有版位的天數。
-<b>「最重版位在哪天」是決定該列分級的那一則故事的日期</b>，同時標出它當天在 Today 的第幾格、以及那則是獨佔還是 N 款合輯。
 排序為版位份量優先，同級再看獨佔／主打的次數。</div>
-<div class="rot"><div class="roth">Today 每日最上緣那一則 · 2026-07</div>
-<div class="tl-lead"><div class="tlrow"><span class="tld">7/31</span>
-<span class="tlk tlk-s">獨佔</span>
-<span class="tlt">經典再發現｜糖果傳奇</span>
-<span class="tla">糖果傳奇</span></div><div class="tlrow"><span class="tld">7/30</span>
-<span class="tlk tlk-s">獨佔</span>
-<span class="tlt">試試看｜可愛餅乾踏上全新冒險</span>
-<span class="tla">薑餅人放置大戰爭 - 餅乾養成RPG</span></div><div class="tlrow"><span class="tld">7/29</span>
-<span class="tlk tlk-s">獨佔</span>
-<span class="tlt">新遊戲｜《hololive Dreams》夢幻樂園正式開張</span>
-<span class="tla">hololive Dreams</span></div><div class="tlrow"><span class="tld">7/28</span>
-<span class="tlk tlk-s">獨佔</span>
-<span class="tlt">一起玩｜今夏征服卡牌競技場</span>
-<span class="tla">Clash Royale</span></div><div class="tlrow"><span class="tld">7/27</span>
-<span class="tlk tlk-m">合輯 7 款</span>
-<span class="tlt">夏日慶典｜步調隨心，輕鬆玩樂</span>
-<span class="tla">心動小鎮、食光旅行、薑餅人放置大戰爭 - 餅乾養成RPG 等 7 款</span></div><div class="tlrow"><span class="tld">7/26</span>
-<span class="tlk tlk-m">合輯 16 款</span>
-<span class="tlt">夏日慶典｜無畏冒險，盡情玩樂</span>
-<span class="tla">燕雲十六聲、異環、Garena 傳說對決：冥定王牌版本 等 16 款</span></div><div class="tlrow"><span class="tld">7/25</span>
-<span class="tlk tlk-m">合輯 5 款</span>
-<span class="tlt">編輯最愛｜五款精選餐廳經營遊戲</span>
-<span class="tla">動物餐廳、Diner DASH Adventures、Too Many Cooks 等 5 款</span></div><div class="tlrow"><span class="tld">7/24</span>
-<span class="tlk tlk-s">獨佔</span>
-<span class="tlt">經典再發現｜糖果傳奇</span>
-<span class="tla">糖果傳奇</span></div><div class="tlrow"><span class="tld">7/23</span>
-<span class="tlk tlk-m">合輯 9 款</span>
-<span class="tlt">上榜推薦｜時下熱門遊戲</span>
-<span class="tla">PUBG MOBILE：絕地求生M、LINE 數獨達人、龍之谷：經典再現 等 9 款</span></div><div class="tlrow"><span class="tld">7/22</span>
-<span class="tlk tlk-s">獨佔</span>
-<span class="tlt">夏日慶典｜踏上迷人的愛爾琳世界</span>
-<span class="tla">瑪奇 Mobile</span></div><div class="tlrow"><span class="tld">7/21</span>
-<span class="tlk tlk-m">合輯 7 款</span>
-<span class="tlt">夏日慶典｜步調隨心，輕鬆玩樂</span>
-<span class="tla">心動小鎮、食光旅行、薑餅人放置大戰爭 - 餅乾養成RPG 等 7 款</span></div><div class="tlrow"><span class="tld">7/20</span>
-<span class="tlk tlk-s">獨佔</span>
-<span class="tlt">高手祕技｜空降木葉忍者村</span>
-<span class="tla">PUBG MOBILE：絕地求生M</span></div><div class="tlrow"><span class="tld">7/19</span>
-<span class="tlk tlk-m">合輯 7 款</span>
-<span class="tlt">夏日慶典｜步調隨心，輕鬆玩樂</span>
-<span class="tla">心動小鎮、食光旅行、薑餅人放置大戰爭 - 餅乾養成RPG 等 7 款</span></div><div class="tlrow"><span class="tld">7/18</span>
-<span class="tlk tlk-m">合輯 5 款</span>
-<span class="tlt">編輯最愛｜五款精選餐廳經營遊戲</span>
-<span class="tla">動物餐廳、Diner DASH Adventures、Too Many Cooks 等 5 款</span></div><div class="tlrow"><span class="tld">7/17</span>
-<span class="tlk tlk-m">合輯 20 款</span>
-<span class="tlt">編輯最愛｜夏日不打烊</span>
-<span class="tla">卡皮巴拉 Go!、糖果傳奇、《荒野亂鬥》 等 20 款</span></div><div class="tlrow"><span class="tld">7/16</span>
-<span class="tlk tlk-s">獨佔</span>
-<span class="tlt">給小朋友｜開箱奇「喵」娃娃屋</span>
-<span class="tla">Gabbys Dollhouse：貓咪遊戲</span></div><div class="tlrow"><span class="tld">7/15</span>
-<span class="tlk tlk-s">獨佔</span>
-<span class="tlt">FIFA 世界盃｜英格蘭 vs 阿根廷</span>
-<span class="tla">FIFA Rivals - 行動足球</span></div><div class="tlrow"><span class="tld">7/14</span>
-<span class="tlk tlk-s">獨佔</span>
-<span class="tlt">給小朋友｜開箱奇「喵」娃娃屋</span>
-<span class="tla">Gabbys Dollhouse：貓咪遊戲</span></div><div class="tlrow"><span class="tld">7/13</span>
-<span class="tlk tlk-s">獨佔</span>
-<span class="tlt">APP STORE 獨家｜開箱奇「喵」娃娃屋</span>
-<span class="tla">Gabbys Dollhouse：貓咪遊戲</span></div><div class="tlrow"><span class="tld">7/12</span>
-<span class="tlk tlk-s">獨佔</span>
-<span class="tlt">APP STORE 獨家｜開箱奇「喵」娃娃屋</span>
-<span class="tla">Gabbys Dollhouse：貓咪遊戲</span></div><div class="tlrow"><span class="tld">7/11</span>
-<span class="tlk tlk-m">合輯 5 款</span>
-<span class="tlt">編輯最愛｜五款精選餐廳經營遊戲</span>
-<span class="tla">動物餐廳、Diner DASH Adventures、Too Many Cooks 等 5 款</span></div><div class="tlrow"><span class="tld">7/10</span>
-<span class="tlk tlk-s">獨佔</span>
-<span class="tlt">APP STORE 獨家｜開箱奇「喵」娃娃屋</span>
-<span class="tla">Gabbys Dollhouse：貓咪遊戲</span></div><div class="tlrow"><span class="tld">7/9</span>
-<span class="tlk tlk-s">獨佔</span>
-<span class="tlt">APP STORE 獨家｜開箱奇「喵」娃娃屋</span>
-<span class="tla">Gabbys Dollhouse：貓咪遊戲</span></div><div class="tlrow"><span class="tld">7/8</span>
-<span class="tlk tlk-s">獨佔</span>
-<span class="tlt">APP STORE 獨家｜全屋翻新，搶先體驗！</span>
-<span class="tla">Gabbys Dollhouse：貓咪遊戲</span></div><div class="tlrow"><span class="tld">7/7</span>
-<span class="tlk tlk-s">獨佔</span>
-<span class="tlt">FIFA 世界盃｜阿根廷 vs 埃及</span>
-<span class="tla">FIFA Rivals - 行動足球</span></div><div class="tlrow"><span class="tld">7/6</span>
-<span class="tlk tlk-s">獨佔</span>
-<span class="tlt">APP STORE 獨家｜全屋翻新，搶先體驗！</span>
-<span class="tla">Gabbys Dollhouse：貓咪遊戲</span></div><div class="tlrow"><span class="tld">7/5</span>
-<span class="tlk tlk-s">獨佔</span>
-<span class="tlt">時下熱門｜觀賞 F1 英國大獎賽</span>
-<span class="tla">F1® Clash - 官方2026遊戲</span></div><div class="tlrow"><span class="tld">7/4</span>
-<span class="tlk tlk-m">合輯 5 款</span>
-<span class="tlt">編輯最愛｜五款精選餐廳經營遊戲</span>
-<span class="tla">動物餐廳、Diner DASH Adventures、Too Many Cooks 等 5 款</span></div><div class="tlrow"><span class="tld">7/3</span>
-<span class="tlk tlk-s">獨佔</span>
-<span class="tlt">APP STORE 獨家｜全屋翻新，搶先體驗！</span>
-<span class="tla">Gabbys Dollhouse：貓咪遊戲</span></div><div class="tlrow"><span class="tld">7/2</span>
-<span class="tlk tlk-m">合輯 18 款</span>
-<span class="tlt">一起玩｜話題遊戲</span>
-<span class="tla">LINE POP2、解憂小食光、命運之塔：四象劫滅 等 18 款</span></div><div class="tlrow"><span class="tld">7/1</span>
-<span class="tlk tlk-m">合輯 18 款</span>
-<span class="tlt">一起玩｜話題遊戲</span>
-<span class="tla">LINE POP2、解憂小食光、命運之塔：四象劫滅 等 18 款</span></div></div>
-<div class="note-sm">每日只列 position 最小（最上緣）那一則。<b>獨佔＝一則只推一款</b>，那是當天最重的免費曝光；
-<b>合輯＝一則列多款</b>，成員只是清單中的一個名字，份量不可與獨佔相比——這正是舊版把 Today 露出的 116 款裡的 70 款誤標成「首屏」的原因。</div></div>
 
 <div class="rail" style="margin:44px 0 16px"><span class="rail-n">06b</span><h2>當月至今的版位 · 2026-08</h2>
 <span class="badge mtd-badge" title="版位資料沒有結算延遲，可以到今天；營收與下載到 T-1／T-2。本區塊自印自己的截止日，不要拿它當全報表的資料日">版位至 08-19　·　19 天　·　版位無結算延遲</span></div>
@@ -3211,339 +3127,394 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <p><b>⚠ 本表只有遊戲分頁版位，不含 Today</b>；這裡的 <code>#1</code> 是遊戲分頁最上面那一格，不是全站最上面（與上表 Today 優先的排序不同源）。
 本期 <b>35 款</b>是上個完整月沒被推、當月才進名單的<span class="dup">新進推薦</span>。</p></div>
 <div class="tbl-wrap"><table class="ft-tbl">
-<colgroup><col><col style="width:96px"><col style="width:120px"><col style="width:132px"><col style="width:176px"></colgroup>
-<thead><tr><th>產品 · 編輯標題</th><th title="窗內拿過的最高版位序號，越小越上面">最佳 position</th><th>有版位天數</th><th>期間</th><th>版位型別</th></tr></thead>
+<colgroup><col style="width:420px"><col style="width:96px"><col style="width:120px"><col><col style="width:176px"></colgroup>
+<thead><tr><th>產品 · 編輯標題</th><th title="窗內拿過的最高版位序號，越小越上面">最佳 position</th><th>有版位天數</th><th>2026-08 逐日版位<span class="thu thu-b"><br>■ 首屏三格內　■ 主打　▨ 其餘</span><div class="druler" style="--n:31"><i data-d="1"></i><i></i><i></i><i></i><i data-d="5"></i><i></i><i></i><i></i><i></i><i data-d="10"></i><i></i><i></i><i></i><i></i><i data-d="15"></i><i></i><i></i><i></i><i></i><i data-d="20"></i><i></i><i></i><i></i><i></i><i data-d="25"></i><i></i><i></i><i></i><i></i><i data-d="30"></i><i></i></div></th><th>版位型別</th></tr></thead>
 <tbody><tr class="mtd-new">
 <td><div class="gname">鬥破蒼穹M：少年崛起--動畫正版授權<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">JOYSTAR GAME INFORMATION TECHNOLOGY CO.,LIMITED</div></td>
 <td class="n">#1</td>
 <td class="n">19<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="s-page" title="08-01" data-t="1"></i><i class="s-page" title="08-02"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-solo" title="08-14"></i><i class="s-solo" title="08-15"></i><i class="s-solo" title="08-16"></i><i class="s-solo" title="08-17"></i><i class="s-solo" title="08-18"></i><i class="s-solo" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">19/19 天</div></td>
 <td class="meta-s">content、medium</td></tr><tr>
 <td><div class="gname">三國群英傳：策定九州</div>
 <div class="gsub">Userjoy Technology Co., Ltd.</div></td>
 <td class="n">#1</td>
 <td class="n">19<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="s-solo" title="08-01" data-t="1"></i><i class="s-solo" title="08-02"></i><i class="s-solo" title="08-03"></i><i class="s-solo" title="08-04"></i><i class="s-solo" title="08-05"></i><i class="s-solo" title="08-06"></i><i class="s-solo" title="08-07"></i><i class="s-solo" title="08-08"></i><i class="s-solo" title="08-09"></i><i class="s-solo" title="08-10" data-t="1"></i><i class="s-solo" title="08-11"></i><i class="s-solo" title="08-12"></i><i class="s-solo" title="08-13"></i><i class="s-solo" title="08-14"></i><i class="s-solo" title="08-15"></i><i class="s-solo" title="08-16"></i><i class="s-solo" title="08-17"></i><i class="s-solo" title="08-18"></i><i class="s-solo" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">19/19 天</div></td>
 <td class="meta-s">content、small、chart、medium</td></tr><tr>
 <td><div class="gname">數碼寶貝 UP</div>
 <div class="gsub">Bandai Namco Entertainment Inc.</div></td>
 <td class="n">#1</td>
 <td class="n">19<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="s-solo" title="08-01" data-t="1"></i><i class="s-solo" title="08-02"></i><i class="s-solo" title="08-03"></i><i class="s-solo" title="08-04"></i><i class="s-solo" title="08-05"></i><i class="s-solo" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">19/19 天</div></td>
 <td class="meta-s">small、content</td></tr><tr class="mtd-new">
 <td><div class="gname">賽爾號：巔峰之戰<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">TAIWAN TAOMEE CO., LTD</div></td>
 <td class="n">#2</td>
 <td class="n">13<span class="momv">/19 天</span></td>
-<td class="dt">08-07 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-solo" title="08-07"></i><i class="s-solo" title="08-08"></i><i class="s-solo" title="08-09"></i><i class="s-solo" title="08-10" data-t="1"></i><i class="s-solo" title="08-11"></i><i class="s-solo" title="08-12"></i><i class="s-solo" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">13/19 天</div></td>
 <td class="meta-s">content、small</td></tr><tr>
 <td><div class="gname">醫起救世界：鼠裡逃生</div>
 <div class="gsub">U-LIKE ENTERTAINMENT LIMITED</div></td>
 <td class="n">#3</td>
 <td class="n">19<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="s-solo" title="08-01" data-t="1"></i><i class="s-solo" title="08-02"></i><i class="s-solo" title="08-03"></i><i class="s-solo" title="08-04"></i><i class="s-solo" title="08-05"></i><i class="s-solo" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">19/19 天</div></td>
 <td class="meta-s">content、small</td></tr><tr>
 <td><div class="gname">生存33天</div>
 <div class="gsub">Fun Journey Network Technology Co., Limited</div></td>
 <td class="n">#3</td>
 <td class="n">19<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="s-page" title="08-01" data-t="1"></i><i class="s-page" title="08-02"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-solo" title="08-07"></i><i class="s-solo" title="08-08"></i><i class="s-solo" title="08-09"></i><i class="s-solo" title="08-10" data-t="1"></i><i class="s-solo" title="08-11"></i><i class="s-solo" title="08-12"></i><i class="s-solo" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">19/19 天</div></td>
 <td class="meta-s">small、content</td></tr><tr class="mtd-new">
 <td><div class="gname">塔塔冒險隊<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">FARLIGHT PTE. LTD.</div></td>
 <td class="n">#3</td>
 <td class="n">6<span class="momv">/19 天</span></td>
-<td class="dt">08-14 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-solo" title="08-14"></i><i class="s-solo" title="08-15"></i><i class="s-solo" title="08-16"></i><i class="s-solo" title="08-17"></i><i class="s-solo" title="08-18"></i><i class="s-solo" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">6/19 天</div></td>
 <td class="meta-s">content</td></tr><tr>
 <td><div class="gname">瑪奇 Mobile</div>
 <div class="gsub">NEXON Korea Corporation</div></td>
 <td class="n">#4</td>
 <td class="n">19<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="s-page" title="08-01" data-t="1"></i><i class="s-page" title="08-02"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">19/19 天</div></td>
 <td class="meta-s">content、small</td></tr><tr>
 <td><div class="gname">Garena 傳說對決：膽大黨聯動開啟！</div>
 <div class="gsub">Garena Online Private Ltd.</div></td>
 <td class="n">#4</td>
 <td class="n">19<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="s-page" title="08-01" data-t="1"></i><i class="s-page" title="08-02"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">19/19 天</div></td>
 <td class="meta-s">small、content</td></tr><tr>
 <td><div class="gname">薑餅人放置大戰爭 - 餅乾養成RPG</div>
 <div class="gsub">Devsisters Corp.</div></td>
 <td class="n">#4</td>
 <td class="n">19<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="s-page" title="08-01" data-t="1"></i><i class="s-page" title="08-02"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">19/19 天</div></td>
 <td class="meta-s">small、chart、content</td></tr><tr class="mtd-new">
 <td><div class="gname">隨機骰子2<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Crater Co., Ltd.</div></td>
 <td class="n">#4</td>
 <td class="n">7<span class="momv">/19 天</span></td>
-<td class="dt">08-13 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">7/19 天</div></td>
 <td class="meta-s">content、small</td></tr><tr>
 <td><div class="gname">hololive Dreams</div>
 <div class="gsub">QualiArts, Inc.</div></td>
 <td class="n">#5</td>
 <td class="n">19<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="s-page" title="08-01" data-t="1"></i><i class="s-page" title="08-02"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">19/19 天</div></td>
 <td class="meta-s">content、small</td></tr><tr>
 <td><div class="gname">PUBG MOBILE：絕地求生M</div>
 <div class="gsub">MAINSTREAM UNIVERSAL CO. LTD.</div></td>
 <td class="n">#5</td>
 <td class="n">19<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="s-page" title="08-01" data-t="1"></i><i class="s-page" title="08-02"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">19/19 天</div></td>
 <td class="meta-s">small、content</td></tr><tr>
 <td><div class="gname">夢幻水族箱 (Fishdom)</div>
 <div class="gsub">Playrix · 暢玩消除玩法，豐富魚缸收藏</div></td>
 <td class="n">#7</td>
 <td class="n">13<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-13</td>
+<td><div class="dstrip" style="--n:31"><i class="s-page" title="08-01" data-t="1"></i><i class="s-page" title="08-02"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">13/19 天</div></td>
 <td class="meta-s">content</td></tr><tr>
 <td><div class="gname">Pikmin Bloom</div>
 <div class="gsub">Scopely Explore, Inc.</div></td>
 <td class="n">#7</td>
 <td class="n">6<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-06</td>
+<td><div class="dstrip" style="--n:31"><i class="s-page" title="08-01" data-t="1"></i><i class="s-page" title="08-02"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">6/19 天</div></td>
 <td class="meta-s">content、small</td></tr><tr>
 <td><div class="gname">UNO!™</div>
 <div class="gsub">Mattel163 Limited · 經典同樂卡牌遊戲 隨時隨地開局</div></td>
 <td class="n">#8</td>
 <td class="n">13<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-13</td>
+<td><div class="dstrip" style="--n:31"><i class="s-page" title="08-01" data-t="1"></i><i class="s-page" title="08-02"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">13/19 天</div></td>
 <td class="meta-s">content</td></tr><tr>
 <td><div class="gname">RO仙境傳説：世界之旅</div>
 <div class="gsub">Gravity Game Vision Limited</div></td>
 <td class="n">#8</td>
 <td class="n">6<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-06</td>
+<td><div class="dstrip" style="--n:31"><i class="s-page" title="08-01" data-t="1"></i><i class="s-page" title="08-02"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">6/19 天</div></td>
 <td class="meta-s">content、small</td></tr><tr>
 <td><div class="gname">Disney Solitaire</div>
 <div class="gsub">SuperPlay LTD</div></td>
 <td class="n">#9</td>
 <td class="n">19<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="s-page" title="08-01" data-t="1"></i><i class="s-page" title="08-02"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">19/19 天</div></td>
 <td class="meta-s">small</td></tr><tr>
 <td><div class="gname">絕區零 - 週年慶</div>
 <div class="gsub">COGNOSPHERE PTE. LTD.</div></td>
 <td class="n">#9</td>
 <td class="n">19<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="s-page" title="08-01" data-t="1"></i><i class="s-page" title="08-02"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">19/19 天</div></td>
 <td class="meta-s">small</td></tr><tr>
 <td><div class="gname">鳴潮 - 前往玄方地界</div>
 <div class="gsub">HK KURO GAMES LIMITED</div></td>
 <td class="n">#9</td>
 <td class="n">19<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="s-page" title="08-01" data-t="1"></i><i class="s-page" title="08-02"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">19/19 天</div></td>
 <td class="meta-s">small、chart</td></tr><tr>
 <td><div class="gname">Free Fire: 9周年</div>
 <div class="gsub">GARENA INTERNATIONAL I PRIVATE LIMITED</div></td>
 <td class="n">#9</td>
 <td class="n">19<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="s-page" title="08-01" data-t="1"></i><i class="s-page" title="08-02"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">19/19 天</div></td>
 <td class="meta-s">small、chart</td></tr><tr>
 <td><div class="gname">夢想小鎮 (Township)</div>
 <div class="gsub">PLR Worldwide Sales Limited</div></td>
 <td class="n">#9</td>
 <td class="n">19<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="s-page" title="08-01" data-t="1"></i><i class="s-page" title="08-02"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">19/19 天</div></td>
 <td class="meta-s">small</td></tr><tr>
 <td><div class="gname">弓箭傳說2</div>
 <div class="gsub">HABBY PTE. LTD.</div></td>
 <td class="n">#9</td>
 <td class="n">19<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="s-page" title="08-01" data-t="1"></i><i class="s-page" title="08-02"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">19/19 天</div></td>
 <td class="meta-s">small、chart</td></tr><tr>
 <td><div class="gname">王國之歌（Top Heroes）</div>
 <div class="gsub">River Game HK Limited</div></td>
 <td class="n">#9</td>
 <td class="n">19<span class="momv">/19 天</span></td>
-<td class="dt">08-01 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="s-page" title="08-01" data-t="1"></i><i class="s-page" title="08-02"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">19/19 天</div></td>
 <td class="meta-s">small</td></tr>
 <tr class="sepr"><td colspan="5">24 名以後的新進推薦（31 款）——不隨顯示上限截斷</td></tr><tr class="mtd-new">
 <td><div class="gname">噠噠特攻<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">HABBY PTE. LTD.</div></td>
 <td class="n">#9</td>
 <td class="n">9<span class="momv">/19 天</span></td>
-<td class="dt">08-04 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">9/19 天</div></td>
 <td class="meta-s">small、chart</td></tr><tr class="mtd-new">
 <td><div class="gname">摩奇料理 主題餐廳<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">HAPPIBITS TECHNOLOGIES PTE. LTD.</div></td>
 <td class="n">#9</td>
 <td class="n">6<span class="momv">/19 天</span></td>
-<td class="dt">08-14 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">6/19 天</div></td>
 <td class="meta-s">small</td></tr><tr class="mtd-new">
 <td><div class="gname">Meowdoku!<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">OAKEVER GAMES PTE. LTD.</div></td>
 <td class="n">#10</td>
 <td class="n">7<span class="momv">/19 天</span></td>
-<td class="dt">08-07 – 08-13</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">7/19 天</div></td>
 <td class="meta-s">small</td></tr><tr class="mtd-new">
 <td><div class="gname">角落小夥伴 農場/Sumikkogurashi Farm<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Imagineer Co.,Ltd.</div></td>
 <td class="n">#10</td>
 <td class="n">7<span class="momv">/19 天</span></td>
-<td class="dt">08-07 – 08-13</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">7/19 天</div></td>
 <td class="meta-s">small</td></tr><tr class="mtd-new">
 <td><div class="gname">齒輪獸衛隊<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Perfeggs Technology Co., Limited</div></td>
 <td class="n">#10</td>
 <td class="n">7<span class="momv">/19 天</span></td>
-<td class="dt">08-07 – 08-13</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">7/19 天</div></td>
 <td class="meta-s">small</td></tr><tr class="mtd-new">
 <td><div class="gname">BLEACH：刀鳴<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Nuverse Pte. Ltd.</div></td>
 <td class="n">#10</td>
 <td class="n">7<span class="momv">/19 天</span></td>
-<td class="dt">08-07 – 08-13</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">7/19 天</div></td>
 <td class="meta-s">small</td></tr><tr class="mtd-new">
 <td><div class="gname">Chillquarium<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Snapbreak Games AB</div></td>
 <td class="n">#12</td>
 <td class="n">14<span class="momv">/19 天</span></td>
-<td class="dt">08-06 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">14/19 天</div></td>
 <td class="meta-s">chart、small</td></tr><tr class="mtd-new">
 <td><div class="gname">Marble Sort!<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Voodoo</div></td>
 <td class="n">#12</td>
 <td class="n">13<span class="momv">/19 天</span></td>
-<td class="dt">08-07 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">13/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">MARVEL 未來之戰<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Netmarble Corporation</div></td>
 <td class="n">#12</td>
 <td class="n">12<span class="momv">/19 天</span></td>
-<td class="dt">08-03 – 08-14</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">12/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">数独游戏—Sudoku經典數獨九宮格小遊戲<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Finger Interactive Information Technology Co., Ltd</div></td>
 <td class="n">#12</td>
 <td class="n">11<span class="momv">/19 天</span></td>
-<td class="dt">08-06 – 08-16</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">11/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">Metalstorm 金属风暴：现代空战射擊<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Starform Inc.</div></td>
 <td class="n">#12</td>
 <td class="n">10<span class="momv">/19 天</span></td>
-<td class="dt">08-08 – 08-18</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="nil"></i><i class="s-page" title="08-18"></i><i class="nil"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">10/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">貨櫃分類整理：3D益智消除遊戲<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Guru Smart Holding Limited</div></td>
 <td class="n">#12</td>
 <td class="n">10<span class="momv">/19 天</span></td>
-<td class="dt">08-05 – 08-14</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">10/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">時尚百貨城<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Luminora Interactive Group Limited</div></td>
 <td class="n">#12</td>
 <td class="n">9<span class="momv">/19 天</span></td>
-<td class="dt">08-10 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="nil"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">9/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">Color Slide - Hexa Puzzle<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">SayGames LTD</div></td>
 <td class="n">#12</td>
 <td class="n">9<span class="momv">/19 天</span></td>
-<td class="dt">08-11 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">9/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">Yu-Gi-Oh! Master Duel<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Konami Digital Entertainment Co., Ltd.</div></td>
 <td class="n">#12</td>
 <td class="n">8<span class="momv">/19 天</span></td>
-<td class="dt">08-08 – 08-15</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">8/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">Jelly Busters: 方塊大作戰<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Moon Active LTD</div></td>
 <td class="n">#12</td>
 <td class="n">7<span class="momv">/19 天</span></td>
-<td class="dt">08-13 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">7/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">Loop Sort<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Voodoo</div></td>
 <td class="n">#12</td>
 <td class="n">5<span class="momv">/19 天</span></td>
-<td class="dt">08-15 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">5/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">All in Hole: Black Hole Games<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">HOMA GAMES</div></td>
 <td class="n">#12</td>
 <td class="n">4<span class="momv">/19 天</span></td>
-<td class="dt">08-16 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">4/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">Snake Clash!<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Supercent Inc.</div></td>
 <td class="n">#12</td>
 <td class="n">3<span class="momv">/19 天</span></td>
-<td class="dt">08-17 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">3/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">XP Hero<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Supercent Inc.</div></td>
 <td class="n">#12</td>
 <td class="n">2<span class="momv">/19 天</span></td>
-<td class="dt">08-18 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">2/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">重返未來：1999 - 週年慶<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Mover Games Limited</div></td>
 <td class="n">#12</td>
 <td class="n">2<span class="momv">/19 天</span></td>
-<td class="dt">08-18 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">2/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">《世界大戰 - 英雄》：第一人稱二次大戰射擊遊戲！<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">AZUR INTERACTIVE GAMES LIMITED</div></td>
 <td class="n">#12</td>
 <td class="n">1<span class="momv">/19 天</span></td>
-<td class="dt">08-19 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">1/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">中国象棋 - 天天下中国际象棋大师2026<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Wuhan Dobest Information Technology Co,  Ltd.</div></td>
 <td class="n">#13</td>
 <td class="n">9<span class="momv">/19 天</span></td>
-<td class="dt">08-05 – 08-13</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">9/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">泥鰍山小便利商店<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Lumi Animation CO., LTD.</div></td>
 <td class="n">#13</td>
 <td class="n">8<span class="momv">/19 天</span></td>
-<td class="dt">08-02 – 08-09</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="s-page" title="08-02"></i><i class="s-page" title="08-03"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">8/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">方塊拼圖 - 邏輯木塊拼圖，益智力小遊戲<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">LI SAIHUA</div></td>
 <td class="n">#13</td>
 <td class="n">6<span class="momv">/19 天</span></td>
-<td class="dt">08-06 – 08-11</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">6/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">龍城 (Dragon City)<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Socialpoint</div></td>
 <td class="n">#13</td>
 <td class="n">5<span class="momv">/19 天</span></td>
-<td class="dt">08-05 – 08-09</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">5/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">超異域公主連結！Re:Dive<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">So-net Entertainment Taiwan Limited</div></td>
 <td class="n">#13</td>
 <td class="n">1<span class="momv">/19 天</span></td>
-<td class="dt">08-07 – 08-07</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-07"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">1/19 天</div></td>
 <td class="meta-s">chart</td></tr><tr class="mtd-new">
 <td><div class="gname">癲狂三國：少年無雙<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">JOYSTAR GAME INFORMATION TECHNOLOGY CO.,LIMITED</div></td>
 <td class="n">#16</td>
 <td class="n">16<span class="momv">/19 天</span></td>
-<td class="dt">08-04 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-04"></i><i class="s-page" title="08-05"></i><i class="s-page" title="08-06"></i><i class="s-page" title="08-07"></i><i class="s-page" title="08-08"></i><i class="s-page" title="08-09"></i><i class="s-page" title="08-10" data-t="1"></i><i class="s-page" title="08-11"></i><i class="s-page" title="08-12"></i><i class="s-page" title="08-13"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">16/19 天</div></td>
 <td class="meta-s">medium</td></tr><tr class="mtd-new">
 <td><div class="gname">瘋狂水世界<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Hong Kong Just Game Technology Limited</div></td>
 <td class="n">#16</td>
 <td class="n">6<span class="momv">/19 天</span></td>
-<td class="dt">08-14 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">6/19 天</div></td>
 <td class="meta-s">medium</td></tr><tr class="mtd-new">
 <td><div class="gname">小貓咪大史記<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">POSEIDON NET LIMITED</div></td>
 <td class="n">#16</td>
 <td class="n">6<span class="momv">/19 天</span></td>
-<td class="dt">08-14 – 08-19</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-14"></i><i class="s-page" title="08-15"></i><i class="s-page" title="08-16"></i><i class="s-page" title="08-17"></i><i class="s-page" title="08-18"></i><i class="s-page" title="08-19"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">6/19 天</div></td>
 <td class="meta-s">medium</td></tr><tr class="mtd-new">
 <td><div class="gname">遊戲王 決鬥聯盟(Yu-Gi-Oh! Duel Links)<span class="dup" title="上個完整月沒被推、當月才進推薦名單。這是本區塊的主要情報——只看完整月那張表看不到它">新進推薦</span></div>
 <div class="gsub">Konami Digital Entertainment Co., Ltd.</div></td>
 <td class="n">#16</td>
 <td class="n">1<span class="momv">/19 天</span></td>
-<td class="dt">08-05 – 08-05</td>
+<td><div class="dstrip" style="--n:31"><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="s-page" title="08-05"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil" data-t="1"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="nil"></i><i class="future" title="08-20" data-t="1"></i><i class="future" title="08-21"></i><i class="future" title="08-22"></i><i class="future" title="08-23"></i><i class="future" title="08-24"></i><i class="future" title="08-25"></i><i class="future" title="08-26"></i><i class="future" title="08-27"></i><i class="future" title="08-28"></i><i class="future" title="08-29"></i><i class="future" title="08-30" data-t="1"></i><i class="future" title="08-31"></i></div>
+<div class="dsm">1/19 天</div></td>
 <td class="meta-s">chart</td></tr>
 </tbody></table></div>
 <div class="rail" style="margin:44px 0 16px"><span class="rail-n">06c</span><h2>遊戲分頁版位結構</h2>
