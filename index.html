@@ -280,7 +280,8 @@ th.lt,td.lt{display:none}
 #ltsw3:checked~.tbl-wrap table.nt{min-width:1698px}
 
 
-@media(min-width:1900px){#ltsw3:checked~.tbl-wrap{width:1700px;max-width:none}}
+
+@media(min-width:1860px){#ltsw3:checked~.tbl-wrap{width:min(1700px,calc(100vw - 200px));max-width:none}}
 
 .legend label[for=ltsw3]{margin-left:auto;display:inline-flex;align-items:center;gap:6px;
 padding:5px 12px;border:1px solid var(--line);border-radius:var(--r-pill);
@@ -293,6 +294,7 @@ font-variant-numeric:tabular-nums;white-space:nowrap}
 @media(hover:hover){.legend label[for=ltsw3]:hover{border-color:var(--dust);background:var(--fossil)}}
 .lfdash{color:var(--line);font-size:14px}
 .lt0{color:var(--pewter)}
+.ltn{font-style:normal;font-size:10px;color:var(--pewter);margin-left:6px}
 
 .yr-line{stroke:var(--ink);opacity:.28;stroke-width:1}
 .yr-tick{stroke:var(--pewter);stroke-width:1}
@@ -1500,11 +1502,11 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <p>末欄暢銷榜是唯一的變現側佐證，<b>給名次不給金額，與主榜的 ST 營收估算 USD 不得混用、不得換算</b>；本頁不出營收與 ARPD（理由見分頁 08）。</p></div>
 
 <input class="ltsw" id="ltsw3" type="checkbox">
-<div class="legend"><span class="state s-new">上市即起量</span><span class="state s-slow">慢熱起量</span><span class="state s-fade">曇花</span><span class="state s-relist">重新上架</span><span class="state s-back">久違回榜</span><label for="ltsw3">上市至今 · 下載 <b>2.38M</b> · 營收 <b>$9.53M</b></label></div>
+<div class="legend"><span class="state s-new">上市即起量</span><span class="state s-slow">慢熱起量</span><span class="state s-fade">曇花</span><span class="state s-relist">重新上架</span><span class="state s-back">久違回榜</span><label for="ltsw3">上市至今 · 下載 <b>2.38M+</b> · 營收 <b>$9.53M+</b><i class="ltn">· 6 款為下限</i></label></div>
 
 <div class="tbl-wrap"><table class="nt">
 <colgroup><col style="width:52px"><col><col style="width:152px"><col style="width:124px"><col style="width:264px"><col style="width:96px"><col style="width:124px"><col style="width:132px"><col style="width:184px"><col style="width:120px"><col class="lt lt-i"><col class="lt lt-r"></colgroup>
-<thead><tr><th>序</th><th>產品 · 發行商 · 品類</th><th>狀態 · Apple 推薦</th><th>TW 上市日</th><th>達門檻程度</th><th>日均下載</th><th>在榜天數</th><th>窗內走勢</th><th>iOS ▮／Android ▨ <span class="thu">下載占比</span></th><th>暢銷榜<span class="thu thu-b">軌跡 · 最佳名次<br>詳見分頁 04</span></th><th class="lt">累計下載<span class="thu thu-b"><br>上市至今</span></th><th class="lt">累計營收<span class="thu thu-b"><br>USD</span></th></tr></thead>
+<thead><tr><th>序</th><th>產品 · 發行商 · 品類</th><th>狀態 · Apple 推薦</th><th>TW 上市日</th><th>達門檻程度</th><th>日均下載</th><th>在榜天數</th><th>窗內走勢</th><th>iOS ▮／Android ▨ <span class="thu">下載占比</span></th><th>暢銷榜<span class="thu thu-b">軌跡 · 最佳名次<br>詳見分頁 04</span></th><th class="lt">累計下載<span class="thu thu-b"><br>上市至今　+ 下限　≥ 覆蓋不足半</span></th><th class="lt">累計營收<span class="thu thu-b"><br>USD</span></th></tr></thead>
 <tbody><tr class="sepr"><td colspan="12">近 7 天上市 · 1 筆 · 最新進場的一批。在榜天數少是正常的，看日均與趨勢，不要看累計</td></tr><tr>
 <td class="n">1</td>
 <td><div class="gname">鬥破蒼穹M：少年崛起--動畫正版授權</div>
@@ -1525,7 +1527,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
   <span class="pval pv-x">iOS 100%</span></div></td>
 <td class="c-slim"><div class="gl gl-off">未進暢銷榜</div>
 <div class="gev-w"><span class="gev gev-thin" title="這一欄量的是判斷依據夠不夠，不是產品強弱。詳見「新上市暢銷榜」分頁">窗內樣本不足</span></div></td>
-<td class="n lt">6.4K</td><td class="n lt"><span class="lt0">0</span></td></tr><tr class="sepr"><td colspan="12">8–14 天 · 10 筆 · 9 款 · 第一個能看「撐不撐得住」的區間：上市尖峰已過，日均還在門檻之上才算真起量</td></tr><tr>
+<td class="n lt">6.4K</td><td class="n lt"><span class="lt0" title="上市第 1 天，Sensor Tower 的營收估算多自上市隔日起才有值">0</span></td></tr><tr class="sepr"><td colspan="12">8–14 天 · 10 筆 · 9 款 · 第一個能看「撐不撐得住」的區間：上市尖峰已過，日均還在門檻之上才算真起量</td></tr><tr>
 <td class="n">2</td>
 <td><div class="gname">三國群英傳：策定九州</div>
 <div class="gsub">Userjoy Technology Co., Ltd. · <span class="gp">4X Strategy</span> · Mid-core</div>
@@ -1806,7 +1808,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
   <span class="pval">iOS 75%</span></div></td>
 <td class="c-slim"><div class="gl gl-off">未進暢銷榜</div>
 <div class="gev-w"><span class="gev gev-none" title="這一欄量的是判斷依據夠不夠，不是產品強弱。詳見「新上市暢銷榜」分頁">無營收訊號</span></div></td>
-<td class="n lt" title="資料自 2026-06-30 起，Sensor Tower 未回溯到上市日（上市至今 52 天），此值為下限">338K+</td><td class="n lt">$1.7K+</td></tr><tr>
+<td class="n lt" title="資料自 2026-06-30 起、僅 51 天，但上市至今已 52 天（覆蓋 98%）。Sensor Tower 未回溯到上市日，此值為下限">338K+</td><td class="n lt" title="資料自 2026-06-30 起、僅 51 天，但上市至今已 52 天（覆蓋 98%）。Sensor Tower 未回溯到上市日，此值為下限">$1.7K+</td></tr><tr>
 <td class="n">13</td>
 <td><div class="gname">瑪奇 Mobile</div>
 <div class="gsub">NEXON Company · <span class="gp">MMORPG</span> · Mid-core</div>
@@ -1854,7 +1856,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
   <span class="pval">iOS 69%</span></div></td>
 <td class="c-slim"><div class="gl gl-off">未進暢銷榜</div>
 <div class="gev-w"><span class="gev gev-none" title="這一欄量的是判斷依據夠不夠，不是產品強弱。詳見「新上市暢銷榜」分頁">無營收訊號</span></div></td>
-<td class="n lt">331K</td><td class="n lt"><span class="lt0">0</span></td></tr><tr>
+<td class="n lt">331K</td><td class="n lt"><span class="lt0" title="Sensor Tower 全期無營收估算（多為純廣告變現或量太小）">0</span></td></tr><tr>
 <td class="n">15</td>
 <td><div class="gname">醫起救世界：鼠裡逃生</div>
 <div class="gsub">U-LIKE ENTERTAINMENT LIMITED · <span class="gp">4X Strategy</span> · Mid-core</div>
@@ -2027,7 +2029,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
   <span class="pval pv-x">iOS 95%</span></div></td>
 <td class="c-slim"><div class="gl gl-off">未進暢銷榜</div>
 <div class="gev-w"><span class="gev gev-none" title="這一欄量的是判斷依據夠不夠，不是產品強弱。詳見「新上市暢銷榜」分頁">無營收訊號</span></div></td>
-<td class="n lt" title="資料自 2026-08-05 起，Sensor Tower 未回溯到上市日（上市至今 21 天），此值為下限">16K+</td><td class="n lt"><span class="lt0">0</span></td></tr><tr>
+<td class="n lt" title="資料自 2026-08-05 起、僅 15 天，但上市至今已 21 天（覆蓋 71%）。Sensor Tower 未回溯到上市日，此值為下限">16K+</td><td class="n lt" title="資料自 2026-08-05 起、僅 15 天，但上市至今已 21 天（覆蓋 71%）。Sensor Tower 未回溯到上市日，此值為下限"><span class="lt0">0+</span></td></tr><tr>
 <td class="n">22</td>
 <td><div class="gname">LINE 熊大魔奇學院</div>
 <div class="gsub">LINE Corporation · <span class="gp">Match Merge 2</span> · Hypercasual</div>
@@ -2098,7 +2100,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
   <span class="pval">iOS 46%</span></div></td>
 <td class="c-slim"><div class="gl gl-off">未進暢銷榜</div>
 <div class="gev-w"><span class="gev gev-none" title="這一欄量的是判斷依據夠不夠，不是產品強弱。詳見「新上市暢銷榜」分頁">無營收訊號</span></div></td>
-<td class="n lt" title="資料自 2026-07-03 起，Sensor Tower 未回溯到上市日（上市至今 51 天），此值為下限">67K+</td><td class="n lt">$11K+</td></tr><tr>
+<td class="n lt" title="資料自 2026-07-03 起、僅 48 天，但上市至今已 51 天（覆蓋 94%）。Sensor Tower 未回溯到上市日，此值為下限">67K+</td><td class="n lt" title="資料自 2026-07-03 起、僅 48 天，但上市至今已 51 天（覆蓋 94%）。Sensor Tower 未回溯到上市日，此值為下限">$11K+</td></tr><tr>
 <td class="n">25</td>
 <td><div class="gname">肥鵝美食街</div>
 <div class="gsub">THE HORTOR TECHNOLOGY PTE.LTD. · <span class="gp">Match Merge 2</span> · Hypercasual</div>
@@ -2196,7 +2198,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gl gl-slim"><b class="k-ios">iOS #78</b></div>
 <div class="gl gl-slim"><b class="k-and">And #133</b></div>
 <div class="gev-w"><span class="gev gev-low" title="這一欄量的是判斷依據夠不夠，不是產品強弱。在榜天數／總榜名次／走勢／綜合分見「新上市暢銷榜」分頁">訊號稀薄</span></div></td>
-<td class="n lt" title="資料自 2026-08-13 起，Sensor Tower 未回溯到上市日（上市至今 100 天），此值為下限">25K+</td><td class="n lt">$44K+</td></tr><tr>
+<td class="n lt" title="資料自 2026-08-13 起、僅 7 天，但上市至今已 100 天（覆蓋 7%）。Sensor Tower 未回溯到上市日，此值為下限">≥25K</td><td class="n lt" title="資料自 2026-08-13 起、僅 7 天，但上市至今已 100 天（覆蓋 7%）。Sensor Tower 未回溯到上市日，此值為下限">≥$44K</td></tr><tr>
 <td class="n">29</td>
 <td><div class="gname">家族物語 - 治癒系世代模擬</div>
 <div class="gsub">KIKO FUN INTERACTIVE ENTERTAINMENT CO., LIMITED · <span class="gp">Avatar Life</span> · Casual</div>
@@ -2221,7 +2223,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gl gl-slim"><b class="k-ios">iOS #137</b></div>
 <div class="gl gl-slim"><b class="k-and">And #194</b></div>
 <div class="gev-w"><span class="gev gev-ok" title="這一欄量的是判斷依據夠不夠，不是產品強弱。在榜天數／總榜名次／走勢／綜合分見「新上市暢銷榜」分頁">足夠</span></div></td>
-<td class="n lt" title="資料自 2026-07-04 起，Sensor Tower 未回溯到上市日（上市至今 393 天），此值為下限">135K+</td><td class="n lt">$90K+</td></tr><tr>
+<td class="n lt" title="資料自 2026-07-04 起、僅 46 天，但上市至今已 393 天（覆蓋 12%）。Sensor Tower 未回溯到上市日，此值為下限">≥135K</td><td class="n lt" title="資料自 2026-07-04 起、僅 46 天，但上市至今已 393 天（覆蓋 12%）。Sensor Tower 未回溯到上市日，此值為下限">≥$90K</td></tr><tr>
 <td class="n">30</td>
 <td><div class="gname">Rogue Legend</div>
 <div class="gsub">PocketHaven Games · <span class="gp">Idle RPG</span> · Mid-core</div>
@@ -2246,7 +2248,7 @@ box-shadow:inset 0 0 0 1px var(--line-2)}
 <div class="gl gl-slim"><b class="k-ios">iOS #43</b></div>
 <div class="gl gl-slim"><b class="k-and">And #46</b></div>
 <div class="gev-w"><span class="gev gev-ok" title="這一欄量的是判斷依據夠不夠，不是產品強弱。在榜天數／總榜名次／走勢／綜合分見「新上市暢銷榜」分頁">足夠</span></div></td>
-<td class="n lt" title="資料自 2026-03-14 起，Sensor Tower 未回溯到上市日（上市至今 173 天），此值為下限">47K+</td><td class="n lt">$223K+</td></tr></tbody></table></div>
+<td class="n lt" title="資料自 2026-03-14 起、僅 150 天，但上市至今已 173 天（覆蓋 87%）。Sensor Tower 未回溯到上市日，此值為下限">47K+</td><td class="n lt" title="資料自 2026-03-14 起、僅 150 天，但上市至今已 173 天（覆蓋 87%）。Sensor Tower 未回溯到上市日，此值為下限">$223K+</td></tr></tbody></table></div>
 
 <div class="note-sm"><p>① <b>日均不是累計</b>：在榜 2/28 天、日均 7,000 是「這兩天每天七千」，別拿去跟在榜 28 天的比總量。首日量高含上市檔期與事前預約，撐不撐得住看「窗內走勢」有沒有跌破門檻虛線。</p><p>② <b>有 Apple 推薦（◆／✦）代表量不全是買來的</b>，評估對手買量能力要打折，<b>◆ Today 份量遠大於 ✦ 遊戲分頁</b>。
 徽章母體＝<b>2026-07 完整月 ∪ 當月至今</b>，已涵蓋整個滾動窗（2026-08-18 修：舊版只比資料月，窗末上市的產品會被誤判成沒被推薦）。</p><p>③ 暢銷榜欄：<span class="gs-k gs-ki"></span> iOS、<span class="gs-k gs-ka"></span> Android 遊戲榜逐日名次，<b>log 尺度、#1 在最上、斷線＝當日不在 Top 200</b>（不補值），「#N」為<b>窗內</b>最佳。
