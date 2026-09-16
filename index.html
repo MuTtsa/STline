@@ -1079,7 +1079,12 @@ color:var(--ink);display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
  * 開頭都是「全部 578」，沒標籤看起來是三個一模一樣的東西——這才是「堆在一起」的真因。 */
 .rdfil{margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(480px,1fr));gap:2px 28px}
 /* ⚠ radio 必須留在 .subbar 的同層兄弟，~ 才走得到，不准改成 wrapper。 */
-.rdfil>input{grid-column:1/-1;height:0}
+/* ⚠ 只有篩選器列（.subbar）參與雙欄；其餘直屬子元素一律跨滿。
+   2026-09-17 事故：表格 .rdwrap 與尾註也是 .rdfil 的子元素，改成 grid 之後它們變成
+   grid item，表格被擠進左欄（約一半寬）、尾註飄到右欄。用 :not(.subbar) 而不是
+   逐一列舉，是為了讓日後新增的子元素預設安全、不必記得補規則。 */
+.rdfil>:not(.subbar){grid-column:1/-1}
+.rdfil>input{height:0}
 .rdfil .rdb8{grid-column:1/-1}
 .rdfil .subbar{position:relative;padding-left:82px;margin-bottom:8px}
 .rdfil .subbar::before{position:absolute;left:0;top:5px;width:72px;margin-right:0}
@@ -1091,7 +1096,7 @@ color:var(--ink);display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
 .rdfil .subbar.rdb1::before{content:'母體';align-self:center}
 .rdfil .subbar.rdb2::before{content:'其他分層';align-self:center}
 .rdfil .subbar.rdb3::before{content:'RPD 分級';align-self:center}
-.rdfil .subbar.rdb6::before{content:'來源國';align-self:center}
+.rdfil .subbar.rdb6::before{content:'國別';align-self:center}
 .rdfil .subbar.rdb7::before{content:'階段';align-self:center}
 .rdfil .subbar.rdb8::before{content:'品類';align-self:center}
 .rdfil .subbar::before{font-size:var(--fs-5);color:var(--stone);margin-right:2px}
